@@ -1,0 +1,41 @@
+/* GLOBAL LAYOUT */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: rgb(0,0,0);
+    background: linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(8,27,41,1) 100%);
+}
+
+/* SIDEBAR */
+.movie-flix {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.admin-names {
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+}
+
+.title-name-admin {
+    line-height: 2px;
+}
+
+.nav-link {
+    background-color: #131313;
+}
+
+.nav-link.active {
+    background-color: #00284D !important;
+    color: white;
+}

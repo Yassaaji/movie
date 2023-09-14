@@ -1,0 +1,22 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HEADER */
+
+.navbar-link-header {
+    background-color: #111111;
+    width: 1000px;
+    height: 90px;
+}
+
+.navbar-link-header h3 {
+    font-weight: 600;
+}
+
+
+/* CONTENT */
+
+.card-menunggu-konfirmasi .card .card-body p{
+    font-weight: 600px;
+}

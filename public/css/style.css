@@ -1,0 +1,129 @@
+body{
+    background-color: #ffffff;
+}
+.col-lg-4.mb-3 {
+    width: 300px; /* Atur lebar sesuai kebutuhan Anda */
+    height: 270px; /* Atur tinggi sesuai kebutuhan Anda untuk membuat persegi panjang */
+    background-color: #ffffff; /* Ganti warna latar belakang sesuai preferensi Anda */
+    padding-top: 30px; /* Atur padding sesuai kebutuhan Anda */
+    border-radius: 5px; /* Atur sudut elemen menjadi bulat sesuai keinginan Anda */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .besar{
+    text-align: center;
+    padding-top: 20px;
+
+  }
+
+.img-container {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    overflow: hidden; /* Hindari gambar melewati batas */
+}
+.img{
+    border-radius: 50%;
+    width:  150px;
+    height: 150px;
+    border-color: solid 2px #ffffff;
+    object-fit: cover;
+}
+.user{
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    font-weight: 700;
+    padding-left: 78px;
+}
+.col-lg-8 .sign-user_card {
+    background-color: rgb(255, 255, 255); /* Ganti warna latar belakang sesuai preferensi Anda */
+     /* Atur padding sesuai kebutuhan Anda */
+    width: 800px;
+    height: 370px;
+    border-radius: 3px; /* Atur sudut elemen menjadi bulat sesuai keinginan Anda */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  /* Optional: Tambahkan gaya untuk judul "Personal Details" jika diperlukan */
+  h5.a-border {
+    font-family: 'Poppins',sans-serif;
+    font-weight: 700;
+    border-bottom: 2px solid #000000; /* Garis bawah untuk judul */
+    padding-bottom: 10px; /* Ruang bawah dari judul */
+    margin-bottom: 20px; /* Ruang bawah dari judul dan elemen-elemen lainnya */
+  }
+
+  /* Gaya untuk baris-baris konten dalam elemen */
+  .row.align-items-center.justify-content-between {
+    margin-bottom: 15px; /* Ruang bawah antara setiap baris */
+  }
+
+  /* Gaya untuk label dan teks dalam baris */
+  .col-md-8 span.text-light.font-size-13 {
+    font-size: 16px; /* Ukuran font sesuai keinginan Anda */
+    font-family: 'Poppins',sans-serif;;
+
+  }
+
+  /* Gaya untuk tautan "Change" */
+  .col-md-4.text-md-right.text-left a.text {
+    text-decoration: none; /* Hapus garis bawah pada tautan */
+     /* Warna tautan sesuai preferensi Anda */
+     font-family: 'Poppins',sans-serif;
+     font-size: 16px;
+  }
+  .text{
+    padding-right: 20px;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s, transform 0.3s;
+  }
+
+
+  /* Gaya untuk teks yang tidak berubah */
+  p.mb-0 {
+    margin-bottom: 0; /* Hapus margin bawah dari teks */
+  }
+
+  /* Gaya untuk konten teks yang lebih besar */
+  p.mb-0 {
+    color: #000000;
+    font-size: 14px; /* Ukuran font sesuai keinginan Anda */
+    font-family: 'Poppins',sans-serif;
+  }
+.kecil{
+    padding-right: 200px;
+    font-display: 10px;
+    padding-left: 20px;
+}
+.edit-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('img-icon.png') center center no-repeat;
+    background-size: 40%; /* Sesuaikan ukuran ikon sesuai kebutuhan Anda */
+    opacity: 0; /* Sembunyikan ikon secara default */
+    transition: opacity 0.3s ease; /* Efek transisi saat hover */
+}
+
+.img-container:hover .edit-icon {
+    opacity: 100; /* Tampilkan ikon saat hover */
+}
+.with-border {
+    border-bottom: 2px solid #000000; /* Atur warna dan ketebalan garis sesuai keinginan Anda */
+    padding-bottom: 5px; /* Sesuaikan jarak antara teks dan garis bawah sesuai kebutuhan Anda */
+    margin-bottom: -5px;
+    background-image: linear-gradient(90deg, #cccccc80, transparent); /* Mengatur warna awal (kiri) dan transparan (kanan) */
+    background-position: left bottom; /* Memastikan gradient dimulai dari kiri bawah */
+    background-repeat: no-repeat; /* Hanya tampilkan gradient sekali */
+}
+.about h4{
+    font-family: 'Poppins',sans-serif;
+    color: #000000;
+    font-weight: 600;
+    padding-top: 20px;
+}
+
+
