@@ -44,10 +44,6 @@
 <body>
 
 
-<div class="header" style="background-color: #111111 ; color: white; text-align: center; padding: 10px;">
-    <h1>Movie</h1>
-</div>
-
 <div class="back py-4">
     <div class="container py-3 px-3" >
         <div class="row">
@@ -161,7 +157,7 @@
     <div class="video-slider">
         <div class="video-trailers">
             <!-- Video trailer 1 -->
-            <div class="video-trailer"><iframe width="400" height="200" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+            <div class="video-trailer" data-aos="fade-up" data-aos-delay="100"><iframe width="400" height="200" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <!-- Video trailer 2 -->
