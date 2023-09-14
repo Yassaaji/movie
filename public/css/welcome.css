@@ -176,8 +176,9 @@ background-color: #b5c0cd;
     font-weight: 800;
     font-family: 'Poppins', sans-serif;
     padding-top: 50px;
-    text-align: center;
+    text-align: left;
     color: #000000;
+    padding-left: 50px;
 }
 .mvi{
     font-weight: 800;

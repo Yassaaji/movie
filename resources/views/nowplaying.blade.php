@@ -95,7 +95,7 @@
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ Storage::url('public/caraousel-nowplaying/kontenn.jpg') }}" class="d-block w-100"
+                    <img src="{{ asset('img/caraousel-nowplaying/kontenn.jpg') }}" class="d-block w-100"
                         alt="" style="width: 200%; height: auto; max-height: 600px;">
                     <div class="carousel-caption text-center" style="top: 45%;">
                         <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Now Playing</h1>
@@ -114,7 +114,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/spiderman.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/spiderman.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -141,7 +141,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/selesai.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/selesai.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -171,7 +171,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/jendelaseribusungai.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/jendelaseribusungai.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -201,7 +201,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/bissmillah.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/bissmillah.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -229,7 +229,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/amstel.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/amstel.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -258,7 +258,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-nowplaying/gasspoll.jpg') }}"
+                                    <img src="{{ asset('img/card-nowplaying/gasspoll.jpg') }}"
                                         class="w-100 rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
