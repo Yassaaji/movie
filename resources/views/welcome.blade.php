@@ -35,7 +35,9 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}">
+    <style>
 
+        </style>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -43,15 +45,36 @@
 </head>
 <body>
 
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('img/caraousel-home/kontenn.jpg') }}" class="d-block w-100"
+                    alt="" style="object-fit: cover; height: 100vh;">
+                <div class="carousel-caption text-center" style="top: 45%;">
+                    <h1><strong>Kata-kata</strong></h1>
+                    <p>hehe Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dignissimos consectetur sit dicta eligendi molestiae quidem officia vitae nobis, et totam minima cumque ducimus perferendis, suscipit recusandae mollitia quaerat nam?</p>
+
+                    <!-- Tombol dengan efek hover yang diperbarui -->
+                    <div class="buttons mt-3">
+                        <div class="d-flex justify-content-center">
+                            <a class="selanjutnya" href="{{ url('/login')}}">
+                                <button class="transparent-button">
+                                    Get Started
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
 <div class="back py-4">
     <div class="container py-3">
@@ -106,7 +129,7 @@
                     </div>
                 </div>
                 <div class="buttons d-flex flex-row-reverse mt-3">
-                    <a class="selanjutnya" href="{{ url('/nowplaying'); }}">
+                    <a class="selanjutnya" href="{{ url('/nowplaying')}}">
                         <button class="transparent-button">
                           Selanjutnya <i class="fas fa-chevron-right"></i>
                         </button>
@@ -158,7 +181,7 @@
             </div>
         </div>
             <div class="buttons d-flex flex-row-reverse mt-3">
-                <a class="selanjutnya" href="{{ url('/comingsoon'); }}">
+                <a class="selanjutnya" href="{{ url('/comingsoon')}}">
                     <button class="transparent-button">
                       Selanjutnya <i class="fas fa-chevron-right"></i>
                     </button>
