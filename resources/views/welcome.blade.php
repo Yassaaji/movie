@@ -43,8 +43,24 @@
 </head>
 <body>
 
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+    </div>
 
 <div class="back py-4">
+    <div class="container py-3">
+        <div class="judul" >
+            <h1>TRENDING NOW</h1>
+            <p>Film yang sering di nikmati saat ini!</p>
+        </div>
+
+    </div>
     <div class="container py-3 px-3" >
         <div class="row">
             <div class="col-md-4">
@@ -161,11 +177,11 @@
             </div>
 
             <!-- Video trailer 2 -->
-            <div class="video-trailer"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+            <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <!-- Video trailer 3 -->
-            <div class="video-trailer"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+            <div class="video-trailer" data-aos="fade-up" data-aos-delay="100"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 <br>
@@ -177,27 +193,27 @@
     </div>
 </div>
 <h2 class="jdl">Mengapa MovieFlix</h2>
-<div class="content bp">
+<div class="content bp" data-aos="fade-up" data-aos-delay="100">
 <div class="container tl">
     <div class="column">
-        <img src="{{ Storage::url('public/fotoamanterpercaya-home/aman.jpg') }}" alt="aman" height="50px" width="50px">
+        <img src="{{ asset('img/ticket.jpg') }}" alt="aman" height="50px" width="50px">
         <p><strong>Aman</strong></p>
         <br>
         <p>Ayo kunjungin dan beli tiket kami karena yang lain belum tentu berkualitas.</p>
     </div>
     <div class="column">
-        <img src="{{ Storage::url('public/fotoamanterpercaya-home/terpercaya.jpg') }}" alt="terpercaya" height="50px" width="50px">
+        <img src="{{ asset('img/aman.jpg') }}" alt="terpercaya" height="50px" width="50px">
         <p><strong>Terpercaya</strong></p>
         <br>
         <p>Ayo kunjungin dan beli tiket kami karena yang lain belum tentu berkualitas.</p>
     </div>
     <div class="column">
-        <img src="{{ Storage::url('public/fotoamanterpercaya-home/metodepembayaran.jpg') }}" alt="metodepembayaran" height="50px" width="50px">
+        <img src="{{ asset('img/pembayaran.jpg') }}" alt="metodepembayaran" height="50px" width="50px">
         <p><strong>Metode Pembayaran</strong></p>
         <br>
         <p>Ayo kunjungin dan beli tiket kami karena yang lain belum tentu berkualitas.</p>
     </div>
-   </div>
+  </div>
 </div>
 
 <script src="bower_components/aos/dist/aos.js"></script>

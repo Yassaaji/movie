@@ -94,8 +94,8 @@ display: inline;
 flex-direction: row; /* Video trailer akan sejajar ke samping */
 justify-content: space-around; /* Mengatur jarak antara video trailer */
 margin-top: 10px; /* Menambahkan margin atas untuk memberikan sedikit jarak */
-height: 200px;
-width: 1000px;
+height: auto;
+width: auto;
 }
 
 .video-trailer {
@@ -176,9 +176,8 @@ background-color: #b5c0cd;
     font-weight: 800;
     font-family: 'Poppins', sans-serif;
     padding-top: 50px;
-    text-align: left;
+    text-align: center;
     color: #000000;
-    padding-left: 50px;
 }
 .mvi{
     font-weight: 800;
