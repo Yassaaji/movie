@@ -19,6 +19,7 @@
         nav {
         }
 
+        /* HOME */
         .container {
             background-color: transparent;
             box-shadow: none;
@@ -27,6 +28,93 @@
             padding: 20px;
             align-items: center;
         }
+        .content {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Kolom pertama untuk h2, kolom kedua untuk container */
+    align-items: center; /* Mengatur vertikal ke tengah */
+    gap: 20px; /* Jarak antara h2 dan container */
+}.contentt {
+    display: flex;
+    flex-direction: column; /* Elemen-elemen di dalamnya akan tampil dalam satu kolom */
+}
+
+.video-trailers {
+    display: flex;
+    flex-direction: row; /* Video trailer akan sejajar ke samping */
+    justify-content: space-between; /* Mengatur jarak antara video trailer */
+    margin-top: 10px; /* Menambahkan margin atas untuk memberikan sedikit jarak */
+}
+
+.video-trailer {
+    flex: 1; /* Membagi ruang secara merata antara video trailer */
+}
+
+.video-trailer iframe {
+    width: 100%;
+    height:120%;
+}
+
+
+        .column {
+    flex-basis: 35%;
+}
+/* styles.css */
+.video-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-trailers {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-trailer {
+    min-width: 300px;
+    max-width: 300px;
+    margin: 0 10px;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.slider-circle {
+    width: 15px;
+    height: 15px;
+    background-color: #bcc8d5;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px; /* Jarak antara setiap kontrol penggeser */
+    transition: background-color 0.3s ease;
+}
+
+.slider-circle.active {
+    background-color: #717b86; /* Warna lingkaran aktif */
+}
+
+.prev-video,
+.next-video {
+    padding: 5px 10px;
+    background-color: #a4b0bc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Jarak antara tombol dan lingkaran penggeser */
+}
+
+.prev-video:hover,
+.next-video:hover {
+    background-color: #b5c0cd;
+}
+
+/* END HOME */
 
         .image {
             flex: 1;
@@ -128,7 +216,7 @@
 
         <div class="left-container">
             <div class="image">
-                <img src="{{ Storage::url('public/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
+                <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
                     width="230px">
             </div>
             <div class="left-column">
@@ -147,15 +235,16 @@
                 </div>
             </div>
         </div>
-        <div class="sinopsis">
-            <h1><strong>SINOPSIS</strong></h1>
-            <p>Suspendisse ultrices orci pulvinar, tincidunt odio at, egestas odio. Nulla facilisi. Sed auctor purus id
-                velit pretium feugiat. Nullam elit ex, sollicitudin sit amet enim at, consectetur scelerisque quam.
-                Donec eget tortor nisi. Proin id ornare orci. Duis pretium posuere elementum. Mauris tincidunt lacus
-                arcu, sollicitudin blandit sapien facilisis eget. Pellentesque suscipit ex vitae elit ultrices, vitae
-                pulvinar arcu iaculis. Mauris venenatis sit amet ipsum id porttitor. Duis sagittis nisi et orci
-                ultricies efficitur.</p>
-        </div>
+                <div class="sinopsis">
+                    <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                    <p> Film ini mengisahkan seorang Peter Parker (Andrew Garfield) yang merupakan anak dari seorang ilmuwan bernama Richard Parker (Campbell Scott).
+                        Namun suatu hari, ayah dan ibu Peter mengalami masalah yang berat sampai mengharuskan membawa Peter ke rumah pamannya.
+                        Peter dititipkan kepada paman dan bibinya, bernama Ben (Martin Sheen) dan May (Sally Field).
+                         Setelah kejadian itu, ayah dan ibu Peter menghilang tanpa meninggalkan kabar sama sekali.</p>
+                </div>
+            </div>
+            <br>
     </div>
 <br><br>
     <h2>Ticket dan Jadwal tayang</h2>
@@ -167,7 +256,7 @@
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ Storage::url('public/card-detailfilm/ceritacinta.jpg') }}"
+                                <img src="{{ asset('img/card-detailfilm/ceritacinta.jpg') }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
@@ -193,7 +282,7 @@
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ Storage::url('public/card-detailfilm/dilan.jpg') }}"
+                                <img src="{{ asset('img/card-detailfilm/dilan.jpg') }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
@@ -222,7 +311,7 @@
                 <div class="card" style="max-width: 550px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ Storage::url('public/card-detailfilm/buyahamka.jpg') }}"
+                            <img src="{{ asset('img/card-detailfilm/buyahamka.jpg') }}"
                                 class="img-fluid rounded-start" alt="..."
                                 style="object-fit: cover; height: 100%;">
                         </div>
@@ -248,7 +337,7 @@
                 <div class="card" style="max-width: 550px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ Storage::url('public/card-detailfilm/traintobusan.jpg') }}"
+                            <img src="{{ asset('img/card-detailfilm/traintobusan.jpg') }}"
                                 class="img-fluid rounded-start" alt="..."
                                 style="object-fit: cover; height: 100%;">
                         </div>

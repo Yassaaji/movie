@@ -95,7 +95,7 @@
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ Storage::url('public/caraousel-comingsoon/comingsoon.jpg') }}" class="d-block w-100"
+                    <img src="{{ asset('img/caraousel-comingsoon/comingsoon.jpg') }}" class="d-block w-100"
                         alt="" style="width: 200%; height: auto; max-height: 600px;">
                     <div class="carousel-caption text-center" style="top: 45%;">
                         {{-- <h2>COMING SOON</h2> --}}
@@ -111,7 +111,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/pasific.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/pasific.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -139,7 +139,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/buyahamka.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/buyahamka.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -172,7 +172,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/dilan.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/dilan.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -200,7 +200,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/tekateki.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/tekateki.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -231,7 +231,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/turningred.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/turningred.jpg') }}"
                                         class="img-fluid rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
@@ -260,7 +260,7 @@
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ Storage::url('public/card-comingsoon/traintobusan.jpg') }}"
+                                    <img src="{{ asset('img/card-comingsoon/traintobusan.jpg') }}"
                                         class="w-100 rounded-start" alt="..."
                                         style="object-fit: cover; height: 100%;">
                                 </div>
