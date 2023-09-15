@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Account\PasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,15 @@ Route::get('/profile',function (){
     return view('profile');
 });
 
+Route::get('/history',function (){
+    return view('historypesanan');
+});
+
+Route::get('/pass',function (){
+    return view('editpassword');
+});
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('admin', AdminController::class)->middleware('is_admin');
@@ -44,3 +54,7 @@ Route::resource('admin', AdminController::class)->middleware('is_admin');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('password', [PasswordController::class, 'edit'])->name('editpassword');
+Route::patch('password', [PasswordController::class, 'update'])->name('editpassword');

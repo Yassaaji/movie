@@ -213,8 +213,7 @@
     </nav>
     <h2>Spiderman VS Everybody</h2>
     <div class="container">
-
-        <div class="left-container">
+         <div class="left-container">
             <div class="image">
                 <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
                     width="230px">

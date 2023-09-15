@@ -30,7 +30,7 @@
                     </div>
                     </div>
                  </div>
-                <div class="col-lg-8 ml-5">
+                <div class="col-lg-8 ml-6">
                     <div class="sign-user_card">
                        <h5 class="mb-3 pb-3 a-border besar">DETAIL PROFILE</h5>
                        <div class="row align-items-center justify-content-between mb-3">
