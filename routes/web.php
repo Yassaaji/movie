@@ -36,7 +36,14 @@ Route::get('/detailfilm', function () {
 Route::get('/profile',function (){
     return view('profile');
 });
+Route::get('/editprofil',function (){
+    return view('editprofil');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('admin', AdminController::class)->middleware('is_admin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
