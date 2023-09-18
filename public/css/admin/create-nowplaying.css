@@ -1,0 +1,97 @@
+body {
+    /* background-color: rgb(1, 1, 18); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* Background Image */
+    background-image: url('img/guest_login.jpg');
+    /* Background Size */
+    background-size: cover;
+    /* Background Position */
+    background-position: center center;
+    /* Background Repeat */
+    background-repeat: no-repeat;
+    /* Height untuk mengisi seluruh layar */
+    height: 100vh;
+}
+
+/* Mengubah latar belakang form sesuai dengan kebutuhan */
+form {
+    text-align: center;
+    border: 3px dashed #880bf5;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgb(1, 1, 18); /* Latar belakang form dengan transparansi */
+    padding-right: 20px;
+    width: 300px;
+    color: white; /* Warna teks di dalam form */
+}
+
+form label {
+    display: none; /* Sembunyikan label */
+}
+
+/* Ganti class untuk elemen-elemen berikut */
+.input-text {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: 0px dashed #7a32c1; /* Tambahkan garis bawah putus-putus */
+    background-color: #c1c1c1; /* Warna ungu */
+    color: #ffffff; /* Warna teks putih */
+    /* border-radius: 200px; */
+    border-radius: 3px;
+}
+
+.input-file {
+    width: 500px; /* Ubah panjang sesuai kebutuhan Anda */
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: 0px dashed #7a32c1; /* Tambahkan garis bawah putus-putus */
+    background-color: #212121; /* Warna ungu */
+    color: #ffffff; /* Warna teks putih */
+    /* border-radius: 200px; */
+    border-radius: 3px;
+
+}
+/* Mengubah warna tombol "Choose File" */
+.input-file::-webkit-file-upload-button {
+background-color: #7a32c1; /* Warna ungu */
+color: #ffffff; /* Warna teks putih */
+padding: 10px 20px;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+}
+
+/* Untuk browser lain selain Chrome */
+.input-file::-ms-browse {
+background-color: #7a32c1; /* Warna ungu */
+color: #ffffff; /* Warna teks putih */
+padding: 10px 20px;
+border: none;
+border-radius: 3px;
+cursor: pointer;
+}
+
+
+.input-submit {
+    background-color: #212121;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 500px; /* Ubah panjang sesuai kebutuhan Anda */
+}
+
+.input-submit:hover {
+    background-color: #b8d4f1;
+}

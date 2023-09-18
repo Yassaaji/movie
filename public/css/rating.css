@@ -1,0 +1,91 @@
+  /* CSS */
+  .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    font-size: 24px;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.rating label::before {
+    content: '\2605';
+    font-size: 50px;
+}
+
+.rating input[type="radio"]:checked~label::before,
+.rating label:hover::before {
+    color: #f7d007;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 32px;
+    margin: 20px 0;
+    border: 2px solid #1b1b1b;
+    max-width: 550px;
+}
+
+.image-container {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    flex: 2;
+    padding: 20px;
+}
+
+.btn-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    padding: 5px 8px;
+    background-color: #f7d007;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-close:hover {
+    background-color: #000;
+}
+
+.kirim-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 0;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.kirim-button:hover {
+    background-color: #333;
+}

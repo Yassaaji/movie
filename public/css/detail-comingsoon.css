@@ -1,0 +1,189 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* HOME */
+.container {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.content {
+display: grid;
+grid-template-columns: auto 1fr; /* Kolom pertama untuk h2, kolom kedua untuk container */
+align-items: center; /* Mengatur vertikal ke tengah */
+gap: 20px; /* Jarak antara h2 dan container */
+}.contentt {
+display: flex;
+flex-direction: column; /* Elemen-elemen di dalamnya akan tampil dalam satu kolom */
+}
+
+.video-trailers {
+display: flex;
+flex-direction: row; /* Video trailer akan sejajar ke samping */
+justify-content: space-between; /* Mengatur jarak antara video trailer */
+margin-top: 10px; /* Menambahkan margin atas untuk memberikan sedikit jarak */
+}
+
+.video-trailer {
+flex: 1; /* Membagi ruang secara merata antara video trailer */
+}
+
+.video-trailer iframe {
+width: 100%;
+height:120%;
+}
+
+
+.column {
+flex-basis: 35%;
+}
+/* styles.css */
+.video-slider {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.video-trailers {
+display: flex;
+overflow: hidden;
+width: 100%;
+transition: transform 0.3s ease-in-out;
+}
+
+.video-trailer {
+min-width: 300px;
+max-width: 300px;
+margin: 0 10px;
+}
+
+.slider {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 10px;
+}
+
+.slider-circle {
+width: 15px;
+height: 15px;
+background-color: #bcc8d5;
+border-radius: 50%;
+cursor: pointer;
+margin: 0 5px; /* Jarak antara setiap kontrol penggeser */
+transition: background-color 0.3s ease;
+}
+
+.slider-circle.active {
+background-color: #717b86; /* Warna lingkaran aktif */
+}
+
+.prev-video,
+.next-video {
+padding: 5px 10px;
+background-color: #a4b0bc;
+color: white;
+border: none;
+cursor: pointer;
+margin-top: 10px; /* Jarak antara tombol dan lingkaran penggeser */
+}
+
+.prev-video:hover,
+.next-video:hover {
+background-color: #b5c0cd;
+}
+
+/* END HOME */
+
+.image {
+    flex: 1;
+    text-align: right;
+    color: rgb(0, 0, 0);
+    margin-top: 0;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px;
+}
+
+
+.data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Menggeser teks ke kiri */
+    margin-left: 20px;
+    /* Memberikan jarak kiri dari foto */
+    margin-top: 0;
+    /* Menghilangkan margin atas */
+}
+
+.data h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.data p {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    /* Mengatur teks ke kiri */
+    margin: 0;
+    /* Menghilangkan margin bawah pada teks paragraf */
+}
+
+.film-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sinopsis {
+    flex: 1;
+    padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5px;
+    align-self: flex-start;
+}
+
+
+.sinopsis h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sinopsis p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.left-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+h2 {
+padding-left: 80px;
+padding-right: 20px;
+font-family: 'Poppins', sans-serif;
+font-weight: bold;
+}
