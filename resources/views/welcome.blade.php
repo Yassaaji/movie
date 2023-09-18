@@ -238,7 +238,45 @@
     </div>
   </div>
 </div>
-
+<div class="takon">
+    
+</div>
+<h1>Tanya Jawab Umum </h1>
+                        <br>
+        <div class="dropdown">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                    Apa itu MovieFlix?
+                </button>
+                <ul class=" dropdown-menu bg-secondary" style="min-width: 1100px;">
+                    <li>
+                   <center> MovieFlix adalah platform tempat pengguna dapat membeli film dan tiket hiburan lainnya melalui website.</center>
+                    </li>
+                </ul>
+                </div>
+                <br>
+                <div class="dropdown">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                    Kelebihan Apa saja di MovieFlix?
+                </button>
+                <ul class="dropdown-menu  bg-secondary" style="min-width: 1100px;">
+                <li><center>Tidak Perlu antri tiket,Sistem pembayaran praktis, dah itu aja sii hehe.</center></li>
+                </ul>
+                </div>
+                <br>
+                <div class="dropdown">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                  Bagaimana cara pesen tiket online?
+                </button>
+                <ul class="dropdown-menu  bg-secondary" style="min-width: 1100px;">
+                    <li>
+                    <center>
+                     <p> 1.Pelanggan perlu Register lalu Login</p>
+                      <p> 2.Pilih Film yang ingin anda nonton</p>
+                       <p> 3.Pilih tiket dan harga sesuai kebutuhan anda di halaman sinopsis Flim.</p>
+                     <p>4.Lalu lakukan pembayaran dengan metode yang tersedia.</center></p>
+                    </li>
+                </ul>
+      </div>
 <script src="bower_components/aos/dist/aos.js"></script>
 <script>
     AOS.init();

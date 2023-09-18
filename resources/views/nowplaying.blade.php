@@ -8,10 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ URL::asset('css/nowplaying.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
-
 </head>
 
+@section('content')
 <body>
+<<<<<<< Updated upstream
     <div id="carouselExampleCaptions" class="carousel slide mt-0" data-bs-ride="carousel">
         <!-- Adjusted the top margin to mt-0 to remove the space above -->
         <div class="carousel-inner">
@@ -23,6 +24,9 @@
                     <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Jangan lewatkan
                         film yang akan tayang hari ini.</p>
                     </div>
+=======
+
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -206,5 +210,11 @@
                     </div>
         </center>
 </body>
+<<<<<<< HEAD
+=======
 
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> 7b0be9a8edaadbf0ad3ab997dd99f97b44405d80
+>>>>>>> Stashed changes

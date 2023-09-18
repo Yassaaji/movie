@@ -231,3 +231,7 @@ background-color: #b5c0cd;
     align-items: center;
     justify-content: center;
 }
+.dropdown-menu .bg-secondary li center {
+    color: white;
+}
+
