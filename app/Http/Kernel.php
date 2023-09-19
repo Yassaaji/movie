@@ -21,7 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        'checkRole' => \App\Http\Middleware\CheckRole::class,
+        'role' => \App\Http\Middleware\CheckRole::class,
+        // 'isAdmin' => \App\Http\Middleware\IsAdmin::class
     ];
 
     /**

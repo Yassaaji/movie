@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request ;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class RegisterController extends Controller
 {
@@ -39,6 +43,44 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegisterForm(){
+        return view('auth.register');
+    }
+
+    protected function insertRegister(Request $request) {
+        // dump();
+
+        $request->validate([
+            "name" => 'required|string|min:3|max:250',
+            'email' => 'email|required|max:250|unique:users',
+            'password'=> 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required| same:password'
+        ],[
+            'name.required' => 'data tidak boleh kosong',
+            'email.required' => 'data tidak boleh kosong',
+            'password.required' => 'data tidak boleh kosong',
+            'name.min:3' => 'name minimal harus 3 kata',
+            'password.min:8' => 'password minimal 8 karakter',
+            'password_confirmation.same:password' => "Password tidak sama",
+            'email.unique' => "Email sudah Diguanakan"
+        ]
+    );
+
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password)
+
+    ]);
+
+
+        $credentials = $request->only('email,password');
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
+        return redirect()->route('login')->with('message','Kamu Berhasil Registrasi');
+
     }
 
     /**

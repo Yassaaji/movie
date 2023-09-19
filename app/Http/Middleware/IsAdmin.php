@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class IsAdmin
@@ -15,11 +16,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->role==1 && auth()->user()->role==0) {
+        if( Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
-        } else {
-            return response()->view('errors.403', [], 403);
-
         }
+        abort(403,'unautohrized');
     }
 }

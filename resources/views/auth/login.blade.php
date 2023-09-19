@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -28,9 +28,8 @@
                         <div class="login-form px-5">
                             <div class="form-login px-5">
                                 <h1 class="text-center">LOGIN</h1>
-                                <form method="POST" action="{{ route('login') }}">
+                                <form method="post" action="{{ route('authenticate') }}">
                                     @csrf
-
                                     <div class="form-floating mb-3 mt-4 " >
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="floatingInput"   placeholder="Email" name="email"   autocomplete="email" autofocus>
                                         <label class="text-dark" for="floatingInput">{{ __('Email Address') }}</label>
