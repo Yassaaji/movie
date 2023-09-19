@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navbar')
 
 <head>
 
@@ -38,17 +38,11 @@
                                 <span class="text font-size-13 kecil ">Nama</span>
                                 <p class="mb-0 kecil with-border">Nama Lengkap</p>
                              </div>
-                             <div class="col-md-4 text-md-right text-left">
-                                <a href="#" class="text">Ubah</a>
-                             </div>
                        </div>
                        <div class="row align-items-center justify-content-between mb-3">
                              <div class="col-md-8" >
                                 <span class="text font-size-13 kecil ">Email</span>
                                     <p class="mb-0 kecil with-border">Example@gmail.com</p>
-                             </div>
-                             <div class="col-md-4 text-md-right text-left">
-                                <a href="#" class="text">Ubah</a>
                              </div>
                        </div>
                        <div class="row align-items-center justify-content-between mb-3">
@@ -56,17 +50,11 @@
                                 <span class="text font-size-13 kecil ">Password</span>
                                 <p class="mb-0 kecil with-border">********</p>
                              </div>
-                             <div class="col-md-4 text-md-right text-left">
-                                <a href="#" class="text">Ubah</a>
-                             </div>
                        </div>
                        <div class="row align-items-center justify-content-between">
                              <div class="col-md-8">
                                 <span class="text font-size-13 kecil ">ConfirmPassword</span>
                                 <p class="mb-0 kecil with-border">********</p>
-                             </div>
-                             <div class="col-md-4 text-md-right text-left">
-                                <a href="" class="text">Ubah</a>
                              </div>
                        </div>
 
