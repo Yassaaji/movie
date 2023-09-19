@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/admin', AdminController::class);
+
+Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
+Route::middleware(['guest'])->group(function() {
+
+    Route::get('/',[LoginController::class,'index'])->name('login');
+    Route::post('/',[LoginController::class,'login']);
+});
+Route::get('/home', function(){
+    return redirect('/admin');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,10 +59,3 @@ Route::get('/editprofil',function (){
     return view('editprofil');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('admin', AdminController::class)->middleware('is_admin');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
