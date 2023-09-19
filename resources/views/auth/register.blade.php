@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -30,16 +30,17 @@
                     <div class="register-form px-5">
                         <div class="form-register px-5">
                             <h1 class="text-center text-white mb-4">Register</h1>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('insertRegister') }}">
                                 @csrf
+                                
                                 <div class="form-floating mb-3">
-                                    <input type="username"
-                                        class="form-control @error('username') is-invalid @enderror" name="username"
-                                        value="{{ old('username') }}"  autocomplete="username" autofocus
-                                        id="floatingInput" placeholder="username">
-                                    <label for="floatingInput">Username</label>
+                                    <input type="name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}"  autocomplete="name" autofocus
+                                        id="floatingInput" placeholder="name">
+                                    <label for="floatingInput">name</label>
 
-                                    @error('username')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -89,7 +90,8 @@
                                 <div class="row mb-0 ">
                                     <div class="d-flex flex-column">
                                         <button type="submit" class="btn btn-primary text-white mb-2 shadow">{{ __('Register') }}</button>
-                                        <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{route('login')}}">Sign In</a></h6>
+                                        <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="">Sign In</a></h6>
+                                        {{-- <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{route('login')}}">Sign In</a></h6> --}}
                                     </div>
                                 </div>
                             </form>

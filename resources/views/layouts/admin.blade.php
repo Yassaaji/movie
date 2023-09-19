@@ -32,6 +32,7 @@
               <h3 class="movie-flix fs-4 text-white">Movie<span style="color: #0007AC;">Flix</span></h3>
             </a>
             <hr style="color: #f4f4f4;">
+
             <div class="logout-button d-flex justify-content-between px-3 align-items-center">
               <div class="d-flex align-items-center">
                 <img class="rounded-circle me-3" style="width: auto; height: 40px;" src="{{asset('img/user.png')}}" alt="">
@@ -45,6 +46,7 @@
               </form>
               <a class="bg-dark btn" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right text-white fs-4"></i></a>
             </div>
+
             <hr style="color: #f4f4f4;">
             <div class="mb-2">
               <ul class="nav nav-pills flex-column mb-2">
