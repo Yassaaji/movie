@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Http\Models\User;
-use App\Models\User as ModelsUser;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -42,48 +40,48 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {
 
-        $input = $request->all();
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ], [
-            'email.required' => 'Email Harus Diisi.',
-            'password.required' => 'Password Harus Diisi.'
-        ]);
+    public function showLoginForm(){
+        return view('auth.login');
+    }
 
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-        $user = ModelsUser::all();
-        if (Auth::attempt($infologin)) {
-            $user = Auth::user();
-            if ($user->role == 'admin') {
-                return redirect()->route('admin.index');
-            } else if ($user->role == 'user') {
-                return redirect()->route('tes');
-            }
+    public function authenticate(Request $request)
+{
+    $this->validate($request, [
+        'email' => 'required|exists:users,email|max:225',
+        'password' => 'required|min:6|max:225',
+    ], [
+        'email.max' => 'Masukan 225 karakter!',
+        'password.max' => 'Masukan 225 karakter!',
+        'email.required' => 'Masukkan Email Anda !!',
+        'email.exists' => 'Email Yang Anda Masukkan Belum Terdaftar !!',
+        'password.required' => 'Masukkan Kata Sandi Anda !!',
+        'password.min' => 'Password Minimal 6 Huruf !!',
+    ]);
+
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.index');
+        } elseif ($user->role === 'user') {
+            return redirect()->route('nowplaying');
         }
+    }
 
-        return redirect()->back()->withErrors('Email dan password yang dimasukkan tidak sesuai')->withInput();
+    // Autentikasi gagal
+    return redirect()->route('login')->with('error', 'Email atau kata sandi salah.');
+}
 
+    public function logout(){
+        Auth::logout();
 
-        function logout(){
-            Auth::logout();
-            return redirect('');
-        }
+        request()->session()->invalidate();
 
-        // if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))) {
-        //    if(auth()->user()->is_admin==1){
-        //        return redirect()->route('admin.index');
-        //    } else {
-        //        return redirect()->route('home');
-        //    }
-        // } else {
-        //    return redirect()->route('login');
-        // }
+        request()->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }
