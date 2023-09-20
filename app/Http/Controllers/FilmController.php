@@ -85,10 +85,14 @@ class FilmController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function daftarFilm()
     {
-        return view('admin.editfilm');
+        $films = Film::all();
+        // dd($film);
+        return view('admin.daftarfilm',compact('films'));
     }
+
+
 
     /**
      * Update the specified resource in storage.

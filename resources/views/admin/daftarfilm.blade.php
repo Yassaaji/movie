@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Film</title>
     <style>
         body {
           font-family: Arial, sans-serif; /* Ganti dengan jenis font yang Anda sukai */
@@ -52,8 +44,6 @@
       </style>
 </head>
 
-<body>
-
 <br><br><br>
     <div class="text">
         <h1>Karyawan</h1>
@@ -69,7 +59,7 @@
                 <th>No</th>
                 <th>Judul</th>
                 <th>Direktur</th>
-                <th>Cash</th>
+                <th>Cast</th>
                 <th>Minimal Usia</th>
                 <th>Genre</th>
                 <th>Durasi</th>
@@ -79,19 +69,19 @@
                 <th>Aksi</th>
             </tr>
 
+            @forelse ( $films as $i=> $film )
+
             <tr>
-                <td>1</td>
-                <td>Spiderman
-                    vs Everybody</td>
-                <td>Marcquez</td>
-                <td>Marcquez,
-                    Rosi</td>
-                <td>15 tahun</td>
-                <td>Superhero</td>
-                <td>1 jam 50 menit</td>
-                <td>14:30</td>
-                <td>A battle royale...</td>
-                <td>Foto</td>
+                <td>{{ $i+1 }}</td>
+                <td>{{ $film->judul }}</td>
+                <td>{{ $film->director }}</td>
+                <td>{{ $film->cast }}</td>
+                <td>{{ $film->minimal_usia }}</td>
+                <td>{{ $film->genre }}</td>
+                <td>{{ $film->durasi }}</td>
+                <td>{{ $film->jadwal_tayang }}</td>
+                <td>{{ $film->sinopsis }}</td>
+                <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}"></td>
                 <div class="button">
                     <td>
                         <button class="btn btn-dark" onclick="return confirm('Apakah anda yakin?')">Edit</button>
@@ -100,11 +90,14 @@
                     </td>
               </div>
             </tr>
+
+            @empty
+
+            @endforelse
+
+
         </table>
     </div>
 
     @endsection
-</body>
-
-</html>
 
