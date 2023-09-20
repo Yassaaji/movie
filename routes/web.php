@@ -53,32 +53,17 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
         // Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
 
             // Route untuk halaman admin
-Route::get('/home',[HomeController::class,'index'])->name('home');
-Route::resource('/admin', AdminController::class);
-Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
-Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
-
-// Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
-// Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
-// Route::get('/create-comingsoon', [App\Http\Controllers\CreateComingSoonController::class, 'create'])->name('create-comingsoon');
-// Route::get('/create-detailcomingsoon', [App\Http\Controllers\CreateDetailComingSoonController::class, 'create'])->name('create-detailcomingsoon');
+            Route::get('/home',[HomeController::class,'index'])->name('home');
+            Route::resource('/admin', AdminController::class);
 
 
 
-// Route::middleware(['guest'])->group(function() {
+// Route grup untuk user yang sudah login
 
+// Route grup untuk admin yang sudah login
 
-<<<<<<< Updated upstream
-=======
 // Route untuk halaman landing page
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
-Route::get('/history', function () {
-    return view('historypesanan');
-});
-Route::get('/konfirmasi', function () {
-    return view('admin.konfirmasi-ticket');
-});
->>>>>>> Stashed changes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -99,13 +84,11 @@ Route::get('/detailfilm', function () {
 Route::get('/profile',function (){
     return view('profile');
 });
-Route::get('/detail-comingsoon',function (){
-    return view('detail-comingsoon');
+Route::get('/editprofil',function (){
+    return view('editprofil');
 });
 
-Route::get('/datatiket', function(){
-    return view('datatiket');
-});
+
 
 
 
@@ -151,6 +134,3 @@ Route::get('/datatiket', function(){
 Route::get('/home', function(){
     return redirect('/admin');
 });
-
-
-

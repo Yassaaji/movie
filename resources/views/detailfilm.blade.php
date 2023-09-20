@@ -1,12 +1,12 @@
 @extends('layouts.app')
+
 <head>
     <title>Film Detail</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<<<<<<< Updated upstream
-        <link rel="stylesheet" href="{{ URL::asset('css/detailfilm.css') }}">
-=======
+
+    <link rel="stylesheet" href="{{ URL::asset('css/detailfilm.css') }}">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -14,102 +14,111 @@
             padding: 0;
             background-color: #f0f0f0;
         }
-        /* HOME */
-        .container {
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-            display: flex;
-            padding: 20px;
-            align-items: center;
-        }
+
+
         .content {
-    display: grid;
-    grid-template-columns: auto 1fr; /* Kolom pertama untuk h2, kolom kedua untuk container */
-    align-items: center; /* Mengatur vertikal ke tengah */
-    gap: 20px; /* Jarak antara h2 dan container */
-}.contentt {
-    display: flex;
-    flex-direction: column; /* Elemen-elemen di dalamnya akan tampil dalam satu kolom */
-}
+            display: grid;
+            grid-template-columns: auto 1fr;
+            /* Kolom pertama untuk h2, kolom kedua untuk container */
+            align-items: center;
+            /* Mengatur vertikal ke tengah */
+            gap: 20px;
+            /* Jarak antara h2 dan container */
+        }
 
-.video-trailers {
-    display: flex;
-    flex-direction: row; /* Video trailer akan sejajar ke samping */
-    justify-content: space-between; /* Mengatur jarak antara video trailer */
-    margin-top: 10px; /* Menambahkan margin atas untuk memberikan sedikit jarak */
-}
+        .contentt {
+            display: flex;
+            flex-direction: column;
+            /* Elemen-elemen di dalamnya akan tampil dalam satu kolom */
+        }
 
-.video-trailer {
-    flex: 1; /* Membagi ruang secara merata antara video trailer */
-}
+        .video-trailers {
+            display: flex;
+            flex-direction: row;
+            /* Video trailer akan sejajar ke samping */
+            justify-content: space-between;
+            /* Mengatur jarak antara video trailer */
+            margin-top: 10px;
+            /* Menambahkan margin atas untuk memberikan sedikit jarak */
 
-.video-trailer iframe {
-    width: 100%;
-    height:120%;
-}
+        }
+
+        .video-trailer {
+            flex: 1;
+            /* Membagi ruang secara merata antara video trailer */
+
+        }
+
+        .video-trailer iframe {
+            width: 100%;
+            height: 120%;
+        }
 
 
         .column {
-    flex-basis: 35%;
-}
-/* styles.css */
-.video-slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+            flex-basis: 35%;
+        }
 
-.video-trailers {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    transition: transform 0.3s ease-in-out;
-}
+        /* styles.css */
+        .video-slider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.video-trailer {
-    min-width: 300px;
-    max-width: 300px;
-    margin: 0 10px;
-}
+        .video-trailers {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.slider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
+        .video-trailer {
+            min-width: 300px;
+            max-width: 300px;
+            margin: 0 10px;
+        }
 
-.slider-circle {
-    width: 15px;
-    height: 15px;
-    background-color: #bcc8d5;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 0 5px; /* Jarak antara setiap kontrol penggeser */
-    transition: background-color 0.3s ease;
-}
+        .slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-.slider-circle.active {
-    background-color: #717b86; /* Warna lingkaran aktif */
-}
+        .slider-circle {
+            width: 15px;
+            height: 15px;
+            background-color: #bcc8d5;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 0 5px;
+            /* Jarak antara setiap kontrol penggeser */
+            transition: background-color 0.3s ease;
+        }
 
-.prev-video,
-.next-video {
-    padding: 5px 10px;
-    background-color: #a4b0bc;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px; /* Jarak antara tombol dan lingkaran penggeser */
-}
+        .slider-circle.active {
+            background-color: #717b86;
+            /* Warna lingkaran aktif */
+        }
 
-.prev-video:hover,
-.next-video:hover {
-    background-color: #b5c0cd;
-}
+        .prev-video,
+        .next-video {
+            padding: 5px 10px;
+            background-color: #a4b0bc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            /* Jarak antara tombol dan lingkaran penggeser */
+        }
 
-/* END HOME */
+        .prev-video:hover,
+        .next-video:hover {
+            background-color: #b5c0cd;
+        }
+
+        /* END HOME */
 
         .image {
             flex: 1;
@@ -162,16 +171,18 @@
 
         .sinopsis {
             flex: 1;
-            padding-left: 20px;
             font-family: 'Poppins', sans-serif;
-            margin-top: 5px;
             align-self: flex-start;
         }
 
+        .text {
+            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+            align-self: flex-start;
+        }
 
         .sinopsis h1 {
             font-size: 24px;
-            margin-bottom: 10px;
         }
 
         .sinopsis p {
@@ -190,21 +201,19 @@
             display: flex;
             flex-direction: column;
         }
-        h2 {
-        padding-left: 80px;
-        padding-right: 20px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: bold;
-    }
 
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
     </style>
->>>>>>> Stashed changes
 </head>
 @section('content')
 <body>
     <h2>Spiderman VS Everybody</h2>
     <div class="container">
-         <div class="left-container">
+
+        <div class="left-container">
             <div class="image">
                 <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
                     width="230px">
@@ -353,9 +362,9 @@
     </div>
 </center>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+                    </script>
 
-</body>
+    </body>
 @endsection
