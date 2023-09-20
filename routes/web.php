@@ -85,7 +85,9 @@ Route::get('/editprofil',function (){
     return view('editprofil');
 });
 
-
+Route::get('/datatiket', function(){
+    return view('datatiket');
+});
 
 
 

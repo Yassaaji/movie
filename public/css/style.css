@@ -22,6 +22,11 @@ body{
     align-items: center; /* Pusatkan secara vertikal */
     overflow: hidden; /* Hindari gambar melewati batas */
 }
+.icon-container{
+    display: flex;
+    width:  20px;
+    height: 20px;
+}
 .img{
     border-radius: 50%;
     width:  150px;
@@ -36,12 +41,15 @@ body{
     padding-left: 78px;
 }
 .col-lg-8 .sign-user_card {
+    margin-left: 100px;
     background-color: rgb(255, 255, 255); /* Ganti warna latar belakang sesuai preferensi Anda */
      /* Atur padding sesuai kebutuhan Anda */
-    width: 800px;
-    height: 370px;
+    width: 850px;
+    height: 270px;
     border-radius: 3px; /* Atur sudut elemen menjadi bulat sesuai keinginan Anda */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
 
   }
 
@@ -94,7 +102,7 @@ body{
 .kecil{
     padding-right: 200px;
     font-display: 10px;
-    padding-left: 20px;
+    padding-left: 150px;
 }
 .edit-icon {
     position: absolute;
