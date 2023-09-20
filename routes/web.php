@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FilmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NowplayingController;
 use App\Http\Controllers\WelcomeController;
@@ -51,17 +52,24 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
         // Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
 
             // Route untuk halaman admin
-            Route::get('/home',[HomeController::class,'index'])->name('home');
-            Route::resource('/admin', AdminController::class);
+Route::get('/home',[HomeController::class,'index'])->name('home');
+Route::resource('/admin', AdminController::class);
+Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
+Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
+
+<<<<<<< Updated upstream
+=======
+Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
+Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
+Route::get('/create-comingsoon', [App\Http\Controllers\CreateComingSoonController::class, 'create'])->name('create-comingsoon');
+Route::get('/create-detailcomingsoon', [App\Http\Controllers\CreateDetailComingSoonController::class, 'create'])->name('create-detailcomingsoon');
 
 
 
-// Route grup untuk user yang sudah login
+Route::middleware(['guest'])->group(function() {
+>>>>>>> Stashed changes
 
-// Route grup untuk admin yang sudah login
 
-// Route untuk halaman landing page
-// Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -81,8 +89,8 @@ Route::get('/detailfilm', function () {
 Route::get('/profile',function (){
     return view('profile');
 });
-Route::get('/editprofil',function (){
-    return view('editprofil');
+Route::get('/detail-comingsoon',function (){
+    return view('detail-comingsoon');
 });
 
 Route::get('/datatiket', function(){

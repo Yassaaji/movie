@@ -39,22 +39,33 @@
 
         </style>
 
+           <!-- Tambahkan pustaka jQuery dan JavaScript Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tambahkan pustaka AOS jika diperlukan -->
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" type="text/css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('img/caraousel-home/kontenn.jpg') }}" class="d-block w-100"
-                    alt="" style="object-fit: cover; height: 100vh;">
-                <div class="carousel-caption text-center" style="top: 45%;">
-                    <h1><strong>Kata-kata</strong></h1>
-                    <p>hehe Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dignissimos consectetur sit dicta eligendi molestiae quidem officia vitae nobis, et totam minima cumque ducimus perferendis, suscipit recusandae mollitia quaerat nam?</p>
-
-                    <!-- Tombol dengan efek hover yang diperbarui -->
+                <img src="{{ asset('img/caraousel-nowplaying/kontenn.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption">
+                <h1>Selamat Datang</h1>
+                    <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
+                    <div class="btn-group">
+                        <a href="{{ route('login') }}" class="btn   ">Login</a>
+                        <a href="{{ route('register') }}" class="btn">Register</a>
+                    </div>
                     <div class="buttons mt-3">
                         <div class="d-flex justify-content-center">
                             <a class="selanjutnya" href="{{ url('/login')}}">
@@ -194,27 +205,79 @@
 <div class="contentt">
     <h2 class="mvi">Video Trailer</h2>
     <div class="video-slider">
-        <div class="video-trailers">
-            <!-- Video trailer 1 -->
-            <div class="video-trailer" data-aos="fade-up" data-aos-delay="100"><iframe width="400" height="200" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-            </div>
+        <section class="testimonials">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="owl-carousel" id="customers-testimonials" >
 
-            <!-- Video trailer 2 -->
-            <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-            </div>
+                    <!--TESTIMONIAL 1 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/web3.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="400" height="300" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 1 -->
 
-            <!-- Video trailer 3 -->
-            <div class="video-trailer" data-aos="fade-up" data-aos-delay="100"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                    <!--TESTIMONIAL 2 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/card2.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 2 -->
+
+                    <!--TESTIMONIAL 3 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/dish.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 3 -->
+
+                    <!--TESTIMONIAL 4 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/medical.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 4 -->
+
+                    <!--TESTIMONIAL 5 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/construction.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 5 -->
+
+                    <!--TESTIMONIAL 6 -->
+                    <div class="item">
+                      <div class="shadow-effect">
+                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/automobile.jpg" alt=""> --}}
+                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                      </div>
+                    </div>
+                    <!--END OF TESTIMONIAL 6 -->
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-<br>
-        <div class="slider">
-            <div class="slider-circle active"></div>
-            <div class="slider-circle"></div>
-            <div class="slider-circle"></div>
-        </div>
+        </section>
     </div>
 </div>
+<br>
 <h2 class="jdl">Mengapa MovieFlix</h2>
 <div class="content bp" data-aos="fade-up" data-aos-delay="100">
 <div class="container tl">
@@ -238,49 +301,97 @@
     </div>
   </div>
 </div>
-<div class="takon">
-    
-</div>
-<h1>Tanya Jawab Umum </h1>
-                        <br>
+<body><div class="container">
+    <h2 class="jdl">Tanya Jawab Umum</h2>
+    <br>
+    <center>
+        <!-- Pertanyaan 1 -->
         <div class="dropdown">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
-                    Apa itu MovieFlix?
-                </button>
-                <ul class=" dropdown-menu bg-secondary" style="min-width: 1100px;">
-                    <li>
-                   <center> MovieFlix adalah platform tempat pengguna dapat membeli film dan tiket hiburan lainnya melalui website.</center>
-                    </li>
-                </ul>
-                </div>
-                <br>
-                <div class="dropdown">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
-                    Kelebihan Apa saja di MovieFlix?
-                </button>
-                <ul class="dropdown-menu  bg-secondary" style="min-width: 1100px;">
-                <li><center>Tidak Perlu antri tiket,Sistem pembayaran praktis, dah itu aja sii hehe.</center></li>
-                </ul>
-                </div>
-                <br>
-                <div class="dropdown">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
-                  Bagaimana cara pesen tiket online?
-                </button>
-                <ul class="dropdown-menu  bg-secondary" style="min-width: 1100px;">
-                    <li>
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                Apa itu MovieFlix?
+            </button>
+            <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
+                <li>
                     <center>
-                     <p> 1.Pelanggan perlu Register lalu Login</p>
-                      <p> 2.Pilih Film yang ingin anda nonton</p>
-                       <p> 3.Pilih tiket dan harga sesuai kebutuhan anda di halaman sinopsis Flim.</p>
-                     <p>4.Lalu lakukan pembayaran dengan metode yang tersedia.</center></p>
-                    </li>
-                </ul>
-      </div>
+                        <p>MovieFlix adalah platform tempat pengguna dapat membeli film dan tiket hiburan lainnya melalui website.</p>
+                    </center>
+                </li>
+            </ul>
+        </div>
+        <br><br>
+        <!-- Pertanyaan 2 -->
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                Kelebihan Apa saja di MovieFlix?
+            </button>
+            <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
+                <li>
+                    <center>
+                        <p>Tidak Perlu antri tiket, Sistem pembayaran praktis, dan banyak kelebihan lainnya.</p>
+                    </center>
+                </li>
+            </ul>
+        </div>
+        <br><br>
+        <!-- Pertanyaan 3 -->
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="min-width: 1100px;">
+                Bagaimana cara pesan tiket online?
+            </button>
+            <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
+                <li>
+                    <center>
+                        <p>1. Pelanggan perlu Register lalu Login</p>
+                        <p>2. Pilih Film yang ingin anda nonton</p>
+                        <p>3. Pilih tiket dan harga sesuai kebutuhan anda di halaman sinopsis Film.</p>
+                        <p>4. Lalu lakukan pembayaran dengan metode yang tersedia.</p>
+                    </center>
+                </li>
+            </ul>
+        </div>
+        <br><br><br><br><br>
+        <br><br>
+    </center>
+</div>
+
+
+
 <script src="bower_components/aos/dist/aos.js"></script>
 <script>
     AOS.init();
 </script>
+<script  src="./script.js"></script>
+<script>
+  jQuery(document).ready(function($) {
+"use strict";
+$('#customers-testimonials').owlCarousel( {
+		loop: true,
+		center: true,
+		items: 3,
+		margin: 30,
+		autoplay: true,
+		dots:true,
+    nav:true,
+		autoplayTimeout: 5000,
+    autoplayHoverPause:true,
+    stopOnHover:true,
+		smartSpeed: 850,
+  	navText: ['<i class="fa fa-arrow-alt-circle-left" style="font-size:30px;color:blue"></i>','<i class="fa fa-arrow-alt-circle-right" style="font-size:30px;color:blue"></i>'],
+		responsive: {
+			0: {
+				items: 1
+			},
+			768: {
+				items: 2
+			},
+			1170: {
+				items: 3
+			}
+		}
+	});
+});
+</script>
 </body>
 <script src="bower_components/aos/dist/aos.js"></script>
 </html>
+
