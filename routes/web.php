@@ -55,6 +55,7 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
             // Route untuk halaman admin
             Route::get('/home',[HomeController::class,'index'])->name('home');
             Route::resource('/admin', AdminController::class);
+            Route::get('/datatiket',[TicketController::class,'DataTiketPage'])->name('datatiket');
 
 
 
@@ -88,6 +89,9 @@ Route::get('/editprofil',function (){
     return view('editprofil');
 });
 
+Route::get('/datatiket',function(){
+    return view('datatiket');
+});
 
 
 

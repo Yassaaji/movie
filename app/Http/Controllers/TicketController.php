@@ -11,9 +11,15 @@ class TicketController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function DataTiketPage(){
+        return view('datatiket');
+     }
+
+
     public function index()
     {
-        //
+
     }
 
     /**
