@@ -234,10 +234,6 @@ background-color: #b5c0cd;
 .dropdown-menu .bg-secondary li center {
     color:white;
 }
-.img-responsive {
-    width: 100% !important;
-    height: 250px !important;
-}
 
 .item-details {
     width: 100% !important;

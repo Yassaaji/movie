@@ -39,6 +39,12 @@
 
         </style>
 
+           <!-- Tambahkan pustaka jQuery dan JavaScript Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tambahkan pustaka AOS jika diperlukan -->
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" type="text/css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" type="text/css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -195,17 +201,6 @@
         </div>
     </div>
 </div>
-
-<div class="contentt">
-    <h2 class="mvi">Video Trailer</h2>
-    <div class="item">
-        <div class="shadow-effect">
-          {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/web3.jpg" alt=""> --}}
-          <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="400" height="300" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-</div>
 {{-- Video Trailer --}}
 <div class="contentt">
     <h2 class="mvi">Video Trailer</h2>
@@ -214,7 +209,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-12">
-                  <div id="customers-testimonials" class="owl-carousel">
+                  <div class="owl-carousel" id="customers-testimonials" >
 
                     <!--TESTIMONIAL 1 -->
                     <div class="item">
@@ -225,6 +220,7 @@
                       </div>
                     </div>
                     <!--END OF TESTIMONIAL 1 -->
+
                     <!--TESTIMONIAL 2 -->
                     <div class="item">
                       <div class="shadow-effect">
@@ -234,6 +230,7 @@
                       </div>
                     </div>
                     <!--END OF TESTIMONIAL 2 -->
+
                     <!--TESTIMONIAL 3 -->
                     <div class="item">
                       <div class="shadow-effect">
@@ -243,6 +240,7 @@
                       </div>
                     </div>
                     <!--END OF TESTIMONIAL 3 -->
+
                     <!--TESTIMONIAL 4 -->
                     <div class="item">
                       <div class="shadow-effect">
@@ -252,6 +250,7 @@
                       </div>
                     </div>
                     <!--END OF TESTIMONIAL 4 -->
+
                     <!--TESTIMONIAL 5 -->
                     <div class="item">
                       <div class="shadow-effect">
@@ -261,6 +260,7 @@
                       </div>
                     </div>
                     <!--END OF TESTIMONIAL 5 -->
+
                     <!--TESTIMONIAL 6 -->
                     <div class="item">
                       <div class="shadow-effect">
@@ -273,7 +273,7 @@
                   </div>
                 </div>
               </div>
-              </div>
+            </div>
         </section>
     </div>
 </div>
@@ -354,10 +354,6 @@
     </center>
 </div>
 
-    <!-- Tambahkan pustaka jQuery dan JavaScript Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Tambahkan pustaka AOS jika diperlukan -->
 
 
 <script src="bower_components/aos/dist/aos.js"></script>
