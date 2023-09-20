@@ -6,6 +6,8 @@ use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 
+use function Symfony\Component\String\b;
+
 class FilmController extends Controller
 {
     /**
@@ -59,15 +61,17 @@ class FilmController extends Controller
         $film->genre = $request->genre;
         $film->durasi = $request->durasi;
         $film->jadwal_tayang = $request->jadwal_tayang;
-        $film->video_trailer = $request->trailer;
+        $film->trailer = $request->trailer;
         $film->sinopsis = $request->sinopsis;
-        $film->status = $request->$film;
+        $film->status = $request->status;
 
         $film->thumbnile = $thumbnileName;
-        $film->save();
 
-        return redirect()->back()->with('success', 'Upload Film sukses');
-
+        if( $film->save() ){
+            return back()->with('success','upload berhasil');
+        }else{
+            return back()->with('error','upload gagal');
+        }
     }
 
     /**

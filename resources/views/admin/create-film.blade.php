@@ -3,9 +3,27 @@
  <head>
     {{-- <link rel="stylesheet" href="{{create-detailcomingsoon.css}}"> --}}
     <link rel="stylesheet" href="{{ URL::asset('css/admin/create-film.css') }}">
+    {{-- @include('layouts.cdn') --}}
+
 </head>
 
+
+
 @section('content')
+
+
+@if (session('success'))
+<script>
+    Swal.fire({
+    position: 'center',
+  icon: 'success',
+  title: 'Upload berhasil',
+  showConfirmButton: false,
+  timer: 2000
+})
+</script>
+@endif
+
 <div class="container col-7 mt-4">
     <div class="row">
         <div class="form-container col-6 ">
@@ -19,12 +37,12 @@
                     required>
                     <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
                     <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
-                    placeholder="Minimal Usia">
+                    placeholder="Minimal Usia" min="0">
                     <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre">
                     <select name="status" id="status" class="input-text" required>
                         <option value="" disabled selected>Pilih</option>
-                        <option value="Now Playing">Now Playing</option>
-                        <option value="Coming Soon">Coming Soon</option>
+                        <option value="nowplaying">Now Playing</option>
+                        <option value="commingsoon">Coming Soon</option>
                     </select>
 
                 </div>
@@ -35,10 +53,10 @@
 
                 <input type="text" id="durasi" name="durasi" class="input-text" placeholder="Durasi"
                 required>
-                <input type="text" id="video_trailer" name="video_trailer" class="input-text"
+                <input type="date" id="jadwal_tayang" name="jadwal_tayang" class="input-text"
                 placeholder="Jadwal Tayang" required>
 
-                <input type="url" id="video_trailer" name="video_trailer" class="input-text"
+                <input type="url" id="trailer" name="trailer" class="input-text"
                 placeholder="Link Video Trailer" required>
                 <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="5" placeholder="Sinopsis"></textarea>
 <br><br>
@@ -47,10 +65,10 @@
         <center>
         <br><br>
 
-            <input type="file" id="foto" name="foto" accept="image/*" class="input-file col-8" required
+            <input type="file" id="thumbnile" name="thumbnile" accept="image/*" class="input-file col-8" required
             style="width: 90%;">
 
-            <button type="button" class="input-submit" style="width: 90%;">Upload</button>
+            <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
         </center>
     </form>
     </div>
@@ -58,3 +76,5 @@
 
 </div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
