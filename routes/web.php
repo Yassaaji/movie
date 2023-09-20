@@ -57,6 +57,17 @@ Route::resource('/admin', AdminController::class);
 Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
 Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
 
+<<<<<<< Updated upstream
+=======
+Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
+Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
+Route::get('/create-comingsoon', [App\Http\Controllers\CreateComingSoonController::class, 'create'])->name('create-comingsoon');
+Route::get('/create-detailcomingsoon', [App\Http\Controllers\CreateDetailComingSoonController::class, 'create'])->name('create-detailcomingsoon');
+
+
+
+Route::middleware(['guest'])->group(function() {
+>>>>>>> Stashed changes
 
 
 Route::get('/', function () {
@@ -77,6 +88,9 @@ Route::get('/detailfilm', function () {
 
 Route::get('/profile',function (){
     return view('profile');
+});
+Route::get('/detail-comingsoon',function (){
+    return view('detail-comingsoon');
 });
 
 

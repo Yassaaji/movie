@@ -13,8 +13,7 @@
 
 </head>
 
-<body>
-    @section('content')
+    @section('content-app')
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -207,6 +206,3 @@
                     </div>
         </center>
     @endsection
-</body>
-
-</html>
