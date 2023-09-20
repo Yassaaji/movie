@@ -92,6 +92,10 @@ class FilmController extends Controller
         return view('admin.daftarfilm',compact('films'));
     }
 
+    public function edit(){
+        return view('admin.edit-film');
+    }
+
 
 
     /**

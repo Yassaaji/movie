@@ -59,7 +59,7 @@ Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
 Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
 Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarFilm');
 Route::post('/proseseditfilm',[FilmController::class,'update'])->name('prosesEditFilm');
-
+Route::get('/edit-film',[FilmController::class,'edit'])->name('edit-film');
 // Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 // Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 
@@ -99,10 +99,6 @@ Route::get('/datatiket',function(){
     return view('datatiket');
 });
 
-
-
-
-
 // Route::prefix('admin')->middleware(['auth', 'isAdmin'])->namespace('Admin')->group(function () {
 //     // Route::get('/dashboard', 'DashboardController@index');
 //     // Route::get('/users', 'UserController@index');
@@ -126,8 +122,6 @@ Route::get('/datatiket',function(){
 // Route::middleware(['isAdmin'])->group(function () {
 
 // });
-
-
 // Auth::routes();
 
 

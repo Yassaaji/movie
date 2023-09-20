@@ -79,14 +79,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 <div class="back py-4">
     <div class="container py-3">
         <div class="judul" >
