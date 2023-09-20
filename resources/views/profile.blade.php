@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-7">
                                 <p class="mb-0 kecil with-border">Nama Lengkap</p>
-                             </div>
+                             </div> 
                        </div>
                        <div class="row mb-3">
                              <div class="col-md-4" >
