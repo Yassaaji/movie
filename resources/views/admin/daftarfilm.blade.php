@@ -124,9 +124,12 @@
                 <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}"></td>
                 <div class="button">
                     <td>
-                        <button class="btn btn-dark">Edit</button>
-
-                        <button class="btn btn-dark" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+                        <a href="{{ route('edit-film','')}}/{{$film->id}}" class="btn btn-dark">Edit</a>
+                        <form action="{{ route('film.destroy', $film->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                            <button class="btn btn-dark" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+                        </form>
                     </td>
               </div>
             </tr>

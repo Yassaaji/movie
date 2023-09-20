@@ -56,10 +56,14 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
 Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::resource('/admin', AdminController::class);
 Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
-Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
 Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarFilm');
-Route::post('/proseseditfilm',[FilmController::class,'update'])->name('prosesEditFilm');
-Route::get('/edit-film',[FilmController::class,'edit'])->name('edit-film');
+
+
+Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
+Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prosesEditFilm');
+Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
+// Route::post('/hapusfilm/{id}',[FilmController::class,'destroy'])->name('hapusfilm');
+Route::resource('film', FilmController::class);
 // Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 // Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 

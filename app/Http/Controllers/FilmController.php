@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
+use Illuminate\Support\Facades\Storage;
 
 use function Symfony\Component\String\b;
 
@@ -92,8 +93,10 @@ class FilmController extends Controller
         return view('admin.daftarfilm',compact('films'));
     }
 
-    public function edit(){
-        return view('admin.edit-film');
+    public function edit(int $id){
+        // dd($id);
+        $film = Film::where('id',$id)->get();
+        return view('admin.edit-film',compact('film'));
     }
 
 
@@ -103,7 +106,53 @@ class FilmController extends Controller
      */
     public function update(UpdateFilmRequest $request, Film $film)
     {
-        //
+
+        // dd($request);
+        // dd($film);
+
+
+        $request->validate([
+            "judul"=>'string',
+            'director'=>'string',
+            'cast'=> 'string',
+            'minimal_usia'=> 'integer',
+            'genre' => 'string',
+            'durasi'=> 'string',
+            'jadwal_tayang' => "",
+            'trailer' => 'url',
+            'sinopsis' => 'string',
+            'status' => 'required',
+            'thumbnile' => 'image'
+        ]);
+
+        // Update data yang tidak terkait dengan file gambar
+        $film->judul = $request->judul;
+        $film->director = $request->director;
+        $film->cast = $request->cast;
+        $film->minimal_usia = $request->minimal_usia;
+        $film->genre = $request->genre;
+        $film->durasi = $request->durasi;
+        $film->jadwal_tayang = $request->jadwal_tayang;
+        $film->trailer = $request->trailer;
+        $film->sinopsis = $request->sinopsis;
+        $film->status = $request->status;
+
+        // Periksa apakah file gambar baru diberikan
+        if ($request->hasFile('thumbnile')) {
+            $thumbnile = $request->file('thumbnile');
+            $thumbnileName = uniqid() . '.' . $thumbnile->getClientOriginalExtension();
+            $thumbnile->storeAs('public/thumbnile/', $thumbnileName);
+
+            // Hapus file gambar lama jika perlu
+            Storage::delete('public/thumbnile/' . $film->thumbnile);
+
+            // Update kolom thumbnile dengan nama file yang baru
+            $film->thumbnile = $thumbnileName;
+        }
+
+        $film->save();
+
+        return redirect()->route('daftarFilm')->with('success', 'film berhasil diubah');
     }
 
     /**
@@ -111,6 +160,8 @@ class FilmController extends Controller
      */
     public function destroy(Film $film)
     {
-        //
+        Storage::delete('public/thumbnile/' . $film->thumbnile);
+        $film->delete();
+        return back();
     }
 }
