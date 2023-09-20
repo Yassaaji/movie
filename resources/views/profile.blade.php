@@ -39,13 +39,16 @@
                             <h4 class="mb-3">Brok Lee </h4>
                         </div>
                     </div>
-                 </div>
-                <div class="col-lg-8 ml-5">
-                    <div class="sign-user_card">
-                       <h5 class="mb-3 pb-3 a-border besar">DETAIL PROFILE</h5>
-                       <div class="row align-items-center justify-content-between mb-3">
-                             <div class="col-md-8">
-                                <span class="text font-size-13 kecil ">Nama</span>
+                </div>
+
+                <div class="col-lg-8 ml-5 ">
+                    <div class="sign-user_card dl">
+                        <h5 class="mb-3 pb-3 a-border besar">DETAIL PROFILE</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <span class="text font-size-13 kecil">Nama</span>
+                            </div>
+                            <div class="col-md-7">
                                 <p class="mb-0 kecil with-border">Nama Lengkap</p>
                              </div>
                        </div>
