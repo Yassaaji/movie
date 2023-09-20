@@ -53,6 +53,7 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
         // Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
 
             // Route untuk halaman admin
+<<<<<<< Updated upstream
             Route::get('/home',[HomeController::class,'index'])->name('home');
             Route::resource('/admin', AdminController::class);
             Route::get('/datatiket',[TicketController::class,'DataTiketPage'])->name('datatiket');
@@ -60,6 +61,20 @@ Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplayin
 
 
 // Route grup untuk user yang sudah login
+=======
+Route::get('/home',[HomeController::class,'index'])->name('home');
+Route::resource('/admin', AdminController::class);
+Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
+Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
+
+
+// Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
+// Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
+
+
+
+// Route::middleware(['guest'])->group(function() {
+>>>>>>> Stashed changes
 
 // Route grup untuk admin yang sudah login
 

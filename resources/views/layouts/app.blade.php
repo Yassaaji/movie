@@ -73,7 +73,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     {{-- <a class="navbar-brand"><img src="{{ asset('img/Navbar/Logo.jpg') }}" width="30px" height="30px">MovieFlix</a> --}}
-                    <a class="navbar-brand"><img src="{{ asset('img/Navbar/Logo.jpg') }}" width="30px" height="30px"><span class="movie">Movie</span> <span class="flix">Flix</span></a>
+                    <a class="navbar-brand"><img src="{{ asset('img/Navbar/Logo.jpg') }}" width="30px" height="30px"> <span class="movie">MOVIE</span> <span class="flix">FLIX</span></a>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

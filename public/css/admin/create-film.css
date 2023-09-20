@@ -26,16 +26,32 @@ text-align: center;
 
 .form-container {
     display: flex;
-    justify-content: center;
-    /* Posisikan form di tengah horizontal */
+    justify-content: flex-end;
+    align-items: center; /* Untuk mengatur elemen di tengah vertikal */
+    height: 100%;
+    padding: 0 20px; /* Padding di sebelah kanan dan kiri */
+    text-align: center; /* Untuk mengatur teks di tengah */
 }
 
+/* Tambahan: Untuk mengatur jarak antara elemen-elemen form */
+.form-container input,
+.form-container select,
+.form-container textarea {
+    margin-bottom: 10px; /* Atur jarak antara elemen-elemen form */
+}
+
+
+.border-form{
+    border: 3px dashed #880bf5;
+}
+.p-3 {
+    padding: 2rem !important;
+}
 form {
     text-align: center;
-    border: 3px dashed #880bf5;
+    /* border: 3px dashed #880bf5; */
     padding: 20px;
     border-radius: 5px;
-    background-color: rgb(1, 1, 18);
     /* Latar belakang form dengan transparansi */
     padding-right: 20px;
     width: 250px;
