@@ -48,6 +48,7 @@ class FilmController extends Controller
 
 
         $thumbnile = $request->file('thumbnile');
+        $thumbnileName = uniqid() . '.' . $thumbnile->getClientOriginalExtension();
         $thumbnile->storeAs('public/thumbnile/', $thumbnileName);
 
         $film = new Film;
