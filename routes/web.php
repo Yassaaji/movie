@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NowplayingController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,31 +22,50 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+// Register
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+//user->Home
+
+
+// Route untuk Login
+Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
+Route::post('/authenticate',[LoginController::class , 'authenticate'])->name('authenticate');
+
+// Route untuk register
+Route::get('/register',[RegisterController::class , 'showRegisterForm'])->name('register');
+Route::post('/insertRegister',[RegisterController::class , 'insertRegister'])->name('insertRegister');
+
+// Route untuk Logout
+Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+
+// Halaman
+Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplaying');
+
+
+    // Route untuk login
+        // Route untuk halaman setelah login
+
+        // Route::get('/nowplaying', [App\Http\Controllers\NowplayingController::class, 'index'])->name('nowplaying');
+        // Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
+
+            // Route untuk halaman admin
+Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::resource('/admin', AdminController::class);
+Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
+Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
 
-Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
-Route::middleware(['guest'])->group(function() {
 
-    Route::get('/',[LoginController::class,'index'])->name('login');
-    Route::post('/',[LoginController::class,'login']);
-});
-Route::get('/home', function(){
-    return redirect('/admin');
-});
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/nowplaying', function () {
-    return view('nowplaying');
-});
+// Route::get('/nowplaying', function () {
+//     return view('nowplaying');
+// });
 
 Route::get('/comingsoon', function () {
     return view('comingsoon');
@@ -57,6 +80,51 @@ Route::get('/profile',function (){
 });
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+// Route::prefix('admin')->middleware(['auth', 'isAdmin'])->namespace('Admin')->group(function () {
+//     // Route::get('/dashboard', 'DashboardController@index');
+//     // Route::get('/users', 'UserController@index');
+//     // Route::post('/users', 'UserController@store');
+//     // ... tambahkan route admin lainnya di sini
+// });
+
+
+
+// Route::middleware(['auth'])->group(function () {
+//     //Route untuk users
+// });
+// Route::group(['middeware'=>'isAdmin','prefix'=>'admin','namespace'=>'Admin'],function(){
+//     // Route untuk admin
+//     Route::get('/home',[HomeController::class,'index'])->name('home');
+//     Route::resource('/admin', AdminController::class);
+
+// });
+
+
+// Route::middleware(['isAdmin'])->group(function () {
+
+// });
+
+
+// Auth::routes();
+
+
+
+// Route::middleware(['guest'])->group(function() {
+
+//     Route::get('/',[LoginController::class,'index'])->name('login');
+//     Route::post('/',[LoginController::class,'login']);
+
+// });
+
+
+
+Route::get('/home', function(){
+    return redirect('/admin');
+});
+
+
+
