@@ -57,8 +57,6 @@ Route::resource('/admin', AdminController::class);
 Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
 Route::post('/uploadFilm',[FilmController::class,'store'])->name('uploadfilm');
 
-<<<<<<< Updated upstream
-=======
 Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 Route::get('/create-comingsoon', [App\Http\Controllers\CreateComingSoonController::class, 'create'])->name('create-comingsoon');
@@ -67,7 +65,6 @@ Route::get('/create-detailcomingsoon', [App\Http\Controllers\CreateDetailComingS
 
 
 Route::middleware(['guest'])->group(function() {
->>>>>>> Stashed changes
 
 
 Route::get('/', function () {
@@ -93,11 +90,17 @@ Route::get('/detail-comingsoon',function (){
     return view('detail-comingsoon');
 });
 
+
+
+Route::get('/editprofil', function(){
+    return view('editprofil');
+});
+
 Route::get('/datatiket', function(){
     return view('datatiket');
 });
 
-
+});
 
 
 // Route::prefix('admin')->middleware(['auth', 'isAdmin'])->namespace('Admin')->group(function () {
@@ -141,6 +144,3 @@ Route::get('/datatiket', function(){
 Route::get('/home', function(){
     return redirect('/admin');
 });
-
-
-
