@@ -235,39 +235,12 @@
     </style>
 </head>
 @section('content-app')
-<<<<<<< Updated upstream
 <br><br><br>
 <h1><strong>Spiderman VS Everybody</strong></h1>
 <div class="container jumbotron">
     <div class="content">
         <div class="image">
             <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="Film" height="150px" width="230px">
-=======
-<body>
-    <h2>Spiderman VS Everybody</h2>
-    <div class="container">
-
-        <div class="left-container">
-            <div class="image">
-                <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
-                    width="230px">
-            </div>
-            <div class="left-column">
-                <div class="data">
-                    <p><strong>Director :</strong> Pablo Escobar.</p>
-                    <br>
-                    <p><strong>Casts :</strong> Petter</p>
-                    <br>
-                    <p><strong>Duration :</strong> 1 Jam</p>
-                    <br>
-                    <p><strong>Min Usia :</strong> 15+</p>
-                    <br>
-                    <p><strong>Genre :</strong> Action.</p>
-                    <br>
-                    <p><strong>Jadwal Tayang :</strong> 19/05/2023</p>
-                </div>
-            </div>
->>>>>>> Stashed changes
         </div>
         <div class="data">
             <p style="margin-bottom: 25px;"><strong>Director :</strong> {{ $film->director }}</p>
@@ -405,6 +378,4 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
                     </script>
-
-
 @endsection
