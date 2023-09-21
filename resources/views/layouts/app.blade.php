@@ -95,7 +95,6 @@
     <main>
         @yield('content-app')
     </main>
-
 </div>
 </body>
 </html>
