@@ -149,13 +149,20 @@
               </div>
             </tr>
 
+            
             @empty
-
+            
             @endforelse
         </table>
-        <div class="pagination">
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() - 1]) }}">Previous</a>
+            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() + 1]) }}">Next</a>
+        </ul>
+      </nav>
+        {{-- <div class="pagination">
             {{ $films->links() }}
-        </div>
+        </div> --}}
     </div>
 
     @endsection
