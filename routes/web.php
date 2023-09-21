@@ -142,3 +142,11 @@ Route::get('/datatiket',function(){
 Route::get('/home', function(){
     return redirect('/admin');
 });
+
+
+Route::get('/ticket', function(){
+    return view('order-ticket');
+});
+Route::get('/konfirmasi-ticket', function(){
+    return view('admin.konfirmasi-ticket');
+});
