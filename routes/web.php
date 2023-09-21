@@ -44,8 +44,6 @@ Route::post('/insertRegister',[RegisterController::class , 'insertRegister'])->n
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 // Halaman
-Route::get('/nowplaying',[NowplayingController::class,'index'])->name('nowplaying');
-
 
     // Route untuk login
         // Route untuk halaman setelah login
@@ -77,6 +75,7 @@ Route::resource('film', FilmController::class);
 // Route untuk halaman landing page
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
 Route::get('/',[PageController::class,'welcome']);
+Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
 
 // Route::get('/nowplaying', function () {
 //     return view('nowplaying');
