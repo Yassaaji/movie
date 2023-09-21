@@ -157,7 +157,7 @@ class FilmController extends Controller
 
         $film->save();
 
-        return redirect()->route('daftarFilm')->with('success', 'film berhasil diubah');
+        return redirect()->route('daftarfilm')->with('success', 'film berhasil diubah');
     }
 
     /**

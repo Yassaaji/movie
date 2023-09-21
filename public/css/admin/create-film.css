@@ -33,6 +33,7 @@ text-align: center;
     text-align: center; /* Untuk mengatur teks di tengah */
 }
 
+
 /* Tambahan: Untuk mengatur jarak antara elemen-elemen form */
 .form-container input,
 .form-container select,
@@ -141,3 +142,12 @@ form {
 .input-file-container button {
     margin-top: 10px;
 }
+/* CSS untuk memberikan bingkai pada gambar */
+/* CSS untuk bingkai gambar yang ditingkatkan */
+.edit-image-frame {
+    border: 4px solid #880bf5; /* Warna dan ukuran bingkai sesuai preferensi Anda */
+    border-radius: 10px; /* Radius bingkai untuk tampilan yang lebih lembut */
+    padding: 10px; /* Jarak antara bingkai dan gambar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Efek bayangan untuk tampilan yang lebih menarik */
+}
+

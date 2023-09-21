@@ -34,19 +34,12 @@
             <form action="{{ route('film.update',$film[0]->id) }}" method="POST" enctype="multipart/form-data">
             <!-- Form Tambah Data Film (Form Pertama) -->
                 @csrf <!-- Ini digunakan di Laravel untuk melindungi dari serangan CSRF -->
-<<<<<<< Updated upstream
                 @method('PUT')
 
                     <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" value="{{ $film[0]->judul }}">
                     <input type="text" id="director" name="director" class="input-text"  placeholder="Director"
                     required value="{{ $film[0]->director }}">
                     <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast" value="{{ $film[0]->cast }}">
-=======
-                    <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required>
-                    <input type="text" id="director" name="director" class="input-text" placeholder="Director"
-                    required>
-                    <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
->>>>>>> Stashed changes
                     <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
                     placeholder="Minimal Usia" min="0" value="{{ $film[0]->minimal_usia }}" >
                     <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre" value="{{ $film[0]->genre }}" >
@@ -77,9 +70,9 @@
         <center>
         <br><br>
 
-            <img src="{{ asset('storage/thumbnile/' . $film[0]->thumbnile) }}" alt="{{ $film[0]->judul }}">
+        <img src="{{ asset('storage/thumbnile/' . $film[0]->thumbnile) }}" alt="{{ $film[0]->judul }}" class="edit-image-frame">
 
-            <input type="file" id="thumbnile" name="thumbnile" accept="image/*" class="input-file col-8" required
+            <input type="file" id="thumbnile" name="thumbnile" accept="image/*" class="input-file col-8"
             style="width: 90%;">
 
             <button type="submit" class="input-submit" style="width: 90%;">Edit</button>
