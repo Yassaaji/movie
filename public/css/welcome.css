@@ -86,7 +86,7 @@ gap: 20px; /* Jarak antara h2 dan container */
 .contentt {
 display: flex;
 flex-direction: column; /* Elemen-elemen di dalamnya akan tampil dalam satu kolom */
-background-color: #111111;
+background-color: #000000;
 }
 
 .video-trailers {

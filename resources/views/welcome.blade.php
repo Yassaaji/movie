@@ -260,9 +260,11 @@
                         <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
                         </div>
                       </div>
+                      <br><br>
                     </div>
                     <!--END OF TESTIMONIAL 6 -->
                   </div>
+            <br><br><br><br>
                 </div>
               </div>
             </div>

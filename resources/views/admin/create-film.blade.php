@@ -25,6 +25,7 @@
 @endif
 
 <div class="container col-7 mt-4">
+    <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color:#fff;" >Create Film</h1>
     <div class="row">
         <div class="form-container col-6 ">
             <div class="border-form ">
