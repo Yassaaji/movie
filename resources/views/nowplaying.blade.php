@@ -7,7 +7,7 @@
     <title>Now Playing</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ URL::asset('css/nowplaying.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs. cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
 </head>
 
 @section('content-app')
@@ -19,11 +19,10 @@
                 alt="" style="object-fit: cover:cover; height: 100vh;">
                 <div class="carousel-caption text-center" style="top: 45%;">
                     <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Now Playing</h1>
-                    <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Jangan lewatkan
+                      <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Jangan lewatkan
                         film yang akan tayang hari ini.</p>
                     </div>
-                </div>
-            </div>
+                </div> 
         </div>
 
         <center>

@@ -49,37 +49,37 @@
             <div class="dates">
               <input type="radio" name="date" id="d1" checked />
               <label for="d1" class="dates-item">
-                <div class="day">Sun</div>
+                <div class="day">Sabtu</div>
                 <div class="date">11</div>
               </label>
               <input type="radio" id="d2" name="date" />
               <label class="dates-item" for="d2">
-                <div class="day">Mon</div>
+                <div class="day">Senin</div>
                 <div class="date">12</div>
               </label>
               <input type="radio" id="d3" name="date" />
               <label class="dates-item" for="d3">
-                <div class="day">Tue</div>
+                <div class="day">Selasa</div>
                 <div class="date">13</div>
               </label>
               <input type="radio" id="d4" name="date" />
               <label class="dates-item" for="d4">
-                <div class="day">Wed</div>
+                <div class="day">Rabu</div>
                 <div class="date">14</div>
               </label>
               <input type="radio" id="d5" name="date" />
               <label class="dates-item" for="d5">
-                <div class="day">Thu</div>
+                <div class="day">Kamis</div>
                 <div class="date">15</div>
               </label>
               <input type="radio" id="d6" name="date" />
               <label class="dates-item" for="d6">
-                <div class="day">Fri</div>
+                <div class="day">Jumat</div>
                 <div class="date">16</div>
               </label>
               <input type="radio" id="d7" name="date" />
               <label class="dates-item" for="d7">
-                <div class="day">Sat</div>
+                <div class="day">Sabtu</div>
                 <div class="date">17</div>
               </label>
             </div>
@@ -131,30 +131,29 @@
     <!-- Jarak antara tabel dan dropdown -->
     <div class="spacing"></div>
 
-    <div class="payment-method">
-        <label for="payment">Metode Pembayaran:</label>
-        <select id="payment" name="payment" required>
-            <option value="credit_card">Kartu Kredit</option>
-            <option value="debit_card">Kartu Debit</option>
-            <option value="paypal">PayPal</option>
-            <option value="cash">Tunai</option>
-        </select>
-    </div>
-
-   <button class="btn btn-primary" type="button" style="background-color: blue; color: white;">Book</button>                
-
-    <div class="price">
-        <div class="total">
-            <span>Tickets: <span class="count">0</span></span>
-            <div class="amount">0</div>
-        </div>
-    </div>
-
+  <div class="payment-method">
+    <label for="payment">Metode Pembayaran:</label>
+    <select id="payment" name="payment" required>
+        <option value="">Pilih</option> <!-- Opsi default -->
+        <option value="credit_card">Kartu Kredit</option>
+        <option value="debit_card">Kartu Debit</option>
+        <option value="paypal">PayPal</option>
+        <option value="cash">Tunai</option>
+    </select>
 </div>
 
+    <center>
+      
+                  <div class="price">
+        <div class="total">
+            <span>Total   <span class="count">0</span></span>
+            <div class="amount">0</div>
+        </div>
+        <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
 
-
-
+    </center>
+</div>
+        </div>
 
 
     <script>
@@ -184,10 +183,10 @@
 
           if (ticket.checked) {
             count += 1;
-            amount += 200;
+            amount += 55000;
           } else {
             count -= 1;
-            amount -= 200;
+            amount -= 55000;
           }
           document.querySelector(".amount").innerHTML = amount;
           document.querySelector(".count").innerHTML = count;
