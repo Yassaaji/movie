@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
-<<<<<<< Updated upstream
 use Illuminate\Support\Facades\Storage;
-=======
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
->>>>>>> Stashed changes
+
 
 use function Symfony\Component\String\b;
 
