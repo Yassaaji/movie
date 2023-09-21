@@ -24,13 +24,14 @@
 
     .table-container {
         margin-top: 200px;
+        width: 500px;
 
     }
 
     /* Style tabel sesuai kebutuhan Anda */
     .table {
-        width: 90%;
-        height: 20%;
+        width: 100px; /* Ubah persentase sesuai kebutuhan Anda */
+    height: 5%;
         color: #ffffff;
     }
 
@@ -94,6 +95,15 @@
         color: #007BFF; /* Warna teks item pagination */
     }
 
+    .ellipsis{
+    text-overflow: ellipsis!important;
+    overflow: hidden!important;
+    -webkit-line-clamp: 5!important;
+    -webkit-box-orient: vertical!important;
+    display: -webkit-box!important;
+    word-break: break-word!important;
+}
+
       </style>
 </head>
 
@@ -105,8 +115,8 @@
     </div>
     </div>
 
-    <div class="table-container" style="margin-left: -25%;">
-        <table class="table table-dark table-striped">
+    <div class="table-container" style="margin-left: -35%;">
+        <table class="table table-dark table-striped" style="width: 30%;">
             <div>
             <tr>
                 <th>No</th>
@@ -134,7 +144,7 @@
                 <td>{{ $film->durasi }}</td>
                 <td>{{ $film->jadwal_tayang }}</td>
                 <td>
-                    <p class="overflow-y-scroll" rows="3">{{ $film->sinopsis }}</p>
+                    <p class="overflow-y-scroll ellipsis" rows="3">{{ $film->sinopsis }}</p>
                 </td>
                 <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}"></td>
                 <div class="button">
@@ -149,9 +159,9 @@
               </div>
             </tr>
 
-            
+
             @empty
-            
+
             @endforelse
         </table>
         <nav aria-label="Page navigation example">

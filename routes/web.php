@@ -148,3 +148,7 @@ Route::get('/ticket', function(){
 Route::get('/konfirmasi-ticket', function(){
     return view('admin.konfirmasi-ticket');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
