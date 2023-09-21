@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
+<<<<<<< Updated upstream
 use Illuminate\Support\Facades\Storage;
+=======
+use Illuminate\Http\Response;
+use Illuminate\Pagination\LengthAwarePaginator;
+>>>>>>> Stashed changes
 
 use function Symfony\Component\String\b;
 
@@ -89,6 +94,7 @@ class FilmController extends Controller
     public function daftarFilm()
     {
         $films = Film::all();
+        $films = Film::paginate(2);
         // dd($film);
         return view('admin.daftarfilm',compact('films'));
     }

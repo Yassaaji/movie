@@ -77,7 +77,22 @@
     .button button:hover {
         background-color: #555;
     }
+    .pagination {
+        justify-content: center;
+    }
 
+    .pagination .page-item {
+        margin: 0 5px; /* Jarak antara item pagination */
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #007BFF; /* Warna latar belakang item aktif */
+        border-color: #007BFF; /* Warna border item aktif */
+    }
+
+    .pagination .page-link {
+        color: #007BFF; /* Warna teks item pagination */
+    }
 
       </style>
 </head>
@@ -137,9 +152,10 @@
             @empty
 
             @endforelse
-
-
         </table>
+        <div class="pagination">
+            {{ $films->links() }}
+        </div>
     </div>
 
     @endsection
