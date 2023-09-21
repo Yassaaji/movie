@@ -15,14 +15,20 @@
             background-color: #f0f0f0;
         }
 
+        h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin: 50;
+}
+
 
         .content {
-            display: grid;
+            display: flex;
             grid-template-columns: auto 1fr;
             /* Kolom pertama untuk h2, kolom kedua untuk container */
             align-items: center;
             /* Mengatur vertikal ke tengah */
-            gap: 20px;
+            gap: 1px;
             /* Jarak antara h2 dan container */
         }
 
@@ -135,16 +141,14 @@
 
 
         .data {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            /* Menggeser teks ke kiri */
-            margin-left: 20px;
-            /* Memberikan jarak kiri dari foto */
-            margin-top: 0;
-            /* Menghilangkan margin atas */
-        }
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5px; /* Anda mungkin ingin mengatur ulang margin kiri */
+    margin-top: 0;
+}
+
 
         .data h2 {
             font-size: 24px;
@@ -153,14 +157,13 @@
         }
 
         .data p {
-            font-size: 16px;
-            line-height: 1.5;
-            font-family: 'Poppins', sans-serif;
-            text-align: left;
-            /* Mengatur teks ke kiri */
-            margin: 0;
-            /* Menghilangkan margin bawah pada teks paragraf */
-        }
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin: 0;
+}
+
 
         .film-title {
             font-size: 24px;
@@ -172,7 +175,11 @@
         .sinopsis {
             flex: 1;
             font-family: 'Poppins', sans-serif;
-            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding: 0;
         }
 
         .text {
@@ -186,14 +193,16 @@
         }
 
         .sinopsis p {
-            font-size: 16px;
+            font-size: 12px;
             line-height: 1.5;
             margin: 0;
         }
 
         .left-container {
             display: flex;
+            flex-direction: column;
             align-items: flex-start;
+            justify-content: center;
         }
 
         .left-column {
@@ -203,50 +212,57 @@
         }
 
         h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    /* margin-top: 20px; Add margin at the top */
+    /* padding-top: 1px; */
+    padding-left: 5 0px;
+}
+
+        h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: bold;
+            padding: 0;
+        }
+
+        .jumbotron{
+            padding: 0px;
+            display: flex;
+            align-items: flex-start;
+            margin-top: 100px;
+            justify-content: space-between;
         }
     </style>
 </head>
-@section('content')
-<body>
-    <h2>Spiderman VS Everybody</h2>
-    <div class="container">
-
-        <div class="left-container">
-            <div class="image">
-                <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px"
-                    width="230px">
-            </div>
-            <div class="left-column">
-                <div class="data">
-                    <p><strong>Director :</strong> Pablo Escobar.</p>
-                    <br>
-                    <p><strong>Casts :</strong> Petter</p>
-                    <br>
-                    <p><strong>Duration :</strong> 1 Jam</p>
-                    <br>
-                    <p><strong>Min Usia :</strong> 15+</p>
-                    <br>
-                    <p><strong>Genre :</strong> Action.</p>
-                    <br>
-                    <p><strong>Jadwal Tayang :</strong> 19/05/2023</p>
-                </div>
-            </div>
+@section('content-app')
+<br><br><br>
+<h1><strong>Spiderman VS Everybody</strong></h1>
+<div class="container jumbotron">
+    <div class="content">
+        <div class="image">
+            <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px" width="230px">
         </div>
-                <div class="sinopsis">
-                    <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                    <p> Film ini mengisahkan seorang Peter Parker (Andrew Garfield) yang merupakan anak dari seorang ilmuwan bernama Richard Parker (Campbell Scott).
-                        Namun suatu hari, ayah dan ibu Peter mengalami masalah yang berat sampai mengharuskan membawa Peter ke rumah pamannya.
-                        Peter dititipkan kepada paman dan bibinya, bernama Ben (Martin Sheen) dan May (Sally Field).
-                         Setelah kejadian itu, ayah dan ibu Peter menghilang tanpa meninggalkan kabar sama sekali.</p>
-                </div>
-            </div>
-            <br>
+        <div class="data">
+            <p style="margin-bottom: 25px;"><strong>Director :</strong> Pablo Escobar.</p>
+            <p style="margin-bottom: 25px;"><strong>Casts :</strong> Petter</p>
+            <p style="margin-bottom: 25px;"><strong>Duration :</strong> 1 Jam</p>
+            <p style="margin-bottom: 25px;"><strong>Min Usia :</strong> 15+</p>
+            <p style="margin-bottom: 25px;"><strong>Genre :</strong> Action.</p>
+            <p style="margin-bottom: 25px;"><strong>Jadwal Tayang :</strong> 19/05/2023</p>
+        </div>
+
     </div>
+    <div class="sinopsis">
+        <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
+        <iframe style="width: 90%; height:350px;" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+        <p style="width:90%;"> Film ini mengisahkan seorang Peter Parker (Andrew Garfield) yang merupakan anak dari seorang ilmuwan bernama Richard Parker (Campbell Scott).
+            Namun suatu hari, ayah dan ibu Peter mengalami masalah yang berat sampai mengharuskan membawa Peter ke rumah pamannya.
+            Peter dititipkan kepada paman dan bibinya, bernama Ben (Martin Sheen) dan May (Sally Field).
+            Setelah kejadian itu, ayah dan ibu Peter menghilang tanpa meninggalkan kabar sama sekali.</p>
+    </div>
+</div>
 <br><br>
-    <h2>Ticket dan Jadwal tayang</h2>
+    <h2><strong>Ticket dan Jadwal tayang</strong></h2>
     <center>
         <br><br>
         <div class="container">
@@ -255,17 +271,17 @@
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ asset('img/card-detailfilm/ceritacinta.jpg') }}"
+                                <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <br>
-                                    <h5 class="card-title text-start"><strong>CITA CINTA DARI SMA</strong></h5>
-                                    <p class="card-text text-start">Ruang : XI
+                                    <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
+                                    <p class="card-text text-start">Ruang : XII
                                         <br>
-                                        Harga : Rp. 45.000
+                                        Harga : Rp. 35.000
                                         <br>
                                         Jam : 10:30
                                     </p>
@@ -281,15 +297,15 @@
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ asset('img/card-detailfilm/dilan.jpg') }}"
+                                <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <br>
-                                    <h5 class="card-title text-start"><strong>DILAN 1990</strong></h5>
-                                    <p class="card-text text-start">Ruang : X
+                                    <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
+                                    <p class="card-text text-start">Ruang : XII
                                         Harga : Rp. 35.000
                                         <br>
                                         Jam : 13.00
@@ -310,17 +326,17 @@
                 <div class="card" style="max-width: 550px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ asset('img/card-detailfilm/buyahamka.jpg') }}"
+                            <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
                                 class="img-fluid rounded-start" alt="..."
                                 style="object-fit: cover; height: 100%;">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <br>
-                                <h5 class="card-title text-start"><strong>BUYAHAMKA </strong></h5>
-                                <p class="card-text text-start">Ruang : XI
+                                <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
+                                <p class="card-text text-start">Ruang : XII
                                     <br>
-                                    Harga : Rp. 60.000
+                                    Harga : Rp. 35.000
                                     <br>
                                     Jam : 16.30
                                 </p>
@@ -336,17 +352,17 @@
                 <div class="card" style="max-width: 550px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{ asset('img/card-detailfilm/traintobusan.jpg') }}"
+                            <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
                                 class="img-fluid rounded-start" alt="..."
                                 style="object-fit: cover; height: 100%;">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <br>
-                                <h5 class="card-title text-start"><strong>TRAIN TO BUSAN</strong></h5>
+                                <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
                                 <p class="card-text text-start">Ruang : XII
                                     <br>
-                                    Harga : Rp. 55.000
+                                    Harga : Rp. 35.000
                                     <br>
                                     Jam : 20.00
                                 </p>
@@ -366,5 +382,5 @@
                         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
                     </script>
 
-    </body>
+
 @endsection
