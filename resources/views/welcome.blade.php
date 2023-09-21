@@ -151,35 +151,18 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
+                    @forelse ( $commingsoons as $cs )
                     <div class="col-md-2">
-                        <div class="card-welcome" data-aos="fade-up" data-aos-delay="200" >
-                            <img src="{{ asset('img/home/onepiece.jpg') }}" alt="" class="card-img-top bawah">
+                        <a href="">
+                            <div class="card-welcome" data-aos="fade-up" data-aos-delay="200" >
+                            <img src="{{ asset('storage/thumbnile/'.$cs->thumbnile) }}" alt="" class="card-img-top bawah">
+                        </a>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="card-welcome" data-aos="fade-up" data-aos-delay="400">
-                        <img src="{{ asset('img/home/marvel.jpg') }}" alt="" class="card-img-top bawah" >
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card-welcome" data-aos="fade-up" data-aos-delay="600">
-                        <img src="{{ asset('img/home/transformer.jpg') }}" alt="" class="card-img-top bawah" >
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card-welcome" data-aos="fade-up" data-aos-delay="800">
-                        <img src="{{ asset('img/home/ngeringerisedep.jpg') }}" alt="" class="card-img-top bawah" >
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card-welcome" data-aos="fade-up" data-aos-delay="1000">
-                        <img src="{{ asset('img/home/joyride.jpg') }}" alt="" class="card-img-top bawah">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="card-welcome" data-aos="fade-up" data-aos-delay="1200">
-                        <img src="{{ asset('img/home/ninjaturtle.jpg') }}" alt="" class="card-img-top bawah">
-                    </div>
+                    @empty
+
+                    @endforelse
+
                 </div>
             </div>
         </div>
@@ -201,68 +184,17 @@
             <div class="container">
               <div class="row">
                 <div class="col-sm-12">
-                  <div class="owl-carousel" id="customers-testimonials" >
-
+                    <div class="owl-carousel" id="customers-testimonials" >
+                      @foreach ( $trailer as $video)
                     <!--TESTIMONIAL 1 -->
                     <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/web3.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="400" height="300" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
+                        <div class="shadow-effect">
+                            <div class="video-trailer" data-aos="fade-up" data-aos-delay="150">
+                                <iframe width="400" height="300" src="{{ $video }}" frameborder="0" allowfullscreen></iframe>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <!--END OF TESTIMONIAL 1 -->
-
-                    <!--TESTIMONIAL 2 -->
-                    <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/card2.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                    </div>
-                    <!--END OF TESTIMONIAL 2 -->
-
-                    <!--TESTIMONIAL 3 -->
-                    <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/dish.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                    </div>
-                    <!--END OF TESTIMONIAL 3 -->
-
-                    <!--TESTIMONIAL 4 -->
-                    <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/medical.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                    </div>
-                    <!--END OF TESTIMONIAL 4 -->
-
-                    <!--TESTIMONIAL 5 -->
-                    <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/construction.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                    </div>
-                    <!--END OF TESTIMONIAL 5 -->
-
-                    <!--TESTIMONIAL 6 -->
-                    <div class="item">
-                      <div class="shadow-effect">
-                        {{-- <img class="img-responsive" src="https://cdn.jsdelivr.net/gh/linuxguist/bizpage@main/assets/img/portfolio/automobile.jpg" alt=""> --}}
-                        <div class="video-trailer" data-aos="fade-up" data-aos-delay="150"><iframe width="560" height="315" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                      </div>
-                      <br><br>
-                    </div>
-                    <!--END OF TESTIMONIAL 6 -->
+                    @endforeach
                   </div>
             <br><br><br><br>
                 </div>
@@ -355,7 +287,7 @@
     AOS.init();
 </script>
 <script  src="./script.js"></script>
-<script>
+{{-- <script>
   jQuery(document).ready(function($) {
 "use strict";
 $('#customers-testimonials').owlCarousel( {
@@ -384,7 +316,42 @@ $('#customers-testimonials').owlCarousel( {
 		}
 	});
 });
+</script> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        "use strict";
+        $('#customers-testimonials').owlCarousel({
+            loop: true,
+            center: true,
+            items: 3,
+            margin: 30,
+            autoplay: true,
+            dots: true,
+            nav: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            stopOnHover: true,
+            smartSpeed: 850,
+            navText: ['<i class="fa fa-arrow-alt-circle-left" style="font-size:30px;color:blue"></i>','<i class="fa fa-arrow-alt-circle-right" style="font-size:30px;color:blue"></i>'],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                1170: {
+                    items: 3
+                }
+            }
+        });
+    });
 </script>
+
+
 </body>
 <script src="bower_components/aos/dist/aos.js"></script>
 </html>

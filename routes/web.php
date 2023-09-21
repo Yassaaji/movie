@@ -10,6 +10,7 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Account\PasswordController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,9 +76,7 @@ Route::resource('film', FilmController::class);
 
 // Route untuk halaman landing page
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PageController::class,'welcome']);
 
 // Route::get('/nowplaying', function () {
 //     return view('nowplaying');
