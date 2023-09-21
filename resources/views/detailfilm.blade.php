@@ -240,25 +240,22 @@
 <div class="container jumbotron">
     <div class="content">
         <div class="image">
-            <img src="{{ asset('img/foto-detailfilm/spidermann.jpg') }}" alt="Film" height="150px" width="230px">
+            <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="Film" height="150px" width="230px">
         </div>
         <div class="data">
-            <p style="margin-bottom: 25px;"><strong>Director :</strong> Pablo Escobar.</p>
-            <p style="margin-bottom: 25px;"><strong>Casts :</strong> Petter</p>
-            <p style="margin-bottom: 25px;"><strong>Duration :</strong> 1 Jam</p>
-            <p style="margin-bottom: 25px;"><strong>Min Usia :</strong> 15+</p>
-            <p style="margin-bottom: 25px;"><strong>Genre :</strong> Action.</p>
-            <p style="margin-bottom: 25px;"><strong>Jadwal Tayang :</strong> 19/05/2023</p>
+            <p style="margin-bottom: 25px;"><strong>Director :</strong> {{ $film->director }}</p>
+            <p style="margin-bottom: 25px;"><strong>Casts :</strong> {{ $film->cast }}</p>
+            <p style="margin-bottom: 25px;"><strong>Duration :</strong> {{ $film->durasi }} Menit</p>
+            <p style="margin-bottom: 25px;"><strong>Min Usia :</strong> {{ $film->minimal_usia }}+</p>
+            <p style="margin-bottom: 25px;"><strong>Genre :</strong> {{ $film->genre }}</p>
+            <p style="margin-bottom: 25px;"><strong>Jadwal Tayang :</strong> {{ $film->jadwal_tayang }}</p>
         </div>
 
     </div>
     <div class="sinopsis">
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
-        <iframe style="width: 90%; height:350px;" src="https://www.youtube.com/embed/shW9i6k8cB0" frameborder="0" allowfullscreen></iframe>
-        <p style="width:90%;"> Film ini mengisahkan seorang Peter Parker (Andrew Garfield) yang merupakan anak dari seorang ilmuwan bernama Richard Parker (Campbell Scott).
-            Namun suatu hari, ayah dan ibu Peter mengalami masalah yang berat sampai mengharuskan membawa Peter ke rumah pamannya.
-            Peter dititipkan kepada paman dan bibinya, bernama Ben (Martin Sheen) dan May (Sally Field).
-            Setelah kejadian itu, ayah dan ibu Peter menghilang tanpa meninggalkan kabar sama sekali.</p>
+        <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
+        <p style="width:90%;">{{ $film->sinopsis }}</p>
     </div>
 </div>
 <br><br>

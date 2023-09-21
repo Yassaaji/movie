@@ -18,4 +18,6 @@ class PageController extends Controller
         $nowplayings = Film::where('status','nowplaying')->get();
         return view('nowplaying',compact('nowplayings'));
     }
+
+    
 }

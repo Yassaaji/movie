@@ -86,9 +86,9 @@ Route::get('/comingsoon', function () {
     return view('comingsoon');
 });
 
-Route::get('/detailfilm', function () {
-    return view('detailfilm');
-});
+// Route::get('/detailfilm', function () {
+//     return view('detailfilm');
+// });
 
 Route::get('/profile',function (){
     return view('profile');

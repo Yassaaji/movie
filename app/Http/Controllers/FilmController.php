@@ -83,7 +83,8 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        //
+        // dd($film);
+        return view('detailfilm',compact('film'));
     }
 
     /**
