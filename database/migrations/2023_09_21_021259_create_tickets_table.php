@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('film_id')->constrained();
             $table->foreignId('kursi_id')->constrained();
             $table->foreignId('ruangan_id')->constrained();
+            $table->time('jadwal_tayang');
             $table->integer('harga');
             $table->timestamps();
         });

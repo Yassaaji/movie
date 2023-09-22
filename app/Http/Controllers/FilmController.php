@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -46,6 +47,7 @@ class FilmController extends Controller
             'genre' => 'nullable||string',
             'durasi'=> 'string|nullable',
             'jadwal_tayang' => "nullable",
+            'jam_tayang'=> 'required',
             'video_trailer' => 'nullable',
             'sinopsis' => 'nullable||string',
             'status' => 'nullable||required',
@@ -65,11 +67,13 @@ class FilmController extends Controller
         $film->genre = $request->genre;
         $film->durasi = $request->durasi;
         $film->jadwal_tayang = $request->jadwal_tayang;
+        $film->jam_tayang = $request->jam_tayang;
         $film->trailer = $request->trailer;
         $film->sinopsis = $request->sinopsis;
         $film->status = $request->status;
-
         $film->thumbnile = $thumbnileName;
+
+        $ticket = Ticket
 
         if( $film->save() ){
             return back()->with('success','upload berhasil');

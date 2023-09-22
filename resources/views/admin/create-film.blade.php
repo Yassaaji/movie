@@ -56,7 +56,8 @@
                 required>
                 <input type="date" id="jadwal_tayang" name="jadwal_tayang" class="input-text"
                 placeholder="Jadwal Tayang" required>
-
+                <input type="time" id="jam_tayang" name="jam_tayang" class="input-text"
+                placeholder="Jam Tayang" required>
                 <input type="url" id="trailer" name="trailer" class="input-text"
                 placeholder="Link Video Trailer" required>
                 <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="5" placeholder="Sinopsis"></textarea>
