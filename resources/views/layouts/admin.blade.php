@@ -111,6 +111,7 @@
             @yield('content')
           </div>
         </main>
+        
     </div>
 </body>
 </html>

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('fotoprofile')->default('default.jpg');
+
             $table->timestamps();
         });
     }

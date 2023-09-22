@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\profile;
 use App\Http\Requests\StoreprofileRequest;
 use App\Http\Requests\UpdateprofileRequest;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        // Ambil pengguna yang sedang login
+        $user = auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
+        $profile = User::where('id',$user)->get();
+        // dump($profile);
+        return view('profile', compact('profile'));
     }
 
     /**
@@ -37,7 +42,7 @@ class ProfileController extends Controller
      */
     public function show(profile $profile)
     {
-        //
+
     }
 
     /**

@@ -43,4 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            // Setel foto profil default jika pengguna baru
+            if (!$user->fotoprofil) {
+                $user->fotoprofil = 'default.jpg'; // Gantilah dengan nama berkas foto profil default Anda
+            }
+        });
+    }
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Account\PasswordController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,7 @@ Route::resource('film', FilmController::class);
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
 Route::get('/',[PageController::class,'welcome']);
 Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
+Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 
 // Route::get('/nowplaying', function () {
 //     return view('nowplaying');
@@ -90,9 +92,9 @@ Route::get('/comingsoon', function () {
 //     return view('detailfilm');
 // });
 
-Route::get('/profile',function (){
-    return view('profile');
-});
+// Route::get('/profile',function (){
+//     return view('profile');
+// });
 Route::get('/editprofil',function (){
     return view('editprofil');
 });

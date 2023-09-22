@@ -32,7 +32,7 @@
                             <h1 class="text-center text-white mb-4">Register</h1>
                             <form method="POST" action="{{ route('insertRegister') }}">
                                 @csrf
-                                
+
                                 <div class="form-floating mb-3">
                                     <input type="name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
@@ -90,7 +90,7 @@
                                 <div class="row mb-0 ">
                                     <div class="d-flex flex-column">
                                         <button type="submit" class="btn btn-primary text-white mb-2 shadow">{{ __('Register') }}</button>
-                                        <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="">Sign In</a></h6>
+                                        <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{ url('login') }}">Sign In</a></h6>
                                         {{-- <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{route('login')}}">Sign In</a></h6> --}}
                                     </div>
                                 </div>
