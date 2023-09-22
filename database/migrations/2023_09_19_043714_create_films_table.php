@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('jadwal_tayang');
             $table->string('trailer');
             $table->text('sinopsis');
+            $table->time('Jam_tayang');
             $table->enum('status',['nowplaying','commingsoon'])->default('commingsoon');
             $table->string('thumbnile');
             $table->timestamps();
