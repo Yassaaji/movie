@@ -135,3 +135,11 @@ body{
 }
 
 
+.icons{
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.icons:hover{
+    opacity: 100;
+}

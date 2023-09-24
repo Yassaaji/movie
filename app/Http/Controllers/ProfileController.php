@@ -6,6 +6,8 @@ use App\Models\profile;
 use App\Http\Requests\StoreprofileRequest;
 use App\Http\Requests\UpdateprofileRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -15,10 +17,10 @@ class ProfileController extends Controller
     public function index()
     {
         // Ambil pengguna yang sedang login
-        $user = auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
-        $profile = User::where('id',$user)->get();
+        $user = Auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
+        $data = User::where('id',$user)->get();
         // dump($profile);
-        return view('profile', compact('profile'));
+        return view('profile', compact('data'));
     }
 
     /**
@@ -48,17 +50,34 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(profile $profile)
+    public function edit()
     {
-        //
+        $data = User::where('id',Auth::user()->id)->get();
+        return view('editprofil',compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateprofileRequest $request, profile $profile)
+    public function update(UpdateprofileRequest $request, User $user , $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->noTelp = $request->noTelp;
+
+        if ($request->hasFile('fotoprofil')) {
+            $newFotoProfile = $request->file('fotoprofil');
+            $fotoProfileName = uniqid() . '.' . $newFotoProfile->getClientOriginalExtension();
+            $newFotoProfile->storeAs('profile/', $fotoProfileName);
+
+            Storage::delete('profile/' . $user->fotoprofil);
+
+                // Update kolom pofile dengan nama file yang baru
+            $user->fotoprofil = $fotoProfileName;
+        }
+        $user->save();
+        return redirect()->route('profile.index')->with('success','foto profile berhasil diupdate');
     }
 
     /**

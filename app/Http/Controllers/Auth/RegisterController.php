@@ -51,6 +51,7 @@ class RegisterController extends Controller
 
     protected function insertRegister(Request $request) {
         // dump();
+        
 
         $request->validate([
             "name" => 'required|string|min:3|max:250',

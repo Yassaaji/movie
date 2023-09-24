@@ -62,6 +62,7 @@
                 placeholder="Link Video Trailer" required>
                 <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="5" placeholder="Sinopsis"></textarea>
 <br><br>
+
             </div>
         </div>
         <center>

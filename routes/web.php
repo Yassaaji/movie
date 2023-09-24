@@ -77,7 +77,10 @@ Route::resource('film', FilmController::class);
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
 Route::get('/',[PageController::class,'welcome']);
 Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
-Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+// Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
+Route::resource('/profile',ProfileController::class);
+// Route::put('/proses-edit-profile/{user}',[ProfileController::class,'update'])->name('proses-edit-profile');
 
 // Route::get('/nowplaying', function () {
 //     return view('nowplaying');
@@ -95,9 +98,7 @@ Route::get('/comingsoon', function () {
 // Route::get('/profile',function (){
 //     return view('profile');
 // });
-Route::get('/editprofil',function (){
-    return view('editprofil');
-});
+
 
 Route::get('/datatiket',function(){
     return view('datatiket');
@@ -139,9 +140,9 @@ Route::get('/datatiket',function(){
 
 
 
-Route::get('/home', function(){
-    return redirect('/admin');
-});
+// Route::get('/home', function(){
+//     return redirect('/admin');
+// });
 
 
 Route::get('/ticket', function(){
@@ -151,6 +152,6 @@ Route::get('/konfirmasi-ticket', function(){
     return view('admin.konfirmasi-ticket');
 });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

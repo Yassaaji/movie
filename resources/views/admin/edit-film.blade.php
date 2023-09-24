@@ -1,126 +1,120 @@
 @extends('layouts.admin')
-       
-    @section('content')
 
-
-        @if (session('success'))
-            <script>
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Upload berhasil',
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-            </script>
-        @endif
+@section('content')
 
 <style>
-    body {
-    background-color: #333; /* Warna latar belakang lebih gelap */
-    color: #fff; /* Warna teks lebih cerah */
-}
-.input-text {
-    background-color: #444;
-    color: #fff;
-    /* Tambahkan efek hover untuk input */
-}
+    .form-edit{
+        width: 80vw;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .form-edit label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .form-edit label span {
+        font-weight: bold;
+    }
+    .form-edit input[type="text"],
+    .form-edit input[type="number"],
+    .form-edit input[type="url"],
+    .form-edit input[type="date"],
+    .form-edit input[type="time"],
+    .form-edit textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    .form-edit select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    .form-edit input[type="file"] {
+        display: flex;
+        margin-top: 5px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
 
-.input-file {
-    background-color: #555;
-    color: #fff;
-}
-
-    <div class="container col-7 mt-4">
-        <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color:#fff;" >Edit Film</h1>
-        <div class="row">
-        <div class="form-container col-6 ">
-            <div class="border-form ">
-            <form action="{{ route('film.update',$film[0]->id) }}" method="POST" enctype="multipart/form-data">
-            <!-- Form Tambah Data Film (Form Pertama) -->
-                @csrf <!-- Ini digunakan di Laravel untuk melindungi dari serangan CSRF -->
-                @method('PUT')
-
-                    <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" value="{{ $film[0]->judul }}">
-                    <input type="text" id="director" name="director" class="input-text"  placeholder="Director"
-                    required value="{{ $film[0]->director }}">
-                    <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast" value="{{ $film[0]->cast }}">
-                    <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
-                    placeholder="Minimal Usia" min="0" value="{{ $film[0]->minimal_usia }}" >
-                    <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre" value="{{ $film[0]->genre }}" >
-                    <select name="status" id="status" class="input-text" required>
-                        <option value="" disabled >Pilih</option>
-                        <option value="nowplaying" @if($film[0]->status ==="nowplaying") selected @endif>Now Playing</option>
-                        <option value="commingsoon" @if($film[0]->status ==="commingsoon") selected @endif >Coming Soon</option>
-                    </select>
-                </div>
-        </div>
+    }
 
 </style>
 
-        <div class="container col-7 mt-4">
-            <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color:#fff;" >Edit Film</h1>
-            <div class="row">
-            <div class="form-container col-6 ">
-                <div class="border-form ">
-                <form action="{{ route('film.update',$film[0]->id) }}" method="POST" enctype="multipart/form-data">
-                <!-- Form Tambah Data Film (Form Pertama) -->
-                    @csrf <!-- Ini digunakan di Laravel untuk melindungi dari serangan CSRF -->
-                        <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required>
-                        <input type="text" id="director" name="director" class="input-text" placeholder="Director"
-                        required>
-                        <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
-                        <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
-                        placeholder="Minimal Usia" min="0" value="{{ $film[0]->minimal_usia }}" >
-                        <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre" value="{{ $film[0]->genre }}" >
-                        <select name="status" id="status" class="input-text" required>
-                            <option value="" disabled >Pilih</option>
-                            <option value="nowplaying" @if($film[0]->status ==="nowplaying") selected @endif>Now Playing</option>
-                            <option value="commingsoon" @if($film[0]->status ==="commingsoon") selected @endif >Coming Soon</option>
-                        </select>
-                    </div>
-            </div>
-
-            <div class="form-container col-6 ">
-                <div class="border-form p-3">
-
-                    <input type="text" id="durasi" name="durasi" class="input-text" placeholder="Durasi"
-                    required value="{{ $film[0]->durasi }}" >
-                    <input type="date" id="jadwal_tayang" name="jadwal_tayang" class="input-text"
-                    placeholder="Jadwal Tayang"  value="{{ $film[0]->jadwal_tayang }}" >
-
-                    <input type="url" id="trailer" name="trailer" class="input-text"
-                    placeholder="Link Video Trailer" value="{{ $film[0]->trailer }}"  >
-                    <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="5" placeholder="Sinopsis">
-                        {{ $film[0]->sinopsis }}
-                    </textarea>
-    <br><br>
-                </div>
-            </div>
-            <center>
-            <br><br>
-
-                <img src="{{ asset('storage/thumbnile/' . $film[0]->thumbnile) }}" alt="{{ $film[0]->judul }}">
-
-                <input type="file" id="thumbnile" name="thumbnile" accept="image/*" class="input-file col-8" required style="width: 10%;">
-
-                <button type="submit" class="input-submit" style="width: 90%;">Edit</button>
-            </center>
-        </form>
-        </div>
-        <!-- Input File dan Tombol Submit di luar form -->
-
-        <img src="{{ asset('storage/thumbnile/' . $film[0]->thumbnile) }}" alt="{{ $film[0]->judul }}" class="edit-image-frame">
-
-            <input type="file" id="thumbnile" name="thumbnile" accept="image/*" class="input-file col-8"
-            style="width: 90%;">
-
-            <button type="submit" class="input-submit" style="width: 90%;">Edit</button>
-        </center>
-    </form>
+<form action="" method="post" class="row form-edit">
+    <div class="col-md-6">
+        <label for="judul" class="d-flex flex-col">
+            <span class="form-label">Name: </span>
+            <input class="form-control" type="text" name="judul" id="judul" value="{{ $film->judul }}">
+        </label>
+        <label for="director" class="d-flex flex-col">
+            <span class="form-label">Diector: </span>
+            <input class="form-control" type="text" name="director" id="director" value="{{ $film->director }}">
+        </label>
+        <label for="cast" class="d-flex flex-col">
+            <span class="form-label">Cast: </span>
+            <input class="form-control" type="text" name="cast" id="cast" value="{{ $film->cast }}">
+        </label>
+        <label for="minimal_usia" class="d-flex flex-col">
+            <span class="form-label">Mminimal_usia: </span>
+            <input class="form-control" type="number" min="0" name="minimal_usia" id="minimal_usia" value="{{ $film->minimal_usia }}">
+        </label>
+        <label for="genre" class="d-flex flex-col">
+            <span class="form-label">genre: </span>
+            <input class="form-control" type="text" name="genre" id="genre" value="{{ $film->genre }}">
+        </label>
+        <label for="durasi" class="d-flex flex-col">
+            <span class="form-label">durasi: </span>
+            <input class="form-control" type="text" name="durasi" id="durasi" value="{{ $film->durasi }}">
+        </label>
     </div>
-</body>
-</html>
+    <div class="col-md-6">
+        <label for="jadwal_tayang" class="d-flex flex-col">
+            <span class="form-label">Jadwal tayang: </span>
+            <input class="form-control" type="date" name="jadwal_tayang" id="jadwal_tayang" value="{{ $film->jadwal_tayang }}">
+        </label>
+        <label for="trailer" class="d-flex flex-col">
+            <span class="form-label">Trailer: </span>
+            <input class="form-control" type="url" name="trailer" id="trailer" value="{{ $film->trailer }}">
+        </label>
+        <label for="sinopsis" class="d-flex flex-col">
+            <span>sinopsis: </span>
+            <textarea name="sinopsis" id="sinopsis" cols="30" rows="10">{{ $film->sinopsis }}</textarea>
+        </label>
+        <label for="jam_tayang" class="d-flex flex-col">
+            <span class="form-label">Jam Tayang: </span>
+            <input class="form-control" type="time" name="jam_tayang" id="jam_tayang" value="{{ $film->jam_tayang }}">
+        </label>
+        <label for="status" class="d-flex flex-col">
+            <span>Status:</span>
+            <select name="status" id="status">
+                <option value="nowplaying"
+
+                @if ($film->status === "nowplaying")
+                    selected
+                @endif
+
+                >Now Playing</option>
+                <option value="commingsoon"
+                >Comming Soon</option>
+            </select>
+        </label>
+        <label for="">
+            <span class="form-label">Thumbnile</span>
+            <input class="form-control" type="file" name="thumbnile" id="thumbnile" value="{{ $film->thumbnile }}">
+        </label>
+    </div>
+</form>
+
 @endsection
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

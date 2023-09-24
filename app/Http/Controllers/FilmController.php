@@ -57,7 +57,7 @@ class FilmController extends Controller
 
         $thumbnile = $request->file('thumbnile');
         $thumbnileName = uniqid() . '.' . $thumbnile->getClientOriginalExtension();
-        $thumbnile->storeAs('public/thumbnile/', $thumbnileName);
+        $thumbnile->storeAs('thumbnile/', $thumbnileName);
 
         $film = new Film;
         $film->judul = $request->judul;
@@ -73,8 +73,6 @@ class FilmController extends Controller
         $film->status = $request->status;
         $film->thumbnile = $thumbnileName;
 
-        $ticket = Ticket
-
         if( $film->save() ){
             return back()->with('success','upload berhasil');
         }else{
@@ -87,7 +85,6 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        // dd($film);
         return view('detailfilm',compact('film'));
     }
 
@@ -103,8 +100,7 @@ class FilmController extends Controller
     }
 
     public function edit(int $id){
-        // dd($id);
-        $film = Film::where('id',$id)->get();
+        $film = Film::where('id',$id)->get()[0];
         return view('admin.edit-film',compact('film'));
     }
 
@@ -150,10 +146,10 @@ class FilmController extends Controller
         if ($request->hasFile('thumbnile')) {
             $thumbnile = $request->file('thumbnile');
             $thumbnileName = uniqid() . '.' . $thumbnile->getClientOriginalExtension();
-            $thumbnile->storeAs('public/thumbnile/', $thumbnileName);
+            $thumbnile->storeAs('thumbnile/', $thumbnileName);
 
             // Hapus file gambar lama jika perlu
-            Storage::delete('public/thumbnile/' . $film->thumbnile);
+            Storage::delete('thumbnile/' . $film->thumbnile);
 
             // Update kolom thumbnile dengan nama file yang baru
             $film->thumbnile = $thumbnileName;
@@ -169,7 +165,7 @@ class FilmController extends Controller
      */
     public function destroy(Film $film)
     {
-        Storage::delete('public/thumbnile/' . $film->thumbnile);
+        Storage::delete('thumbnile/' . $film->thumbnile);
         $film->delete();
         return back();
     }

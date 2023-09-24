@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <title>Dasboard</title>
 
 
@@ -35,9 +35,7 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}">
-    <style>
 
-        </style>
 
            <!-- Tambahkan pustaka jQuery dan JavaScript Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -68,7 +66,7 @@
                     </div>
                     <div class="buttons mt-3">
                         <div class="d-flex justify-content-center">
-                            <a class="selanjutnya" href="{{ url('/login')}}">
+                            <a class="selanjutnya" href="{{ route('login') }}">
                                 <button class="transparent-button">
                                     Get Started
                                 </button>

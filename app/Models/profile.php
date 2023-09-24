@@ -9,11 +9,7 @@ class profile extends Model
 {
     use HasFactory;
 
-    protected $fillable =
+    protected $guarded =
     [
-        'fotoprofile',
-        'name',
-        'no_telepon',
-
     ];
 }

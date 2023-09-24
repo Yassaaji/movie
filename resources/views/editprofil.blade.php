@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -251,26 +252,65 @@ button {
         <div class="col-md-8">
             <div class="card" style="margin-top: -50px">
                 <div class="card-body">
-                    <img class="image" src="{{asset('img/JIMIN.jpeg')}}" alt="Film">
+                    <img class="img"
+
+                            @if (Auth::user()->fotoprofil === "default.jpg")
+                            src="{{ asset('storage/' . Auth::user()->fotoprofil ) }}"
+                            @else
+                            src="{{ asset('storage/profile/' . $data[0]->fotoprofil) }}"
+                            @endif
+                                class="rounded-circle img-fluid d-block mx-auto mb-3" alt="user" loading="lazy">
                     <br><br>
-                    <h3>JIMIN Chr.</h3>
+                    <h3>{{ $data[0]->name }}</h3>
+
                 </div>
                 <div class="col-md-7 form-container">
-                    <form>
+                    <form action="{{ route('profile.update', $data[0]->id) }}" method="POST" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
                         <div class="col-md-5">
                             <label for="formFile" class="form-label"><h5>Foto</h5></label>
-                            <input class="form-control" type="file" id="formFile">
+                            <input class="form-control" type="file" id="formFile" name="fotoprofil">
+                            @error('fotoprofil')
+                    <script>
+                        Swal.fire({
+icon: 'error',
+title: 'Oops...',
+text: '{{ $message }}',
+})
+                </script>
+                @enderror
+
+
                         </div>
                         <br>
                         <div class="row mb-8">
                             <div class="col-md-6">
-                                <label for="nama"><h5>Nama Siswa</h5></label>
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Siswa">
+                                <label for="nama"><h5>Nama </h5></label>
+                                <input type="text" class="form-control" id="nama" name="name" placeholder="Nama" value="{{ $data[0]->name }}">
+                                @error('name')
+                                <script>
+                                        Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ $message }}',
+})
+                                </script>
+                                @enderror
                             </div>
 
                              <div class="col-md-6">
-                                <label for="email"><h5>Email</h5></label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="user@gmail.com">
+                                <label for="noTelp"><h5>noTelp</h5></label>
+                                <input type="number" class="form-control" id="noTelp" name="noTelp" placeholder="089********" min="0" value="{{ $data[0]->noTelp }}">
+                                @error('noTelp')
+                                <script>
+                                    Swal.fire({
+icon: 'error',
+title: 'Oops...',
+text: '{{ $message }}',
+})
+                            </script>
+                            @enderror
                             </div>
                         </div>
                         <div class="row mb-5">

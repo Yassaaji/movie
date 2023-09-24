@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function welcome(){
-        $commingsoons = Film::where('status','commingsoon')->inRandomOrder()->take(6)->get();
+        $commingsoons = Film::where('status','commingsoon')->inRandomOrder()->get();
         $trailer = Film::pluck('trailer');
 
         // dump($commingsoon);
@@ -19,5 +19,5 @@ class PageController extends Controller
         return view('nowplaying',compact('nowplayings'));
     }
 
-    
+
 }
