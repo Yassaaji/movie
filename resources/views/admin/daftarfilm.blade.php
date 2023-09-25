@@ -24,7 +24,7 @@
 
     .table-container {
         margin-top: 200px;
-        width: 500px;
+        width: 680px;
 
     }
 
@@ -159,7 +159,7 @@
               </div>
             </tr>
 
-            
+
 
             @empty
 
