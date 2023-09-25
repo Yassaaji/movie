@@ -53,7 +53,7 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
         // Route::get('dashboard', 'UserController@dashboard')->name('dashboard');
 
             // Route untuk halaman admin
-Route::get('/home',[HomeController::class,'index'])->name('home');
+// Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::resource('/admin', AdminController::class);
 Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
 Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarfilm');

@@ -65,7 +65,7 @@ h1, a{
     <div class="section">
         <h1 class="error">404</h1>
         <div class="page">Ooops!!! Halaman Kosong</div>
-        <a class="back-home" href="{{ url('/login')}}">Back to home</a>
+        <a class="back-home" href="{{ url('/')}}">Back to home</a>
       </div>
 </body>
 </html>
