@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/ticket.css">
+    <link rel="stylesheet" href="{{ asset('css/ticket.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +18,11 @@
     />
   </head>
   <body>
+
+    <form action="{{ route('pesanan.store') }}" method="post" enctype="multipart/form-data">
+
+        @csrf
+
 
 <!-- Bagian kiri form -->
 <div class="left-form">
@@ -41,59 +46,19 @@
               <div class="item">Pilihan</div>
             </div>
             <div class="all-seats">
-              <input type="checkbox" name="tickets" id="s1" />
-              <label for="s1" class="seat booked"></label>
+
+              @forelse ($kursi as $data)
+              <input type="checkbox" name="tickets[]" value="{{ $data->nomor_kursi }}" id="{{ $data->nomor_kursi }}" onchange="updateSelectedSeats(this)" />
+              <label for="{{ $data->nomor_kursi }}" class="seat booked">{{ $data->nomor_kursi }}</label>
+          @empty
+              {{-- <td id="daftarkursi">
+                  <ul id="selected-seats"></ul>
+              </td> --}}
+              <p>Kursi Tidak Tersedia</p>
+          @endforelse
             </div>
           </div>
-          <div class="timings">
-            <div class="dates">
-              <input type="radio" name="date" id="d1" checked />
-              <label for="d1" class="dates-item">
-                <div class="day">Sabtu</div>
-                <div class="date">11</div>
-              </label>
-              <input type="radio" id="d2" name="date" />
-              <label class="dates-item" for="d2">
-                <div class="day">Senin</div>
-                <div class="date">12</div>
-              </label>
-              <input type="radio" id="d3" name="date" />
-              <label class="dates-item" for="d3">
-                <div class="day">Selasa</div>
-                <div class="date">13</div>
-              </label>
-              <input type="radio" id="d4" name="date" />
-              <label class="dates-item" for="d4">
-                <div class="day">Rabu</div>
-                <div class="date">14</div>
-              </label>
-              <input type="radio" id="d5" name="date" />
-              <label class="dates-item" for="d5">
-                <div class="day">Kamis</div>
-                <div class="date">15</div>
-              </label>
-              <input type="radio" id="d6" name="date" />
-              <label class="dates-item" for="d6">
-                <div class="day">Jumat</div>
-                <div class="date">16</div>
-              </label>
-              <input type="radio" id="d7" name="date" />
-              <label class="dates-item" for="d7">
-                <div class="day">Sabtu</div>
-                <div class="date">17</div>
-              </label>
-            </div>
-            <div class="times">
-              <input type="radio" name="time" id="t1" checked />
-              <label for="t1" class="time">11:00</label>
-              <input type="radio" id="t2" name="time" />
-              <label for="t2" class="time"> 14:30 </label>
-              <input type="radio" id="t3" name="time" />
-              <label for="t3" class="time"> 18:00 </label>
-              <input type="radio" id="t4" name="time" />
-              <label for="t4" class="time"> 21:30 </label>
-            </div>
-          </div>
+
         </div>
         </div>
       </div>
@@ -114,16 +79,20 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">XI</th>
-                <td>16.00</td>
+                <th>{{ $ticket->ruangan->nama_ruangan }}</th>
+                <td>{{ date('H:i', strtotime($ticket->jam_tayang)) }}</td>
                 <td>
                   <div class="price">
         <div class="total">
             <span>Total   <span class="count">0</span></span>
-            <div class="amount">0</div>
+            <p class="amount">0</p>
+            {{-- <input id="totalHarga" type="hidden" name="totalHarga" value="">
+            <input id="kursiPilihan" type="hidden" name="kursiPilihan" value="kursiPilihan[]"> --}}
         </div>
                 </td>
-                <td>A2</td>
+                <td id="daftarkursi">
+                  <ol id="selected-seats"></ol>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -141,57 +110,99 @@
         <option value="cash">Tunai</option>
     </select>
 </div>
+<label for="Bukti">Bukti Pembayaran</label>
+<input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
+<button type="submit" class="input-submit" style="width: 90%;">Upload</button>
 
     <center>
-      
-                  <div class="price">
+
+
+ {{-- <div class="price">
         <div class="total">
             <span>Total   <span class="count">0</span></span>
             <div class="amount">0</div>
         </div>
-        <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
 
-    </center>
-</div>
+    </div> --}}
+</center>
         </div>
 
-
-    <script>
-      let seats = document.querySelector(".all-seats");
-      for (var i = 0; i < 59; i++) {
-        let randint = Math.floor(Math.random() * 2);
-        let booked = randint === 1 ? "booked" : "";
-        seats.insertAdjacentHTML(
-          "beforeend",
-          '<input type="checkbox" name="tickets" id="s' +
-            (i + 2) +
-            '" /><label for="s' +
-            (i + 2) +
-            '" class="seat ' +
-            booked +
-            '"></label>'
-        );
-      }
+    </form>
+        <script>
+            let seats = document.querySelector(".all-seats");
+            // let daftarkursi = document.getElementById('daftarKursi');
+    //   for (var i = 0; i < 59; i++) {
+    //     let randint = Math.floor(Math.random() * 2);
+    //     let booked = randint === 1 ? "booked" : "";
+    //     seats.insertAdjacentHTML(
+    //       "beforeend",
+    //       '<input type="checkbox" name="tickets" id="s' +
+    //         (i + 2) +
+    //         '" /><label for="s' +
+    //         (i + 2) +
+    //         '" class="seat ' +
+    //         booked +
+    //         '"></label>'
+    //     );
+    //   }
 
       let tickets = seats.querySelectorAll("input");
       tickets.forEach((ticket) => {
         ticket.addEventListener("change", () => {
+          let daftarkursi = document.querySelectorAll('#daftarkursi').innerHTML;
           let amount = document.querySelector(".amount").innerHTML;
           let count = document.querySelector(".count").innerHTML;
           amount = Number(amount);
           count = Number(count);
 
           if (ticket.checked) {
+
             count += 1;
-            amount += 55000;
+            amount += {{ $ticket->harga }};
+            daftarkursi = ticket.harga
           } else {
+
             count -= 1;
-            amount -= 55000;
+            amount -= {{ $ticket->harga }};
+            daftarkursi = ''
           }
           document.querySelector(".amount").innerHTML = amount;
           document.querySelector(".count").innerHTML = count;
+          document.getElementById('totalHarga').value = amount;
+
         });
       });
-    </script>
+
+
+
+    //   var xhr =
+
+                let daftarKursi = []
+
+                function updateSelectedSeats(checkbox) {
+                    var selectedSeatsList = document.getElementById('selected-seats');
+
+                    if (checkbox.checked) {
+                        // Checkbox dipilih, tambahkan nilai (value) checkbox ke daftar kursi yang dipilih
+                        var seatNumber = document.createTextNode(checkbox.value);
+                        var listItem = document.createElement('li');
+                        daftarKursi.push(checkbox.value)
+                        listItem.appendChild(seatNumber);
+                        selectedSeatsList.appendChild(listItem);
+                    } else {
+                        // Checkbox tidak dipilih, hapus nilai (value) checkbox dari daftar kursi yang dipilih
+                        var selectedSeats = selectedSeatsList.getElementsByTagName('li');
+                        for (var i = 0; i < selectedSeats.length; i++) {
+                            if (selectedSeats[i].textContent === checkbox.value) {
+                                selectedSeatsList.removeChild(selectedSeats[i]);
+                                break;
+                            }
+                        }
+                    }
+
+                    // document.getElementById('kursiPilihan').value = daftarKursi;
+                }
+
+            </script>
   </body>
 </html>

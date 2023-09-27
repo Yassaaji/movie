@@ -17,4 +17,9 @@ class Ticket extends Model
     public function film():BelongsTo{
         return $this->belongsTo(Film::class);
     }
+
+    public function ruangan():BelongsTo
+    {
+        return $this->belongsTo(Ruangan::class);
+    }
 }

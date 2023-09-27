@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Account\PasswordController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +66,7 @@ Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prose
 Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
 // Route::post('/hapusfilm/{id}',[FilmController::class,'destroy'])->name('hapusfilm');
 Route::resource('film', FilmController::class);
+Route::resource('tiket', TicketController::class);
 // Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 // Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 
@@ -91,6 +94,7 @@ Route::get('/comingsoon', function () {
     return view('comingsoon');
 });
 
+Route::resource('pesanan',PesananController::class);
 // Route::get('/detailfilm', function () {
 //     return view('detailfilm');
 // });
@@ -145,9 +149,9 @@ Route::get('/datatiket',function(){
 // });
 
 
-Route::get('/ticket', function(){
-    return view('order-ticket');
-});
+// Route::get('/ticket', function(){
+//     return view('order-ticket');
+// });
 Route::get('/konfirmasi-ticket', function(){
     return view('admin.konfirmasi-ticket');
 });

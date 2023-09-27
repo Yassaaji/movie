@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ticket_id')->constrained();
+            $table->integer('totalharga');
             $table->string('bukti_pembayaran');
             $table->boolean('konfirmasi')->default(false);
             $table->timestamps();

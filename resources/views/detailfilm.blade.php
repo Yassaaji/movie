@@ -263,27 +263,27 @@
     <center>
         <br><br>
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="d-flex flex-row align-content-between justify-content-between">
                 <div class="col-md-6 mb-3">
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
+                                <img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <br>
-                                    <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
-                                    <p class="card-text text-start">Ruang : XII
+                                    <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
+                                    <p class="card-text text-start">Ruang : {{ $ticket->ruangan->nama_ruangan }}
                                         <br>
-                                        Harga : Rp. 35.000
+                                        Harga : Rp.{{ number_format($ticket->harga) }}
                                         <br>
-                                        Jam : 10:30
+                                        Jam : {{ date('H:i', strtotime($ticket->jam_tayang)) }}
                                     </p>
                                     <br>
-                                    <center> <a href="#" class="btn btn-dark col-md-11">Beli Tiket</a></center>
+                                    <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center>
                                 </div>
                             </div>
                         </div>
@@ -294,21 +294,22 @@
                     <div class="card" style="max-width: 550px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
+                                <img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
                                     class="img-fluid rounded-start" alt="..."
                                     style="object-fit: cover; height: 100%;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <br>
-                                    <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
-                                    <p class="card-text text-start">Ruang : XII
-                                        Harga : Rp. 35.000
+                                    <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
+                                    <p class="card-text text-start">Ruang : {{ $ticket->ruangan->nama_ruangan }}
                                         <br>
-                                        Jam : 13.00
+                                        Harga : Rp.{{ number_format($ticket->harga) }}
+                                        <br>
+                                        Jam : {{ date('H:i', strtotime($ticket->jam_tayang)) }}
                                     </p>
-                                    <br><br>
-                                    <center> <a href="#" class="btn btn-dark col-md-11">Beli Tiket</a></center>
+                                    <br>
+                                    <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center>
                                 </div>
                             </div>
                         </div>
@@ -319,57 +320,10 @@
     <br><br>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 mb-3 text-center"> <!-- Tambahkan kelas text-center di sini -->
-                <div class="card" style="max-width: 550px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
-                                class="img-fluid rounded-start" alt="..."
-                                style="object-fit: cover; height: 100%;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <br>
-                                <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
-                                <p class="card-text text-start">Ruang : XII
-                                    <br>
-                                    Harga : Rp. 35.000
-                                    <br>
-                                    Jam : 16.30
-                                </p>
-                                <br>
-                                <center> <a href="#" class="btn btn-dark col-md-11">Beli Tiket</a></center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
             <!-- Tambahkan card kedua di sini -->
-            <div class="col-md-6 mb-3 text-center"> <!-- Tambahkan kelas text-center di sini -->
-                <div class="card" style="max-width: 550px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('img/card-detailfilm/SpidermanCard.jpg') }}"
-                                class="img-fluid rounded-start" alt="..."
-                                style="object-fit: cover; height: 100%;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <br>
-                                <h5 class="card-title text-start"><strong>SPIDERMAN VS EVERYBODY</strong></h5>
-                                <p class="card-text text-start">Ruang : XII
-                                    <br>
-                                    Harga : Rp. 35.000
-                                    <br>
-                                    Jam : 20.00
-                                </p>
-                                <br>
-                                <center> <a href="#" class="btn btn-dark col-md-11">Beli Tiket</a></center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             {{-- Akhri card perbaris ke 2 --}}
         </div>
     </div>

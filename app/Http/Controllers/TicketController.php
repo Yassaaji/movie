@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ticket;
+use App\Models\Ticket;
 use App\Http\Requests\StoreticketRequest;
 use App\Http\Requests\UpdateticketRequest;
+use App\Models\Kursi;
 
 class TicketController extends Controller
 {
@@ -13,7 +14,7 @@ class TicketController extends Controller
      */
 
      public function DataTiketPage(){
-        return view('datatiket');
+        // return view('datatiket');
      }
 
 
@@ -41,9 +42,14 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ticket $ticket)
+    public function show( int $id)
     {
-        //
+        $ticket = Ticket::with('ruangan')->where('id',$id)->first();
+        $kursi = Kursi::where('ruangan_id',$ticket->ruangan->id)->get();
+        // dd($kursi);
+
+        // dd($ticket);
+        return view('order-ticket',compact('kursi','ticket'));
     }
 
     /**

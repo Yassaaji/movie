@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('film_id')->constrained();
-            $table->foreignId('kursi_id')->constrained();
+            $table->foreignId('kursi_id')->nullable()->constrained();
             $table->foreignId('ruangan_id')->constrained();
-            $table->time('jadwal_tayang');
+            $table->time('jam_tayang');
             $table->integer('harga');
             $table->timestamps();
         });

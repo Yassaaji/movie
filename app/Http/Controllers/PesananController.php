@@ -29,7 +29,10 @@ class PesananController extends Controller
      */
     public function store(StorePesananRequest $request)
     {
-        //
+        dd($request);
+        // $request->validate([
+        //     ''
+        // ])
     }
 
     /**

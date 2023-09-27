@@ -65,7 +65,7 @@
 
             <center>
                 <br><br>
-                <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="input-file " required
+                <input type="file" id="thumbnail" name="thumbnile" accept="image/*" class="input-file " required
                     style="width: 90%;">
                 <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
             </center>

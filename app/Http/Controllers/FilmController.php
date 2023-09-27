@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
+use App\Models\Ruangan;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
@@ -37,7 +38,7 @@ class FilmController extends Controller
     public function store(StoreFilmRequest $request)
     {
 
-        // dump($request);
+        // dd($request);
 
         $request->validate([
             "judul"=>'nullable|string',
@@ -73,7 +74,17 @@ class FilmController extends Controller
         $film->status = $request->status;
         $film->thumbnile = $thumbnileName;
 
-        if( $film->save() ){
+
+        if( $film->save()){
+            $ticket = new Ticket;
+
+            $ticket->film_id = $film->id;
+            $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->get();
+            // dd($ruangan);
+            $ticket->ruangan_id = $ruangan[0]->id;
+            $ticket->jam_tayang = $request->jam_tayang;
+            $ticket->harga = $request->harga;
+            $ticket->save();
             return back()->with('success','upload berhasil');
         }else{
             return back()->with('error','upload gagal');
@@ -85,7 +96,9 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        return view('detailfilm',compact('film'));
+        $ticket = Ticket::with('ruangan')->where('film_id',$film->id)->first();
+        // dd($ticket);
+        return view('detailfilm',compact('film','ticket'));
     }
 
     /**
