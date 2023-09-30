@@ -67,6 +67,7 @@ Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
 // Route::post('/hapusfilm/{id}',[FilmController::class,'destroy'])->name('hapusfilm');
 Route::resource('film', FilmController::class);
 Route::resource('tiket', TicketController::class);
+Route::get('/order/{film}',[TicketController::class,'orderTicket'])->name('order');
 // Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 // Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 
@@ -94,7 +95,10 @@ Route::get('/comingsoon', function () {
     return view('comingsoon');
 });
 
-Route::resource('pesanan',PesananController::class);
+// Route::resource('pesanan',PesananController::class);
+Route::post('/create-pesanan/{ticket_id}/',[PesananController::class,'store'])->name('create-pesanan');
+Route::get('/konfirmasi_ticket',[PesananController::class,'index'])->name('konfirmasi_ticket');
+Route::post('/update_konfirmasi/{pesanan}',[PesananController::class,'update'])->name('update_konfirmasi');
 // Route::get('/detailfilm', function () {
 //     return view('detailfilm');
 // });
@@ -152,9 +156,9 @@ Route::get('/datatiket',function(){
 // Route::get('/ticket', function(){
 //     return view('order-ticket');
 // });
-Route::get('/konfirmasi-ticket', function(){
-    return view('admin.konfirmasi-ticket');
-});
+// Route::get('/konfirmasi-ticket', function(){
+//     return view('admin.konfirmasi-ticket');
+// });
 
 // Auth::routes();
 

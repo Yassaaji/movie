@@ -6,7 +6,7 @@ body {
 }
 .center {
     width: 100%;
-    height: 100%;                       
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,80 +95,48 @@ body {
 }
 .all-seats {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    /* grid-template-rows: repeat(1,1fr); */
     grid-gap: 15px;
     margin: 60px 0;
     margin-top: 20px;
     position: relative;
 }
 .seat {
-    width: 20px;
-    height: 20px;
     background: white;
+    color: black;
     border-radius: 0.9mm;
     outline: 0.3mm solid rgb(180, 180, 180);
     cursor: pointer;
 }
 .all-seats input:checked + label {
     background: rgb(31, 28, 185);
+    color: white;
     outline: none;
+    border-radius: 100%;
 }
-.seat.booked {
+
+.all-seats input:disabled + label {
     background: rgb(124, 41, 41);
+    color: white;
+    /* background: rgb(31, 28, 185); */
+    outline: none;
+    /* border-radius: 100%; */
+}
+
+.seat.booked {
+    transition: 0.2s ease-in-out;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     outline: none;
 }
 input {
     display: none;
 }
-.timings {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
-}
-.dates {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.dates-item {
-    width: 50px;
-    height: 40px;
-    background: rgb(0, 0, 0);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px 0;
-    border-radius: 2mm;
-    cursor: pointer;
-}
-.day {
-    font-size: 12px;
-}
-.times {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-.time {
-    font-size: 14px;
-    width: fit-content;
-    padding: 7px 14px;
-    background: rgb(0, 0, 0);
-    border-radius: 2mm;
-    cursor: pointer;
-}
-.timings input:checked + label {
-    background: rgb(31, 32, 68);
-    color: white;
-}
+
 
 
 
@@ -181,10 +149,17 @@ input {
 
 .left-form,
 .right-form {
-    width: 45%; /* Sesuaikan lebar sesuai kebutuhan */
-    display: inline-block;
-    vertical-align: top;
-    margin: 10px;
+    width: 70%; /* Sesuaikan lebar sesuai kebutuhan */
+    /* display: inline-block; */
+    /* vertical-align: top;
+    margin: 10px; */
+    height: 100vh;
+}
+
+.right-form{
+    height: 100vh;
+    overflow-y: scroll;
+    /* padding-bottom: 20px; */
 }
 
 /* Styling tambahan untuk elemen-elemen dalam form */
@@ -196,16 +171,10 @@ input {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    
-    
 }
+
 .left-form {
-  width: 45%; /* Sesuaikan lebar sesuai kebutuhan */
-  display: inline-block;
-  vertical-align: top;
-  margin: 10px;
-  padding: 20px;
-  background-color: #000000; /* Warna latar belakang kiri */
+  background-color: #111111; /* Warna latar belakang kiri */
   color: white; /* Ubah warna teks menjadi putih */
   box-shadow: 0 0 10px rgba(255, 201, 201, 0.425); /* Tambahkan shadow */
 }
@@ -220,11 +189,11 @@ input {
     -webkit-appearance: none;
     -moz-appearance: none;
     background-size: 20px;
-    
+
 }
 /* CSS */
 .right-form {
-    
+
   width: 45%; /* Sesuaikan lebar sesuai kebutuhan */
   display: inline-block;
   vertical-align: top;
@@ -287,6 +256,6 @@ input {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}   
+}
 
 

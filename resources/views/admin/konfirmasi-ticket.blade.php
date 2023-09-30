@@ -11,7 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 
     <style>
-  
+
 
         .card {
             background-color: #000000; /* Ubah warna latar belakang card menjadi navy */
@@ -43,11 +43,32 @@
             overflow-y: auto; /* Aktifkan gulir vertikal jika melebihi tinggi maksimum */
         }
 
+        .gambar-preview {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gambar-preview:hover {
+    transform: scale(1.1);
+}
+
+.gambar-preview.enlarged {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
     </style>
 </head>
 
 <body>
-    
+
     <div class="container">
              <div class="navbar-link-header pt-3 px-5">
             <h3>Karyawan</h3>
@@ -76,25 +97,58 @@
                                 <th scope="col">Kursi</th>
                                 <th scope="col">Metode Pembayaran</th>
                                 <th scope="col">Total Harga</th>
+                                <th>Bukti Pembayaran</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Isi tabel -->
                             <!-- Contoh baris tabel -->
+                            {{-- @dd($orders) --}}
+                            @forelse ( $orders as $i => $pesanan )
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Kakak ku ternyata manusia</td>
-                                <td>16.30</td>
-                                <td>XI</td>
-                                <td>2B</td>
-                                <td>ngutang</td>
-                                <td>35.000</td>
+                                <th scope="row">{{ $i+1 }}</th>
+                                <td>{{ $pesanan->film->judul }}</td>
+                                <td>{{ $pesanan->film->jam_tayang }}</td>
+                                <td>{{ $pesanan->film->ruangan_id }}</td>
                                 <td>
-                                    <button type="button" class="btn ">Konfirmasi</button>
-                                    <button type="button" class="btn ">Gagal</button>
+                                    <ol>
+                                        @foreach ( $kursi as $data)
+                                            @if ($data->ticket_id === $pesanan->ticket->id)
+                                            <li>{{ $data->nomor_kursi }}</li>
+                                            @endif
+                                        @endforeach
+                                    </ol>
                                 </td>
+                                @if ($pesanan->bank_id === null && $pesanan->ewallet_id === null)
+                                <td>Cash</td>
+                                @elseif ($pesanan->bank_id === null)
+                                <td>{{ $pesanan->ewallet->ewallet }}</td>
+                                @else
+                                <td>{{ $pesanan->Bank->bank }}</td>
+                                @endif
+                                <td>Rp.{{ number_format($pesanan->totalharga) }}</td>
+                                <td>
+                                    @if ($pesanan->bank_id === null && $pesanan->ewallet_id === null)
+                                        <p>Cash</p>
+                                    @else
+                                    <img class="gambar-preview" style="width: 100px; height: 100px;" src="{{ asset('storage/bukti/' . $pesanan->bukti_pembayaran) }}" alt="">
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{ route('update_konfirmasi','')}}/{{ $pesanan->id }}" method="post">
+                                        @csrf
+                                        <input id="status" type="hidden" name="status" value="" >
+                                        <button onclick="handleStatus('sukses')" type="submit" class="btn ">Konfirmasi</button>
+                                        <button onclick="handleStatus('ditolak')" type="submit" class="btn ">Gagal</button>
+                                    </form>
+                                </td>
+
                             </tr>
+                                @empty
+
+                                @endforelse
+
                             <!-- Contoh baris tabel lainnya -->
                         </tbody>
                     </table>
@@ -103,6 +157,18 @@
         </div>
     </div>
 </body>
+
+<script>
+    function handleStatus(status){
+        const inpStatus = document.getElementById('status')
+        if(status === "sukses"){
+            inpStatus.value = "sukses"
+        }else{
+            inpStatus.value = "ditolak"
+        }
+    }
+</script>
+
 
 </html>
 @endsection

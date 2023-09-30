@@ -16,21 +16,29 @@ class KursiSeeder extends Seeder
     {
         $rows = ['A', 'B', 'C'];
         $columns = range(1, 8);
-        $ruangId = 2; // Ganti dengan ID ruang yang sesuai
+        $ruangId = [3]; // Ganti dengan ID ruang yang sesuai
 
         $seats = [];
 
-        // Menghasilkan data kursi berdasarkan baris dan kolom
+        // Menghasilkan data kursi berdasarkan baris, kolom, dan ID ruang
+        $ruangCount = count($ruangId);
+        $ruangIndex = 0;
+
         foreach ($rows as $row) {
             foreach ($columns as $column) {
                 $seatNumber = $row . $column;
                 $seat = [
-                    'ruangan_id' => $ruangId,
+                    'ruangan_id' => $ruangId[$ruangIndex],
                     'nomor_kursi' => $seatNumber,
                     // Jika Anda memiliki atribut lain pada model Seat, tambahkan di sini
                 ];
 
                 $seats[] = $seat;
+
+                $ruangIndex++;
+                if ($ruangIndex >= $ruangCount) {
+                    $ruangIndex = 0;
+                }
             }
         }
 

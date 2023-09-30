@@ -74,31 +74,23 @@ class FilmController extends Controller
         $film->status = $request->status;
         $film->thumbnile = $thumbnileName;
 
-
-        if( $film->save()){
-            $ticket = new Ticket;
-
-            $ticket->film_id = $film->id;
-            $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->get();
-            // dd($ruangan);
-            $ticket->ruangan_id = $ruangan[0]->id;
-            $ticket->jam_tayang = $request->jam_tayang;
-            $ticket->harga = $request->harga;
-            $ticket->save();
-            return back()->with('success','upload berhasil');
-        }else{
-            return back()->with('error','upload gagal');
-        }
+        $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->first();
+        $film->ruangan_id = $ruangan->id;
+        $film->harga = $request->harga;
+        $film->save();
+        return redirect()->route('daftarfilm')->with('success','Berhasil Membuat Film');
     }
 
     /**
      * Display the specified resource.
      */
+    // $ruangan = Ruangan::where('id',$film->ruangan_id)->first();
+    // $ticket = Ticket::with('ruangan')->where('film_id',$film->id)->first();
+    // dd($film);
     public function show(Film $film)
     {
-        $ticket = Ticket::with('ruangan')->where('film_id',$film->id)->first();
-        // dd($ticket);
-        return view('detailfilm',compact('film','ticket'));
+        $film->load('ruangan');
+        return view('detailfilm',compact('film'));
     }
 
     /**

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use App\Models\Ticket;
 use App\Http\Requests\StoreticketRequest;
 use App\Http\Requests\UpdateticketRequest;
+use App\Models\Ewallet;
+use App\Models\Film;
 use App\Models\Kursi;
 
 class TicketController extends Controller
@@ -42,14 +45,17 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( int $id)
+    public function orderTicket(Film $film)
     {
-        $ticket = Ticket::with('ruangan')->where('id',$id)->first();
-        $kursi = Kursi::where('ruangan_id',$ticket->ruangan->id)->get();
-        // dd($kursi);
 
-        // dd($ticket);
-        return view('order-ticket',compact('kursi','ticket'));
+
+        $film->load('ruangan');
+        $kursi = Kursi::where('ruangan_id',$film->ruangan->id)->get();
+        $bank = Bank::all();
+        $ewallets = Ewallet::all();
+        // dd($ewallet);
+
+        return view('order-ticket',compact('kursi','film','bank','ewallets'));
     }
 
     /**

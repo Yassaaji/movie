@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{{-- @dd($film) --}}
+
 <head>
     <title>Film Detail</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -276,14 +278,14 @@
                                 <div class="card-body">
                                     <br>
                                     <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
-                                    <p class="card-text text-start">Ruang : {{ $ticket->ruangan->nama_ruangan }}
+                                    <p class="card-text text-start">Ruang : {{ $film->ruangan->nama_ruangan }}
                                         <br>
-                                        Harga : Rp.{{ number_format($ticket->harga) }}
+                                        Harga : Rp.{{ number_format($film->harga) }}
                                         <br>
-                                        Jam : {{ date('H:i', strtotime($ticket->jam_tayang)) }}
+                                        Jam : {{ date('H:i', strtotime($film->jam_tayang)) }}
                                     </p>
                                     <br>
-                                    <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center>
+                                    <center> <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11">Beli Tiket</a></center>
                                 </div>
                             </div>
                         </div>
@@ -302,14 +304,15 @@
                                 <div class="card-body">
                                     <br>
                                     <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
-                                    <p class="card-text text-start">Ruang : {{ $ticket->ruangan->nama_ruangan }}
+                                    <p class="card-text text-start">Ruang : {{ $film->ruangan->nama_ruangan }}
                                         <br>
-                                        Harga : Rp.{{ number_format($ticket->harga) }}
+                                        Harga : Rp.{{ number_format($film->harga) }}
                                         <br>
-                                        Jam : {{ date('H:i', strtotime($ticket->jam_tayang)) }}
+                                        Jam : {{ date('H:i', strtotime($film->jam_tayang)) }}
                                     </p>
                                     <br>
-                                    <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center>
+                                    <center> <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11">Beli Tiket</a></center>
+                                    {{-- <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center> --}}
                                 </div>
                             </div>
                         </div>

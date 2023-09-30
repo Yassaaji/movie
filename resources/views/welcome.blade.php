@@ -61,7 +61,7 @@
                 <h1>Selamat Datang</h1>
                     <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
                     <div class="btn-group">
-                        <a href="{{ route('login') }}" class="btn   ">Login</a>
+                        <a href="{{ route('login') }}" class="btn">Login</a>
                         <a href="{{ route('register') }}" class="btn">Register</a>
                     </div>
                     <div class="buttons mt-3">

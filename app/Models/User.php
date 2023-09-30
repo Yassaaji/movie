@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,5 +55,15 @@ class User extends Authenticatable
                 $user->fotoprofil = 'default.jpg'; // Gantilah dengan nama berkas foto profil default Anda
             }
         });
+    }
+
+    public function ticket():HasMany
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function kursi():HasMany
+    {
+        return $this->hasMany(Kursi::class);
     }
 }
