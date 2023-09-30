@@ -1,120 +1,77 @@
 @extends('layouts.admin')
 
 @section('content')
+<!DOCTYPE html>
+<html>
 
-<style>
-    .form-edit{
-        width: 80vw;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .form-edit label {
-        display: block;
-        margin-bottom: 10px;
-    }
-    .form-edit label span {
-        font-weight: bold;
-    }
-    .form-edit input[type="text"],
-    .form-edit input[type="number"],
-    .form-edit input[type="url"],
-    .form-edit input[type="date"],
-    .form-edit input[type="time"],
-    .form-edit textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-    .form-edit select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-    .form-edit input[type="file"] {
-        display: flex;
-        margin-top: 5px;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
+<head>
+    <title>Create Film</title>
+    <!-- Tambahkan referensi ke CSS Bootstrap dan CSS khusus Anda -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ URL::asset('css/admin/create-film.css') }}">
+</head>
 
-    }
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center" style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#fff;">Create Film</h1>
+        <div class="row">
+            <div class="col-4">
+                <div class="border-form">
+                    <form action="{{ route('uploadfilm') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
-</style>
+                        <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required>
+                        <input type="text" id="director" name="director" class="input-text" placeholder="Director" required>
+                        <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
+                        <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
+                            placeholder="Minimal Usia" min="0">
+                        <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre">
+                        <select name="status" id="status" class="input-text" required>
+                            <option value="" disabled selected>Pilih</option>
+                            <option value="nowplaying">Now Playing</option>
+                            <option value="comingsoon">Coming Soon</option>
+                        </select>
+                    </div>
+                </div>
 
-<form action="" method="post" class="row form-edit">
-    <div class="col-md-6">
-        <label for="judul" class="d-flex flex-col">
-            <span class="form-label">Name: </span>
-            <input class="form-control" type="text" name="judul" id="judul" value="{{ $film->judul }}">
-        </label>
-        <label for="director" class="d-flex flex-col">
-            <span class="form-label">Diector: </span>
-            <input class="form-control" type="text" name="director" id="director" value="{{ $film->director }}">
-        </label>
-        <label for="cast" class="d-flex flex-col">
-            <span class="form-label">Cast: </span>
-            <input class="form-control" type="text" name="cast" id="cast" value="{{ $film->cast }}">
-        </label>
-        <label for="minimal_usia" class="d-flex flex-col">
-            <span class="form-label">Mminimal_usia: </span>
-            <input class="form-control" type="number" min="0" name="minimal_usia" id="minimal_usia" value="{{ $film->minimal_usia }}">
-        </label>
-        <label for="genre" class="d-flex flex-col">
-            <span class="form-label">genre: </span>
-            <input class="form-control" type="text" name="genre" id="genre" value="{{ $film->genre }}">
-        </label>
-        <label for="durasi" class="d-flex flex-col">
-            <span class="form-label">durasi: </span>
-            <input class="form-control" type="text" name="durasi" id="durasi" value="{{ $film->durasi }}">
-        </label>
+                <div class="col-4">
+                    <div class="border-form p-3">
+                        <input type="text" id="durasi" name="durasi" class="input-text" placeholder="Durasi" required>
+                        <input type="date" id="jadwal_tayang" name="jadwal_tayang" class="input-text"
+                            placeholder="Jadwal Tayang" required>
+                        <input type="url" id="trailer" name="trailer" class="input-text"
+                            placeholder="Link Video Trailer" required>
+                        <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="3"
+                            placeholder="Sinopsis"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="border-form p-3">
+                        <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#000000;">Tiket</h3>
+                        <label for="ruangan">Ruangan:</label> <br>
+                        <select name="ruangan" id="ruangan">
+                            <option value="A">Ruang A</option>
+                            <option value="B">Ruang B</option>
+                            <option value="C">Ruang C</option>
+                        </select>
+                        <input type="time" id="jam_tayang" name="jam_tayang" class="input-text"
+                            placeholder="Jam Tayang" >
+                        {{-- <input type="text" id="kursi" name="kursi" class="input-text" placeholder="Kursi" > --}}
+                        <input type="number" id="harga" name="harga" class="input-text" placeholder="Harga" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <center>
+                <br><br>
+                <input type="file" id="thumbnail" name="thumbnile" accept="image/*" class="input-file " required
+                    style="width: 90%;">
+                <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
+            </center>
+        </form>
     </div>
-    <div class="col-md-6">
-        <label for="jadwal_tayang" class="d-flex flex-col">
-            <span class="form-label">Jadwal tayang: </span>
-            <input class="form-control" type="date" name="jadwal_tayang" id="jadwal_tayang" value="{{ $film->jadwal_tayang }}">
-        </label>
-        <label for="trailer" class="d-flex flex-col">
-            <span class="form-label">Trailer: </span>
-            <input class="form-control" type="url" name="trailer" id="trailer" value="{{ $film->trailer }}">
-        </label>
-        <label for="sinopsis" class="d-flex flex-col">
-            <span>sinopsis: </span>
-            <textarea name="sinopsis" id="sinopsis" cols="30" rows="10">{{ $film->sinopsis }}</textarea>
-        </label>
-        <label for="jam_tayang" class="d-flex flex-col">
-            <span class="form-label">Jam Tayang: </span>
-            <input class="form-control" type="time" name="jam_tayang" id="jam_tayang" value="{{ $film->jam_tayang }}">
-        </label>
-        <label for="status" class="d-flex flex-col">
-            <span>Status:</span>
-            <select name="status" id="status">
-                <option value="nowplaying"
+</body>
 
-                @if ($film->status === "nowplaying")
-                    selected
-                @endif
-
-                >Now Playing</option>
-                <option value="commingsoon"
-                >Comming Soon</option>
-            </select>
-        </label>
-        <label for="">
-            <span class="form-label">Thumbnile</span>
-            <input class="form-control" type="file" name="thumbnile" id="thumbnile" value="{{ $film->thumbnile }}">
-        </label>
-    </div>
-</form>
-
+</html>
 @endsection
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

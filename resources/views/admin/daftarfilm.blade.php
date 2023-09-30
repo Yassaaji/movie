@@ -1,17 +1,36 @@
 @extends('layouts.admin')
 
 @section('content')
+<script>
+    // Fungsi untuk menampilkan alert saat tombol Edit diklik
+    function showAlertEdit() {
+        alert("Tombol Edit diklik!");
+    }
+
+    // Fungsi untuk menampilkan konfirmasi saat tombol Hapus diklik
+    function confirmDelete() {
+        if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+            // Jika pengguna mengkonfirmasi, lanjutkan dengan penghapusan
+            alert("Data telah dihapus.");
+            // Tempatkan kode penghapusan di sini
+        } else {
+            // Jika pengguna membatalkan, tidak ada tindakan yang diambil
+            alert("Penghapusan dibatalkan.");
+        }
+    }
+</script>
     <style>
          body {
         font-family: Arial, sans-serif;
-        background-color: rgb(78, 73, 72);
+        background-color: rgb(53, 53, 53);
     }
 
     .text {
         padding-left: 100px;
         color: #ffffff;
-        margin-top: 40px;
+        margin-top: 30px;
     }
+
 
     h1 {
         color: #fff6f6;
@@ -19,26 +38,28 @@
 
     .p {
         width: 300px;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
 
     .table-container {
-        margin-top: 200px;
+        margin-top: 190px;
         width: 680px;
+        margin-left: 3000000px;
 
     }
 
     /* Style tabel sesuai kebutuhan Anda */
     .table {
-        width: 100px; /* Ubah persentase sesuai kebutuhan Anda */
-    height: 5%;
+        width: 60%; /* Ubah persentase sesuai kebutuhan Anda */
+        height: 1%;
+        padding: 40px;
         color: #ffffff;
     }
 
     .table th,
     .table td {
         text-align: center;
-        padding: 5px;
+        padding: 10px;
     }
 
     .table th {
@@ -62,25 +83,59 @@
     }
 
     .button {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s;
+}
 
-    .button button {
-        background-color: #333;
-        color: #ffffff;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-    }
+.button:hover {
+    background-color: #a5a5a5;
+    transform: scale(1.05);
+}
 
-    .button button:hover {
-        background-color: #555;
-    }
-    .pagination {
-        justify-content: center;
-    }
+.button:after {
+    content: "";
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s;
+}
+
+.button:hover:after {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.edit-button {
+    border: 1px solid #333333;
+}
+
+.delete-button {
+    border: 1px solid #333333;
+    color: #ffffff;
+}
+
+.delete-button:hover {
+    background-color: #a5a5a5;
+    color: #fff;
+}
 
     .pagination .page-item {
         margin: 0 5px; /* Jarak antara item pagination */
@@ -103,20 +158,49 @@
     display: -webkit-box!important;
     word-break: break-word!important;
 }
+/* Tombol Tambah */
+.add-button {
+    display: inline-block;
+    height: 40px;
+
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #949494; /* Warna latar belakang tombol Tambah */
+    color: #000000; /* Warna teks tombol Tambah */
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-button:hover {
+    background-color: #b9b6b6; /* Warna latar belakang saat tombol dihover */
+    transform: scale(1.05); /* Efek scaling saat tombol dihover */
+}
+
 
       </style>
 </head>
 
-<br><br><br>
-    <div class="text">
+<br><br>
+    {{-- <div class="text">
         <h1>Karyawan</h1>
         <div class="p">
-        <p>Delete / Now Playing</p>
-    </div>
+        <p></p>
+    </div> --}}
+     <div class="text">
+        <h1 style="color: #ffffff; font-size: 36px; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(255, 253, 253, 0.6);">Daftar Film</h1>
+        <div class="p">
+            <p style="font-size: 20px; color: #ebe7e7;">Delete / Now Playing</p>
+        </div>
+        <a class="button btn add-button" href="{{ route('tambahfilm')}}" >Tambah</a>
     </div>
 
-    <div class="table-container" style="margin-left: -35%;">
-        <table class="table table-dark table-striped" style="width: 30%;">
+
+
+    <div class="table-container" style="margin-left: -30%;">
+        <table class="table table-dark table-striped" style="width: 140%;">
             <div>
             <tr>
                 <th>No</th>
@@ -126,7 +210,6 @@
                 <th>Minimal Usia</th>
                 <th>Genre</th>
                 <th>Durasi</th>
-                <th>Jam Tayang</th>
                 <th>Sinopsis</th>
                 <th>Gambar</th>
                 <th>Aksi</th>
@@ -142,21 +225,20 @@
                 <td>{{ $film->minimal_usia }}</td>
                 <td>{{ $film->genre }}</td>
                 <td>{{ $film->durasi }}</td>
-                <td>{{ $film->jadwal_tayang }}</td>
+
                 <td>
                     <p class="overflow-y-scroll ellipsis" rows="3">{{ $film->sinopsis }}</p>
                 </td>
                 <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}"></td>
-                <div class="button">
-                    <td>
-                        <a href="{{ route('edit-film','')}}/{{$film->id}}" class="btn btn-dark">Edit</a>
-                        <form action="{{ route('film.destroy', $film->id) }}" method="post">
+                <td>
+                    <a class="button btn edit-button" href="{{ route('edit-film','')}}/{{$film->id}}" onclick="showAlertEdit()">Edit</a>
+                    <form action="{{ route('film.destroy', $film->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-                            <button class="btn btn-dark" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
-                        </form>
-                    </td>
-              </div>
+                        <button class="button btn delete-button" onclick="confirmDelete()">Hapus</button>
+                    </form>
+                </td>
+
             </tr>
 
 
@@ -168,12 +250,10 @@
         <nav aria-label="Page navigation example">
         <ul class="pagination">
             <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() - 1]) }}">Previous</a>
-            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() + 1]) }}">Next</a>
+            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() + 2]) }}">Next</a>
         </ul>
       </nav>
-        {{-- <div class="pagination">
-            {{ $films->links() }}
-        </div> --}}
+
     </div>
 
     @endsection

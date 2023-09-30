@@ -41,11 +41,11 @@ class FilmController extends Controller
         // dd($request);
 
         $request->validate([
-            "judul"=>'nullable|string',
-            'director'=>'nullable|string',
-            'cast'=> 'nullable|string',
+            "judul"=>'required|string',
+            'director'=>'required|string',
+            'cast'=> 'required|string',
             'minimal_usia'=> 'nullable|integer',
-            'genre' => 'nullable||string',
+            'genre' => 'required|string',
             'durasi'=> 'string|nullable',
             'jadwal_tayang' => "nullable",
             'jam_tayang'=> 'required',
@@ -53,6 +53,8 @@ class FilmController extends Controller
             'sinopsis' => 'nullable||string',
             'status' => 'nullable||required',
             'thumbnile' => 'image'
+        ],[
+            
         ]);
 
 
