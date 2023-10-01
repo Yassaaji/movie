@@ -4,30 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Film extends Model
+class Ewallet extends Model
 {
     use HasFactory;
 
-    protected $guarded=[
+    protected $guarded = [
 
     ];
-
-    public function ticket():HasMany
-    {
-        return $this->hasMany(Ticket::class);
-    }
 
     public function pesanan():HasMany
     {
         return $this->hasMany(Pesanan::class);
     }
-
-    public function ruangan():BelongsTo
-    {
-        return $this->belongsTo(Ruangan::class);
-    }
-
 }

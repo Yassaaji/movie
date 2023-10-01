@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('film_id')->constrained();
-            $table->foreignId('kursi_id')->nullable()->constrained();
-            $table->foreignId('ruangan_id')->constrained();
-            $table->time('jam_tayang');
-            $table->integer('harga');
+            // $table->foreignId('ruangan_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            // $table->time('jam_tayang');
+            // $table->integer('harga');
             $table->timestamps();
         });
     }

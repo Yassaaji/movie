@@ -4,7 +4,7 @@ body{
 .col-lg-4.mb-3 {
     width: 300px; /* Atur lebar sesuai kebutuhan Anda */
     height: 270px; /* Atur tinggi sesuai kebutuhan Anda untuk membuat persegi panjang */
-    background-color: #ffffff; /* Ganti warna latar belakang sesuai preferensi Anda */
+    background-color: #b39a9a; /* Ganti warna latar belakang sesuai preferensi Anda */
     padding-top: 30px; /* Atur padding sesuai kebutuhan Anda */
     border-radius: 5px; /* Atur sudut elemen menjadi bulat sesuai keinginan Anda */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

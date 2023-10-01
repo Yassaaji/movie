@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('bank_id')->nullable()->constrained();
+            $table->foreignId('ewallet_id')->nullable()->constrained();
+            $table->foreignId('film_id')->constrained();
             $table->integer('totalharga');
-            $table->string('bukti_pembayaran');
-            $table->boolean('konfirmasi')->default(false);
+            $table->string('bukti_pembayaran')->nullable();
+            $table->enum('konfirmasi',['ditolak','menunggu','sukses'])->default('menunggu');
             $table->timestamps();
         });
     }
@@ -24,6 +27,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
         Schema::dropIfExists('pesanans');

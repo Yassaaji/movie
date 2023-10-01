@@ -1,156 +1,77 @@
 @extends('layouts.admin')
 
 @section('content')
+<!DOCTYPE html>
+<html>
 
-<style>
-    .form-edit {
-        width: 80vw;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
+<head>
+    <title>Create Film</title>
+    <!-- Tambahkan referensi ke CSS Bootstrap dan CSS khusus Anda -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ URL::asset('css/admin/create-film.css') }}">
+</head>
 
-    .form-edit label {
-        display: flex; /* Menggunakan flexbox untuk mengatur label dan input di samping */
-        align-items: center; /* Menyelaraskan label dan input secara vertikal */
-        margin-bottom: 10px;
-    }
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center" style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#fff;">Create Film</h1>
+        <div class="row">
+            <div class="col-4">
+                <div class="border-form">
+                    <form action="{{ route('uploadfilm') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
-    .form-edit label span {
-        font-weight: bold;
-        width: 150px; /* Lebar label */
-        margin-right: 10px; /* Jarak antara label dan input */
-    }
+                        <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required>
+                        <input type="text" id="director" name="director" class="input-text" placeholder="Director" required>
+                        <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
+                        <input type="number" id="minimal_usia" name="minimal_usia" class="input-text"
+                            placeholder="Minimal Usia" min="0">
+                        <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre">
+                        <select name="status" id="status" class="input-text" required>
+                            <option value="" disabled selected>Pilih</option>
+                            <option value="nowplaying">Now Playing</option>
+                            <option value="comingsoon">Coming Soon</option>
+                        </select>
+                    </div>
+                </div>
 
-    .form-edit input[type="text"],
-    .form-edit input[type="number"],
-    .form-edit input[type="url"],
-    .form-edit input[type="date"],
-    .form-edit input[type="time"],
-    .form-edit textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-    }
+                <div class="col-4">
+                    <div class="border-form p-3">
+                        <input type="text" id="durasi" name="durasi" class="input-text" placeholder="Durasi" required>
+                        <input type="date" id="jadwal_tayang" name="jadwal_tayang" class="input-text"
+                            placeholder="Jadwal Tayang" required>
+                        <input type="url" id="trailer" name="trailer" class="input-text"
+                            placeholder="Link Video Trailer" required>
+                        <textarea name="sinopsis" id="sinopsis" class="input-text" cols="30" rows="3"
+                            placeholder="Sinopsis"></textarea>
+                    </div>
+                </div>
 
-    .form-edit select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-    }
+                <div class="col-4">
+                    <div class="border-form p-3">
+                        <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#000000;">Tiket</h3>
+                        <label for="ruangan">Ruangan:</label> <br>
+                        <select name="ruangan" id="ruangan">
+                            <option value="A">Ruang A</option>
+                            <option value="B">Ruang B</option>
+                            <option value="C">Ruang C</option>
+                        </select>
+                        <input type="time" id="jam_tayang" name="jam_tayang" class="input-text"
+                            placeholder="Jam Tayang" >
+                        {{-- <input type="text" id="kursi" name="kursi" class="input-text" placeholder="Kursi" > --}}
+                        <input type="number" id="harga" name="harga" class="input-text" placeholder="Harga" min="0">
+                    </div>
+                </div>
+            </div>
 
-    .form-edit input[type="file"] {
-        display: flex;
-        margin-top: 5px;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-    .row {
-        margin-top: 10px;
-    }
-
-        /* CSS untuk tombol "Choose File" */
-    input[type="file"]::-webkit-file-upload-button {
-        background-color: #00410b; /* Warna hijau army */
-        color: #ffffff; /* Warna teks putih */
-        border: none;
-        cursor: pointer;
-    }
-
-    /* Styling tambahan jika diperlukan */
-    input[type="file"]::-webkit-file-upload-button:hover {
-        background-color: #006f19; /* Warna saat tombol dihover */
-    }
-</style>
-<form action="" method="post" class="form-edit" style="background-color: #030010">
-    <div style="display: flex; align-items: center; justify-content: space-between;">
-        <h4 style="color: #ffffff; font-family: 'Poppins', sans-serif; font-weight: bold;">Edit Now Playing</h4>
-        <button style="color: #ffffff; background-color: #00410b; padding: 10px 20px; border: none; border-radius: 20px;"> <a href="#">Simpan</a></button>
+            <center>
+                <br><br>
+                <input type="file" id="thumbnail" name="thumbnile" accept="image/*" class="input-file " required
+                    style="width: 90%;">
+                <button type="submit" class="input-submit" style="width: 90%;">Upload</button>
+            </center>
+        </form>
     </div>
+</body>
 
-    <br>
-    <div class="row">
-        <div class="col-md-6">
-            <label for="judul">
-                <span class="form-label" style="color: #fff">Name:</span>
-                <input class="form-control" type="text" name="judul" id="judul" value="{{ $film->judul }}">
-            </label>
-            <br>
-            <label for="director">
-                <span class="form-label" style="color: #fff">Director:</span>
-                <input class="form-control" type="text" name="director" id="director" value="{{ $film->director }}">
-            </label>
-            <br>
-            <label for="cast">
-                <span class="form-label" style="color: #fff">Cast:</span>
-                <input class="form-control" type="text" name="cast" id="cast" value="{{ $film->cast }}">
-            </label>
-            <br>
-            <label for="minimal_usia">
-                <span class="form-label" style="color: #fff">Minimal Usia:</span>
-                <input class="form-control" type="number" min="0" name="minimal_usia" id="minimal_usia"
-                    value="{{ $film->minimal_usia }}">
-            </label>
-            <br>
-            <label for="genre">
-                <span class="form-label" style="color: #fff">Genre:</span>
-                <input class="form-control" type="text" name="genre" id="genre" value="{{ $film->genre }}">
-            </label>
-            <br>
-            <label for="durasi">
-                <span class="form-label" style="color: #fff">Durasi:</span>
-                <input class="form-control" type="text" name="durasi" id="durasi" value="{{ $film->durasi }}">
-            </label>
-            <br>
-            <label for="jadwal_tayang">
-                <span class="form-label" style="color: #fff">Jadwal Tayang:</span>
-                <input class="form-control" type="date" name="jadwal_tayang" id="jadwal_tayang"
-                    value="{{ $film->jadwal_tayang }}">
-            </label>
-            <br>
-        </div>
-        <div class="col-md-6">
-            <label for="trailer">
-                <span class="form-label" style="color: #fff">Trailer:</span>
-                <input class="form-control" type="url" name="trailer" id="trailer" value="{{ $film->trailer }}">
-            </label>
-            <br>
-            <label for="sinopsis">
-                <span style="color: #fff">Sinopsis:</span>
-                <textarea name="sinopsis" id="sinopsis" cols="30" rows="7">{{ $film->sinopsis }}</textarea>
-            </label>
-            <br>
-            <label for="jam_tayang">
-                <span class="form-label" style="color: #fff">Jam Tayang:</span>
-                <input class="form-control" type="time" name="jam_tayang" id="jam_tayang"
-                    value="{{ $film->jam_tayang }}">
-            </label>
-            <br>
-            <label for="status">
-                <span class="form-label" style="color: #fff">Status:</span>
-                <select name="status" id="status">
-                    <option value="nowplaying" @if ($film->status === "nowplaying") selected @endif>Now Playing</option>
-                    <option value="comingsoon">Coming Soon</option>
-                </select>
-            </label>
-            <br>
-            <label for="thumbnail">
-                <span class="form-label" style="color: #fff">Thumbnail:</span>
-                <input class="form-control" type="file" name="thumbnail" id="thumbnail" value="{{ $film->thumbnail }}">
-            </label>
-            <br>
-        </div>
-    </div>
-</form>
-
+</html>
 @endsection
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

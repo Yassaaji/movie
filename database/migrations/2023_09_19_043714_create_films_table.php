@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ruangan_id')->constrained();
             $table->string('judul');
             $table->string('director');
             $table->string('cast');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('trailer');
             $table->text('sinopsis');
             $table->time('jam_tayang');
+            $table->integer('harga');
             $table->enum('status',['nowplaying','commingsoon'])->default('commingsoon');
             $table->string('thumbnile');
             $table->timestamps();

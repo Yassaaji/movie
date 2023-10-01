@@ -34,7 +34,7 @@
                         <select name="status" id="status" class="input-text" required>
                             <option value="" disabled selected>Pilih</option>
                             <option value="nowplaying">Now Playing</option>
-                            <option value="comingsoon">Coming Soon</option>
+                            <option value="commingsoon">Coming Soon</option>
                         </select>
                     </div>
                 </div>

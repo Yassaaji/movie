@@ -15,4 +15,14 @@ class Kursi extends Model
         return $this->belongsTo(Ruangan::class);
     }
 
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function ticket():BelongsTo
+    {
+        return $this->belongsTo(Ticket::class);
+    }
+
 }
