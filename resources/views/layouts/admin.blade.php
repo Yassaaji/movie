@@ -70,7 +70,7 @@
                   <div class="collapse" id="tiket-online-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1  justify-content-center px-3">
                       <li><a href="/konfirmasi-ticket" class="text-white text-decoration-none rounded me-2 nav-link {{ request()->is('admin') ? 'active' : '' }}"><i class="bi bi-ui-radios"></i> Proses Konfirmasi Tiket Online</a></li>
-                      <li><a href="#" class="text-white text-decoration-none rounded me-2 nav-link"><i class="bi bi-database"></i> Data Tiket Online</a></li>
+                      <li><a href="{{ url('#') }}" class="text-white text-decoration-none rounded me-2 nav-link"><i class="bi bi-database"></i> Data Tiket Online</a></li>
                     </ul>
                   </div>
                 </li>
@@ -95,8 +95,8 @@
                   </button>
                   <div class="collapse" id="film">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1  justify-content-center px-3">
-                      <li><a href="#" class="text-white text-decoration-none rounded me-2"><i class="bi bi-megaphone"></i> Coming Soon</a></li>
-                      <li><a href="#" class="text-white text-decoration-none rounded me-2"><i class="bi bi-camera-video-fill"></i> Now Playing</a></li>
+                      <li><a href="{{ url('daftarcomingsoon') }}" class="text-white text-decoration-none rounded me-2"><i class="bi bi-megaphone"></i> Coming Soon</a></li>
+                      <li><a href="{{ url('daftarfilm') }}" class="text-white text-decoration-none rounded me-2"><i class="bi bi-camera-video-fill"></i> Now Playing</a></li>
                     </ul>
                   </div>
                 </li>

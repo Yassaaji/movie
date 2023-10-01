@@ -3,8 +3,8 @@
 
 {{-- @dump($data[0]) --}}
 
-    <section class="m-profile setting-wrapper" style="background-color:black;">
-
+    <section class="m-profile setting-wrapper" style="background-color:rgb(30, 28, 28);">
+    <br><br><br><br><br><br><br>
         <style>
             .edit{
                 opacity: 0;
@@ -14,10 +14,15 @@
             .edit:hover{
                 opacity: 100;
             }
+            .sign-user_card.dl {
+    max-width: 700px; /* Sesuaikan dengan lebar yang Anda inginkan */
+    justify-content: center;
+}
+
         </style>
 
         <div class="container">
-            <h4 class="main-title mb-4 user">User Profile</h4>
+            <h4 class="main-title mb-8 user " style="color: #fff"></h4>
             <div class="row">
                     <a href="{{route('profile.edit', Auth::user()->id )}}">
                 <div class="col-lg-4 mb-3 d-flex justify-content-center align-items-center">
@@ -48,14 +53,14 @@
                     </a>
                 </div>
 
-                <div class="col-lg-8 ml-5 ">
+                <div class="col-lg-8 ml-12 ">
                     <div class="sign-user_card dl">
-                        <h5 class="mb-3 pb-3 a-border besar">DETAIL PROFILE</h5>
+                        <h5 class="mb-3 pb-3 a-border besar">DETAIL PROFIL PENGGUNA</h5>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <span class="text font-size-13 kecil">Nama</span>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->name }}</p>
                              </div>
                        </div>
@@ -63,7 +68,7 @@
                              <div class="col-md-4" >
                                 <span class="text font-size-13 kecil ">Email</span>
                              </div>
-                             <div class="col-md-8">
+                             <div class="col-md-7">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->email }}</p>
                              </div>
                        </div>
@@ -71,13 +76,15 @@
                              <div class="col-md-4">
                                 <span class="text font-size-13 kecil ">telp</span>
                              </div>
-                             <div class="col-md-8">
+                             <div class="col-md-7">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->noTelp }}</p>
                              </div>
                        </div>
                  </div>
            </div>
         </div>
+        <br><br><br><br><br><br>
+
         <!-- Custom JS-->
         <script src="{{ asset('js/custom.js') }}"></script>
     </section>

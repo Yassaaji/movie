@@ -9,11 +9,16 @@
     <!-- Tambahkan referensi ke CSS Bootstrap dan CSS khusus Anda -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ URL::asset('css/admin/create-film.css') }}">
+    <style>
+        body{
+            background-color:rgb(0, 4, 15);
+        }
+    </style>
 </head>
 
 <body>
     <div class="container mt-4">
-        <h1 class="text-center" style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#fff;">Create Film</h1>
+        <h1 class="text-center" style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#fff; "; >Create Film</h1>
         <div class="row">
             <div class="col-4">
                 <div class="border-form">
@@ -48,15 +53,16 @@
 
                 <div class="col-4">
                     <div class="border-form p-3">
-                        <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#000000;">Tiket</h3>
-                        <label for="ruangan">Ruangan:</label> <br>
+                        <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color:#ffffff;">Tiket</h3>
+                        <label for="ruangan" style="color: #fff">Ruangan:</label> <br>
                         <select name="ruangan" id="ruangan">
                             <option value="A">Ruang A</option>
                             <option value="B">Ruang B</option>
                             <option value="C">Ruang C</option>
                         </select>
-                        <input type="time" id="jam_tayang" name="jam_tayang" class="input-text"
-                            placeholder="Jam Tayang" >
+                        <br><br>
+                        <label for="jam_tayang" style="color: #fff">Jam Tayang:</label>
+                        <input type="time" id="jam_tayang" name="jam_tayang" class="input-text" placeholder="Jam Tayang">
                         {{-- <input type="text" id="kursi" name="kursi" class="input-text" placeholder="Kursi" > --}}
                         <input type="number" id="harga" name="harga" class="input-text" placeholder="Harga" min="0">
                     </div>

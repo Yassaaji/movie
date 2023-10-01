@@ -14,7 +14,9 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
-
+use App\Http\Controllers\ComingSoonController;
+Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
+Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,10 +33,9 @@ use App\Http\Controllers\TicketController;
 
 
 
-
 //user->Home
 
-
+Route::get('/daftarcomingsoon', [ComingSoonController::class, 'daftarFilm'])->name('daftarcomingsoon');
 // Route untuk Login
 Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
 Route::post('/authenticate',[LoginController::class , 'authenticate'])->name('authenticate');

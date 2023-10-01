@@ -111,11 +111,10 @@
     <div class="text">
         <h1>Karyawan</h1>
         <div class="p">
-        <p>Delete / Now Playing</p>
+        <p>Delete / Coming Soon</p>
     </div>
-    <a href="{{ route('create-film') }}" class="btn btn-info ">+ Tambah</a>
+    <a href="{{ route('create-comingsoon') }}" class="btn btn-info ">+ Tambah</a>
     </div>
-
     <div class="table-container" style="margin-left: -35%;">
         <table class="table table-dark table-striped" style="width: 30%;">
             <div>
@@ -168,8 +167,8 @@
         </table>
         <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() - 1]) }}">Previous</a>
-            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() + 1]) }}">Next</a>
+            <a class="page-link" href="{{ route('daftarcomingsoon', ['page' => $films->currentPage() - 1]) }}">Previous</a>
+            <a class="page-link" href="{{ route('daftarcomingsoon', ['page' => $films->currentPage() + 1]) }}">Next</a>
         </ul>
       </nav>
         {{-- <div class="pagination">
@@ -178,4 +177,3 @@
     </div>
 
     @endsection
-

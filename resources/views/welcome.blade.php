@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -354,3 +353,4 @@ $('#customers-testimonials').owlCarousel( {
 <script src="bower_components/aos/dist/aos.js"></script>
 </html>
 
+@include('layouts.footer')
