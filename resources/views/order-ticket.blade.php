@@ -83,14 +83,19 @@
             </div>
             <div class="all-seats">
               @forelse ($kursi as $i => $data)
-              <input @if (!($data->user_id === null))
-                disabled
-              @endif type="checkbox" name="tickets[]" value="{{ $data->nomor_kursi }}" id="{{ $data->nomor_kursi }}" onchange="updateSelectedSeats(this)" />
+
+              {{-- @dd($data) --}}
+
+              <input @foreach ( $status_kursi as $status )
+              @if (($data->nomor_kursi === ($status->nomor_kursi) ))
+              disabled
+            @endif
+              @endforeach type="checkbox" name="tickets[]" value="{{ $data->nomor_kursi }}" id="{{ $data->nomor_kursi }}" onchange="updateSelectedSeats(this)" />
               <label
 
               class="seat booked"
 
-               for="{{ $data->nomor_kursi }}">{{ $data->nomor_kursi }}</label>
+               for="{{ $data->nomor_kursi }}">{{ $data->nomor_kursi }} </label>
                 @if ($i === 3)
                     <br>
                 @endif

@@ -19,5 +19,11 @@ class PageController extends Controller
         return view('nowplaying',compact('nowplayings'));
     }
 
+    public function comingsoon(){
+        $comingsoon = Film::where('status','commingsoon')->get();
+        // dd($comingsoon);
+        return view('comingsoon',compact('comingsoon'));
+    }
+
 
 }

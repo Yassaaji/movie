@@ -113,7 +113,7 @@
         <div class="p">
         <p>Delete / Now Playing</p>
     </div>
-    <a href="{{ route('create-film') }}" class="btn btn-info ">+ Tambah</a>
+    <a href="{{ route('film.create') }}" class="btn btn-info ">+ Tambah</a>
     </div>
 
     <div class="table-container" style="margin-left: -35%;">

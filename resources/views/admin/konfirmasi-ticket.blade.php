@@ -23,7 +23,7 @@
             background-color: rgb(87, 45, 155);
             color: white; /* Ubah warna teks tombol menjadi putih */
         }
-
+        
         /* Gaya untuk tabel */
         .table th,
         .table td {
@@ -113,9 +113,9 @@
                                 <td>{{ $pesanan->film->ruangan_id }}</td>
                                 <td>
                                     <ol>
-                                        @foreach ( $kursi as $data)
-                                            @if ($data->ticket_id === $pesanan->ticket->id)
-                                            <li>{{ $data->nomor_kursi }}</li>
+                                        @foreach ( $status_kursi as $kursi)
+                                            @if ($kursi->ticket_id === $pesanan->ticket->id)
+                                            <li>{{ $kursi->nomor_kursi }}</li>
                                             @endif
                                         @endforeach
                                     </ol>
@@ -143,6 +143,7 @@
                                         <button onclick="handleStatus('ditolak')" type="submit" class="btn ">Gagal</button>
                                     </form>
                                 </td>
+
 
                             </tr>
                                 @empty

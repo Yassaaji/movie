@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kursi extends Model
 {
@@ -23,6 +24,10 @@ class Kursi extends Model
     public function ticket():BelongsTo
     {
         return $this->belongsTo(Ticket::class);
+    }
+
+    public function status_kursi():HasMany{
+        return $this->hasMany(status_kursi::class);
     }
 
 }

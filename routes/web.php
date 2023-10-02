@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NowplayingController;
+use App\Http\Controllers\TesController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +86,7 @@ Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying
 // Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
 Route::resource('/profile',ProfileController::class);
+Route::get('/comingsoon',[PageController::class,'comingsoon'])->name('comingsoon');
 // Route::put('/proses-edit-profile/{user}',[ProfileController::class,'update'])->name('proses-edit-profile');
 
 // Route::get('/nowplaying', function () {
@@ -92,9 +94,9 @@ Route::resource('/profile',ProfileController::class);
 // });
 
 
-Route::get('/comingsoon', function () {
-    return view('comingsoon');
-});
+// Route::get('/comingsoon', function () {
+//     return view('comingsoon');
+// });
 
 // Route::resource('pesanan',PesananController::class);
 Route::post('/create-pesanan/{ticket_id}/',[PesananController::class,'store'])->name('create-pesanan');
@@ -164,3 +166,4 @@ Route::get('/datatiket',function(){
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/tes',TesController::class);

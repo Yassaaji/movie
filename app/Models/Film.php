@@ -30,4 +30,9 @@ class Film extends Model
         return $this->belongsTo(Ruangan::class);
     }
 
+    public function status_kursi():HasMany
+    {
+        return $this->hasMany(status_kursi::class);
+    }
+
 }

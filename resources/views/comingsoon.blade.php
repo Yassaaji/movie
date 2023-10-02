@@ -28,14 +28,17 @@
         <center>
             <br><br>
             <div class="container">
-                <div class="row justify-content-center">
+                <div class="row justify-content-end">
+
+                    @forelse ( $comingsoon as $film )
+
                     <div class="col-md-6 mb-3">
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('img/card-comingsoon/pasific.jpg') }}"
-                                        class="img-fluid rounded-start" alt="..."
-                                        style="object-fit: cover; height: 100%;">
+                                    <img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
+                                    class="img-fluid rounded-start" alt="..."
+                                    style="object-fit: cover; height: 100%;">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -56,8 +59,14 @@
                             </div>
                         </div>
                     </div>
+
+                    @empty
+
+                    @endforelse
+
+
                     <!-- Tambahkan card kedua di sini -->
-                    <div class="col-md-6 mb-3">
+                    {{-- <div class="col-md-6 mb-3">
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
@@ -87,10 +96,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- akhir card 2 --}}
                     <!-- Card ketiga -->
-                    <div class="col-md-6 mb-3">
+                    {{-- <div class="col-md-6 mb-3">
                         <div class="card" style="max-width: 550px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
@@ -203,6 +212,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
         </center>
     @endsection

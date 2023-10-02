@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePesananRequest;
 use App\Models\Film;
 use App\Models\Kursi;
 use App\Models\Pesanan;
+use App\Models\status_kursi;
 use App\Models\Ticket;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -21,10 +22,13 @@ class PesananController extends Controller
     public function index()
     {
         $orders = Pesanan::with('Bank','ticket','film','ewallet')->where('konfirmasi','menunggu')->get();
-        $kursi = Kursi::whereNotNull('ticket_id')->get();
+        // $kursi = Kursi::whereNotNull('ticket_id',)->get();
 
-        // dd($orders);
-        return view('admin.konfirmasi-ticket',compact('orders','kursi'));
+        $status_kursi = status_kursi::all();
+
+
+        // dd($status_kursi);
+        return view('admin.konfirmasi-ticket',compact('orders','status_kursi'));
     }
 
 
@@ -55,14 +59,32 @@ class PesananController extends Controller
         $ticket->film_id = $film->id;
 
         $kursi_id = collect([]);
-        $ticket->save();
 
         $idUser = Auth::user()->id;
+        $ticket->save();
 
         foreach ($kursi_pesanan as $data) {
+
+            // if($data->user_id === null){
+            // }else{
+            //     return redirect()->back()->with('error','ticket sudah dibeli');
+
+            // }
+
             $kursi = Kursi::where('ruangan_id',$film->ruangan_id)->where('nomor_kursi',$data)->first();
+
+            $status_kursi = new status_kursi;
+            $status_kursi->film_id = $film_id;
+            $status_kursi->kursi_id = $kursi->id;
+            $status_kursi->nomor_kursi = $data;
+            $status_kursi->status_kursi = "dipesan";
+            $status_kursi->ticket_id = $ticket->id;
+            $status_kursi->save();
+
+
+
             $kursi->user_id = $idUser;
-            $kursi->ticket_id = $ticket->id;
+            $kursi->ticket_id = null;
             $kursi->save();
         }
 
