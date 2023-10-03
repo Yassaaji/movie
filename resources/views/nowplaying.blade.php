@@ -50,7 +50,7 @@
                                             Casts : {{ $np->cast }}
                                         </p>
                                         <br><br><br><br>
-                                        <center> <a href="{{ route('film.show',$np->id) }}" class="btn btn-dark col-md-11">Jadwal tayang dan
+                                        <center> <a href="{{ route('detailfilm',$np->id) }}" class="btn btn-dark col-md-11">Jadwal tayang dan
                                             tiket</a></center>
                                     </div>
                                 </div>

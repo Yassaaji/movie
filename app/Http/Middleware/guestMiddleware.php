@@ -16,10 +16,6 @@ class guestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guest()){
             return $next($request);
-        }
-
-        abort(403, 'Unauthorize');
     }
 }

@@ -20,6 +20,6 @@ class userMiddleware
             return $next($request);
         }
 
-        abort(403,'Unauthorize');
+        return redirect()->route('logout');
     }
 }

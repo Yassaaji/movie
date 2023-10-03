@@ -16,8 +16,8 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ComingSoonController;
-Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
-Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
+// Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
+// Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,30 +29,37 @@ Route::get('/create-film', [FilmController::class, 'create'])->name('create-film
 |
 */
 
-
-Route::group(['middleware'=>'guest'],function(){
-
+// Route::middleware(['guest'])->group(function () {
     Route::get('/',[PageController::class,'welcome']);
     Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
     Route::get('/register',[RegisterController::class , 'showRegisterForm'])->name('register');
 
-    Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
-// Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+    // Route::get('/profile',[ProfileController::class,'index'])->name('profile');
 
     Route::get('/comingsoon',[PageController::class,'comingsoon'])->name('comingsoon');
-
-});
-Route::group(['middleware'=>'auth'],function(){
     Route::post('/authenticate',[LoginController::class , 'authenticate'])->name('authenticate');
     Route::post('/insertRegister',[RegisterController::class , 'insertRegister'])->name('insertRegister');
+
     Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+    Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
+
+// });
+
+
+// Route::group(['middleware'=>'guest'],function(){
+
+// });
+
+Route::group(['middleware'=>'auth'],function(){
     // Route::resource('tiket', TicketController::class);
     Route::post('/create-pesanan/{ticket_id}/',[PesananController::class,'store'])->name('create-pesanan');
     Route::get('/order/{film}',[TicketController::class,'orderTicket'])->name('order');
     Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
     Route::resource('/profile',ProfileController::class);
+    Route::get('/detailfilm/{film}',[FilmController::class,'show'])->name('detailfilm');
 
 });
+
 Route::group(['middleware'=>'admin'],function(){
     Route::resource('/admin', AdminController::class);
     Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
@@ -75,7 +82,7 @@ Route::group(['middleware'=>'admin'],function(){
 
 //user->Home
 
-Route::get('/daftarcomingsoon', [ComingSoonController::class, 'daftarFilm'])->name('daftarcomingsoon');
+// Route::get('/daftarcomingsoon', [ComingSoonController::class, 'daftarFilm'])->name('daftarcomingsoon');
 // Route untuk Login
 
 // Route untuk register
@@ -185,4 +192,4 @@ Route::get('/daftarcomingsoon', [ComingSoonController::class, 'daftarFilm'])->na
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/tes',TesController::class);
+// Route::resource('/tes',TesController::class);

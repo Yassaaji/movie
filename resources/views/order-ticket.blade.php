@@ -73,6 +73,17 @@ Swal.fire({
     // alert("{{ session('error') }}")
     </script>
     @endif
+    @if (session('success'))
+    <script>
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ session('success') }}',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+    // alert("{{ session('error') }}")
+    </script>
+    @endif
 
     <form action="{{ route('create-pesanan',$film->id) }}" method="post" enctype="multipart/form-data">
 
@@ -416,15 +427,16 @@ Swal.fire({
                 payment.addEventListener('change',function(){
                     const selected = payment.value;
 
-                    containerPayment.innerHTML = ''
+                    containerPayment.innerHTML = '';
 
-                    if(selected === 'atm'){
-                        containerPayment.innerHTML = Atm;
-                    }else if(selected === 'ewallet'){
-                            containerPayment.innerHTML = ewallet;
-                    }
-                    // if(selected === 'ewallet'){
+                    if( selected === "atm" ) containerPayment.innerHTML = Atm;
+                    if( selected === "ewallet") containerPayment.innerHTML = ewallet;
+                    // if(selected === 'atm'){
+                    //     containerPayment.innerHTML = Atm;
+                    // }else if(selected === 'ewallet'){
+                    //         containerPayment.innerHTML = ewallet;
                     // }
+
 
                 })
 

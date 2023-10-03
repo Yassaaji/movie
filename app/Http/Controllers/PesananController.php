@@ -55,7 +55,13 @@ class PesananController extends Controller
         // $ticket = Ticket::with('film')->where('id',$ticket_id)->first();
         $film = Film::where('id',$film_id)->first();
         $kursi_pesanan = $request->tickets;
-        $total_harga = $film->harga * count($kursi_pesanan);
+        try {
+            //code...
+            $total_harga = $film->harga * count($kursi_pesanan);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error','Harus memilih minimal 1 kursi');
+        }
 
 
         $ticket = new Ticket;
@@ -65,7 +71,14 @@ class PesananController extends Controller
         $kursi_id = collect([]);
 
         $idUser = Auth::user()->id;
-        $ticket->save();
+
+        try {
+            //code...
+            $ticket->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error',"Kursi sudah dipesan");
+        }
 
         foreach ($kursi_pesanan as $data) {
 
@@ -84,10 +97,22 @@ class PesananController extends Controller
             $status_kursi->nomor_kursi = $data;
             $status_kursi->status_kursi = "dipesan";
             $status_kursi->ticket_id = $ticket->id;
-            $status_kursi->save();
+
+            try {
+
+                $status_kursi->save();
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('error','kursi gagal disave');
+            }
 
             $kursi->ticket_id = null;
-            $kursi->save();
+            try {
+                //code...
+                $kursi->save();
+            } catch (\Throwable $th) {
+                //throw $th;
+                return redirect()->back()->with('error','kursi gagal disave');
+            }
         }
 
 
@@ -117,9 +142,17 @@ class PesananController extends Controller
         // dd($request);
 
 
-        $pesanan->save();
+        try {
+            //code...
+            // $kursi->save();
+            $pesanan->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error','pesanan gagal disave');
+        }
 
-        return redirect()->back()->with('succes','berhasil memesan ticket');
+
+        return redirect()->back()->with('success','berhasil memesan ticket');
     }
 
     /**
