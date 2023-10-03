@@ -76,10 +76,11 @@ Swal.fire({
     @if (session('success'))
     <script>
 Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: '{{ session('success') }}',
-  footer: '<a href="">Why do I have this issue?</a>'
+  position: 'center',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: false,
+  timer: 1500
 })
     // alert("{{ session('error') }}")
     </script>
@@ -174,10 +175,21 @@ Swal.fire({
     <!-- Jarak antara tabel dan dropdown -->
     <div class="spacing"></div>
 
+    @error('payment')
+      <script>
+        Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ $message }}',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+      </script>
+    @enderror
+
   <div class="payment-method d-flex flex-column justify-content-between">
     <label for="payment">Metode Pembayaran:
     <select id="payment" name="payment" required>
-        <option>Pilih</option> <!-- Opsi default -->
+        <option disabled selected>Pilih</option> <!-- Opsi default -->
         <option value="atm">Kartu Atm</option>
         <option value="ewallet">Ewallet</option>
         <option value="cash">Tunai</option>

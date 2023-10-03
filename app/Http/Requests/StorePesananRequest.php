@@ -23,6 +23,14 @@ class StorePesananRequest extends FormRequest
     {
         return [
             //
+            'payment' => 'required',
+        ];
+    }
+
+    public function messages():array
+    {
+        return[
+            'payment.required' => 'Harus mengisi metode pembayaran'
         ];
     }
 }

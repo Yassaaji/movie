@@ -61,12 +61,21 @@
                 <h1>Selamat Datang</h1>
                     <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
                     <div class="btn-group">
+                        @if (Auth::check())
+                        
+                        @else
                         <a href="{{ route('login') }}" class="btn">Login</a>
                         <a href="{{ route('register') }}" class="btn">Register</a>
+                        @endif
                     </div>
                     <div class="buttons mt-3">
                         <div class="d-flex justify-content-center">
-                            <a class="selanjutnya" href="{{ route('login') }}">
+                            <a class="selanjutnya"
+                            @if (Auth::check())
+                            href="{{ route('nowplaying') }}">
+                            @else
+                            href="{{ route('login') }}">
+                            @endif
                                 <button class="transparent-button">
                                     Get Started
                                 </button>
