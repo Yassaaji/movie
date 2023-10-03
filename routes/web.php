@@ -30,6 +30,45 @@ Route::get('/create-film', [FilmController::class, 'create'])->name('create-film
 */
 
 
+Route::group(['middleware'=>'guest'],function(){
+
+    Route::get('/',[PageController::class,'welcome']);
+    Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
+    Route::get('/register',[RegisterController::class , 'showRegisterForm'])->name('register');
+
+    Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
+// Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+
+    Route::get('/comingsoon',[PageController::class,'comingsoon'])->name('comingsoon');
+
+});
+Route::group(['middleware'=>'auth'],function(){
+    Route::post('/authenticate',[LoginController::class , 'authenticate'])->name('authenticate');
+    Route::post('/insertRegister',[RegisterController::class , 'insertRegister'])->name('insertRegister');
+    Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
+    // Route::resource('tiket', TicketController::class);
+    Route::post('/create-pesanan/{ticket_id}/',[PesananController::class,'store'])->name('create-pesanan');
+    Route::get('/order/{film}',[TicketController::class,'orderTicket'])->name('order');
+    Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
+    Route::resource('/profile',ProfileController::class);
+
+});
+Route::group(['middleware'=>'admin'],function(){
+    Route::resource('/admin', AdminController::class);
+    Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
+    Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarfilm');
+
+    Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
+    Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prosesEditFilm');
+    Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
+    Route::resource('film', FilmController::class);
+
+
+    Route::get('/konfirmasi_ticket',[PesananController::class,'index'])->name('konfirmasi_ticket');
+    Route::post('/update_konfirmasi/{pesanan}',[PesananController::class,'update'])->name('update_konfirmasi');
+
+});
+
 // Register
 
 
@@ -38,15 +77,10 @@ Route::get('/create-film', [FilmController::class, 'create'])->name('create-film
 
 Route::get('/daftarcomingsoon', [ComingSoonController::class, 'daftarFilm'])->name('daftarcomingsoon');
 // Route untuk Login
-Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
-Route::post('/authenticate',[LoginController::class , 'authenticate'])->name('authenticate');
 
 // Route untuk register
-Route::get('/register',[RegisterController::class , 'showRegisterForm'])->name('register');
-Route::post('/insertRegister',[RegisterController::class , 'insertRegister'])->name('insertRegister');
 
 // Route untuk Logout
-Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 // Halaman
 
@@ -58,18 +92,10 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
             // Route untuk halaman admin
 // Route::get('/home',[HomeController::class,'index'])->name('home');
-Route::resource('/admin', AdminController::class);
-Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
-Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarfilm');
 
 
-Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
-Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prosesEditFilm');
-Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
 // Route::post('/hapusfilm/{id}',[FilmController::class,'destroy'])->name('hapusfilm');
-Route::resource('film', FilmController::class);
-Route::resource('tiket', TicketController::class);
-Route::get('/order/{film}',[TicketController::class,'orderTicket'])->name('order');
+
 // Route::get('/tes', [App\Http\Controllers\NowplayingController::class, 'index'])->name('tes');
 // Route::get('/create-nowplaying', [App\Http\Controllers\CreateNowplayingController::class, 'create'])->name('create-nowplaying');
 
@@ -81,12 +107,7 @@ Route::get('/order/{film}',[TicketController::class,'orderTicket'])->name('order
 
 // Route untuk halaman landing page
 // Route::middleware('guest')->get('/', 'HomeController@index')->name('landing');
-Route::get('/',[PageController::class,'welcome']);
-Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
-// Route::get('/profile',[ProfileController::class,'index'])->name('profile');
-Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
-Route::resource('/profile',ProfileController::class);
-Route::get('/comingsoon',[PageController::class,'comingsoon'])->name('comingsoon');
+
 // Route::put('/proses-edit-profile/{user}',[ProfileController::class,'update'])->name('proses-edit-profile');
 
 // Route::get('/nowplaying', function () {
@@ -99,9 +120,7 @@ Route::get('/comingsoon',[PageController::class,'comingsoon'])->name('comingsoon
 // });
 
 // Route::resource('pesanan',PesananController::class);
-Route::post('/create-pesanan/{ticket_id}/',[PesananController::class,'store'])->name('create-pesanan');
-Route::get('/konfirmasi_ticket',[PesananController::class,'index'])->name('konfirmasi_ticket');
-Route::post('/update_konfirmasi/{pesanan}',[PesananController::class,'update'])->name('update_konfirmasi');
+
 // Route::get('/detailfilm', function () {
 //     return view('detailfilm');
 // });
@@ -111,9 +130,9 @@ Route::post('/update_konfirmasi/{pesanan}',[PesananController::class,'update'])-
 // });
 
 
-Route::get('/datatiket',function(){
-    return view('datatiket');
-});
+// Route::get('/datatiket',function(){
+//     return view('datatiket');
+// });
 
 // Route::prefix('admin')->middleware(['auth', 'isAdmin'])->namespace('Admin')->group(function () {
 //     // Route::get('/dashboard', 'DashboardController@index');
