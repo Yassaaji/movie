@@ -27,6 +27,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     {{-- link --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -79,9 +80,14 @@
         .navbar-brand .movie {
             margin-right: -5px; /* Adjust the negative margin as needed */
         }
+        .dropdown-menu{
+            font-family: 'Poppins',sans-serif;
+
+        }
     </style>
 </head>
 <body>
+    {{-- @include('layouts.loading') --}}
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm fixed-top">
         <div class="container">
@@ -106,68 +112,53 @@
                 </ul> --}}
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('nowplaying') }}">SEDANG TAYANG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="]{{ url('comingsoon') }}">SEGERA HADIR</a>
-                    </li>
-                    @if (Auth::check())
-                    {{-- baru --}}
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i>Pofile</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf`
-                              </form>
-                            <li> <a class="dropdown-item"  href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="fas fa-sign-out-alt fa-fw"></i>{{ __('logout') }}</a></li>
-                          </ul>
-                        </li>
-                     </ul>
+              <!-- ... Bagian-bagian sebelumnya ... -->
 
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url('nowplaying') }}">SEDANG TAYANG</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url('comingsoon') }}">SEGERA HADIR</a>
+    </li>
+    @if (Auth::check())
+    {{-- Tampilkan nama pengguna di atas profil --}}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ Auth::user()->profile_image ? asset('path/to/user/profile/' . Auth::user()->profile_image) : asset('path/to/default/profile/image.jpg') }}" alt="Profile Image" class="user-profile-image">
+        </a>
+        <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+            <li class="dropdown-item" style="font-size: 13px; text-transform: capitalize; font-weight: 700">
+                <i class="fas fa-user" style="padding-right: 5px"></i>  {{ Auth::user()->name }}
+            </li>
+             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url('profile') }}"><i class="fas fa-sliders-h fa-fw"></i> Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            <li> <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a></li>
+        </ul>
+    </li>
+    @else
+    @guest
+    @if (Route::has('login'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+    @endif
 
-                    {{-- lama
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('profile') }}" onclick="event.preventDefault();
-                                    document.getElementById('profile').submit()">{{ __('profile') }}
-                         </a>
-                         <hr>
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                            <i class="fas fa-sign-out-alt fa-fw">
-                                Logout
-                            </i>
-                          </form>
-                          <a class="dropdown-item"  href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('logout') }}</a>
-                         </div>
-                        </div> --}}
-                    </li>
-                    @else
-                    @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+    @endif
+    @endguest
+    @endif
+</ul>
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                    @endguest
-                    @endif
-                </ul>
+<!-- ... Bagian-bagian sesudahnya ... -->
+
             </div>
         </div>
     </nav>

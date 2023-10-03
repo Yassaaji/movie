@@ -28,7 +28,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app" class="d-flex">
+    <div id="app" class="d-flex" style="position: absolute; top:0;left:0;">
         <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; height: 100vh; background-color: #111111;">
             <a href="{{route('admin.index')}}" class="d-flex w-100 justify-content-center py-2 gap-2 align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
               <img width="37" height="49" src="{{asset('img/LOGO.png')}}" alt="Logo">
@@ -75,19 +75,7 @@
                   </div>
                 </li>
               </ul>
-              <ul class="list-unstyled ps-0 mb-3 rounded" style="background-color: #00284D;">
-                <li class="mb-1">
-                  <button class="btn text-uppercase w-100 btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#tiket-offline-collapse" aria-expanded="true">
-                    <i class="bi bi-ticket-detailed-fill me-2"></i> Tiket Offline
-                  </button>
-                  <div class="collapse" id="tiket-offline-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1  justify-content-center px-3">
-                      <li><a href="#" class="text-white text-decoration-none rounded me-2"><i class="bi bi-cart2"></i> Pembelian Tiket Offline</a></li>
-                      <li><a href="#" class="text-white text-decoration-none rounded me-2"><i class="bi bi-database"></i> Data Tiket Offline</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
+
               <ul class="list-unstyled ps-0 mb-3 rounded" style="background-color: #00284D;">
                 <li class="mb-1">
                   <button class="btn text-uppercase w-100 btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#film" aria-expanded="true">
