@@ -28,8 +28,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app" class="d-flex" style="position: absolute; top:0;left:0;">
-        <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; height: 100vh; background-color: #111111;">
+    <div id="app" class="d-flex" style="position: absolute; top:0;left:0;bottom:0;">
+        <div class="d-flex flex-column flex-shrink-0 p-3" style="width: 280px; height: auto; background-color: #111111;">
             <a href="{{route('admin.index')}}" class="d-flex w-100 justify-content-center py-2 gap-2 align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
               <img width="37" height="49" src="{{asset('img/LOGO.png')}}" alt="Logo">
               <h3 class="movie-flix fs-4 text-white">Movie<span style="color: #0007AC;">Flix</span></h3>

@@ -19,13 +19,10 @@
 
                 <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required>
                 <br>
-
                 <input type="text" id="director" name="director" class="input-text" placeholder="Director" required>
                 <br>
-
                 <input type="text" id="cast" name="cast" class="input-text" placeholder="Cast">
                 <br>
-
             </form>
             <center>
                 <br><br><br>

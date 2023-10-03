@@ -38,24 +38,7 @@ class FilmController extends Controller
     public function store(StoreFilmRequest $request)
     {
 
-        // dd($request);
-
-        $request->validate([
-            "judul"=>'required|string',
-            'director'=>'required|string',
-            'cast'=> 'required|string',
-            'minimal_usia'=> 'nullable|integer',
-            'genre' => 'required|string',
-            'durasi'=> 'string|nullable',
-            'jadwal_tayang' => "nullable",
-            'jam_tayang'=> 'required',
-            'video_trailer' => 'nullable',
-            'sinopsis' => 'nullable||string',
-            'status' => 'nullable||required',
-            'thumbnile' => 'image'
-        ],[
-            
-        ]);
+      
 
 
         $thumbnile = $request->file('thumbnile');
@@ -80,7 +63,8 @@ class FilmController extends Controller
         $film->ruangan_id = $ruangan->id;
         $film->harga = $request->harga;
         $film->save();
-        return redirect()->route('daftarfilm')->with('success','Berhasil Membuat Film');
+
+        return redirect()->route('daftarfilm')->with('success', 'berhasil menambah data');
     }
 
     /**

@@ -51,7 +51,7 @@ class RegisterController extends Controller
 
     protected function insertRegister(Request $request) {
         // dump();
-        
+
 
         $request->validate([
             "name" => 'required|string|min:3|max:250',
@@ -59,13 +59,15 @@ class RegisterController extends Controller
             'password'=> 'required|string|min:8|confirmed',
             'password_confirmation' => 'required| same:password'
         ],[
-            'name.required' => 'data tidak boleh kosong',
+            'name.required' => 'Nama tidak boleh kosong',
+            'name.min' => 'name minimal harus 3 kata',
             'email.required' => 'data tidak boleh kosong',
-            'password.required' => 'data tidak boleh kosong',
-            'name.min:3' => 'name minimal harus 3 kata',
-            'password.min:8' => 'password minimal 8 karakter',
-            'password_confirmation.same:password' => "Password tidak sama",
-            'email.unique' => "Email sudah Diguanakan"
+            'email.email' => 'Email tidak boleh kosong',
+            'email.unique' => 'Email sudah Diguanakan',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'password minimal 8 karakter.',
+            'password.confirmed' => 'Password tidak sama',
+
         ]
     );
 
