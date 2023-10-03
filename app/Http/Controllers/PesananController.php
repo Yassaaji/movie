@@ -24,6 +24,7 @@ class PesananController extends Controller
      */
     public function index()
     {
+
         $orders = Pesanan::with('Bank','ticket','film','ewallet')->where('konfirmasi','menunggu')->get();
         // $kursi = Kursi::whereNotNull('ticket_id',)->get();
 
@@ -50,6 +51,7 @@ class PesananController extends Controller
      */
     public function store(StorePesananRequest $request, int $film_id)
     {
+        // dd($request);
         // $ticket = Ticket::with('film')->where('id',$ticket_id)->first();
         $film = Film::where('id',$film_id)->first();
         $kursi_pesanan = $request->tickets;
@@ -67,11 +69,12 @@ class PesananController extends Controller
 
         foreach ($kursi_pesanan as $data) {
 
-            // if($data->user_id === null){
-            // }else{
-            //     return redirect()->back()->with('error','ticket sudah dibeli');
-
-            // }
+            $status = status_kursi::where('film_id',$film_id)->get();
+            foreach ($status as $st) {
+                if($data === $st->nomor_kursi){
+                    return redirect()->back()->with('error',"Kursi sudah dipesan");
+                }
+            }
 
             $kursi = Kursi::where('ruangan_id',$film->ruangan_id)->where('nomor_kursi',$data)->first();
 
@@ -83,9 +86,6 @@ class PesananController extends Controller
             $status_kursi->ticket_id = $ticket->id;
             $status_kursi->save();
 
-
-
-            $kursi->user_id = $idUser;
             $kursi->ticket_id = null;
             $kursi->save();
         }
@@ -109,7 +109,7 @@ class PesananController extends Controller
                 $pesanan->bank_id = null;
                 $pesanan->ewallet_id = $request->ewalletId;
             }
-            if($request->payment === "bank"){
+            if($request->payment === "atm"){
                 $pesanan->ewallet_id = null;
                 $pesanan->bank_id = $request->bankid;
             }
@@ -143,6 +143,7 @@ class PesananController extends Controller
      */
     public function update(UpdatePesananRequest $request, Pesanan $pesanan)
     {
+        // dd($request);
         $pesanan->load('user','film','ticket');
         $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
         // dd($status_kursi);
@@ -153,10 +154,16 @@ class PesananController extends Controller
             $pesanan->konfirmasi = "ditolak";
             $pesanan->alasan = $request->alasan;
             Mail::to($pesanan->user->email)->send(new ticketCancel($pesanan));
+
+
+            $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
+            foreach($status_kursi as $kursi){
+                $kursi->delete();
+            }
+
         }else{
             return redirect()->back()->with('error','Gagal Konfirmasi Pesanan');
         }
-
         $pesanan->save();
         return redirect()->back()->with('succes','Gagal Konfirmasi Pesanan');
     }

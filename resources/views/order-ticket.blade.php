@@ -60,6 +60,19 @@
   </style>
 
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('error'))
+    <script>
+Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ session('error') }}',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+    // alert("{{ session('error') }}")
+    </script>
+    @endif
 
     <form action="{{ route('create-pesanan',$film->id) }}" method="post" enctype="multipart/form-data">
 
@@ -67,7 +80,7 @@
 
 <!-- Bagian kiri form -->
 <div class="left-form">
- <div class="col-md-6">
+<div class="col-md-6">
 
 
 
@@ -91,6 +104,7 @@
               disabled
             @endif
               @endforeach type="checkbox" name="tickets[]" value="{{ $data->nomor_kursi }}" id="{{ $data->nomor_kursi }}" onchange="updateSelectedSeats(this)" />
+
               <label
 
               class="seat booked"
@@ -118,35 +132,34 @@
 
 {{-- </div><!-- Bagian kanan form --> --}}
 <div class="right-form">
-    <table class="table table-success table-striped overflow-y-scroll">
+    <table class="table table-success table-striped">
         <thead>
-            <tr>
-                <th scope="col">Ruangan</th>
-                <th scope="col">Jam</th>
-                <th scope="col">Harga Tiket</th>
-                <th scope="col">Seat</th>
-            </tr>
+          <tr>
+            <th scope="col">Ruangan</th>
+            <th scope="col">Jam</th>
+            <th scope="col">Harga Tiket</th>
+            <th scope="col">Seat</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>{{ $film->ruangan->nama_ruangan }}</th>
-                <td>{{ date('H:i', strtotime($film->jam_tayang)) }}</td>
-                <td>
-                  <div class="price">
-        <div class="total">
-            <span>Total   <span class="count">0</span></span>
-            <p class="amount">0</p>
-            {{-- <input id="totalHarga" type="hidden" name="totalHarga" value="">
-            <input id="kursiPilihan" type="hidden" name="kursiPilihan" value="kursiPilihan[]"> --}}
-        </div>
-                </td>
-                <td id="daftarkursi">
-                  <ol id="selected-seats"></ol>
-                </td>
-            </tr>
+          <tr>
+            <td>{{ $film->ruangan->nama_ruangan }}</td>
+            <td>{{ date('H:i', strtotime($film->jam_tayang)) }}</td>
+            <td>
+              <div class="price">
+                <div class="total">
+                  <span>Total <span class="count">0</span></span>
+                  <p class="amount">0</p>
+                  {{-- <input id="totalHarga" type="hidden" name="totalHarga" value="">
+                  <input id="kursiPilihan" type="hidden" name="kursiPilihan" value="kursiPilihan[]"> --}}
+                </div>
+            </td>
+            <td id="daftarkursi">
+              <ol id="selected-seats"></ol>
+            </td>
+          </tr>
         </tbody>
-    </table>
-
+      </table>
     <!-- Jarak antara tabel dan dropdown -->
     <div class="spacing"></div>
 
@@ -180,6 +193,7 @@
         </div>
 
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             let seats = document.querySelector(".all-seats");
             // let daftarkursi = document.getElementById('daftarKursi');

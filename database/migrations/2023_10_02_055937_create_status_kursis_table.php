@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('film_id')->constrained()->onDelete('cascade');
             $table->foreignId('kursi_id')->constrained()->onUpdate('cascade');
-            $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
             $table->string('nomor_kursi');
             $table->enum('status_kursi',['tersedia','dipesan'])->default('tersedia');
             $table->timestamps();

@@ -125,7 +125,17 @@
     {{-- Tampilkan nama pengguna di atas profil --}}
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ Auth::user()->profile_image ? asset('path/to/user/profile/' . Auth::user()->profile_image) : asset('path/to/default/profile/image.jpg') }}" alt="Profile Image" class="user-profile-image">
+            <img style="
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 100%;
+                " src="
+                @if (Auth::user()->fotoprofil === "default.jpg")
+                    {{ asset('storage/' . Auth::user()->fotoprofil ) }}
+                @else
+                    {{ asset('storage/profile/' . Auth::user()->fotoprofil ) }}
+                @endif
+            " alt="Profile Image" class="user-profile-image">
         </a>
         <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
             <li class="dropdown-item" style="font-size: 13px; text-transform: capitalize; font-weight: 700">
@@ -171,6 +181,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

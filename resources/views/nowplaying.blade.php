@@ -28,7 +28,7 @@
         <center>
             <br><br>
             <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-start">
 
                 @forelse ( $nowplayings as $np )
                 <div class="col-md-6 mb-3">
