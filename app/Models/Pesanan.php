@@ -20,6 +20,11 @@ class Pesanan extends Model
         return $this->belongsTo(Bank::class);
     }
 
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function ewallet():BelongsTo
     {
         return $this->belongsTo(Ewallet::class);

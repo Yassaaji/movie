@@ -17,9 +17,11 @@ return new class extends Migration
             $table->foreignId('bank_id')->nullable()->constrained();
             $table->foreignId('ewallet_id')->nullable()->constrained();
             $table->foreignId('film_id')->constrained();
+            $table->foreignId('user_id')->constarined();
             $table->integer('totalharga');
             $table->string('bukti_pembayaran')->nullable();
             $table->enum('konfirmasi',['ditolak','menunggu','sukses'])->default('menunggu');
+            $table->string('alasan')->nullable();
             $table->timestamps();
         });
     }

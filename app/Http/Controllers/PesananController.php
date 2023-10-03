@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
+use App\Mail\ticketCancel;
+use App\Mail\ticketSuccess;
 use App\Models\Film;
 use App\Models\Kursi;
 use App\Models\Pesanan;
@@ -11,6 +13,7 @@ use App\Models\status_kursi;
 use App\Models\Ticket;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Stmt\TryCatch;
 use SebastianBergmann\Exporter\Exporter;
 
@@ -52,7 +55,6 @@ class PesananController extends Controller
         $kursi_pesanan = $request->tickets;
         $total_harga = $film->harga * count($kursi_pesanan);
 
-        // dd($request);
 
         $ticket = new Ticket;
         $ticket->user_id = Auth::user()->id;
@@ -94,17 +96,15 @@ class PesananController extends Controller
         $pesanan->ticket_id = $ticket->id;
         $pesanan->totalharga = $total_harga;
         $pesanan->film_id = $film_id;
+        $pesanan->user_id = Auth::user()->id;
         // $pesanan->
         $imgBukti = $request->file('bukti_pembayaran');
-
         if($imgBukti === null){
             $pesanan->bank_id = null;
-
         }else{
             $imgBuktiName = uniqid() . '.' . $imgBukti->getClientOriginalExtension();
             $imgBukti->storeAs('bukti/', $imgBuktiName);
             $pesanan->bukti_pembayaran = $imgBuktiName;
-
             if($request->payment === "ewallet"){
                 $pesanan->bank_id = null;
                 $pesanan->ewallet_id = $request->ewalletId;
@@ -113,8 +113,8 @@ class PesananController extends Controller
                 $pesanan->ewallet_id = null;
                 $pesanan->bank_id = $request->bankid;
             }
-
         }
+        // dd($request);
 
 
         $pesanan->save();
@@ -143,12 +143,16 @@ class PesananController extends Controller
      */
     public function update(UpdatePesananRequest $request, Pesanan $pesanan)
     {
-        // dd($request);
-
+        $pesanan->load('user','film','ticket');
+        $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
+        // dd($status_kursi);
         if($request->status === "sukses"){
             $pesanan->konfirmasi = "sukses";
+            Mail::to($pesanan->user->email)->send(new ticketSuccess($pesanan,$status_kursi));
         }else if($request->status === "ditolak"){
             $pesanan->konfirmasi = "ditolak";
+            $pesanan->alasan = $request->alasan;
+            Mail::to($pesanan->user->email)->send(new ticketCancel($pesanan));
         }else{
             return redirect()->back()->with('error','Gagal Konfirmasi Pesanan');
         }

@@ -57,6 +57,11 @@ class User extends Authenticatable
         });
     }
 
+    public function pesanan():HasMany
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
     public function ticket():HasMany
     {
         return $this->hasMany(Ticket::class);

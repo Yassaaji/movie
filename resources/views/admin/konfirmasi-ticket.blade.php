@@ -1,18 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>History Pesanan</title>
-    <!-- Tambahkan referensi ke CSS Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-
-    <style>
-
-
+<style>
         .card {
             background-color: #000000; /* Ubah warna latar belakang card menjadi navy */
             color: white; /* Ubah warna teks menjadi putih */
@@ -23,7 +12,7 @@
             background-color: rgb(87, 45, 155);
             color: white; /* Ubah warna teks tombol menjadi putih */
         }
-        
+
         /* Gaya untuk tabel */
         .table th,
         .table td {
@@ -65,9 +54,6 @@
 }
 
     </style>
-</head>
-
-<body>
 
     <div class="container">
              <div class="navbar-link-header pt-3 px-5">
@@ -136,20 +122,42 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <button  class="btn" data-bs-toggle="modal" data-bs-target="#konfirmasiModal.{{$pesanan->id}}">Tolak</button>
                                     <form action="{{ route('update_konfirmasi','')}}/{{ $pesanan->id }}" method="post">
-                                        @csrf
-                                        <input id="status" type="hidden" name="status" value="" >
-                                        <button onclick="handleStatus('sukses')" type="submit" class="btn ">Konfirmasi</button>
-                                        <button onclick="handleStatus('ditolak')" type="submit" class="btn ">Gagal</button>
+                                      @csrf
+                                      <button name="status" value="sukses" type="submit" class="btn ">Konfirmasi</button>
+
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="konfirmasiModal.{{$pesanan->id}}" tabindex="-1" aria-labelledby="konfirmasiModalLabel.{{$pesanan->id}}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="konfirmasiModalLabel.{{$pesanan->id}}">Konfirmasi</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <label for="alasan" class="form-control">
+                                                  <span>Berikan Alasanya: </span>
+                                                  <textarea name="alasan" id="alasan" cols="10" rows="10">
+
+                                                  </textarea>
+                                              </label>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                                              <button type="submit" class="btn btn-primary" name="status" value="ditolak">Submit</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </form>
                                 </td>
-
-
                             </tr>
+
+
                                 @empty
 
                                 @endforelse
-
                             <!-- Contoh baris tabel lainnya -->
                         </tbody>
                     </table>
@@ -160,16 +168,12 @@
 </body>
 
 <script>
-    function handleStatus(status){
-        const inpStatus = document.getElementById('status')
-        if(status === "sukses"){
-            inpStatus.value = "sukses"
-        }else{
-            inpStatus.value = "ditolak"
-        }
-    }
+
+
+
+
+
 </script>
 
 
-</html>
 @endsection
