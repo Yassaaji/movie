@@ -119,7 +119,7 @@
         <a class="nav-link active" aria-current="page" href="{{ url('nowplaying') }}">SEDANG TAYANG</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{{ url('comingsoon') }}">SEGERA HADIR</a>
+        <a class="nav-link active" aria-current="page" href="{{ url('comingsoon') }}">SEGERA   HADIR</a>
     </li>
     @if (Auth::check())
     {{-- Tampilkan nama pengguna di atas profil --}}
