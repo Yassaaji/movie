@@ -56,6 +56,8 @@
                 <li class="nav-item">
                   <a href="{{route('admin.index')}}" class="nav-link text-white {{ request()->is('admin') ? 'active' : '' }}" aria-current="page">
                     <i class="bi bi-pie-chart-fill me-2"></i>
+
+                    
                     Dashboard
                   </a>
                 </li>

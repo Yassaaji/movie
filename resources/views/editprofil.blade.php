@@ -11,10 +11,14 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
    <style>
+    body{
+        background-color: #333;
+    }
+
     .icons-container {
         display: flex;
         align-items: center; /* Untuk mengatur vertikal tengah */
-        padding-left: 150px;
+        padding-left: 110px;
 
       }
 
@@ -31,7 +35,7 @@
   padding: 5px 0;
   position: relative;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+ color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
 
@@ -61,6 +65,7 @@ a:hover::before {
         height: 30px;
         margin-right: 10px; /* Jarak antara gambar dan teks */
         margin-bottom: 10px;
+        color: #ffffff;
 
       }
 
@@ -70,6 +75,7 @@ a:hover::before {
         margin-right: 10px;
         padding-left: 20px;
         margin-bottom: 10px;
+        color: #ffffff;
       }
       .text {
          padding-left: 50px;
@@ -80,17 +86,17 @@ a:hover::before {
         flex-direction: row;
         align-items: center;
         border-radius: 20px;
-        padding: 40px; /* Tambahkan padding jika perlu */
-        padding-left:10px;
+        padding: 80px; /* Tambahkan padding jika perlu */
+        padding-left:50px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Efek bayangan untuk tampilan card */
-        height: 400px;
-        width: 1200px
+        height: 350px;
+        width: 900px
       }
 
       .card img {
         border-radius: 80%;
-    width:  150px;
-    height: 150px;
+    width:  120px;
+    height: 120px;
     border-color: solid 4px #ffffff;
     object-fit: cover;
       }
@@ -182,6 +188,7 @@ button {
 			opacity: 0.2;
 			color: white;
 		}
+
 	}
 }
 
@@ -226,17 +233,20 @@ button {
   text-align: center;
   color: white;
 	text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: none;
 }
+
+
+
 
    </style>
 </head>
 <body>
 <br>
 <div class="text">
-<h1>Informasi Pribadi</h1>
+<h1 style="color: #ffffff">Informasi Pribadi</h1>
 <br><br>
-<div class="icons-container mt-7">
+<div class="icons-container mt-7 style="color: #ffffff">
 <a class="nav-link d-flex btt" href="{{ url('/profile') }}">
     <img class="icons"  src="{{ asset('img/Vector.png') }}" alt="vector">
     <h5>Profile</h5>
@@ -326,6 +336,7 @@ text: '{{ $message }}',
                 </div>
             </div>
         </div>
+
 
     </div>
 </div>
