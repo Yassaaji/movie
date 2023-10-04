@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ticket Booking</title>
+    <title>Pesan Tiket</title>
     <!--Google Fonts and Icons-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
@@ -16,6 +18,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 
@@ -38,14 +42,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: rgb(2, 2, 2);
+
     }
 
     .rigth-form{
         height: 100vh;
         max-height: 100vh;
+    background-color: rgb(2, 2, 2);
+    overflow-y: scroll;
 
-        overflow-y: scroll;
-    }
+}        
     .payment-method{
         height: auto;
     }
@@ -57,6 +64,34 @@
         max-height: 100vh;
         overflow: hidden;
     }
+    .table{
+        background-color: rgb(211, 207, 200);
+    
+    }
+    .data{
+        color: white;
+    }
+    .table-title {
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+
+h2 {
+    font-size: 24px; /* Sesuaikan ukuran font judul */
+    margin: 0;
+}
+    .title {
+        margin-bottom: 20px; /* Menambahkan jarak bawah 20px */
+    }
+
+    h3 {
+        margin-bottom: 40px; /* Menambahkan jarak bawah 40px */
+    }
+
   </style>
 
   <body>
@@ -76,11 +111,10 @@ Swal.fire({
     @if (session('success'))
     <script>
 Swal.fire({
-  position: 'center',
-  icon: 'success',
-  title: 'Your work has been saved',
-  showConfirmButton: false,
-  timer: 1500
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ session('success') }}',
+  footer: '<a href="">Why do I have this issue?</a>'
 })
     // alert("{{ session('error') }}")
     </script>
@@ -92,13 +126,14 @@ Swal.fire({
 
 <!-- Bagian kiri form -->
 <div class="left-form">
-<div class="col-md-6">
+ <div class="col-md-6">
 
 
 
-    <div class="title text-center"><img src="{{ asset('img/LOGO.png') }}" width="25px">ovie Flix</div>
+    <div class="title text-center"><img src="{{ asset('img/LOGO.png') }}" width="55px"><h3 class="movie-flix fs-4 text-white">Movie<span style="color: #0007AC;">Flix</span></h3>
+</div>
 
-<h3 class="text-center fw-bold mb-5">ROOM {{ $film->ruangan->nama_ruangan }}</h3>
+<h3 class="text-center fw-bold mb-5">STUDIO {{ $film->ruangan->nama_ruangan }}</h3>
 
           <div class="seats">
             <div class="status">
@@ -116,7 +151,6 @@ Swal.fire({
               disabled
             @endif
               @endforeach type="checkbox" name="tickets[]" value="{{ $data->nomor_kursi }}" id="{{ $data->nomor_kursi }}" onchange="updateSelectedSeats(this)" />
-
               <label
 
               class="seat booked"
@@ -144,34 +178,45 @@ Swal.fire({
 
 {{-- </div><!-- Bagian kanan form --> --}}
 <div class="right-form">
-    <table class="table table-success table-striped">
+     <div class="table-title">
+           <div class="title text-center"><img src="{{ asset('img/LOGO.png') }}" width="35px">
+            Movie Flix</div>
+
+    </div>
+    <table class="table table-dark table-striped overflow-y-scroll">
         <thead>
-          <tr>
-            <th scope="col">Ruangan</th>
-            <th scope="col">Jam</th>
-            <th scope="col">Harga Tiket</th>
-            <th scope="col">Seat</th>
-          </tr>
+    <tr>
+    <th scope="col" style="color: black;"><i class="fas fa-film"></i> Studio</th>
+    <th scope="col" style="color: black;"><i class="far fa-clock"></i> Jam</th>
+    <th scope="col" style="color: black;"><i class="fas fa-ticket-alt"></i> Harga Tiket</th>
+    <th scope="col" style="color: black;"><i class="fas fa-chair"></i> Seat</th>
+</tr>
+
         </thead>
+
+        <div class="data">
         <tbody>
-          <tr>
-            <td>{{ $film->ruangan->nama_ruangan }}</td>
-            <td>{{ date('H:i', strtotime($film->jam_tayang)) }}</td>
-            <td>
-              <div class="price">
-                <div class="total">
-                  <span>Total <span class="count">0</span></span>
-                  <p class="amount">0</p>
-                  {{-- <input id="totalHarga" type="hidden" name="totalHarga" value="">
-                  <input id="kursiPilihan" type="hidden" name="kursiPilihan" value="kursiPilihan[]"> --}}
-                </div>
-            </td>
-            <td id="daftarkursi">
-              <ol id="selected-seats"></ol>
-            </td>
-          </tr>
+            <tr>
+                <th>{{ $film->ruangan->nama_ruangan }}</th>
+                <td>{{ date('H:i', strtotime($film->jam_tayang)) }}</td>
+                <td>
+                  <div class="price">
+        <div class="total">
+            <span>Total   <span class="count">0</span></span>
+            <p class="amount">0</p>
+            {{-- <input id="totalHarga" type="hidden" name="totalHarga" value="">
+            <input id="kursiPilihan" type="hidden" name="kursiPilihan" value="kursiPilihan[]"> --}}
+        </div>
+                </td>
+                <td id="daftarkursi">
+                  <ol id="selected-seats"></ol>
+                </td>
+            </tr>
         </tbody>
-      </table>
+     </div>
+
+    </table> 
+
     <!-- Jarak antara tabel dan dropdown -->
     <div class="spacing"></div>
 
@@ -188,17 +233,17 @@ Swal.fire({
 
   <div class="payment-method d-flex flex-column justify-content-between">
     <label for="payment">Metode Pembayaran:
-    <select id="payment" name="payment" required>
-        <option disabled selected>Pilih</option> <!-- Opsi default -->
-        <option value="atm">Kartu Atm</option>
-        <option value="ewallet">Ewallet</option>
-        <option value="cash">Tunai</option>
-    </select>
+   <select id="payment" name="payment" required>
+            <option>Pilih</option> <!-- Opsi default -->
+            <option value="atm">Kartu Atm 🏧</option> <!-- Add an ATM icon -->
+            <option value="ewallet">Ewallet 💳</option> <!-- Add an E-wallet icon -->
+            <option value="cash">Tunai 💵</option> <!-- Add a Cash icon -->
+        </select>
     <div id="container-payment">
 
     </div>
 </label>
-    <button type="submit" class="input-submit mb-5" style="">Submit</button>
+    <button type="submit" class=" btn btn-dark input-submit mb-5"  style="">Submit</button>
 </div>
 {{-- <button type="submit" class="input-submit" style="width: 90%;">Submit</button> --}}
 
@@ -216,7 +261,6 @@ Swal.fire({
         </div>
 
     </form>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             let seats = document.querySelector(".all-seats");
             // let daftarkursi = document.getElementById('daftarKursi');

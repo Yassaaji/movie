@@ -213,6 +213,19 @@ body {
 
         <!-- Custom JS-->
         <script src="{{ asset('js/custom.js') }}"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Script to show Sweet Alert on successful profile edit -->
+    <script>
+        // Assuming you have a successful profile edit AJAX callback
+        swal({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Berhasil Mengubah Data Profile',
+            showConfirmButton: false,
+            timer: 1500 // The notification will disappear after 1.5 seconds
+        });
+    </script>
     </section>
 
 @endsection
