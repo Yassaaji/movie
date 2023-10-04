@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\profile;
 use App\Http\Requests\StoreprofileRequest;
 use App\Http\Requests\UpdateprofileRequest;
+use App\Models\Kursi;
+use App\Models\Pesanan;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,8 +21,10 @@ class ProfileController extends Controller
         // Ambil pengguna yang sedang login
         $user = Auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
         $data = User::where('id',$user)->get();
-        // dump($profile);
-        return view('profile', compact('data'));
+        $historypesanan = Pesanan::with('film')->where('user_id',$user)->get();
+        $kursiPesanan = Kursi::has('status_kursi')->get();
+        // dd($kursiPesanan);
+        return view('profile', compact('data','historypesanan','kursiPesanan'));
     }
 
     /**

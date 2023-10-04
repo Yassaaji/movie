@@ -234,6 +234,21 @@
             margin-top: 100px;
             justify-content: space-between;
         }
+
+
+        .comment img{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 100%;
+        }
+
+        .komentar-wrapper{
+            padding: 50px;
+            display: flex;
+        }
+
     </style>
 </head>
 @section('content-app')
@@ -264,33 +279,7 @@
     <h2><strong>Ticket dan Jadwal tayang</strong></h2>
     <center>
         <br><br>
-        <div class="container">
-            <div class="d-flex flex-row align-content-between justify-content-between">
-                <div class="col-md-6 mb-3">
-                    <div class="card" style="max-width: 550px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
-                                    class="img-fluid rounded-start" alt="..."
-                                    style="object-fit: cover; height: 100%;">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <br>
-                                    <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
-                                    <p class="card-text text-start">Ruang : {{ $film->ruangan->nama_ruangan }}
-                                        <br>
-                                        Harga : Rp.{{ number_format($film->harga) }}
-                                        <br>
-                                        Jam : {{ date('H:i', strtotime($film->jam_tayang)) }}
-                                    </p>
-                                    <br>
-                                    <center> <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11">Beli Tiket</a></center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div>
                 <!-- Tambahkan card kedua di sini -->
                 <div class="col-md-6 mb-3">
                     <div class="card" style="max-width: 550px;">
@@ -319,18 +308,22 @@
                     </div>
                 </div>
               {{-- Akhir Card perbaris --}}
-<center>
-    <br><br>
-    <div class="container">
-        <div class="row justify-content-center">
-
-
-            <!-- Tambahkan card kedua di sini -->
-
-            {{-- Akhri card perbaris ke 2 --}}
+              </div>
         </div>
-    </div>
-</center>
+        <div>
+            <form action="{{ route('tambahKomentar', '') }}/{{$film->id}}" method="post" class="pt-5">
+                @csrf
+                <label for="">
+                    <h2>Tambah Komentar</h2>
+                    <div class="d-flex gap-4">
+                        <textarea class="form-control" name="komentar" id="komentar" cols="40" rows="1">
+
+                        </textarea>
+                    <button class="btn btn-primary border rounded-pill px-4" type="submit">Send</button>
+                    </div>
+                </label>
+            </form>
+        </div>
 
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

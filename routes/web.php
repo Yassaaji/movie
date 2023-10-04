@@ -16,6 +16,8 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ComingSoonController;
+use App\Http\Controllers\KomentarController;
+
 // Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
 // Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
 /*
@@ -57,6 +59,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
     Route::resource('/profile',ProfileController::class);
     Route::get('/detailfilm/{film}',[FilmController::class,'show'])->name('detailfilm');
+    Route::post('/komentar/{film_id}',[KomentarController::class,'store'])->name('tambahKomentar');
 
 });
 
