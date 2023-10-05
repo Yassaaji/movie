@@ -196,8 +196,7 @@
                     </table>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <a class="page-link" href="{{ route('konfirmasi_ticket', ['page' => $orders->currentPage() - 1]) }}">Previous</a>
-                            <a class="page-link" href="{{ route('konfirmasi_ticket', ['page' => $orders->currentPage() + 1]) }}">Next</a>
+                            {{ $orders->links('pagination::bootstrap-5') }}
                         </ul>
                     </nav>
                 </div>
