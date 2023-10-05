@@ -38,7 +38,7 @@ class FilmController extends Controller
     public function store(StoreFilmRequest $request)
     {
 
-      
+
 
 
         $thumbnile = $request->file('thumbnile');
@@ -158,6 +158,6 @@ class FilmController extends Controller
     {
         Storage::delete('thumbnile/' . $film->thumbnile);
         $film->delete();
-        return back();
+        return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
     }
 }

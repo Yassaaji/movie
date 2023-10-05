@@ -11,6 +11,7 @@ use App\Models\Kursi;
 use App\Models\Pesanan;
 use App\Models\status_kursi;
 use App\Models\Ticket;
+use App\Models\Pendapatan;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -31,8 +32,11 @@ class PesananController extends Controller
         $status_kursi = status_kursi::all();
 
 
+        $orders = Pesanan::paginate(2);
+
+
         // dd($status_kursi);
-        return view('admin.konfirmasi-ticket',compact('orders','status_kursi'));
+        return view('admin.pendapatan',compact('orders','status_kursi'));
     }
 
 
@@ -163,9 +167,12 @@ class PesananController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function konfirmasiTicket()
+    {
+
+        // dd($film);
+        return view('admin.konfirmasi_ticket',compact('pesanan'));
+    }
     public function edit(Pesanan $pesanan)
     {
         //

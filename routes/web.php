@@ -67,7 +67,6 @@ Route::group(['middleware'=>'admin'],function(){
     Route::resource('/admin', AdminController::class);
     Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
     Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarfilm');
-
     Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
     Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prosesEditFilm');
     Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
@@ -125,7 +124,7 @@ Route::group(['middleware'=>'admin'],function(){
 // });
 
 
-// Route::get('/comingsoon', function () {
+// Route::get('/ppp', function () {
 //     return view('comingsoon');
 // });
 

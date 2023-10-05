@@ -1,99 +1,130 @@
 @extends('layouts.admin')
-
 @section('content')
-<style>
-        .card {
-            background-color: #000000; /* Ubah warna latar belakang card menjadi navy */
-            color: white; /* Ubah warna teks menjadi putih */
+
+
+    <style>
+        body {
+            background-color: #06000f;
+            color: white;
         }
 
-        /* Gaya untuk tombol ruangan */
+        .container {
+            display: flex;
+            justify-content: flex-end; /* Mengatur posisi ke kanan */
+        }
+
+        .card {
+            background-color: #000000;
+            color: white;
+        }
+
         .btn-purple {
             background-color: rgb(87, 45, 155);
-            color: white; /* Ubah warna teks tombol menjadi putih */
-        }
-
-        /* Gaya untuk tabel */
-        .table th,
-        .table td {
             color: white;
-            text-align: center; /* Mengatur teks menjadi di tengah */
         }
 
-        /* Gaya untuk tombol di dalam tabel */
+        .table {
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+            border: none;
+        }
+
+        /* Style table header */
+        .table thead tr th {
+            background-color: #010e1b;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Style table rows alternately */
+        .table tbody tr:nth-child(odd) {
+            background-color: #767676; /* Darker background for odd rows */
+            height: 30px;
+        }
+
+        /* Style buttons in table */
         .table .btn {
-            color: white; /* Ubah warna teks tombol menjadi putih */
-            border: none; /* Hapus border tombol */
+            color: white;
+            border: none;
         }
 
-        /* Gaya untuk tabel yang dapat digulir */
-        .fixed-table {
-            max-height: 300px; /* Tentukan tinggi maksimum untuk membuat tabel digulir jika perlu */
-            overflow-y: auto; /* Aktifkan gulir vertikal jika melebihi tinggi maksimum */
-        }
-
+        /* Style image previews */
         .gambar-preview {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
 
-.gambar-preview:hover {
-    transform: scale(1.1);
-}
+        .gambar-preview:hover {
+            transform: scale(1.1);
+        }
 
-.gambar-preview.enlarged {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    width: auto;
-    height: auto;
-    max-width: 90%;
-    max-height: 90%;
-}
+        .gambar-preview.enlarged {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            max-width: 90%;
+            max-height: 90%;
+        }
 
+        .pagination {
+            justify-content: center;
+        }
+
+        .pagination .page-item {
+            margin: 0 5px; /* Jarak antara item pagination */
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007BFF; /* Warna latar belakang item aktif */
+            border-color: #007BFF; /* Warna border item aktif */
+        }
+
+        .pagination .page-link {
+            color: #007BFF; /* Warna teks item pagination */
+        }
+
+        /* Style header text */
+        .header-text {
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 
-    <div class="container">
-             <div class="navbar-link-header pt-3 px-5">
-            <h3>Karyawan</h3>
-            <p>Konfirmasi Ticket</p>
-        </div>
-        <div class="card">
-            <div class="card-header">
-            </div>
-            <div class="card-body">
-                <!-- Tombol Ruangan Teater -->
-                <div class="btn-group mt-3" role="group" aria-label="Ruangan Teater">
-                    <button type="button" class="btn btn-purple mr-3">A</button>
-                    <button type="button" class="btn btn-purple mr-3">B</button>
-                    <button type="button" class="btn btn-purple mr-3">C</button>
-                </div>
+    <div class="container mt-4">
+        <div class="header-text">
 
-                <!-- Tabel dengan gaya Bootstrap -->
-                <div class="table-responsive fixed-table mt-4"> <!-- Tambahkan class .table-responsive -->
-                    <table class="table table-dark">
+        </div>
+    </div>
+
+    <div class="container mt-4 mr-4">
+        <div class="card">
+            <div class="card-body" style="background-color: #000000">
+                <div class="btn-group mt-3" role="group" aria-label="Ruangan Teater">
+                    <button type="button" class="btn btn-purple mr-3" style="background-color: #0f0f0f; color:#fff";><h3>KONFIRMASI TIKET</h3></button>
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table table-dark table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Film</th>
                                 <th scope="col">Jam Tayang</th>
-                                <th scope="col">Ruangan</th>
+                                <th scope="col">Studio</th>
                                 <th scope="col">Kursi</th>
                                 <th scope="col">Metode Pembayaran</th>
                                 <th scope="col">Total Harga</th>
-                                <th>Bukti Pembayaran</th>
+                                <th scope="col">Bukti Pembayaran</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Isi tabel -->
-                            <!-- Contoh baris tabel -->
-                            {{-- @dd($orders) --}}
                             @forelse ( $orders as $i => $pesanan )
                             <tr>
-                                <th scope="row">{{ $i+1 }}</th>
+                                <td scope="row">{{ $i+1 }}</td>
                                 <td>{{ $pesanan->film->judul }}</td>
                                 <td>{{ $pesanan->film->jam_tayang }}</td>
                                 <td>{{ $pesanan->film->ruangan_id }}</td>
@@ -122,58 +153,70 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button  class="btn" data-bs-toggle="modal" data-bs-target="#konfirmasiModal.{{$pesanan->id}}">Tolak</button>
+                                    {{-- <button  class="btn" data-bs-toggle="modal" data-bs-target="#konfirmasiModal.{{$pesanan->id}}">Tolak</button> --}}
                                     <form action="{{ route('update_konfirmasi','')}}/{{ $pesanan->id }}" method="post">
-                                      @csrf
-                                      <button name="status" value="sukses" type="submit" class="btn ">Konfirmasi</button>
+                                        @csrf
+                                        <input id="status" type="hidden" name="status" value="" >
 
-                                      <!-- Modal -->
-                                      <div class="modal fade" id="konfirmasiModal.{{$pesanan->id}}" tabindex="-1" aria-labelledby="konfirmasiModalLabel.{{$pesanan->id}}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="konfirmasiModalLabel.{{$pesanan->id}}">Konfirmasi</h5>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <label for="alasan" class="form-control">
-                                                  <span>Berikan Alasanya: </span>
-                                                  <textarea name="alasan" id="alasan" cols="10" rows="10">
 
-                                                  </textarea>
-                                              </label>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
-                                              <button type="submit" class="btn btn-primary" name="status" value="ditolak">Submit</button>
+                                        <div class="modal fade" id="konfirmasiModal.{{$pesanan->id}}" tabindex="-1" aria-labelledby="konfirmasiModalLabel.{{$pesanan->id}}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="konfirmasiModalLabel.{{$pesanan->id}}">Konfirmasi</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <label for="alasan" class="form-control">
+                                                      <span>Berikan Alasanya: </span>
+                                                      <textarea name="alasan" id="alasan" cols="10" rows="10">
+
+                                                      </textarea>
+                                                  </label>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                                                  <button type="submit" class="btn btn-primary" name="status" value="ditolak">Submit</button>
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </div>
+
+                                        <button onclick="handleStatus('sukses')" type="submit" class="btn btn-success">Konfirmasi</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#konfirmasiModal.{{ $pesanan->id }}">Tolak</button>
+
                                     </form>
+
                                 </td>
                             </tr>
-
-
-                                @empty
-
-                                @endforelse
-                            <!-- Contoh baris tabel lainnya -->
+                            @empty
+                            <!-- Handle empty table -->
+                            @endforelse
                         </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <a class="page-link" href="{{ route('konfirmasi_ticket', ['page' => $orders->currentPage() - 1]) }}">Previous</a>
+                            <a class="page-link" href="{{ route('konfirmasi_ticket', ['page' => $orders->currentPage() + 1]) }}">Next</a>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
 <script>
 
-
+function handleStatus(status){
+        const inpStatus = document.getElementById('status')
+        if(status === "sukses"){
+            inpStatus.value = "sukses"
+        }else{
+            inpStatus.value = "ditolak"
+        }
+    }
 
 
 
 </script>
-
 
 @endsection

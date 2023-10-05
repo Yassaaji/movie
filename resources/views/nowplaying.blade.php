@@ -62,8 +62,6 @@
                 @endforelse
 
 
-                    <!-- Tambahkan card kedua di sini -->
-                         </div>
-                    </div>
+                 
         </center>
         @endsection

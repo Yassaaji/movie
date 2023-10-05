@@ -1,3 +1,4 @@
+{{-- @extends('layouts.app') --}}
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -62,7 +63,7 @@
                     <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
                     <div class="btn-group">
                         @if (Auth::check())
-                        
+
                         @else
                         <a href="{{ route('login') }}" class="btn">Login</a>
                         <a href="{{ route('register') }}" class="btn">Register</a>

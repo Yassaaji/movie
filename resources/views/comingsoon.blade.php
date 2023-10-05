@@ -53,7 +53,7 @@
                                             Tanggal Tayang : 23/09/2023
                                         </p>
                                         <br><br><br><br><br>
-                                        <center> <a href="http://127.0.0.1:8000/detailfilm" class="btn btn-dark col-md-11">Detail Film</a></center>
+                                        <center> <a href="{{ route('detailfilm',$film->id) }}" class="btn btn-dark col-md-11">Detail Film</a></center>
                                     </div>
                                 </div>
                             </div>
