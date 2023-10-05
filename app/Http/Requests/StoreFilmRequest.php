@@ -25,13 +25,13 @@ class StoreFilmRequest extends FormRequest
             'judul'=>'required|string',
             'director'=>'required|string',
             'cast'=> 'required|string',
-            'minimal_usia'=> 'required|integer',
+            'minimal_usia'=> 'required|integer|gt:0',
             'genre' => 'required|string',
             'durasi'=> 'required|string',
             'jadwal_tayang' => 'required',
             'jam_tayang'=> 'required',
             'trailer' => 'required',
-            'sinopsis' => 'required|string',
+            'sinopsis' => 'required|string|max:1000',
             'ruangan' => 'required',
             'status' => 'required',
             'harga' => 'required|integer',
@@ -46,15 +46,16 @@ class StoreFilmRequest extends FormRequest
             'director.required' => 'Director wajib diisi',
             'cast.required' => 'Cast wajib diisi',
             'minimal_usia.required' => 'Minimal usia wajib diisi',
+            'minimal_usia.gt:0' => 'Minimal usia tidak boleh minus',
             'genre.required' => 'Genre wajib diisi',
             'jadwal_tayang.required' => 'jadwal tayang wajib diisi',
             'jam_tayang.required' => 'Jam tayang wajib diisi',
             'trailer.required' => 'Video tailer wajib diisi',
             'sinopsis.required' => 'Sinopsis wajib diisi',
+            'sinopsis.max:1000' => 'Sinopsis maksimal 1000 karakter',
             'ruangan.required' => 'Ruangan wajib diisi',
             'status.required' => 'Status wajib diisi',
             'harga.required' => 'Harga wajib diisi',
-
         ];
     }
 }

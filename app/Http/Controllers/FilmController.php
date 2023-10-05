@@ -6,6 +6,7 @@ use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 use App\Models\Genre;
+use App\Models\Komentar;
 use App\Models\Ruangan;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
@@ -79,7 +80,8 @@ class FilmController extends Controller
     public function show(Film $film)
     {
         $film->load('ruangan','genre');
-        return view('detailfilm',compact('film'));
+        $komentar = Komentar::where('film_id',$film->id)->get();
+        return view('detailfilm',compact('film','komentar'));
     }
 
     /**
@@ -94,8 +96,9 @@ class FilmController extends Controller
     }
 
     public function edit(int $id){
-        $film = Film::where('id',$id)->get()[0];
-        return view('admin.edit-film',compact('film'));
+        $film = Film::with('ruangan','genre')->where('id',$id)->get()[0];
+        $genre=Genre::all();
+        return view('admin.edit-film',compact('film','genre'));
     }
 
 

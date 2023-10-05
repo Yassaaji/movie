@@ -52,7 +52,7 @@
     background-color: rgb(2, 2, 2);
     overflow-y: scroll;
 
-}        
+}
     .payment-method{
         height: auto;
     }
@@ -66,7 +66,7 @@
     }
     .table{
         background-color: rgb(211, 207, 200);
-    
+
     }
     .data{
         color: white;
@@ -216,7 +216,7 @@ Swal.fire({
         </tbody>
      </div>
 
-    </table> 
+    </table>
 
     <!-- Jarak antara tabel dan dropdown -->
     <div class="spacing"></div>

@@ -21,6 +21,9 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body class="overflow-hidden" style="background-image: url('img/guest_login.jpg'); background-size:cover;">
+        @if (session('error'))
+            
+        @endif
         <div>
             <div class="row justify-content-center">
                 <div class="col-md-6">

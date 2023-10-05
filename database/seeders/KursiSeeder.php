@@ -16,7 +16,7 @@ class KursiSeeder extends Seeder
     {
         $rows = ['A', 'B', 'C'];
         $columns = range(1, 8);
-        $ruangId = [2]; // Ganti dengan ID ruang yang sesuai
+        $ruangId = [3]; // Ganti dengan ID ruang yang sesuai
 
         $seats = [];
 

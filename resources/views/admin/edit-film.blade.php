@@ -82,8 +82,16 @@
                             placeholder="Minimal Usia" min="0"  required
                             value="{{ old('minimal_usia') ?? $film->minimal_usia ?? '' }}">
 
-                        <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre"  required
-                            value="{{ old('genre') ?? $film->genre ?? '' }}">
+                            <select name="genre" id="genre" class="input-text" value="{{ old('genre') }}">
+                                <option value="" disabled selected>Genre</option>
+                                @foreach ($genre as $data)
+
+                                <option value="{{ $data->genre }}" @if ( old('genre') === $data->genre || $film->genre->genre === $data->genre )
+                                    selected
+                                @endif>
+                                {{ $data->genre }}</option>
+                                @endforeach
+                            </select>
 
                             {{-- <select name="status" id="status" class="input-text" required value="{{ old('status') ?? $film->status ?? '' }}">
                                 <option value="nowplaying">Now Playing</option>
@@ -123,9 +131,9 @@
                         <label for="ruangan" style="color: #fff">Ruangan:</label> <br>
                         <select name="ruangan" id="ruangan"  required
                             value="{{ old('ruangan') ?? $film->ruangan ?? '' }}" >
-                            <option value="A">Ruang A</option>
-                            <option value="B">Ruang B</option>
-                            <option value="C">Ruang C</option>
+                            <option value="A" @if($film->ruangan->nama_ruangan === "A" ) selected  @endif>Ruang A</option>
+                            <option value="B" @if($film->ruangan->nama_ruangan === "B" ) selected  @endif>Ruang B</option>
+                            <option value="C" @if($film->ruangan->nama_ruangan === "C" ) selected  @endif>Ruang C</option>
                         </select>
                         <br>
                         <label for="jam_tayang" style="color: #fff">Jam Tayang:</label> <br>
@@ -145,7 +153,7 @@
                     <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="input-file" required>
                     <button type="submit" class="input-submit">Upload</button>
                 </div>
-            </center>
+            </center>   
         </form>
     </div>
 </body>

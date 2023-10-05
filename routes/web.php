@@ -59,7 +59,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::put('/edit-profile',[ProfileController::class,'edit'])->name('edit-profile');
     Route::resource('/profile',ProfileController::class);
     Route::get('/detailfilm/{film}',[FilmController::class,'show'])->name('detailfilm');
-    Route::post('/komentar/{film_id}',[KomentarController::class,'store'])->name('tambahKomentar');
+    Route::post('komentar/{film_id}',[KomentarController::class,'store'])->name('tambahKomentar');
+    Route::put('editKomentar/{komentar}',[KomentarController::class,'update'])->name('updateKomentar');
+    Route::delete('hapusKomentar/{komentar}',[KomentarController::class,'destroy'])->name('hapusKomentar');
 
 });
 

@@ -30,13 +30,13 @@ class KomentarController extends Controller
      */
     public function store(StoreKomentarRequest $request , $film_id)
     {
-
-        dd($request);
-
+        // dd($request);
         $komentar = new Komentar;
         $komentar->user_id = Auth::user()->id;
         $komentar->film_id = $film_id;
         $komentar->content = $request->komentar;
+        $komentar->parent_id = $request->komentar_id;
+
 
         try {
             //code...
@@ -46,6 +46,7 @@ class KomentarController extends Controller
             return redirect()->back()->with('error','Gagal mengirim komentar');
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -68,14 +69,44 @@ class KomentarController extends Controller
      */
     public function update(UpdateKomentarRequest $request, Komentar $komentar)
     {
-        //
+        // dd($komentar);
+        $komentar->load('film');
+        $komentar->user_id = Auth::user()->id;
+        $komentar->film_id = $komentar->film->id;
+        $komentar->content = $request->komentar;
+      if($komentar->parent_id == null){
+          $komentar->parent_id = $request->komentar_id;
+      }
+
+
+        try {
+            //code...
+            $komentar->save();
+            return redirect()->back()->with('success','Berhasil mengubah komentar');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error','Gagal mengubah komentar');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Komentar $komentar)
     {
-        //
+
+        // dd($komentar);
+        if($komentar){
+            $childKomentar = Komentar::where('parent_id',$komentar->id)->get();
+
+            // dd($childKomentar);
+            foreach ($childKomentar as $data) {
+                $data->delete();
+            }
+            $komentar->delete();
+            return redirect()->back()->with('berhasil');
+        }else{
+            return redirect()->back()->with('error','Komentar gagal terhapus');
+        }
     }
 }

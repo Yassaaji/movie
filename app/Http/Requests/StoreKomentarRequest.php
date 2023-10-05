@@ -22,18 +22,17 @@ class StoreKomentarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'komentar'=>'required|string|min:5|max:500'
+            'komentar'=>'required|string|min:3|max:500'
         ];
     }
 
-    public function message(): array
+    public function messages(): array
     {
         return [
             'komentar.required' => "Komentar harus diisi",
             'komentar.string' => "Komentar harus berupa string",
-            'komentar.min:5' => "Komentar minimal 5 karakter",
+            'komentar.min:3' => "Komentar minimal 3 karakter",
             'komentar.max:500' => "Komentar melebihi batas maksimal",
-
         ];
     }
 }

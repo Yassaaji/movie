@@ -86,7 +86,7 @@
 </style>
 <body>
     <!-- PAGE LOADER : PLACE RIGHT AFTER BODY TAG -->
-<div class="page-loader">
+<div class="page-loader" id="page">
 	<div class="spinner"></div>
 	<div class="txt">MOVIE<br>FLIXX</div>
 </div>
@@ -95,7 +95,8 @@
     $(window).on('load',function(){
 	setTimeout(function(){ // allowing 3 secs to fade out loader
 	$('.page-loader').fadeOut('slow');
-	},1100);
+    // document.getElementById('page').style.display = 'none';
+	},1000);
 });
 </script>
 </body>

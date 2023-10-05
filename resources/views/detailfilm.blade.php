@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 {{-- @dd($film) --}}
-
-<head>
-    <title>Film Detail</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ URL::asset('css/detailfilm.css') }}">
+@section('content-app')
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -129,14 +122,13 @@
         /* END HOME */
 
         .image {
-            flex: 1;
             text-align: right;
             color: rgb(0, 0, 0);
-            margin-top: 0;
+
         }
 
         .image img {
-            max-width: 100%;
+            width: 250px;
             height: auto;
             border-radius: 25px;
         }
@@ -249,22 +241,23 @@
         }
 
     </style>
-</head>
-@section('content-app')
-<br><br><br>
-<h1><strong>{{ $film->judul }}</strong></h1>
-<div class="container jumbotron">
+<div class="p-4">
+
+    <h1><strong>{{ $film->judul }}</strong></h1>
+    <div class="container jumbotron p-3">
     <div class="content">
         <div class="image">
-            <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="Film" height="150px" width="230px">
+            <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="Film">
         </div>
         <div class="data">
             <p style="margin-bottom: 25px;"><strong>Director :</strong> {{ $film->director }}</p>
             <p style="margin-bottom: 25px;"><strong>Casts :</strong> {{ $film->cast }}</p>
             <p style="margin-bottom: 25px;"><strong>Duration :</strong> {{ $film->durasi }} Menit</p>
             <p style="margin-bottom: 25px;"><strong>Min Usia :</strong> {{ $film->minimal_usia }}+</p>
-            <p style="margin-bottom: 25px;"><strong>Genre :</strong> {{ $film->genre }}</p>
+            <p style="margin-bottom: 25px;"><strong>Genre :</strong> {{ $film->genre->genre }}</p>
             <p style="margin-bottom: 25px;"><strong>Jadwal Tayang :</strong> {{ $film->jadwal_tayang }}</p>
+            <p style="margin-bottom: 25px;"><strong>Jam Tayang :</strong> {{ date('H:i', strtotime($film->jam_tayang)) }}</p>
+            <p style="margin-bottom: 25px;"><strong>Harga ticket :</strong>  Rp.{{ number_format($film->harga) }}</p>
         </div>
 
     </div>
@@ -272,59 +265,311 @@
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
         <p style="width:90%;">{{ $film->sinopsis }}</p>
+        <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
     </div>
 </div>
-<br><br>
-    <h2><strong>Ticket dan Jadwal tayang</strong></h2>
-    <center>
-        <br><br>
-            <div>
-                <!-- Tambahkan card kedua di sini -->
-                <div class="col-md-6 mb-3">
-                    <div class="card" style="max-width: 550px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
-                                    class="img-fluid rounded-start" alt="..."
-                                    style="object-fit: cover; height: 100%;">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <br>
-                                    <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
-                                    <p class="card-text text-start">Ruang : {{ $film->ruangan->nama_ruangan }}
-                                        <br>
-                                        Harga : Rp.{{ number_format($film->harga) }}
-                                        <br>
-                                        Jam : {{ date('H:i', strtotime($film->jam_tayang)) }}
-                                    </p>
-                                    <br>
-                                    <center> <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11">Beli Tiket</a></center>
-                                    {{-- <center> <a href="{{ route('tiket.show',$ticket->id) }}" class="btn btn-dark col-md-11">Beli Tiket</a></center> --}}
+<div class="d-flex flex-column align-items-center">
+    <div class="container-fluid">
+        <div class="row p-5 w-100">
+            <label for="" class="fs-5 fw-semibold text-dark mb-0">Komentar</label>
+            <div class="col ">
+                @error('komentar')
+                   <script>
+                    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '{{ $message }}',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+                   </script>
+                @enderror
+                <form action="{{ route('tambahKomentar',$film->id) }}" method="post">
+                    @csrf
+                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" autofocus></textarea>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
+                        Send
+                    </button>
+                </div>
+                </form>
+            </div>
+            <div class="container">
+
+            </div>
+            <label for="" class="fs-5 fw-semibold text-dark mb-0">List Komentar</label>
+            <div class="col">
+                @forelse ( $komentar as $data )
+
+                <div id="dark-header-modal{{ $data->id }}" class="modal fade " tabindex="-1" aria-labelledby="dark-header-modalLabel" aria-modal="true" role="dialog" style="display: none;">
+                    <form action="{{ route('updateKomentar',$data->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header modal-colored-header bg-dark">
+                          <h4 class="modal-title text-white" id="dark-header-modalLabel">
+                            Edit Komentar
+                          </h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col ">
+                                @error('komentar')
+                                    <p>{{ $message }}</p>
+                                @enderror
+
+                                    @csrf
+                                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" autofocus>{{ $data->content }}</textarea>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                            Close
+                          </button>
+                          <button type="submit" class="btn btn-dark">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </form>
+                  </div>
+
+
+                @if ($data->parent_id === null)
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-header gap-2">
+                            <div class="">
+                                @if ($data->user->fotoprofil === "default.jpg")
+                                <img src="{{ asset('storage/' . $data->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
+                                @else
+                                <img src="{{ asset('storage/profile/' . $data->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
+                                @endif
+                            </div>
+                            <div class="w-100">
+                                <div class="d-flex justify-content-header gap-5 mb-0">
+                                    <div class="mb-0">
+                                        <p class="mb-0">
+                                            {{ $data->user->name }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <p>
+                                        {{ $data->content }}
+                                    </p>
+                                </div>
+                                <div id="{{ $data->id }}" class="d-none col w-100">
+                                    @forelse ( $komentar as $reply )
+                                        @if ($data->id === $reply->parent_id)
+
+                                        <div id="dark-header-modal{{ $reply->id }}" class="modal fade " tabindex="-1" aria-labelledby="dark-header-modalLabel" aria-modal="true" role="dialog" style="display: none;">
+                                            <form action="{{ route('updateKomentar',$reply->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                              <div class="modal-content">
+                                                <div class="modal-header modal-colored-header bg-dark">
+                                                  <h4 class="modal-title text-white" id="dark-header-modalLabel">
+                                                    Edit Komentar
+                                                  </h4>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col ">
+                                                        @error('komentar')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
+
+                                                            @csrf
+                                                            <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" autofocus>{{ $reply->content }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                                                    Close
+                                                  </button>
+                                                  <button type="submit" class="btn btn-dark">
+                                                    Save changes
+                                                  </button>
+                                                </div>
+                                              </div>
+                                              <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </form>
+                                          </div>
+
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-header gap-2">
+                                                <div class="">
+                                                    @if (($reply->user->fotoprofil === "default.jpg"))
+                                                    <img src="{{ asset('storage/' . $reply->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
+                                                    @else
+                                                    <img src="{{ asset('storage/profile/' . $reply->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
+                                                    @endif
+                                                </div>
+                                                <div class="">
+                                                    <div class="d-flex justify-content-header gap-5 mb-0">
+                                                        <div class="mb-0">
+                                                            <p class="mb-0">
+                                                                {{ $reply->user->name }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <p>
+                                                            {{ $reply->content }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                @if ($reply->user_id === Auth::user()->id)
+                                                <div class="">
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$reply->id}}" style="">
+                                                        <li>
+                                                            <button type="button" class="border-0 bg-transparent w-full" data-bs-toggle="modal" data-bs-target="#dark-header-modal{{ $reply->id }}">
+                                                                Edit
+                                                            </button>
+                                                        </li>
+                                                        <li>
+                                                            <form action="{{ route('hapusKomentar',$reply->id) }}" method="post" >
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            <button onclick="confirmDelete(event)"  class="border-0 bg-transparent w-full btn-delete">
+                                                                Hapus
+                                                            </button>
+                                                            </form>
+                                                        </li>
+                                                      </ul>
+
+                                                    <button class="border-0" type="button" id="dropdownMenuButton{{ $reply->id }}" data-bs-toggle="dropdown" aria-expanded="false" >
+                                                        <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" stroke="#000000" stroke-width="1.5" d="M12 5.25a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Zm0 6a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Zm0 6a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Z"/></svg>
+                                                    </button>
+                                                </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endif
+                                    @empty
+                                            <p>Belum ada komentar</p>
+                                    @endforelse
+                                    <div class="w-100">
+                                        @error('komentar')
+                                            <p>{{ $message }}</p>
+                                        @enderror
+                                        <form action="{{ route('tambahKomentar',$film->id) }}" method="post" class="d-flex flex-row gap-2 w-8 align-content-center justify-content-center">
+                                            @csrf
+                                            <input name="komentar" class="form-control" id="" rows="2" placeholder="Masukkan komentar anda" autofocus/>
+                                            <button type="submit" name="komentar_id" value="{{ $data->id }}" class="justify-content-center btn btn-rounded btn-dark d-flex align-items-center">
+                                                Send
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button class="btn btn-light-primary rounded-3" onclick="reply('{{$data->id}}')">
+                                    Lihat komentar
+                                </button>
+                            </div>
+                            @if ($data->user_id === Auth::user()->id)
+                            <div class="">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$data->id}}" style="">
+                                    <li>
+                                        <button type="button" class="border-0 bg-transparent w-full" data-bs-toggle="modal" data-bs-target="#dark-header-modal{{ $data->id }}">
+                                            Edit
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('hapusKomentar',$data->id) }}" method="post" >
+                                            @csrf
+                                            @method('DELETE')
+                                        <button onclick="confirmDelete(event)"  class="border-0 bg-transparent w-full btn-delete">
+                                            Hapus
+                                        </button>
+                                        </form>
+                                    </li>
+                                  </ul>
+
+                                <button class="border-0" type="button" id="dropdownMenuButton{{ $data->id }}" data-bs-toggle="dropdown" aria-expanded="false" >
+                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" stroke="#000000" stroke-width="1.5" d="M12 5.25a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Zm0 6a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Zm0 6a.75.75 0 1 1 0 1.5a.75.75 0 0 1 0-1.5Z"/></svg>
+                                </button>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-              {{-- Akhir Card perbaris --}}
-              </div>
+                @endif
+                @empty
+                <p>Belum ada komentar</p>
+                @endforelse
         </div>
-        <div>
-            <form action="{{ route('tambahKomentar', '') }}/{{$film->id}}" method="post" class="pt-5">
-                @csrf
-                <label for="">
-                    <h2>Tambah Komentar</h2>
-                    <div class="d-flex gap-4">
-                        <textarea class="form-control" name="komentar" id="komentar" cols="40" rows="1">
+    </div>
+</div>
 
-                        </textarea>
-                    <button class="btn btn-primary border rounded-pill px-4" type="submit">Send</button>
-                    </div>
-                </label>
-            </form>
-        </div>
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+<script>
+    function confirmDelete(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Konfirmasi',
+            text: 'Apakah Anda yakin ingin menghapus komentar ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.closest('form').submit();
+            }
+        });
+    }
+
+                function reply(id){
+                    let btn = false;
+
+                    if(!btn){
+                        const reply = document.getElementById(id);
+                        reply.classList.toggle('d-none');
+                        btn = !btn
+                    }
+                }
+
+    // $(document).ready(()=>{
+    //     $('.btn-delete').click(function(e){
+    //         e.preventDefault();
+
+    //         var komentar = $(this).data('id');
+    //         var button = $(this)
+
+    //         $.ajax({
+    //             url: '/hapusKomentar/' + komentar,
+    //             type: 'DELETE',
+    //             headers:{
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             },
+    //             success: function(res){
+    //                 alert('berhasil')
+
+    //                 button.closest('').remove()
+    //             }
+
+    //              error: function(xhr) {
+    //                 // Tampilkan pesan error atau lakukan penanganan error
+    //                 console.log(xhr.responseText);
+    //             }
+
+    //         })
+    //     })
+    // })
+
+
                     </script>
+
+
+
 @endsection
