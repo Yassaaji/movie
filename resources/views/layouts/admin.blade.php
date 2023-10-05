@@ -50,49 +50,30 @@
               <a class="bg-dark btn" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right text-white fs-4"></i></a>
             </div>
 
-            <hr style="color: #f4f4f4;">
-            <div class="mb-2">
-              <ul class="nav nav-pills flex-column mb-2">
-                <li class="nav-item">
-                  <a href="{{route('admin.index')}}" class="nav-link text-white {{ request()->is('admin') ? 'active' : '' }}" aria-current="page">
-                    <i class="bi bi-pie-chart-fill me-2"></i>
+<hr style="color: #f4f4f4;">
+<div class="mb-2">
+  <ul class="nav nav-pills flex-column mb-2">
+    <li class="nav-item">
+      <a href="{{route('admin.index')}}" class="nav-link text-white {{ request()->is('admin') ? 'active' : '' }}" aria-current="page">
+        <i class="bi bi-pie-chart-fill me-2"></i> Dashboard 
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a href="{{ url('daftarfilm') }}" class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('daftarfilm') ? 'active' : '' }}">
+        <i class="bi bi-camera-video-fill"></i> Daftar Film
+      </a>
+    </li>
 
-                    
-                    Dashboard
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="dropdown">
-              <ul class="list-unstyled ps-0 mb-3 rounded" style="background-color: #00284D;">
-                <li class="mb-1">
-                  <button class="btn text-uppercase w-100 btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#tiket-online-collapse" aria-expanded="true">
-                    <i class="bi bi-ticket-detailed-fill me-2"></i> Tiket Online
-                  </button>
-                  <div class="collapse" id="tiket-online-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1  justify-content-center px-3">
-                      <li><a href="/konfirmasi-ticket" class="text-white text-decoration-none rounded me-2 nav-link {{ request()->is('admin') ? 'active' : '' }}"><i class="bi bi-ui-radios"></i> Proses Konfirmasi Tiket Online</a></li>
-                      <li><a href="{{ url('#') }}" class="text-white text-decoration-none rounded me-2 nav-link"><i class="bi bi-database"></i> Data Tiket Online</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
+    <li class="nav-item">
+      <a href="/konfirmasi_ticket" class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('konfirmasi_ticket') ? 'active' : '' }}">
+        <i class="bi bi-ui-radios"></i> Proses Konfirmasi Tiket Online
+      </a>
+    </li>
+  </ul>
+</div>
+<hr>
 
-              <ul class="list-unstyled ps-0 mb-3 rounded" style="background-color: #00284D;">
-                <li class="mb-1">
-                  <button class="btn text-uppercase w-100 btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#film" aria-expanded="true">
-                    <i class="bi bi-film me-2"></i> Film
-                  </button>
-                  <div class="collapse" id="film">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1  justify-content-center px-3">
-                      <li><a href="{{ url('daftarcomingsoon') }}" class="text-white text-decoration-none rounded me-2"><i class="bi bi-megaphone"></i> Coming Soon</a></li>
-                      <li><a href="{{ url('daftarfilm') }}" class="text-white text-decoration-none rounded me-2"><i class="bi bi-camera-video-fill"></i> Now Playing</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <hr>
         </div>
 
         <main>

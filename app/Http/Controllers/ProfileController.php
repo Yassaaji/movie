@@ -81,7 +81,7 @@ class ProfileController extends Controller
             $user->fotoprofil = $fotoProfileName;
         }
         $user->save();
-        return redirect()->route('profile.index')->with('success','foto profile berhasil diupdate');
+        return redirect()->route('profile.index')->with('success','profile berhasil diupdate');
     }
 
     /**

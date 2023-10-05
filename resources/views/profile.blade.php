@@ -171,35 +171,19 @@ body {
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ( $historypesanan as $i => $pesanan )
                                 <tr>
-                                    <th scope="row" class="text-center">{{$i+1}}</th>
-                                    <td class="text-center">{{ $pesanan->film->judul }}</td>
-                                    <td class="text-center">{{ $pesanan->film->jam_tayang }}</td>
-                                    <td class="text-center">{{ $pesanan->film->ruangan_id }}</td>
-                                    <td clsdd="text-center">
-                                        <ol>
-                                        @foreach ( $kursiPesanan as $kursi )
-                                            <li>{{ $kursi->nomor_kursi }}</li>
-                                        @endforeach
-                                        </ol>
-                                    </td>
-                                    @if ($pesanan->bank_id === null && $pesanan->ewallet_id === null)
-                                    <td class="text-center">Cash</td>
-                                @elseif ($pesanan->bank_id === null)
-                                    <td class="text-center">{{ $pesanan->ewallet->ewallet }}</td>
-                                @else
-                                    <td class="text-center">{{ $pesanan->Bank->bank }}</td>
-                                @endif
-
-                                    <td class="text-center">{{$pesanan->totalharga}}</td>
+                                    <th scope="row" class="text-center">1</th>
+                                    <td class="text-center">Kakak ku ternyata manusia</td>
+                                    <td class="text-center">16.30</td>
+                                    <td class="text-center">B</td>
+                                    <td class="text-center">2B</td>
+                                    <td class="text-center">ngutang</td>
+                                    <td class="text-center">35.000</td>
                                    <td class="text-center">
-                            <span class="badge badge-secondary">{{ $pesanan->konfirmasi }}</span>
-                                    </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
+                            <span class="badge badge-secondary">Gagal</span>
+                            <span class="badge badge-secondary">Menunggu konfirmasi</span>
+                        </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                     <br><br><br>
@@ -212,20 +196,15 @@ body {
           </nav> --}}
 
         <!-- Custom JS-->
-        <script src="{{ asset('js/custom.js') }}"></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content here, including CSS links and other meta tags -->
+</head>
+<body>
+</body>
+</html>
 
-    <!-- Script to show Sweet Alert on successful profile edit -->
-    <script>
-        // Assuming you have a successful profile edit AJAX callback
-        swal({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Berhasil Mengubah Data Profile',
-            showConfirmButton: false,
-            timer: 1500 // The notification will disappear after 1.5 seconds
-        });
-    </script>
     </section>
 
 @endsection

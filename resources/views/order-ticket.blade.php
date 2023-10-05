@@ -103,7 +103,6 @@ Swal.fire({
   icon: 'error',
   title: 'Oops...',
   text: '{{ session('error') }}',
-  footer: '<a href="">Why do I have this issue?</a>'
 })
     // alert("{{ session('error') }}")
     </script>
@@ -111,10 +110,9 @@ Swal.fire({
     @if (session('success'))
     <script>
 Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
+  icon: 'success',
+  title: 'Berhasil',
   text: '{{ session('success') }}',
-  footer: '<a href="">Why do I have this issue?</a>'
 })
     // alert("{{ session('error') }}")
     </script>
@@ -179,17 +177,20 @@ Swal.fire({
 {{-- </div><!-- Bagian kanan form --> --}}
 <div class="right-form">
      <div class="table-title">
-           <div class="title text-center"><img src="{{ asset('img/LOGO.png') }}" width="35px">
-            Movie Flix</div>
+        <div class="title text-center">
+    <img src="{{ asset('img/LOGO.png') }}" width="35px">
+    <span class="movie-flix fs-4 text-black">Movie<span style="color: #0007AC;">Flix</span>
+</div>
+
 
     </div>
-    <table class="table table-dark table-striped overflow-y-scroll">
+    <table class="table table-dark table-striped overflow-y-scroll" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.836);">
         <thead>
     <tr>
     <th scope="col" style="color: black;"><i class="fas fa-film"></i> Studio</th>
     <th scope="col" style="color: black;"><i class="far fa-clock"></i> Jam</th>
     <th scope="col" style="color: black;"><i class="fas fa-ticket-alt"></i> Harga Tiket</th>
-    <th scope="col" style="color: black;"><i class="fas fa-chair"></i> Seat</th>
+    <th scope="col" style="color: black;"><i class="fas fa-chair"></i> Kursi</th>
 </tr>
 
         </thead>
@@ -230,6 +231,7 @@ Swal.fire({
 })
       </script>
     @enderror
+
 
   <div class="payment-method d-flex flex-column justify-content-between">
     <label for="payment">Metode Pembayaran:
@@ -352,9 +354,14 @@ Swal.fire({
                     PaymentAtmBody.innerHTML = ""
                     if(metode === "bri"){
                      PaymentAtmBody.innerHTML = `
-                        <div>
-                            <h3>BRI</h3>
-                            <p>{{ $bank[0]->bank }} {{ $bank[0]->nomor_rekening }}</p>
+    <h3>
+    <img src="{{ asset('img/bank/bri.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h3>
+
+<h2><p>{{ $bank[0]->bank }} {{ $bank[0]->nomor_rekening }}</p>
+</h2>
+
                             <label for="Bukti">Bukti Pembayaran</label>
                             <input value="{{ $bank[0]->id }}" name='bankid'  type="hidden" />
                             <input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
@@ -363,10 +370,14 @@ Swal.fire({
                     }
                     if(metode === "bca"){
                      PaymentAtmBody.innerHTML = `
-                     <div>
-                            <h3>BCA</h3>
-                            <p>{{ $bank[1]->bank }} {{ $bank[1]->nomor_rekening }}</p>
-                            <label for="Bukti">Bukti Pembayaran</label>
+   <h3>
+    <img src="{{ asset('img/bank/bca.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h3>
+
+<h2><p>{{ $bank[1]->bank }} {{ $bank[1]->nomor_rekening }}</p>
+</h2>
+                           
                             <input value="{{ $bank[1]->id }}" name='bankid'  type="hidden" />
                             <input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
                         </div>
@@ -374,13 +385,19 @@ Swal.fire({
                     }
                     if(metode === "mandiri"){
                      PaymentAtmBody.innerHTML = `
-                     <div>
-                            <h3>MANDIRI</h3>
-                            <p>{{ $bank[2]->bank }} {{ $bank[2]->nomor_rekening }}</p>
-                            <label for="Bukti">Bukti Pembayaran</label>
-                            <input value="{{ $bank[2]->id }}" name='bankid'  type="hidden" />
-                            <input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
-                        </div>
+                     
+                    <div>
+  <h3>
+    <img src="{{ asset('img/bank/mandiri.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h3>
+
+       <h2><p>{{ $bank[2]->bank }} {{ $bank[2]->nomor_rekening }}</p></h2>
+    <label for="Bukti">Bukti Pembayaran</label>
+    <input value="{{ $bank[2]->id }}" name='bankid'  type="hidden" />
+    <input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
+</div>
+
                      `
                     }
                     if(metode === "dana"){
@@ -388,7 +405,11 @@ Swal.fire({
                      <div class="container">
     <div class="card">
         <div class="card-body">
-            <h3>Dana</h3>
+       <h3>
+    <img src="{{ asset('img/bank/dana.png') }}" alt="DANA Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h3>
+
             <div class="text-center">
                 <img width="300" height="300" class="img-thumbnail" src="{{ asset('storage/qrcode/' . $ewallets[0]->qrcode) }}" alt="QR Code" />
             </div>
@@ -407,8 +428,10 @@ Swal.fire({
                      <div class="container">
     <div class="card">
         <div class="card-body">
-            <h3>Paypal</h3>
-            <div class="text-center">
+    <h2>
+    <img src="{{ asset('img/bank/paypal2.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h2>            <div class="text-center">
                 <img width="300" height="300" class="img-thumbnail" src="{{ asset('storage/qrcode/' . $ewallets[1]->qrcode) }}" alt="QR Code" />
             </div>
             <br>
@@ -426,8 +449,10 @@ Swal.fire({
                      <div class="container">
     <div class="card">
         <div class="card-body">
-            <h3>Gopay</h3>
-            <div class="text-center">
+ <h2>
+    <img src="{{ asset('img/bank/gopay.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">
+    <span style="display: inline-block; vertical-align: middle;"></span>
+</h2>            <div class="text-center">
                 <img width="300" height="300" class="img-thumbnail" src="{{ asset('storage/qrcode/' . $ewallets[2]->qrcode) }}" alt="QR Code" />
             </div>
             <br>

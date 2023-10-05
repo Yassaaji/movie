@@ -329,9 +329,10 @@ text: '{{ $message }}',
 
 
                             <div class="d-flex justify-content-center" style="width:100%">
-                                <button type="submit" style="margin-left: 62%; margin-bottom: 3%" name="simpan" value="Edit" class="btn btn-dark mx-111 signature">Edite</button>
+                                <button type="submit" style="margin-left: 62%; margin-bottom: 3%" name="simpan" value="Edit"
+                                 class="btn btn-dark mx-111 signature" onclick="edit(event)">Edit</button>
                             </div>
-                        </div>
+                            
                     </form>
                 </div>
             </div>
@@ -342,6 +343,22 @@ text: '{{ $message }}',
 </div>
 </div>
 </body>
+<script>
+    function edit(event) {
+        event.preventDefault(); // Prevent form submission
+        Swal.fire({
+            title: 'Apakah anda yakin ingin mengedit Profile?',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yakin Edit!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms, submit the form
+                event.target.closest('form').submit();
+            }
+        });
+    }
+</script>
 </html>
-
-\
