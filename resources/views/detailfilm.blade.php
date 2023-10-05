@@ -141,7 +141,6 @@
             border-radius: 25px;
         }
 
-
         .data {
     flex: 1;
     display: flex;
@@ -253,7 +252,7 @@
 </head>
 @section('content-app')
 <br><br><br>
-<h1><strong>Spiderman VS Everybody</strong></h1>
+<h1><strong>{{ $film->judul }}</strong></h1>
 <div class="container jumbotron">
     <div class="content">
         <div class="image">
