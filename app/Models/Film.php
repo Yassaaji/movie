@@ -35,4 +35,9 @@ class Film extends Model
         return $this->hasMany(status_kursi::class);
     }
 
+    public function genre():BelongsTo
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
 }

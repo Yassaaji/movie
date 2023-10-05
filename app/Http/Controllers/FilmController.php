@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
+use App\Models\Genre;
 use App\Models\Ruangan;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,9 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return view('admin.create-film');
+        $genre = Genre::all();
+        // dd($genre);
+        return view('admin.create-film',compact('genre'));
     }
 
     /**
@@ -50,7 +53,7 @@ class FilmController extends Controller
         $film->director = $request->director;
         $film->cast = $request->cast;
         $film->minimal_usia =  $request->minimal_usia;
-        $film->genre = $request->genre;
+        $film->genre_id = $request->genre;
         $film->durasi = $request->durasi;
         $film->jadwal_tayang = $request->jadwal_tayang;
         $film->jam_tayang = $request->jam_tayang;
@@ -75,7 +78,7 @@ class FilmController extends Controller
     // dd($film);
     public function show(Film $film)
     {
-        $film->load('ruangan');
+        $film->load('ruangan','genre');
         return view('detailfilm',compact('film'));
     }
 
@@ -84,9 +87,9 @@ class FilmController extends Controller
      */
     public function daftarFilm()
     {
-        $films = Film::all();
+        $films = Film::with('genre')->get();
         $films = Film::paginate(2);
-        // dd($film);
+        // dd($films);
         return view('admin.daftarfilm',compact('films'));
     }
 

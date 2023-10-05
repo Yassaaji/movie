@@ -82,7 +82,7 @@ class RegisterController extends Controller
         $credentials = $request->only('email,password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('login')->with('message','Kamu Berhasil Registrasi');
+        return redirect()->route('login')->with('success','Kamu Berhasil Registrasi');
 
     }
 

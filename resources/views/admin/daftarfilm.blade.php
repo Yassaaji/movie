@@ -184,7 +184,7 @@
                                         <td>{{ $film->director }}</td>
                                         <td>{{ $film->cast }}</td>
                                         <td>{{ $film->minimal_usia }}</td>
-                                        <td>{{ $film->genre }}</td>
+                                        <td>{{ $film->genre->genre }}</td>
                                         <td>{{ $film->durasi }}</td>
                                         <td>{{ $film->jadwal_tayang }}</td>
                                         <td>

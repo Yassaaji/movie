@@ -42,12 +42,17 @@
                             @error('minimal_usia')
                             <p class="text-danger">{{ $message}}</p>
                         @enderror
-                        <input type="text" id="genre" name="genre" class="input-text" placeholder="Genre" value="{{ old('genre') }}">
+                        <select name="genre" id="genre" class="input-text" value="{{ old('genre') }}">
+                            <option value="" disabled selected>Genre</option>
+                            @foreach ($genre as $data)
+                            <option value="{{ $data->id }}">{{ $data->genre }}</option>
+                            @endforeach
+                        </select>
                         @error('genre')
                         <p class="text-danger">{{ $message}}</p>
                     @enderror
                         <select name="status" id="status" class="input-text" value="{{ old('status') }}">
-                            <option value="" disabled selected>Pilih</option>
+                            <option value="" disabled selected>Status</option>
                             <option value="nowplaying">Now Playing</option>
                             <option value="commingsoon">Coming Soon</option>
                         </select>

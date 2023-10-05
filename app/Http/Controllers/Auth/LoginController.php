@@ -64,6 +64,7 @@ class LoginController extends Controller
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
+        return redirect()->intended('nowplaying')->with('success', 'anda berhasil login!');
         $user = Auth::user();
 
         if ($user->role === 'admin') {

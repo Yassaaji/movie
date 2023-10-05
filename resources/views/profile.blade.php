@@ -42,6 +42,10 @@ body {
         border-collapse: collapse;
         border-spacing: 0;
     }
+    .table {
+    margin-top: 20px; /* Anda bisa mengurangi atau meningkatkan nilai ini sesuai kebutuhan */
+
+}
 
     .table th,
     .table td {
@@ -149,7 +153,7 @@ body {
                  </div>
            </div>
            <body>
-            <div class="container">
+            <div class="container mb-5">
                 <div class="card">
                     <div class="card-header">
                         <center>
@@ -188,12 +192,14 @@ body {
                                     </table>
                                     <br><br><br>
         </div>
-        {{-- <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() - 1]) }}">Previous</a>
-                <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() + 1]) }}">Next</a>
+                {{-- <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() - 1]) }}">Previous</a>
+                <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() + 1]) }}">Next</a> --}}
+
+                {{ $data->links() }}
             </ul>
-          </nav> --}}
+          </nav>
 
         <!-- Custom JS-->
     <!DOCTYPE html>

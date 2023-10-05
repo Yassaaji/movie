@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         // Ambil pengguna yang sedang login
         $user = Auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
-        $data = User::where('id',$user)->get();
+        $data = User::where('id',$user)->paginate(1);
         $historypesanan = Pesanan::with('film')->where('user_id',$user)->get();
         $kursiPesanan = Kursi::has('status_kursi')->get();
         // dd($kursiPesanan);
@@ -51,6 +51,11 @@ class ProfileController extends Controller
 
     }
 
+    public function profile()
+    {
+        $data = user::all();
+        $data = user::paginate(2);
+    }
     /**
      * Show the form for editing the specified resource.
      */

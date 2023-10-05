@@ -55,10 +55,10 @@
   <ul class="nav nav-pills flex-column mb-2">
     <li class="nav-item">
       <a href="{{route('admin.index')}}" class="nav-link text-white {{ request()->is('admin') ? 'active' : '' }}" aria-current="page">
-        <i class="bi bi-pie-chart-fill me-2"></i> Dashboard 
+        <i class="bi bi-pie-chart-fill me-2"></i> Dashboard
       </a>
     </li>
-    
+
     <li class="nav-item">
       <a href="{{ url('daftarfilm') }}" class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('daftarfilm') ? 'active' : '' }}">
         <i class="bi bi-camera-video-fill"></i> Daftar Film

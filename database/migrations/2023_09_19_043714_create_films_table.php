@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('director');
             $table->string('cast');
             $table->integer('minimal_usia');
-            $table->string('genre');
+            $table->foreignId('genre_id')->constrained();
             $table->string('durasi');
             $table->date('jadwal_tayang');
             $table->string('trailer');
