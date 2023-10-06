@@ -166,4 +166,6 @@ class FilmController extends Controller
         $film->delete();
         return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
     }
+
+    
 }

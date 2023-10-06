@@ -7,6 +7,7 @@ use App\Http\Requests\StoreprofileRequest;
 use App\Http\Requests\UpdateprofileRequest;
 use App\Models\Kursi;
 use App\Models\Pesanan;
+use App\Models\status_kursi;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,7 @@ class ProfileController extends Controller
         $user = Auth()->user()->id; // Menggunakan metode auth() untuk mengambil pengguna yang sedang login
         $data = User::where('id',$user)->paginate(1);
         $historypesanan = Pesanan::with('film')->where('user_id',$user)->get();
-        $kursiPesanan = Kursi::has('status_kursi')->get();
+        $kursiPesanan = Kursi::with('status_kursi')->has('status_kursi')->get();
         // dd($kursiPesanan);
         return view('profile', compact('data','historypesanan','kursiPesanan'));
     }

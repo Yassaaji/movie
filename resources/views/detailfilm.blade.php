@@ -306,7 +306,9 @@
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
         <p style="width:90%;">{{ $film->sinopsis }}</p>
-        <a href="{{ route('order','')}}/{{ $film->id }} " class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
+        @if ($film->status === 'nowplaying')
+        <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
+    @endif
     </div>
 </div>
 <div class="d-flex flex-column align-items-center">

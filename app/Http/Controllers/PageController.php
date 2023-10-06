@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -16,7 +17,8 @@ class PageController extends Controller
     }
     public function nowplaying(){
         $nowplayings = Film::where('status','nowplaying')->get();
-        return view('nowplaying',compact('nowplayings'));
+        $genre = Genre::all();
+        return view('nowplaying',compact('nowplayings','genre'));
     }
 
     public function comingsoon(){

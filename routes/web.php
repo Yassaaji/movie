@@ -17,6 +17,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\KomentarController;
+use App\Models\Genre;
 
 // Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
 // Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
@@ -44,6 +45,7 @@ use App\Http\Controllers\KomentarController;
 
     Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
     Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
+    Route::get('/genre/{genre}', [NowplayingController::class, 'genre'])->name('genre');
 
 // });
 
