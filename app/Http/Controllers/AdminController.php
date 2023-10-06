@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
+use App\Models\notifikasi;
+use App\Models\Pesanan;
+use App\Models\status_kursi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -11,7 +17,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $totalUser = User::where('role', 'user')->count();
+        $menungguKonfirmasi = Pesanan::where('konfirmasi',"menunggu")->get()->count();
+        $jumlahFilm = Film::all()->count();
+        $jumlahTicket = status_kursi::all()->count();
+        return view('admin.dashboard', compact('totalUser','menungguKonfirmasi','jumlahFilm','jumlahTicket', ));
     }
 
     /**

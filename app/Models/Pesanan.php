@@ -40,7 +40,11 @@ class Pesanan extends Model
         return $this->belongsTo(Ticket::class);
     }
 
-    
+
+    public function notifikasi():BelongsTo
+    {
+        return $this->belongsTo(notifikasi::class);
+    }
 
 
 }

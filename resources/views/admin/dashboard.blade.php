@@ -1,299 +1,280 @@
+@extends('layouts.admin')
 
-    @extends('layouts.admin')
-
-    @section('content')
+@section('content')
 
     <head>
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <style>
-      html {
-  position: relative;
-  min-height: 100%;
-}
+        html {
+            position: relative;
+            min-height: 100%;
+        }
 
-body {
-  overflow: hidden;
-}
+        body {
+            overflow: hidden;
+            background-color: #343a40;
+        }
 
-.content-wrapper {
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 20px;
-  margin-top: 40px;
-}
+        .content-wrapper {
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20px;
+            margin-top: 40px;
+        }
 
-.scroll-to-top {
-  position: fixed;
-  right: 15px;
-  bottom: 3px;
-  display: none;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  color: white;
-  background: rgba(52, 58, 64, 0.5);
-  line-height: 45px;
-}
+        .scroll-to-top {
+            position: fixed;
+            right: 15px;
+            bottom: 3px;
+            display: none;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            color: white;
+            background: rgba(52, 58, 64, 0.5);
+            line-height: 45px;
+        }
 
-.scroll-to-top:focus, .scroll-to-top:hover {
-  color: white;
-}
+        .scroll-to-top:focus,
+        .scroll-to-top:hover {
+            color: white;
+        }
 
-.scroll-to-top:hover {
-  background: #343a40;
-}
+        .scroll-to-top:hover {
+            background: #343a40;
+        }
 
-.scroll-to-top i {
-  font-weight: 800;
-}
+        .scroll-to-top i {
+            font-weight: 800;
+        }
 
-.smaller {
-  font-size: 0.7rem;
-}
+        .smaller {
+            font-size: 0.7rem;
+        }
 
-.o-hidden {
-  overflow: hidden !important;
-}
+        .o-hidden {
+            overflow: hidden !important;
+        }
 
-.z-0 {
-  z-index: 0;
-}
+        .z-0 {
+            z-index: 0;
+        }
 
-.z-1 {
-  z-index: 1;
-}
-
-
-
-
-
-.card-body-icon {
-  position: absolute;
-  z-index: 0;
-  top: -25px;
-  right: -25px;
-  font-size: 5rem;
-  -webkit-transform: rotate(15deg);
-  -ms-transform: rotate(15deg);
-  transform: rotate(15deg);
-}
-
-@media (min-width: 576px) {
-  .card-columns {
-    column-count: 1;
-  }
-}
-
-@media (min-width: 768px) {
-  .card-columns {
-    column-count: 2;
-  }
-}
-
-@media (min-width: 1200px) {
-  .card-columns {
-    column-count: 2;
-  }
-}
+        .z-1 {
+            z-index: 1;
+        }
 
 
 
 
 
-</style>
-        <div class="text">
-            <h1>Karyawan</h1>
-            <div class="p">
-            <p>Delete / Now Playing</p>
+        .card-body-icon {
+            position: absolute;
+            z-index: 0;
+            top: -25px;
+            right: -25px;
+            font-size: 5rem;
+            -webkit-transform: rotate(15deg);
+            -ms-transform: rotate(15deg);
+            transform: rotate(15deg);
+        }
+
+        @media (min-width: 576px) {
+            .card-columns {
+                column-count: 1;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-columns {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .card-columns {
+                column-count: 2;
+            }
+        }
+
+
+        /* CSS untuk menempatkan tombol di tengah */
+        .btnnn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        /* CSS untuk tombol */
+        button {
+            margin: 10px;
+            padding: 2px 4px;
+            font-size: 16px;
+
+        }
+
+        .p{
+            background-color: #343a40;
+            overflow: hidden;
+           padding-bottom: 20px;
+           text-align: start ;
+           color: #ffffff;
+           width: 100%;
+           margin: 0
+
+        }
+        .col-xl-3{
+
+        }
+    </style>
+    <div class="text">
+        <div class="navbar-link-header pt-3 px-5">
+            <h3 style="color: #fff">Karyawan</h3>
+            <p style="color: #fff">Dashboard</p>
         </div>
 
-        <div class="content-wrapper">
-          <div class="container-fluid">
-            <!-- Icon Cards-->
-            <div class="row">
-              <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-primary o-hidden ">
-                  <div class="card-body">
-                    <div class="card-body-icon">
-                      <i class="fa fa-fw fa-comments"></i>
+        <div class="content-wrapper ">
+            <div class="container-fluid mr-5 ml-5">
+                <!-- Icon Cards-->
+                <div class="row " >
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-primary o-hidden ">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-comments"></i>
+                                </div>
+                                <div class="mr-5">Menunggu Konfirmasi</div>
+                                <div class="mr-5">{{ $menungguKonfirmasi }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mr-5">Menunggu Konfirmasi</div>
-                  </div>
-                  <a class="card-footer text-white clearfix small z-1" href="{{ url('/') }}">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                      <i class="fa fa-angle-right"></i>
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-warning o-hidden h-100">
-                  <div class="card-body">
-                    <div class="card-body-icon">
-                      <i class="fa fa-fw fa-list"></i>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-warning o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-list"></i>
+                                </div>
+                                <div class="mr-5">Pengguna</div>
+                                <div class="mr-5 mt-2 ml-4">{{ $totalUser }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mr-5">Pengguna</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-success o-hidden h-100">
-                  <div class="card-body">
-                    <div class="card-body-icon">
-                      <i class="fa fa-fw fa-shopping-cart"></i>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-success o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-shopping-cart"></i>
+                                </div>
+                                <div class="mr-5">Jumlah FIlm</div>
+                                <div class="mr-5">{{ $jumlahFilm }}</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mr-5">123 New Orders!</div>
-                  </div>
-                  <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                      <i class="fa fa-angle-right"></i>
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div class="col-xl-3 col-sm-6 mb-3">
-                <div class="card text-white bg-danger o-hidden h-100">
-                  <div class="card-body">
-                    <div class="card-body-icon">
-                      <i class="fa fa-fw fa-support"></i>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        <div class="card text-white bg-danger o-hidden h-100">
+                            <div class="card-body">
+                                <div class="card-body-icon">
+                                    <i class="fa fa-fw fa-list"></i>
+                                </div>
+                                <div class="mr-5">Tiket Terjual</div>
+                                <div class="mr-5">{{ $jumlahTicket }}</div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="mr-5">13 New Tickets!</div>
-                  </div>
-                  <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                      <i class="fa fa-angle-right"></i>
-                    </span>
-                  </a>
                 </div>
-              </div>
-            </div>
-            <!-- Area Chart Example-->
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fa fa-area-chart"></i> Area Chart Example</div>
-              <div class="card-body">
-                <canvas id="myAreaChart" width="100%" height="30"></canvas>
-              </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
-            <div class="row">
-              <div class="col-lg-8">
-           <script>
-              // Chart.js scripts
-                // -- Set new default font family and font color to mimic Bootstrap's default styling
-                Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-                Chart.defaults.global.defaultFontColor = '#292b2c';
-                // -- Area Chart Example
-                var ctx = document.getElementById("myAreaChart");
-                var myLineChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
-                    datasets: [{
-                    label: "Sessions",
-                    lineTension: 0.3,
-                    backgroundColor: "rgba(2,117,216,0.2)",
-                    borderColor: "rgba(2,117,216,1)",
-                    pointRadius: 5,
-                    pointBackgroundColor: "rgba(2,117,216,1)",
-                    pointBorderColor: "rgba(255,255,255,0.8)",
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
-                    pointHitRadius: 20,
-                    pointBorderWidth: 2,
-                    data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
-                    }],
-                },
-                options: {
-                    scales: {
-                    xAxes: [{
-                        time: {
-                        unit: 'date'
-                        },
-                        gridLines: {
-                        display: false
-                        },
-                        ticks: {
-                        maxTicksLimit: 7
+                <!-- Area Chart Example-->
+                <div style="width: 80%; height: auto; margin: 0 auto;">
+                    <canvas id="myLineChart"></canvas>
+                </div>
+                <script>
+                    // Data penghasilan bulanan
+                    var pendapatanBulanan = {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Ags", "Sep", "Okt", "Nov", "Des"],
+                        datasets: [{
+                            label: 'Penghasilan Bulanan',
+                            data: [1000, 1200, 1500, 1300, 1700, 1600, 1800, 2000, 1900, 2100, 2200, 2300],
+                            fill: true,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2
+                        }]
+                    };
+
+                    // Data penghasilan tahunan
+                    var pendapatanTahunan = {
+                        labels: ["2021", "2022", "2023"],
+                        datasets: [{
+                            label: 'Penghasilan Tahunan',
+                            data: [24000, 26000, 28000],
+                            fill: true,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 2
+                        }]
+                    };
+
+                    var ctx = document.getElementById('myLineChart').getContext('2d');
+                    var myLineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: pendapatanBulanan, // Secara default, tampilkan data bulanan
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Grafik Penghasilan Bulanan',
+                                fontSize: 18
+                            },
+                            scales: {
+                                xAxes: [{
+                                    gridLines: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        fontSize: 14
+                                    }
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        display: true
+                                    },
+                                    ticks: {
+                                        beginAtZero: true,
+                                        fontSize: 14
+                                    }
+                                }]
+                            },
+                            animation: {
+                                duration: 1000,
+                                easing: 'easeInOutQuart'
+                            }
                         }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                        min: 0,
-                        max: 40000,
-                        maxTicksLimit: 5
-                        },
-                        gridLines: {
-                        color: "rgba(0, 0, 0, .125)",
-                        }
-                    }],
-                    },
-                    legend: {
-                    display: false
+                    });
+
+                    // Fungsi untuk beralih antara data bulanan dan tahunan
+                    function tampilkanBulanan() {
+                        myLineChart.data = pendapatanBulanan;
+                        myLineChart.options.title.text = 'Grafik Penghasilan Bulanan';
+                        myLineChart.update();
                     }
-                }
-                });
 
-                $(document).ready(function() {
-                $('#dataTable').DataTable();
-                });
-
-                (function($) {
-                "use strict"; // Start of use strict
-                // Configure tooltips for collapsed side navigation
-                $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
-                    template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
-                })
-                // Toggle the side navigation
-                $("#sidenavToggler").click(function(e) {
-                    e.preventDefault();
-                    $("body").toggleClass("sidenav-toggled");
-                    $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
-                    $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
-                });
-                // Force the toggled class to be removed when a collapsible nav link is clicked
-                $(".navbar-sidenav .nav-link-collapse").click(function(e) {
-                    e.preventDefault();
-                    $("body").removeClass("sidenav-toggled");
-                });
-                // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
-                $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function(e) {
-                    var e0 = e.originalEvent,
-                    delta = e0.wheelDelta || -e0.detail;
-                    this.scrollTop += (delta < 0 ? 1 : -1) * 30;
-                    e.preventDefault();
-                });
-                // Scroll to top button appear
-                $(document).scroll(function() {
-                    var scrollDistance = $(this).scrollTop();
-                    if (scrollDistance > 100) {
-                    $('.scroll-to-top').fadeIn();
-                    } else {
-                    $('.scroll-to-top').fadeOut();
+                    function tampilkanTahunan() {
+                        myLineChart.data = pendapatanTahunan;
+                        myLineChart.options.title.text = 'Grafik Penghasilan Tahunan';
+                        myLineChart.update();
                     }
-                });
-                // Configure tooltips globally
-                $('[data-toggle="tooltip"]').tooltip()
-                // Smooth scrolling using jQuery easing
-                $(document).on('click', 'a.scroll-to-top', function(event) {
-                    var $anchor = $(this);
-                    $('html, body').stop().animate({
-                    scrollTop: ($($anchor.attr('href')).offset().top)
-                    }, 1000, 'easeInOutExpo');
-                    event.preventDefault();
-                });
-                })(jQuery); // End of use strict
-          </script>
-      </body>
-    @endsection
-
+                </script>
+                </body>
+            @endsection
