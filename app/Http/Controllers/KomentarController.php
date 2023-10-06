@@ -104,7 +104,7 @@ class KomentarController extends Controller
                 $data->delete();
             }
             $komentar->delete();
-            return redirect()->back()->with('berhasil');
+            return redirect()->back()->with('success','Berhasil menghapus komentar');
         }else{
             return redirect()->back()->with('error','Komentar gagal terhapus');
         }
