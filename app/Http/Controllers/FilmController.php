@@ -108,17 +108,13 @@ class FilmController extends Controller
      */
     public function update(UpdateFilmRequest $request, Film $film)
     {
-
         // dd($request);
-        // dd($film);
-
-
         $request->validate([
             "judul"=>'string',
             'director'=>'string',
             'cast'=> 'string',
             'minimal_usia'=> 'integer',
-            'genre' => 'string',
+            'genre_id' => 'string',
             'durasi'=> 'string',
             'jadwal_tayang' => "",
             'trailer' => 'url',
@@ -127,33 +123,50 @@ class FilmController extends Controller
             'thumbnile' => 'image'
         ]);
 
-        // Update data yang tidak terkait dengan file gambar
-        $film->judul = $request->judul;
-        $film->director = $request->director;
-        $film->cast = $request->cast;
-        $film->minimal_usia = $request->minimal_usia;
-        $film->genre = $request->genre;
-        $film->durasi = $request->durasi;
-        $film->jadwal_tayang = $request->jadwal_tayang;
-        $film->trailer = $request->trailer;
-        $film->sinopsis = $request->sinopsis;
-        $film->status = $request->status;
-
-        // Periksa apakah file gambar baru diberikan
-        if ($request->hasFile('thumbnile')) {
-            $thumbnile = $request->file('thumbnile');
+        $filmLama = Film::where('id', $request->id)->first();
+        if (!empty($request->file('thumbnail'))) {
+            $thumbnile = $request->file('thumbnail');
             $thumbnileName = uniqid() . '.' . $thumbnile->getClientOriginalExtension();
+            Storage::delete('thumbnile/'. $filmLama->thumbnile);
             $thumbnile->storeAs('thumbnile/', $thumbnileName);
-
-            // Hapus file gambar lama jika perlu
-            Storage::delete('thumbnile/' . $film->thumbnile);
-
-            // Update kolom thumbnile dengan nama file yang baru
-            $film->thumbnile = $thumbnileName;
         }
 
-        $film->save();
+        // dd($filmLama->thumbnile);
 
+        // $film = new Film;
+        // $film->judul = $request->judul;
+        // $film->director = $request->director;
+        // $film->cast = $request->cast;
+        // $film->minimal_usia =  $request->minimal_usia;
+        // $film->genre = $request->genre;
+        // $film->durasi = $request->durasi;
+        // $film->jadwal_tayang = $request->jadwal_tayang;
+        // $film->jam_tayang = $request->jam_tayang;
+        // $film->trailer = $request->trailer;
+        // $film->sinopsis = $request->sinopsis;
+        // $film->status = $request->status;
+        // $film->thumbnile =
+
+        // $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->first();
+        // $film->ruangan_id = $ruangan->id;
+        // $film->harga = $request->harga;
+        $data = [
+            'judul' => $request->judul,
+            'director' => $request->director,
+            'cast' => $request->cast,
+            'minimal_usia' => $request->minimal_usia,
+            'genre_id' => $request->genre,
+            'durasi' => $request->durasi,
+            'jadwal_tayang' => $request->jadwal_tayang,
+            'jam_tayang' => $request->jam_tayang,
+            'trailer' => $request->trailer,
+            'sinopsis' => $request->sinopsis,
+            'status' => $request->status,
+            'thumbnile' => empty($request->file('thumbnail')) ? $filmLama->thumbnile : $thumbnileName,
+            // 'thumbnile' => $thumbnileName,
+        ];
+
+        $filmLama->update($data);
         return redirect()->route('daftarfilm')->with('success', 'film berhasil diubah');
     }
 
@@ -165,6 +178,8 @@ class FilmController extends Controller
         Storage::delete('thumbnile/' . $film->thumbnile);
         $film->delete();
         return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
+        $film->delete();
+        return back();
     }
 
     

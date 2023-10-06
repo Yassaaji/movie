@@ -33,7 +33,7 @@ use App\Models\Genre;
 */
 
 // Route::middleware(['guest'])->group(function () {
-    Route::get('/',[PageController::class,'welcome']);
+    Route::get('/',[PageController::class,'welcome'])->name('beranda');
     Route::get('/login',[LoginController::class , 'showLoginForm'])->name('login');
     Route::get('/register',[RegisterController::class , 'showRegisterForm'])->name('register');
 
@@ -72,7 +72,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/tambahfilm',[FilmController::class,'create'])->name('tambahfilm');
     Route::get('/daftarfilm',[FilmController::class, 'daftarFilm'])->name('daftarfilm');
     Route::post('/uploadfilm',[FilmController::class,'store'])->name('uploadfilm');
-    Route::put('/proseseditfilm/{id}',[FilmController::class,'update'])->name('prosesEditFilm');
+    Route::post('/proseseditfilm', [FilmController::class, 'update'])->name('prosesEditFilm');
     Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
     Route::resource('film', FilmController::class);
 

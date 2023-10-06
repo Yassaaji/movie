@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>History film</title>
+    <title>Daftar Film</title>
     <!-- Add references to CSS Bootstrap and Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -15,6 +15,7 @@
     <style>
         body {
             background-color: #333333;
+            overflow: hidden;
         }
         .card {
             background-color: #000000;
@@ -70,7 +71,8 @@
         /* Style responsive table */
         .table-responsive {
             overflow-x: auto;
-            max-height: 300px;
+            max-height: 500px;
+            max-width: 15000px;
         }
 
         /* Style image previews */
@@ -146,18 +148,46 @@
         border: none;
     }
 }
+
+/* CSS untuk efek hover */
+.btn-dark {
+    background-color: #343a40; /* Warna latar belakang tombol */
+    color: #ffffff; /* Warna teks tombol */
+    transition: box-shadow 0.3s, transform 0.3s, color 0.3s; /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Bayangan awal */
+}
+
+.btn-dark:hover {
+    background-color: #ffffff; /* Warna latar belakang saat dihover */
+    color: #343a40; /* Warna teks saat dihover */
+    transform: scale(1.1); /* Perubahan ukuran saat dihover */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan saat dihover */
+}
+.btn-danger {
+    background-color: #ff0000; /* Warna latar belakang tombol */
+    color: #ffffff; /* Warna teks tombol */
+    transition: box-shadow 0.3s, transform 0.3s, color 0.3s; /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Bayangan awal */
+}
+
+.btn-danger:hover {
+    background-color: #ffffff; /* Warna latar belakang saat dihover */
+    color: #343a40; /* Warna teks saat dihover */
+    transform: scale(1.1); /* Perubahan ukuran saat dihover */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan saat dihover */
+}
 </style>
 <body>
 
     <div class="container">
         <div class="navbar-link-header pt-3 px-5">
-            <h3 style="color: #fff">Karyawan</h3>
+            <h1 style="color: #fff">Karyawan</h1>
             <p style="color: #fff">Daftar Film</p>
         </div>
         <div class="card">
             <div class="card-header"></div>
             <div class="card-body">
-                <a href="{{ route('film.create') }}" class="btn btn-dark">+ Tambah</a>
+                <a href="{{ route('film.create') }}" class="btn btn-dark"><i class="fas fa-plus"></i> </a>
 
                 <div class="table-responsive mt-4">
                     <table class="table table-dark table-bordered">
@@ -172,6 +202,7 @@
                                 <th scope="col">DURASI</th>
                                 <th scope="col">JAM TAYANG</th>
                                 <th scope="col">SINOPSIS</th>
+                                <th scope="col">STATUS</th>
                                 <th scope="col">GAMBAR</th>
                                 <th scope="col">AKSI</th>
                             </tr>
@@ -190,15 +221,18 @@
                                         <td>
                                             <p class="overflow-y-scroll ellipsis" rows="3">{{ $film->sinopsis }}</p>
                                         </td>
+                                        <td>{{ $film->status }}</td>
                                         <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}" height="100px" width="100px"></td>
-                                        <div class="button">
+                                        <div class="button w-25">
                                             <td>
-                                                <a href="{{ route('edit-film','')}}/{{$film->id}}" class="btn btn-dark">Edit</a>
-                                                <form action="{{ route('film.destroy', $film->id) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-dark" onclick="confirmDelete(event)">Hapus</button>
-                                                </form>
+                                                <div class="btn-group " role="group" >
+                                                    <form action="{{ route('film.destroy', $film->id) }}" method="post" style="width: 125px;">
+                                                        @csrf
+                                                        <a href="{{ route('edit-film', $film->id) }}" class="btn btn-dark"><i class="fas fa-pencil-alt"></i> </a>
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger" onclick="confirmDelete(event)"><i class="fas fa-trash-alt"></i> </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                       </div>
                                     </tr>
@@ -208,8 +242,7 @@
                     </table>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() - 1]) }}">Previous</a>
-                            <a class="page-link" href="{{ route('daftarfilm', ['page' => $films->currentPage() + 1]) }}">Next</a>
+                            {{ $films->links('pagination::bootstrap-5') }}
                         </ul>
                     </nav>
                 </div>

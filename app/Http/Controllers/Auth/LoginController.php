@@ -67,6 +67,9 @@ class LoginController extends Controller
         // return redirect()->intended('nowplaying')->with('success', 'anda berhasil login!');
         $user = Auth::user();
 
+        // dd($user);
+
+        // return redirect()->intended('nowplaying')->with('success', 'anda berhasil login!');
         if ($user->role === 'admin') {
             return redirect()->route('admin.index')->with('success','anda berhasil login');
         } elseif ($user->role === 'user') {

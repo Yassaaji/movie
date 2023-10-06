@@ -1,5 +1,5 @@
 
-
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -117,6 +117,7 @@ Swal.fire({
     // alert("{{ session('error') }}")
     </script>
     @endif
+    <br>
 
     <form action="{{ route('create-pesanan',$film->id) }}" method="post" enctype="multipart/form-data">
 
@@ -125,7 +126,6 @@ Swal.fire({
 <!-- Bagian kiri form -->
 <div class="left-form">
  <div class="col-md-6">
-
 
 
     <div class="title text-center"><img src="{{ asset('img/LOGO.png') }}" width="55px"><h3 class="movie-flix fs-4 text-white">Movie<span style="color: #0007AC;">Flix</span></h3>

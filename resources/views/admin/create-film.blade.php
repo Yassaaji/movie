@@ -25,6 +25,7 @@
                 <div class="border-form">
                     <form action="{{ route('uploadfilm') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <label for=""></label>
                         <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" value="{{ old('judul') }}">
                         @error('judul')
                             <p class="text-danger">{{ $message}}</p>
@@ -64,7 +65,7 @@
 
                 <div class="col-4">
                     <div class="border-form p-3">
-                        <input type="text" id="durasi" name="durasi" class="input-text" placeholder="Durasi" value="{{ old('durasi') }}" >
+                        <input type="number" id="durasi" name="durasi" class="input-text" placeholder="Durasi" value="{{ old('durasi') }}" >
                         @error('durasi')
                         <p class="text-danger">{{ $message}}</p>
                     @enderror
@@ -123,6 +124,7 @@
         </form>
     </div>
 </body>
+
 
 </html>
 @endsection

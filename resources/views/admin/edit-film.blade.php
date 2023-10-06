@@ -67,8 +67,9 @@
         <div class="row">
             <div class="col-4">
                 <div class="border-form">
-                    <form action="{{ route('uploadfilm') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('prosesEditFilm') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $film->id }}">
                    <input type="text" id="judul" name="judul" class="input-text" placeholder="Judul" required
                             value="{{ old('judul') ?? $film->judul ?? '' }}">
 
@@ -86,7 +87,7 @@
                                 <option value="" disabled selected>Genre</option>
                                 @foreach ($genre as $data)
 
-                                <option value="{{ $data->genre }}" @if ( old('genre') === $data->genre || $film->genre->genre === $data->genre )
+                                <option value="{{ $data->id }}" @if ( old('genre') === $data->genre || $film->genre->genre === $data->genre )
                                     selected
                                 @endif>
                                 {{ $data->genre }}</option>
@@ -99,8 +100,8 @@
                             </select> --}}
                             <br><br>
                             <select class="status" name="status" id="status">
-                                <option value="Now Playing" {{ $film->status == 'Now Playing' ? 'selected' : '' }}>Now Playing</option>
-                                <option value="Coming Soon" {{ $film->status == 'Coming Soon' ? 'selected' : '' }}>Coming Soon</option>
+                                <option value="nowplaying" {{ $film->status == 'Now Playing' ? 'selected' : '' }}>Now Playing</option>
+                                <option value="commingsoon" {{ $film->status == 'Coming Soon' ? 'selected' : '' }}>Coming Soon</option>
                             </select>
                             @error('status')
                                 <p class="alert alert-danger">{{ $message }}</p>
@@ -149,11 +150,11 @@
             </div>
             <center>
                 <div class="center-container">
-                    <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}" height="100px" width="200px">
-                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="input-file" required>
+                    <img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}" height="100px" width="100px">
+                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" class="input-file">
                     <button type="submit" class="input-submit">Upload</button>
                 </div>
-            </center>   
+            </center>
         </form>
     </div>
 </body>

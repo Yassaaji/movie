@@ -32,7 +32,6 @@
                             <h1 class="text-center text-white mb-4">Register</h1>
                             <form method="POST" action="{{ route('insertRegister') }}">
                                 @csrf
-
                                 <div class="form-floating mb-3">
                                     <input type="name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"

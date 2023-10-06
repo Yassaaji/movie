@@ -1,37 +1,8 @@
-{{-- @extends('layouts.app') --}}
-
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
-    <title>Dasboard</title>
+@extends('layouts.app')
 
 
-    {{-- animate --}}
+@section('content-app')
 
-     <!-- Bosstrap -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-     {{-- Icon --}}
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-    {{-- Aos --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}">
@@ -51,8 +22,16 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
-<body>
+    {{-- <nav>
+        <div class="btn-group bg-transparent position-fixed top-0 z-3 bg-primary">
+            @if (Auth::check())
+
+            @else
+            <a href="{{ route('login') }}" class="btn">Login</a>
+            <a href="{{ route('register') }}" class="btn">Register</a>
+            @endif
+        </div>
+    </nav> --}}
     {{-- @include('layouts.loading') --}}
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -61,14 +40,7 @@
                 <div class="carousel-caption">
                 <h1>Selamat Datang</h1>
                     <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
-                    <div class="btn-group">
-                        @if (Auth::check())
 
-                        @else
-                        <a href="{{ route('login') }}" class="btn">Login</a>
-                        <a href="{{ route('register') }}" class="btn">Register</a>
-                        @endif
-                    </div>
                     <div class="buttons mt-3">
                         <div class="d-flex justify-content-center">
                             <a class="selanjutnya"
@@ -77,9 +49,12 @@
                             @else
                             href="{{ route('login') }}">
                             @endif
-                                <button class="transparent-button">
-                                    Get Started
-                                </button>
+
+                            @if (!Auth::check())
+                            <button class="transparent-button">
+                                Get Started
+                            </button>
+                            @endif
                             </a>
                         </div>
                     </div>
@@ -235,7 +210,7 @@
     </div>
   </div>
 </div>
-<body><div class="container">
+<><div class="container">
     <h2 class="jdl">Tanya Jawab Umum</h2>
     <br>
     <center>
@@ -358,10 +333,6 @@ $('#customers-testimonials').owlCarousel( {
         });
     });
 </script>
-
-
-</body>
 <script src="bower_components/aos/dist/aos.js"></script>
-</html>
-
-@include('layouts.footer')
+{{-- @include('layouts.footer') --}}
+@endsection

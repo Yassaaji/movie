@@ -115,6 +115,9 @@
 
 <ul class="navbar-nav ms-auto">
     <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ route('beranda') }}">BERANDA</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{{ url('nowplaying') }}">SEDANG TAYANG</a>
     </li>
     <li class="nav-item">
@@ -172,7 +175,7 @@
         </div>
     </nav>
 
-    <main>
+    <main class="overflow-hidden">
         @yield('content-app')
     </main>
     @include('layouts.footer')
