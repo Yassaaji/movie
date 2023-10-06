@@ -145,8 +145,8 @@
             <div class="container-fluid mr-5 ml-5">
                 <!-- Icon Cards-->
                 <div class="row " >
-                    <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-primary o-hidden ">
+                    <div class="col-xl-2 col-sm-6 mb-3">
+                        <div class="card text-white bg-primary o-hidden h-100">
                             <div class="card-body">
                                 <div class="card-body-icon">
                                     <i class="fa fa-fw fa-comments"></i>
@@ -156,18 +156,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="col-xl-2 col-sm-6 mb-3">
                         <div class="card text-white bg-warning o-hidden h-100">
                             <div class="card-body">
                                 <div class="card-body-icon">
                                     <i class="fa fa-fw fa-list"></i>
                                 </div>
-                                <div class="mr-5">Pengguna</div>
+                                <div class="mr-5">Jumlah pengguna</div>
                                 <div class="mr-5 mt-2 ml-4">{{ $totalUser }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="col-xl-2 col-sm-6 mb-3">
                         <div class="card text-white bg-success o-hidden h-100">
                             <div class="card-body">
                                 <div class="card-body-icon">
@@ -178,7 +178,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 mb-3">
+                    <div class="col-xl-2 col-sm-6 mb-3">
                         <div class="card text-white bg-danger o-hidden h-100">
                             <div class="card-body">
                                 <div class="card-body-icon">
@@ -190,18 +190,78 @@
 
                         </div>
                     </div>
+                    @if ($newOrder === null)
+                   
+
+                    <div class="col-xl-2 col-sm-6 mb-3">
+                        <div class="card text-white bg-secondary o-hidden h-100">
+                            <div class="card-body text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path fill="currentColor" d="m448 362.7l-117.3-21.3C320 320 320 310.7 320 298.7c10.7-10.7 32-21.3 32-32c10.7-32 10.7-53.3 10.7-53.3c5.5-8 21.3-21.3 21.3-42.7s-21.3-42.7-21.3-53.3C362.7 32 319.2 0 256 0c-60.5 0-106.7 32-106.7 117.3c0 10.7-21.3 32-21.3 53.3s15.2 35.4 21.3 42.7c0 0 0 21.3 10.7 53.3c0 10.7 21.3 21.3 32 32c0 10.7 0 21.3-10.7 42.7L64 362.7C21.3 373.3 0 448 0 512h512c0-64-21.3-138.7-64-149.3z"/></svg>
+                                <div class="mt-2">
+                                    <p class="">tidak ada pesanan baru</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    
+                    @else
+                    
+                    <div class="col-xl-2 col-sm-6 mb-3 mx-auto">
+                        <div class="card text-white bg-danger o-hidden h-100">
+                            <div class="card-body text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path fill="currentColor" d="m448 362.7l-117.3-21.3C320 320 320 310.7 320 298.7c10.7-10.7 32-21.3 32-32c10.7-32 10.7-53.3 10.7-53.3c5.5-8 21.3-21.3 21.3-42.7s-21.3-42.7-21.3-53.3C362.7 32 319.2 0 256 0c-60.5 0-106.7 32-106.7 117.3c0 10.7-21.3 32-21.3 53.3s15.2 35.4 21.3 42.7c0 0 0 21.3 10.7 53.3c0 10.7 21.3 21.3 32 32c0 10.7 0 21.3-10.7 42.7L64 362.7C21.3 373.3 0 448 0 512h512c0-64-21.3-138.7-64-149.3z"/></svg>
+                                <div>
+                                    <p class="">Pesanan baru</p>
+                                    <p style="margin-top:-10px;" class="fw-bold">{{ $newOrder->user->name }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    @endif
+                    <div class="col-xl-2 col-sm-6 mb-3">
+                        <div class="card text-white bg-secondary o-hidden h-100">
+                            <div class="card-body text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path fill="currentColor" d="m448 362.7l-117.3-21.3C320 320 320 310.7 320 298.7c10.7-10.7 32-21.3 32-32c10.7-32 10.7-53.3 10.7-53.3c5.5-8 21.3-21.3 21.3-42.7s-21.3-42.7-21.3-53.3C362.7 32 319.2 0 256 0c-60.5 0-106.7 32-106.7 117.3c0 10.7-21.3 32-21.3 53.3s15.2 35.4 21.3 42.7c0 0 0 21.3 10.7 53.3c0 10.7 21.3 21.3 32 32c0 10.7 0 21.3-10.7 42.7L64 362.7C21.3 373.3 0 448 0 512h512c0-64-21.3-138.7-64-149.3z"/></svg>
+                                <div class="mt-2">
+                                    <p class="">Total Pendapatan</p>
+                                    <p class="fw-bold">Rp.{{number_format($totalPendapatan)}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+
                 <!-- Area Chart Example-->
-                <div style="width: 80%; height: auto; margin: 0 auto;">
+                <div class="mx-auto" style="width: 60%;">
                     <canvas id="myLineChart"></canvas>
                 </div>
                 <script>
+
+                    const dataPendapatan = @json($pendapatan)
+
+                    var bulan = [];
+    for (var i = 1; i <= 12; i++) {
+        var date = new Date();
+        date.setMonth(i - 1);
+        bulan.push(date.toLocaleDateString('en-US', { month: 'short' }));
+    }
+
+                    var pendapatan = bulan.map(bulan => {
+        var data = dataPendapatan.find(item => item.bulan === bulan);
+        return data ? data.pendapatan : 0;
+    });
+
+
                     // Data penghasilan bulanan
                     var pendapatanBulanan = {
                         labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Ags", "Sep", "Okt", "Nov", "Des"],
                         datasets: [{
                             label: 'Penghasilan Bulanan',
-                            data: [1000, 1200, 1500, 1300, 1700, 1600, 1800, 2000, 1900, 2100, 2200, 2300],
+                            data: pendapatan,
                             fill: true,
                             borderColor: 'rgba(75, 192, 192, 1)',
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -276,5 +336,6 @@
                         myLineChart.update();
                     }
                 </script>
+
                 </body>
             @endsection

@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Komentar;
 use App\Models\Ruangan;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -91,7 +92,6 @@ class FilmController extends Controller
     {
         $films = Film::with('genre')->get();
         $films = Film::paginate(2);
-        // dd($films);
         return view('admin.daftarfilm',compact('films'));
     }
 

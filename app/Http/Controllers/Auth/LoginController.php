@@ -64,13 +64,13 @@ class LoginController extends Controller
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
-        return redirect()->intended('nowplaying')->with('success', 'anda berhasil login!');
+        // return redirect()->intended('nowplaying')->with('success', 'anda berhasil login!');
         $user = Auth::user();
 
         if ($user->role === 'admin') {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.index')->with('success','anda berhasil login');
         } elseif ($user->role === 'user') {
-            return redirect()->route('nowplaying');
+            return redirect()->route('nowplaying')->with('success','anda berhasil login');
         }
     }
 

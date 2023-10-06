@@ -8,9 +8,11 @@ use App\Mail\ticketCancel;
 use App\Mail\ticketSuccess;
 use App\Models\Film;
 use App\Models\Kursi;
+use App\Models\Pendapatan;
 use App\Models\Pesanan;
 use App\Models\status_kursi;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -51,6 +53,11 @@ class PesananController extends Controller
      */
     public function store(StorePesananRequest $request, int $film_id)
     {
+
+        if(!($request->payment === "cash") && ($request->bukti_pembayaran === null) ){
+            return back()->with('error','sertakan bukti pembayaran');
+        }
+
         // dd($request);
         // $ticket = Ticket::with('film')->where('id',$ticket_id)->first();
         $film = Film::where('id',$film_id)->first();
@@ -176,13 +183,30 @@ class PesananController extends Controller
      */
     public function update(UpdatePesananRequest $request, Pesanan $pesanan)
     {
-        // dd($request);
+        // dd($pesanan);
         $pesanan->load('user','film','ticket');
         $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
         // dd($status_kursi);
         if($request->status === "sukses"){
             $pesanan->konfirmasi = "sukses";
             Mail::to($pesanan->user->email)->send(new ticketSuccess($pesanan,$status_kursi));
+
+            $now = Carbon::now();
+            $pendapatanCheck = Pendapatan::where('bulan', $now->format('M'))->where('tahun',$now->format('Y'))->first();
+            if($pendapatanCheck){
+                $pendapatan = Pendapatan::where('bulan', $now->format('M'))->where('tahun',$now->format('Y'))->first();
+                $pendapatan->bulan = $now->format('M');
+                $pendapatan->tahun = $now->format('Y');
+                $pendapatan->pendapatan = $pendapatan->pendapatan + $pesanan->totalharga;
+                $pendapatan->save();
+            }else{
+                $pendapatan = new Pendapatan;
+                $pendapatan->bulan = $now->format('M');
+                $pendapatan->tahun = $now->format('Y');
+                $pendapatan->pendapatan = $pendapatan->pendapatan + $pesanan->totalharga;
+                $pendapatan->save();
+            }
+
         }else if($request->status === "ditolak"){
             $pesanan->konfirmasi = "ditolak";
             $pesanan->alasan = $request->alasan;

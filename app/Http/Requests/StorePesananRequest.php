@@ -24,13 +24,16 @@ class StorePesananRequest extends FormRequest
         return [
             //
             'payment' => 'required',
+            'bukti_pembayaran' => 'image|max:10000'
         ];
     }
 
     public function messages():array
     {
         return[
-            'payment.required' => 'Harus mengisi metode pembayaran'
+            'payment.required' => 'Harus mengisi metode pembayaran',
+            'bukti_pembayaran.image' => "Bukti pembayaran bertipe gambar",
+            'bukti_pembayaran.max:10000' => "Ukuran gambar melebihi batasan",
         ];
     }
 }

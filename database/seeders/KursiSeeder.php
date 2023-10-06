@@ -12,38 +12,28 @@ class KursiSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        $rows = ['A', 'B', 'C'];
+        $ruangSymbols = ['A', 'B', 'C'];
         $columns = range(1, 8);
-        $ruangId = [3]; // Ganti dengan ID ruang yang sesuai
+        $ruangCount = 3; // Jumlah ruangan
 
-        $seats = [];
+        foreach ($ruangSymbols as $ruangSymbol) {
+            for ($i = 1; $i <= $ruangCount; $i++) {
+                foreach ($columns as $column) {
+                    $seatNumber = $ruangSymbol . $column;
+                    $seat = [
+                        'ruangan_id' => $i,
+                        'nomor_kursi' => $seatNumber,
+                        // Jika Anda memiliki atribut lain pada model Seat, tambahkan di sini
+                    ];
 
-        // Menghasilkan data kursi berdasarkan baris, kolom, dan ID ruang
-        $ruangCount = count($ruangId);
-        $ruangIndex = 0;
-
-        foreach ($rows as $row) {
-            foreach ($columns as $column) {
-                $seatNumber = $row . $column;
-                $seat = [
-                    'ruangan_id' => $ruangId[$ruangIndex],
-                    'nomor_kursi' => $seatNumber,
-                    // Jika Anda memiliki atribut lain pada model Seat, tambahkan di sini
-                ];
-
-                $seats[] = $seat;
-
-                $ruangIndex++;
-                if ($ruangIndex >= $ruangCount) {
-                    $ruangIndex = 0;
+                    Kursi::create($seat);
                 }
             }
         }
 
-        // Menyimpan data kursi ke dalam database
-        Kursi::insert($seats);
         $this->command->info('Seeder berhasil dijalankan');
     }
 }
+

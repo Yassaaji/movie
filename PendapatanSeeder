@@ -1,0 +1,27 @@
+[?25l
+[90m ┌[39m [36mWhat should the seeder be named?[39m [90m────────────────────────────┐[39m
+[90m │[39m [2m[7mE[27m.g. UserSeeder[22m                                              [90m│[39m
+[90m └──────────────────────────────────────────────────────────────┘[39m
+
+
+   ErrorException 
+
+  Uninitialized string offset 0
+
+  at vendor/laravel/prompts/src/Concerns/TypedValue.php:31
+     27▕             $this->cursorPosition = mb_strlen($this->typedValue);
+     28▕         }
+     29▕ 
+     30▕         $this->on('key', function ($key) use ($submit) {
+  ➜  31▕             if ($key[0] === "\e") {
+     32▕                 match ($key) {
+     33▕                     Key::LEFT, Key::LEFT_ARROW => $this->cursorPosition = max(0, $this->cursorPosition - 1),
+     34▕                     Key::RIGHT, Key::RIGHT_ARROW => $this->cursorPosition = min(mb_strlen($this->typedValue), $this->cursorPosition + 1),
+     35▕                     Key::DELETE => $this->typedValue = mb_substr($this->typedValue, 0, $this->cursorPosition).mb_substr($this->typedValue, $this->cursorPosition + 1),
+
+      [2m+15 vendor frames [22m
+
+  16  artisan:37
+      Illuminate\Foundation\Console\Kernel::handle()
+
+[?25h

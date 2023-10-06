@@ -236,7 +236,7 @@ Swal.fire({
   <div class="payment-method d-flex flex-column justify-content-between">
     <label for="payment">Metode Pembayaran:
    <select id="payment" name="payment" required>
-            <option>Pilih</option> <!-- Opsi default -->
+            <option selected disabled>Pilih</option> <!-- Opsi default -->
             <option value="atm">Kartu Atm 🏧</option> <!-- Add an ATM icon -->
             <option value="ewallet">Ewallet 💳</option> <!-- Add an E-wallet icon -->
             <option value="cash">Tunai 💵</option> <!-- Add a Cash icon -->
@@ -377,7 +377,7 @@ Swal.fire({
 
 <h2><p>{{ $bank[1]->bank }} {{ $bank[1]->nomor_rekening }}</p>
 </h2>
-                           
+
                             <input value="{{ $bank[1]->id }}" name='bankid'  type="hidden" />
                             <input class="form-control-file" type="file" name="bukti_pembayaran" id="Bukti">
                         </div>
@@ -385,7 +385,7 @@ Swal.fire({
                     }
                     if(metode === "mandiri"){
                      PaymentAtmBody.innerHTML = `
-                     
+
                     <div>
   <h3>
     <img src="{{ asset('img/bank/mandiri.png') }}" alt="BRI Logo" style="width: 70px; height: auto; vertical-align: middle; margin-right: 10px;">

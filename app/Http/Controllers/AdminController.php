@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
-use App\Models\notifikasi;
+use App\Models\pendapatan;
 use App\Models\Pesanan;
 use App\Models\status_kursi;
 use App\Models\User;
@@ -21,7 +21,20 @@ class AdminController extends Controller
         $menungguKonfirmasi = Pesanan::where('konfirmasi',"menunggu")->get()->count();
         $jumlahFilm = Film::all()->count();
         $jumlahTicket = status_kursi::all()->count();
-        return view('admin.dashboard', compact('totalUser','menungguKonfirmasi','jumlahFilm','jumlahTicket', ));
+        $pendapatan = pendapatan::all();
+
+        $newOrder = Pesanan::with('user')->where('konfirmasi','menunggu')->latest()->first();
+
+        // dd($newOrder);
+
+        $totalPendapatan = 0;
+
+        foreach ($pendapatan as $data) {
+            $totalPendapatan = $totalPendapatan + $data->pendapatan;
+        }
+
+        return view('admin.dashboard', compact('totalUser','menungguKonfirmasi','jumlahFilm','jumlahTicket','pendapatan','newOrder','totalPendapatan'));
+        // return view('admin.dashboard');
     }
 
     /**

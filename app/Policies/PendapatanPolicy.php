@@ -4,6 +4,8 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\pendapatan;
+// use App\Models\Pendapatan;
+// use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class PendapatanPolicy
