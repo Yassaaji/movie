@@ -210,7 +210,7 @@
     </div>
   </div>
 </div>
-<><div class="container">
+<div class="container">
     <h2 class="jdl">Tanya Jawab Umum</h2>
     <br>
     <center>

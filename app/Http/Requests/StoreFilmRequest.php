@@ -28,7 +28,7 @@ class StoreFilmRequest extends FormRequest
             'minimal_usia'=> 'required|integer|gt:0',
             'genre' => 'required|string',
             'durasi'=> 'required|string',
-            'jadwal_tayang' => 'required',
+            'jadwal_tayang' => 'required|after_or_equal:today',
             'jam_tayang'=> 'required',
             'trailer' => 'required',
             'sinopsis' => 'required|string|max:1000',
@@ -56,6 +56,7 @@ class StoreFilmRequest extends FormRequest
             'ruangan.required' => 'Ruangan wajib diisi',
             'status.required' => 'Status wajib diisi',
             'harga.required' => 'Harga wajib diisi',
+            'jadwal_tayang.after_or_equal' => 'Jadwal film tidak boleh kemarin'
         ];
     }
 }

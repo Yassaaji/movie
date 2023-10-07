@@ -22,13 +22,17 @@ class UpdateprofileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required'
+            'name'=>'required|string',
+            'noTelp' => 'numeric|regex:/^08\d{9,11}$/',
         ];
     }
     public function messages()
     {
         return [
-            'name.required'=>'Nama tidak boleh kosong'
+            'name.required'=>'Nama tidak boleh kosong',
+            'name.string'=>'Nama harus berupa string',
+            'noTelp.regex' => 'nomor telp harus berawalan 08 dan panjang nomor antara 11-13',
+            'noTelp.numeric' => 'nomor telp harus diisi dengan nomor'
         ];
     }
 }

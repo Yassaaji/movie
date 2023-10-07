@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendapatans', function (Blueprint $table) {
+        Schema::create('penayangans', function (Blueprint $table) {
             $table->id();
-            $table->string('bulan');
-            $table->string('tahun');
+            $table->foreignId('film_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('penonton');
             $table->double('pendapatan');
             $table->timestamps();
-            
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pendapatans');
+        Schema::dropIfExists('penayangans');
     }
 };

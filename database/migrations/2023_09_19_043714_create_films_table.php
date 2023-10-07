@@ -21,11 +21,12 @@ return new class extends Migration
             $table->foreignId('genre_id')->constrained();
             $table->string('durasi');
             $table->date('jadwal_tayang');
+            $table->date('jadwal_berakhir');
             $table->string('trailer');
             $table->text('sinopsis');
             $table->time('jam_tayang');
             $table->integer('harga');
-            $table->enum('status',['nowplaying','commingsoon'])->default('commingsoon');
+            $table->enum('status',['nowplaying','commingsoon','finish'])->default('commingsoon');
             $table->string('thumbnile');
             $table->timestamps();
         });

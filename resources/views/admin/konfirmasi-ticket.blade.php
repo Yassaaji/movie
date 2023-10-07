@@ -274,7 +274,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                         <span style="float: left">Berikan Alasanya: </span>
-                                                        <textarea name="alasan" id="alasan" cols="10" style="border: #333333 2px solid">
+                                                        <textarea class="form-control" name="alasan" id="alasan" cols="10" style="border: #333333 2px solid" autofocus>
 
                                                         </textarea>
                                                   </div>
@@ -294,7 +294,17 @@
                                     </td>
                                 </tr>
                                 @empty
-                                <!-- Handle empty table -->
+                                <tr>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                    <td scope="col">kosong</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>

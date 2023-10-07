@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 use App\Models\Genre;
 use App\Models\Komentar;
+use App\Models\Penayangan;
 use App\Models\Ruangan;
 use App\Models\Ticket;
 use Carbon\Carbon;
@@ -43,7 +44,15 @@ class FilmController extends Controller
     public function store(StoreFilmRequest $request)
     {
 
+        $date = Carbon::parse($request->jadwal_tayang);
+        $jadwal_berkahir = $date->copy()->addDay();
+        // dd($jadwal_berkahir);
 
+        $ruanganFilmTerdahulu = Ruangan::where('nama_ruangan',$request->ruangan)->first();
+        $filmTerdahulu = Film::where('jam_tayang',$request->jam_tayang)->where('jadwal_tayang',$request->jadwal_tayang)->where('ruangan_id',$ruanganFilmTerdahulu->id)->first();
+        if($filmTerdahulu){
+            return redirect()->route('daftarfilm')->with('error','Pembuatah film gagal karena jadwal sudah digunakan');
+        }
 
 
         $thumbnile = $request->file('thumbnile');
@@ -58,6 +67,8 @@ class FilmController extends Controller
         $film->genre_id = $request->genre;
         $film->durasi = $request->durasi;
         $film->jadwal_tayang = $request->jadwal_tayang;
+        $film->jadwal_berakir = $jadwal_berkahir;
+
         $film->jam_tayang = $request->jam_tayang;
         $film->trailer = $request->trailer;
         $film->sinopsis = $request->sinopsis;
@@ -68,6 +79,14 @@ class FilmController extends Controller
         $film->ruangan_id = $ruangan->id;
         $film->harga = $request->harga;
         $film->save();
+
+
+        $penayangan = new Penayangan;
+        $penayangan->film_id = $film->id;
+        $penayangan->penonton = 0;
+        $penayangan->pendapatan = 0;
+
+        $penayangan->save();
 
         return redirect()->route('daftarfilm')->with('success', 'berhasil menambah data');
     }
@@ -131,25 +150,6 @@ class FilmController extends Controller
             $thumbnile->storeAs('thumbnile/', $thumbnileName);
         }
 
-        // dd($filmLama->thumbnile);
-
-        // $film = new Film;
-        // $film->judul = $request->judul;
-        // $film->director = $request->director;
-        // $film->cast = $request->cast;
-        // $film->minimal_usia =  $request->minimal_usia;
-        // $film->genre = $request->genre;
-        // $film->durasi = $request->durasi;
-        // $film->jadwal_tayang = $request->jadwal_tayang;
-        // $film->jam_tayang = $request->jam_tayang;
-        // $film->trailer = $request->trailer;
-        // $film->sinopsis = $request->sinopsis;
-        // $film->status = $request->status;
-        // $film->thumbnile =
-
-        // $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->first();
-        // $film->ruangan_id = $ruangan->id;
-        // $film->harga = $request->harga;
         $data = [
             'judul' => $request->judul,
             'director' => $request->director,
@@ -178,9 +178,7 @@ class FilmController extends Controller
         Storage::delete('thumbnile/' . $film->thumbnile);
         $film->delete();
         return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
-        $film->delete();
-        return back();
     }
 
-    
+
 }
