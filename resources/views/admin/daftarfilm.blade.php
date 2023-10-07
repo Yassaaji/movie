@@ -195,15 +195,10 @@
                             <tr>
                                 <th scope="col">NO</th>
                                 <th scope="col">JUDUL</th>
-                                <th scope="col">DIREKTUR</th>
-                                <th scope="col">CAST</th>
-                                <th scope="col">MINIMAL USIA</th>
-                                <th scope="col">GENRE</th>
-                                <th scope="col">DURASI</th>
-                                <th scope="col">JAM TAYANG</th>
-                                <th scope="col">SINOPSIS</th>
                                 <th scope="col">STATUS</th>
                                 <th scope="col">GAMBAR</th>
+                                <th scope="col">JADWAL TAYANG</th>
+                                <th scope="col">JADWAL BERAKHIR</th>
                                 <th scope="col">AKSI</th>
                             </tr>
                         </thead>
@@ -212,17 +207,11 @@
                                     <tr>
                                         <td>{{ $i+1 }} </td>
                                         <td>{{ $film->judul }}</td>
-                                        <td>{{ $film->director }}</td>
-                                        <td>{{ $film->cast }}</td>
-                                        <td>{{ $film->minimal_usia }}</td>
-                                        <td>{{ $film->genre->genre }}</td>
-                                        <td>{{ $film->durasi }}</td>
-                                        <td>{{ $film->jadwal_tayang }}</td>
-                                        <td>
-                                            <p class="overflow-y-scroll ellipsis" rows="3">{{ $film->sinopsis }}</p>
-                                        </td>
                                         <td>{{ $film->status }}</td>
                                         <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}" height="100px" width="100px"></td>
+                                        <td>{{ $film->jadwal_tayang }}</td>
+                                        <td>{{ $film->jadwal_tayang}}</td>
+
                                         <div class="button w-25">
                                             <td>
                                                 <div class="btn-group " role="group" >
