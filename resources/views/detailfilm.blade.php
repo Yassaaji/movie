@@ -309,7 +309,7 @@
         @if ($film->status === 'nowplaying')
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
     @endif
-    </div>
+    </div>  
 </div>
 <div class="d-flex flex-column align-items-center">
     <div class="container-fluid">

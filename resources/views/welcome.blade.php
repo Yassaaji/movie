@@ -6,7 +6,7 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ URL::asset('css/welcome.css') }}">
-
+<title>Dashboard</title>
 
            <!-- Tambahkan pustaka jQuery dan JavaScript Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

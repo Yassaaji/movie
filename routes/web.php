@@ -19,6 +19,8 @@ use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\KomentarController;
 use App\Models\Genre;
 
+
+
 // Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
 // Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
 /*

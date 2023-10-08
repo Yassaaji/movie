@@ -67,7 +67,7 @@ class FilmController extends Controller
         $film->genre_id = $request->genre;
         $film->durasi = $request->durasi;
         $film->jadwal_tayang = $request->jadwal_tayang;
-        $film->jadwal_berakir = $jadwal_berkahir;
+        $film->jadwal_berakhir = $jadwal_berkahir;
 
         $film->jam_tayang = $request->jam_tayang;
         $film->trailer = $request->trailer;

@@ -310,7 +310,7 @@ text: '{{ $message }}',
                             </div>
 
                              <div class="col-md-6">
-                                <label for="noTelp"><h5>noTelp</h5></label>
+                                <label for="noTelp"><h5>No Telp</h5></label>
                                 <input type="number" class="form-control" id="noTelp" name="noTelp" placeholder="089********" min="0" value="{{ $data[0]->noTelp }}">
                                 @error('noTelp')
                                 <script>
@@ -332,7 +332,7 @@ text: '{{ $message }}',
                                 <button type="submit" style="margin-left: 62%; margin-bottom: 3%" name="simpan" value="Edit"
                                  class="btn btn-dark mx-111 signature" onclick="edit(event)">Edit</button>
                             </div>
-                            
+
                     </form>
                 </div>
             </div>
