@@ -232,6 +232,58 @@
                     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
                     /* Bayangan saat dihover */
                 }
+
+                .btn-primary {
+                    background-color: #070f3e;
+                    /* Warna latar belakang tombol */
+                    color: #ffffff;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-primary:hover {
+                    background-color: #ffffff;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+                    /* Bayangan saat dihover */
+                }
+
+                #myModal {
+                    justify-content: center;
+                    align-items: center;
+                    position: fixed;
+                    top: 10%;
+                    left: 40%;
+                }
+
+                .btn-success {
+                    background-color: #0a771d;
+                    /* Warna latar belakang tombol */
+                    color: #ffffff;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-success:hover {
+                    background-color: #ffffff;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+                    /* Bayangan saat dihover */
+                }
             </style>
 
         <body>
@@ -282,7 +334,7 @@
                                                                     class="fas fa-trash-alt"></i> </button>
                                                             <br><br>
                                                             <a href="" data-toggle="modal" data-target="#myModal"
-                                                                class="btn btn-dark" style="width: 60px; height: 40px;">
+                                                                class="btn btn-primary" style="width: 60px; height: 40px;">
                                                                 <i class="fas fa-clock"></i>
                                                             </a>
                                                         </form>
@@ -328,7 +380,8 @@
         <!-- The Modal -->
         <center>
 
-            <div class="modal justify-content-center" id="myModal" style="width: 55vh; align-items: center; margin-left: 20vh;">
+            <div class="modal justify-content-center" id="myModal"
+                style="width: 55vh; align-items: center; margin-left: 20vh;">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -339,26 +392,27 @@
                         </div>
 
                         <!-- Modal body -->
-                        <div class="modal-body" >
+                        <div class="modal-body">
                             <!-- adding Bootstrap Form here -->
 
                             <form id="myForm" class="needs-validation" novalidate>
                                 <div class="container col-md-12">
                                     <div class="form-group">
-                                        <label for="id" class="col-sm-12 mr-5" style="font-weight: 700; margin-right:200px;">Jadwal Terbaru</label>
-                                    <div class="form-group">
-                                        <div class="form" style="width: 40vh;">
-                                            <input type="date"  class="form-control" style="margin-left: -30px;"  id="date_id" name="date"
-                                                placeholder="Masukkan Tanggal" required />
-                                            <div class="invalid-feedback">
-                                                Date Harus Diisi
+                                        <label for="id" class="col-sm-12 mr-5"
+                                            style="font-weight: 700; margin-right:200px;">Jadwal Terbaru</label>
+                                        <div class="form-group">
+                                            <div class="form" style="width: 40vh;">
+                                                <input type="date" class="form-control" style="margin-left: -30px;"
+                                                    id="date_id" name="date" placeholder="Masukkan Tanggal" required />
+                                                <div class="invalid-feedback">
+                                                    Date Harus Diisi
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="text-center">
+                                        {{-- <div class="text-center">
                                         <button class="btn btn-success" type="submit">Submit</button>
+                                    </div> --}}
                                     </div>
-                                </div>
                             </form>
 
                             <script>
@@ -402,10 +456,12 @@
                         </div>
 
                         <!-- Modal footer -->
-                        <div class="modal-footer">
+                        {{-- <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div> --}}
+                        <div class="modal-footer">
+                            <button class="btn btn-success" type="submit">Submit</button>
                         </div>
-
                     </div>
                 </div>
             </div>
