@@ -12,6 +12,51 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
 
 </head>
+<style>
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+    display: none;
+}
+
+label>span {
+    /* display: inline-block; */
+    width: 100px;
+    height: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 15px 30px;
+    margin: 5px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #333;
+    transition: 0.2s;
+    user-select: none;
+}
+
+label span:hover,
+label span:active {
+    background-color: #222;
+}
+
+input:checked+label {
+    background-color: #006699;
+    border-color: #333;
+}
+</style>
 
     @section('content-app')
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -25,11 +70,25 @@
                 </div>
             </div>
         </div>
-        <center>
-            <br><br>
-            <div class="container">
-                <div class="row justify-content-end">
 
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="container">
+                    <label for="filterGenre">
+                            @foreach ($genre as $gn)
+                                <span>
+                                    <a class="text-decoration-none text-white" href="{{ route('gn', ['gn' => $gn->id]) }}">{{ $gn->genre }}</a>
+                                </span>
+                            @endforeach
+
+
+        <center>
+
+        </div>
+         <div class="container">
+            <br><br>
+
+                        </label>
                     @forelse ( $comingsoon as $film )
 
                     <div class="col-md-6 mb-3">
@@ -62,7 +121,12 @@
 
                     @empty
 
+                    <p  style="font-weight: 500; font-size: 30px; text-align: center; text-transform: capitalize; font-family:'Poppins'; margin-top:-50px;">genre tidak di temukan</p>
                     @endforelse
+
+        
+
+
 
 
                     <!-- Tambahkan card kedua di sini -->

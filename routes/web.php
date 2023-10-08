@@ -48,6 +48,7 @@ use App\Models\Genre;
     Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
     Route::get('/nowplaying',[PageController::class,'nowplaying'])->name('nowplaying');
     Route::get('/genre/{genre}', [NowplayingController::class, 'genre'])->name('genre');
+    Route::get('/gn/{gn}',[ComingSoonController::class,'genre'])->name('gn');
 
 // });
 

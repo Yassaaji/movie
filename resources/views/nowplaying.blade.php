@@ -7,9 +7,57 @@
     <title>Now Playing</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/nowplaying.css') }}">
-    <link href="https://cdnjs. cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        background-color: #fff;
+    }
+
+    .container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    input {
+        display: none;
+    }
+
+    label>span {
+        /* display: inline-block; */
+        width: 100px;
+        height: 20px;
+        font-size: 18px;
+        font-weight: 700;
+        padding: 15px 30px;
+        margin: 5px;
+        cursor: pointer;
+        border: 3px solid transparent;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #333;
+        transition: 0.2s;
+        user-select: none;
+    }
+
+    label span:hover,
+    label span:active {
+        background-color: #222;
+    }
+
+    input:checked+label {
+        background-color: #006699;
+        border-color: #333;
+    }
+</style>
+
 
 @section('content-app')
     <div id="carouselExampleCaptions" class="carousel slide mt-0" data-bs-ride="carousel">
@@ -26,28 +74,23 @@
             </div>
         </div>
         <!-- Tambahkan ini di dalam konten Anda -->
-
-        <!-- Tambahkan ini di dalam konten Anda -->
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <label for="genreFilter">Filter Genre:</label>
-                    <select id="genreFilter" class="form-control">
-                        @foreach ($genre as $gr)
-                            <option value="{{ $gr->id }}" data-url="{{ route('genre', ['genre' => $gr->id]) }}">
-                                {{ $gr->genre }}
-                            </option>
-                        @endforeach
-                        <!-- Tambahkan opsi genre lainnya sesuai kebutuhan Anda -->
-                    </select>
-                </div>
-            </div>
+            <label for="genreFilter">
+
+                    @foreach ($genre as $gr)
+                        <span>
+                            <a class="text-decoration-none text-white" href="{{ route('genre', ['genre' => $gr->id]) }}">{{ $gr->genre }}</a>
+                        </span>
+                    @endforeach
+
+
+            </label>
         </div>
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
-                $('#genreFilter').change(function() {
-                    var selectedOption = $(this).find('option:selected');
+                $('[name="genreFilter"]').change(function() {
+                    var selectedOption = $(this).filter(':checked');
                     var url = selectedOption.data('url'); // Ambil URL dari atribut data-url
 
                     if (url) {
@@ -55,7 +98,8 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
+
 
 
         <center>
@@ -95,6 +139,7 @@
                             </div>
                         </div>
                     @empty
+                    <p  style="font-weight: 500; font-size: 30px; text-align: center; text-transform: capitalize; font-family:'Poppins'; margin-top:-50px;">genre tidak di temukan</p>
                     @endforelse
         </center>
     @endsection

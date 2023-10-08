@@ -12,8 +12,9 @@ class PageController extends Controller
         $commingsoons = Film::where('status','commingsoon')->inRandomOrder()->get();
         $trailer = Film::pluck('trailer');
 
+
         // dump($commingsoon);
-        return view('welcome',compact('commingsoons','trailer'));
+        return view('welcome',compact('commingsoons','trailer',));
     }
     public function nowplaying(){
         $nowplayings = Film::where('status','nowplaying')->get();
@@ -23,8 +24,9 @@ class PageController extends Controller
 
     public function comingsoon(){
         $comingsoon = Film::where('status','commingsoon')->get();
+        $genre = Genre::all();
         // dd($comingsoon);
-        return view('comingsoon',compact('comingsoon'));
+        return view('comingsoon',compact('comingsoon','genre'));
     }
 
 

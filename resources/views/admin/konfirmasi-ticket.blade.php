@@ -209,7 +209,7 @@
             <div class="card-header"></div>
             <div class="card-body">
 
-                <div class="table-responsive mt-4">
+                <div class="table-responsive mt-4 ">
                     <table class="table table-dark table-bordered">
                         <thead>
                             <tr>

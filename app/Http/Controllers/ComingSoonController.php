@@ -16,6 +16,8 @@ use App\Http\Requests\StoreFilmRequest;
 use App\Http\Requests\UpdateFilmRequest;
 use App\Models\Film;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Genre;
+
 class ComingSoonController extends Controller
 {
     /**
@@ -99,6 +101,15 @@ class ComingSoonController extends Controller
         $films = Film::all();
         $films = Film::paginate(2);
         return view('admin.daftarcomingsoon', compact('films'));
+    }
+
+    public function genre($genre)
+    {
+        $comingsoon = Film::where('status','comingsoon')
+        ->where('genre_id',$genre)
+        ->get();
+        $genre = Genre::all();
+        return view('comingsoon',compact('comingsoon','genre'));
     }
 
 
