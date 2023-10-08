@@ -180,16 +180,13 @@
             font-family: 'Poppins', sans-serif;
             align-self: flex-start;
         }
+.sinopsis h1 {
+    font-size: 20px;
+    font-weight: normal;
+}
 
-        .sinopsis h1 {
-            font-size: 24px;
-        }
 
-        .sinopsis p {
-            font-size: 12px;
-            line-height: 1.5;
-            margin: 0;
-        }
+       
 
         .left-container {
             display: flex;
@@ -240,49 +237,9 @@
             display: flex;
         }
 
-        .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #4d4b4b;
-    color: #f7f5f5;
-    font-size: 16px;
-    overflow: hidden;
-    position: relative;
-    transition: background-color 0.3s, transform 0.9s;
-}
-
-.btn:hover {
-    background-color: #4d4b4b;
-    transform: scale(1.08);
-}
-
-.btn:after {
-    content: "";
-    background: rgba(255, 255, 255, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    width: 0;
-    height: 0
-    opacity: 0;
-    transition: width 0.4s ease-out, height 0.8s ease-out, opacity 0.4s;
-}
-
-.btn:hover:after {
-    width: 310px;
-    height: 100px;
-    opacity: 3;
-}
-
     </style>
 <div class="p-4">
+    <br><br><br>
 
     <h1><strong>{{ $film->judul }}</strong></h1>
     <div class="container jumbotron p-3">
@@ -305,11 +262,11 @@
     <div class="sinopsis">
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
-        <p style="width:90%;">{{ $film->sinopsis }}</p>
+        <h3><p style="width:90%;">{{ $film->sinopsis }}</p></h3>
         @if ($film->status === 'nowplaying')
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
     @endif
-    </div>  
+    </div>
 </div>
 <div class="d-flex flex-column align-items-center">
     <div class="container-fluid">
@@ -331,7 +288,7 @@
                     <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" autofocus></textarea>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
-                        Send
+                        Kirim
                     </button>
                 </div>
                 </form>
@@ -507,7 +464,7 @@
                                             @csrf
                                             <input name="komentar" class="form-control" id="" rows="2" placeholder="Masukkan komentar anda" autofocus/>
                                             <button type="submit" name="komentar_id" value="{{ $data->id }}" class="justify-content-center btn btn-rounded btn-dark d-flex align-items-center">
-                                                Send
+                                                Kirim
                                             </button>
                                         </form>
                                     </div>

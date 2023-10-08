@@ -100,8 +100,8 @@
                             </select> --}}
                             <br><br>
                             <select class="status" name="status" id="status">
-                                <option value="nowplaying" {{ $film->status == 'Now Playing' ? 'selected' : '' }}>Now Playing</option>
-                                <option value="commingsoon" {{ $film->status == 'Coming Soon' ? 'selected' : '' }}>Coming Soon</option>
+                                <option value="nowplaying" @if ($film->status === "nowplaying") selected @endif>Now Playing</option>
+                                <option value="commingsoon" @if ($film->status === "commingsoon") selected @endif>Coming Soon</option>
                             </select>
                             @error('status')
                                 <p class="alert alert-danger">{{ $message }}</p>
