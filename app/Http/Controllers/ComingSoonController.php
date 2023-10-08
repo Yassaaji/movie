@@ -105,7 +105,7 @@ class ComingSoonController extends Controller
 
     public function genre($genre)
     {
-        $comingsoon = Film::where('status','comingsoon')
+        $comingsoon = Film::where('status','commingsoon')
         ->where('genre_id',$genre)
         ->get();
         $genre = Genre::all();

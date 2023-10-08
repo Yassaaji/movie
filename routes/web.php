@@ -78,6 +78,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('/proseseditfilm', [FilmController::class, 'update'])->name('prosesEditFilm');
     Route::get('/edit-film/{id}',[FilmController::class,'edit'])->name('edit-film');
     Route::resource('film', FilmController::class);
+    Route::put('/atur_jadwal/{film_id}', [FilmController::class,'aturJadwal'])->name('aturJadwal');
 
 
     Route::get('/konfirmasi_ticket',[PesananController::class,'index'])->name('konfirmasi_ticket');

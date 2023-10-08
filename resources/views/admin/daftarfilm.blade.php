@@ -333,15 +333,48 @@
                                                             <button class="btn btn-danger" onclick="confirmDelete(event)"><i
                                                                     class="fas fa-trash-alt"></i> </button>
                                                             <br><br>
-                                                            <a href="" data-toggle="modal" data-target="#myModal"
-                                                                class="btn btn-primary" style="width: 60px; height: 40px;">
+                                                            <button type="button" class="btn mb-1 btn-dark btn-lg px-4 fs-4 font-medium" data-bs-toggle="modal" data-bs-target="#mymodal{{ $film->id }}">
                                                                 <i class="fas fa-clock"></i>
-                                                            </a>
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             </div>
                                         </tr>
+
+                                        <div id="mymodal{{ $film->id }}" class="modal fade" tabindex="-1" aria-labelledby="dark-header-modalLabel" style="display: none;" aria-modal="true" role="dialog">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                                <form action="{{ route('aturJadwal',$film->id) }}" method="post">
+                                              <div class="modal-content">
+                                                <div class="modal-header modal-colored-header bg-dark">
+                                                  <h4 class="modal-title text-white" id="dark-header-modalLabel">
+                                                    Atur Jadwal
+                                                  </h4>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <label class="form-group" for="jadwal_tayang">
+                                                            <span class="text-secondary fs-3 text-center">Jadwal Tayang</span> <br>
+                                                            <input class="form-control" type="date" name="jadwal_tayang" id="jadwal_tayang">
+                                                        </label>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                        <button type="submit" class="btn btn-dark">
+                                                            Save changes
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </form>
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+
                                     @empty
                                     @endforelse
                                 </tbody>
@@ -378,94 +411,7 @@
 
 
         <!-- The Modal -->
-        <center>
 
-            <div class="modal justify-content-center" id="myModal"
-                style="width: 55vh; align-items: center; margin-left: 20vh;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title w-100 text-center">Jam Tayang</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <!-- adding Bootstrap Form here -->
-
-                            <form id="myForm" class="needs-validation" novalidate>
-                                <div class="container col-md-12">
-                                    <div class="form-group">
-                                        <label for="id" class="col-sm-12 mr-5"
-                                            style="font-weight: 700; margin-right:200px;">Jadwal Terbaru</label>
-                                        <div class="form-group">
-                                            <div class="form" style="width: 40vh;">
-                                                <input type="date" class="form-control" style="margin-left: -30px;"
-                                                    id="date_id" name="date" placeholder="Masukkan Tanggal" required />
-                                                <div class="invalid-feedback">
-                                                    Date Harus Diisi
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="text-center">
-                                        <button class="btn btn-success" type="submit">Submit</button>
-                                    </div> --}}
-                                    </div>
-                            </form>
-
-                            <script>
-                                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                (function() {
-                                    'use strict';
-                                    window.addEventListener('load', function() {
-                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                        var forms = document.getElementsByClassName('needs-validation');
-                                        // Loop over them and prevent submission
-                                        var validation = Array.prototype.filter.call(forms, function(form) {
-                                            form.addEventListener('submit', function(event) {
-                                                if (form.checkValidity() === false) {
-                                                    event.preventDefault();
-                                                    event.stopPropagation();
-                                                }
-                                                form.classList.add('was-validated');
-
-
-                                                if (form.checkValidity() === true) {
-                                                    //enter your code here
-                                                    event.preventDefault();
-                                                    var form_data = {
-                                                        name: name_id.value,
-                                                        username: username_id.value,
-                                                        password: password_id.value
-                                                    }
-
-                                                    console.log(form_data); //printing form data in Console
-                                                    document.forms[0].reset(); //reseting the form
-                                                    document.getElementById('myForm').classList.remove(
-                                                        "was-validated"); //reseting the form validation
-
-                                                }
-
-                                            }, false);
-                                        });
-                                    }, false);
-                                })();
-                            </script>
-                        </div>
-
-                        <!-- Modal footer -->
-                        {{-- <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div> --}}
-                        <div class="modal-footer">
-                            <button class="btn btn-success" type="submit">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </center>
 
 
         </html>

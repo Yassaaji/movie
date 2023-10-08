@@ -102,14 +102,14 @@ input:checked+label {
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <br>
-                                        <h5 class="card-title text-start"><strong>PASIFIC RIM UPRISING</strong></h5>
-                                        <p class="card-text text-start">Durasi : 110 menit
+                                        <h5 class="card-title text-start"><strong>{{ $film->judul }}</strong></h5>
+                                        <p class="card-text text-start">Durasi : {{ $film->durasi }}
                                             <br>
-                                            Direktur : Steven D. Knight
+                                            Direktur : {{ $film->director }}
                                             <br>
-                                            Casts : John Boyega, Guillermo De Tollor.
+                                            Casts : {{ $film->cast }}
                                             <br>
-                                            Tanggal Tayang : 23/09/2023
+                                            genre : {{ $film->genre->genre }}
                                         </p>
                                         <br><br><br><br><br>
                                         <center> <a href="{{ route('detailfilm',$film->id) }}" class="btn btn-dark col-md-11">Detail Film</a></center>
@@ -124,7 +124,7 @@ input:checked+label {
                     <p  style="font-weight: 500; font-size: 30px; text-align: center; text-transform: capitalize; font-family:'Poppins'; margin-top:-50px;">genre tidak di temukan</p>
                     @endforelse
 
-        
+
 
 
 

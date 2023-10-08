@@ -186,7 +186,7 @@
 }
 
 
-       
+
 
         .left-container {
             display: flex;
@@ -262,7 +262,7 @@
     <div class="sinopsis">
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
-        <h3><p style="width:90%;">{{ $film->sinopsis }}</p></h3>
+        <p style="width:90%;font-weight:400">{{ $film->sinopsis }}</p>
         @if ($film->status === 'nowplaying')
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
     @endif

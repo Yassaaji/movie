@@ -9,8 +9,10 @@ use App\Models\Genre;
 use App\Models\Komentar;
 use App\Models\Penayangan;
 use App\Models\Ruangan;
+use App\Models\status_kursi;
 use App\Models\Ticket;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -190,6 +192,33 @@ class FilmController extends Controller
         Storage::delete('thumbnile/' . $film->thumbnile);
         $film->delete();
         return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
+    }
+
+    public function aturJadwal(Request $request, $film_id ){
+
+
+        $request->validate([
+            'jadwal_tayang' => 'after_or_equal:today'
+        ],[
+            'jadwal_tayang.after_or_equal' => 'Pengaturan jadwal film tidak boleh hari kemarin'
+        ]);
+
+        $jadwal_tayang   = $request->input('jadwal_tayang');
+        $jadwal_berkahir =  Carbon::parse($jadwal_tayang);
+        $jadwal_berkahir->addDay();
+
+        $film = Film::where('id',$film_id)->first();
+        $film->jadwal_tayang = $jadwal_tayang;
+        $film->jadwal_berakhir = $jadwal_berkahir;
+        $film->save();
+
+
+        $kursi = status_kursi::where('film_id',$film_id)->get();
+        // dd($kursi);
+
+
+        return redirect()->route('daftarfilm')->with('success','Sukses mengatur jadwal penayangan baru');
+
     }
 
 
