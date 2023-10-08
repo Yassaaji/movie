@@ -328,7 +328,7 @@
         <!-- The Modal -->
         <center>
 
-            <div class="modal juatify-content-center" id="myModal" style="width: 55vh; align-items: center">
+            <div class="modal justify-content-center" id="myModal" style="width: 55vh; align-items: center; margin-left: 20vh;">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
@@ -347,8 +347,8 @@
                                     <div class="form-group">
                                         <label for="id" class="col-sm-12 mr-5" style="font-weight: 700; margin-right:200px;">Jadwal Terbaru</label>
                                     <div class="form-group">
-                                        <div class="form" style="width: 40vh">
-                                            <input type="date"  class="form-control"  id="date_id" name="date"
+                                        <div class="form" style="width: 40vh;">
+                                            <input type="date"  class="form-control" style="margin-left: -30px;"  id="date_id" name="date"
                                                 placeholder="Masukkan Tanggal" required />
                                             <div class="invalid-feedback">
                                                 Date Harus Diisi
