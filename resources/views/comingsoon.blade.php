@@ -56,17 +56,39 @@ input:checked+label {
     background-color: #006699;
     border-color: #333;
 }
+
+/* Tambahkan CSS berikut ke dalam file stylesheet Anda atau dalam tag <style> jika inline */
+    .carousel-caption {
+    text-align: center;
+}
+
+.carousel-caption h1, .carousel-caption p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+/* Efek bayangan untuk membuat teks bercahaya */
+.carousel-caption h1, .carousel-caption p {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Sesuaikan dengan preferensi Anda */
+}
+
 </style>
 
     @section('content-app')
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('img/caraousel-comingsoon/comingsoon.jpg') }}" class="d-block w-100"
+                    <img src="{{ asset('img/caraousel-comingsoon/hwhw.jpg') }}" class="d-block w-100"
                         alt="" style="width: 200%; height: auto; max-height: 600px;">
-                    <div class="carousel-caption text-center" style="top: 45%;">
-                        {{-- <h2>COMING SOON</h2> --}}
-                    </div>
+                        <div class="carousel-caption text-center" style="top: 45%;">
+                            <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Coming Soon</h1>
+                            <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Siapkan uang anda hehe!.</p>
+                        </div>
                 </div>
             </div>
         </div>

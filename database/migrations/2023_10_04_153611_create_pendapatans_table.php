@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('pendapatans', function (Blueprint $table) {
             $table->id();
-            $table->string('bulan');
-            $table->string('tahun');
-            $table->double('pendapatan');
+            $table->integer('bulanan');
+            $table->integer('tahunan');
+            $table->decimal('jumlah',10,2);
             $table->timestamps();
         });
     }

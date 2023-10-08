@@ -56,6 +56,26 @@
         background-color: #006699;
         border-color: #333;
     }
+    /* Tambahkan CSS berikut ke dalam file stylesheet Anda atau dalam tag <style> jika inline */
+.carousel-caption {
+    text-align: center;
+}
+
+.carousel-caption h1, .carousel-caption p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+/* Efek bayangan untuk membuat teks bercahaya */
+.carousel-caption h1, .carousel-caption p {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Sesuaikan dengan preferensi Anda */
+}
+
 </style>
 
 

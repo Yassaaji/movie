@@ -120,7 +120,7 @@
                 <h4 class="main-title mb-8  user " style="color: #fff"></h4>
                 <div class="row">
                     <a href="{{ route('profile.edit', Auth::user()->id) }}">
-                        <div class="col-lg-4 mb-3 d-flex justify-content-center align-items-center">
+                        <div class="col-lg-4 mb-3 d-flex justify-content-center align-items-center" style="background-color: #fff">
                             <div class="img-container">
                                 <img style="
                                 width: 200px;
@@ -132,10 +132,7 @@
                             @else
                             src="{{ asset('storage/profile/' . $data[0]->fotoprofil) }}" @endif
                                     loading="lazy">
-                                <p style="
-                               position: absolute;
-                               z-index:10;
-                               font-size: 100px;
+                                <p style="position: absolute;z-index:10;font-size: 100px;
                                "
                                     class="edit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
@@ -150,34 +147,36 @@
                     </a>
                 </div>
 
-                <div class="col-lg-8 ml-12 ">
-                    <div class="sign-user_card dl">
-                        <h5 class="mb-3 pb-3 a-border besar" style="color: black">DETAIL PROFIL PENGGUNA</h5>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
+                <div class="col-lg-8 ml-12">
+                    <center>
+                        <div class="sign-user_card dl">
+                        <h5 class="mb-4 pb-3 a-border besar" style="color: black">DETAIL PROFIL PENGGUNA</h5>
+                        <div class="row mb-4">
+                            <div class="col-md-2">
                                 <span class="text font-size-13 kecil">Nama</span>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->name }}</p>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
+                        <div class="row mb-4">
+                            <div class="col-md-2">
                                 <span class="text font-size-13 kecil ">Email</span>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->email }}</p>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
+                        <div class="row mb-4">
+                            <div class="col-md-2">
                                 <span class="text font-size-13 kecil ">No.Hp</span>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <p class="mb-0 kecil with-border">{{ $data[0]->noTelp }}</p>
                             </div>
                         </div>
                     </div>
+                        </center>
                 </div>
 
     <body>
@@ -240,7 +239,7 @@
 
                                         <button type="button" class="btn " data-bs-toggle="modal"
                                             data-bs-target="#ratingModal">
-                                            <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
+                                            <i class="fas fa-eye" style="font-size: 24px; color: rgb(51, 51, 56);"></i>
                                         </button>
 
                                         <!-- Bootstrap Modal -->
@@ -280,7 +279,7 @@
                                                                                     :</strong>{{ $pesanan->film->casts }}
                                                                             </p>
                                                                         </div>
-                                                                        
+
                                                                         <div class="rating">
                                                                             <i class="fas fa-star"
                                                                                 onclick="setRating(1)"></i>
