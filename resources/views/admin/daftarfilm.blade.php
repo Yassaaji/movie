@@ -11,6 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <!-- Include SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
         body {
@@ -184,8 +188,7 @@
             <h1 style="color: #fff">Karyawan</h1>
             <p style="color: #fff">Daftar Film</p>
         </div>
-        <div class="card">
-            <div class="card-header"></div>
+        <div class="card" >
             <div class="card-body">
                 <a href="{{ route('film.create') }}" class="btn btn-dark"><i class="fas fa-plus"></i> </a>
 
@@ -214,16 +217,20 @@
 
                                         <div class="button w-25">
                                             <td>
-                                                <div class="btn-group " role="group" >
+                                                <div class="btn-group d-flex align-items-center" role="group">
                                                     <form action="{{ route('film.destroy', $film->id) }}" method="post" style="width: 125px;">
                                                         @csrf
                                                         <a href="{{ route('edit-film', $film->id) }}" class="btn btn-dark"><i class="fas fa-pencil-alt"></i> </a>
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" onclick="confirmDelete(event)"><i class="fas fa-trash-alt"></i> </button>
+                                                        <br><br>
+                                                        <a href="" data-toggle="modal" data-target="#myModal" class="btn btn-dark" style="width: 60px; height: 40px;">
+                                                            <i class="fas fa-clock"></i>
+                                                        </a>
                                                     </form>
                                                 </div>
                                             </td>
-                                      </div>
+                                        </div>
                                     </tr>
                             @empty
                             @endforelse
@@ -261,6 +268,92 @@
 
 
 </script>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title w-100 text-center">Form</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- adding Bootstrap Form here -->
+
+                <form id="myForm" class="needs-validation" novalidate>
+                    <div class="container">
+                        <div class="form-group row">
+                            <label for="id" class="col-sm-12" style="font-weight: 700; margin-left: -30px;">Jadwal Terbaru</label>
+                            <div class="col-sm-12">
+                                <input type="date" class="form-control" id="date_id" name="date"
+                                    placeholder="Masukan Tanggal" required />
+                                    <div class="invalid-feedback">
+                                        Date Harus Diisi
+                                      </div>
+                            </div>
+                        </div>
+
+
+
+                         <div class="text-center">
+                         <button class="btn btn-success" type="submit">Submit</button>
+                         </div>
+                    </div>
+                </form>
+
+                <script>
+                     // Example starter JavaScript for disabling form submissions if there are invalid fields
+                     (function () {
+                                'use strict';
+                                window.addEventListener('load', function () {
+                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                    var forms = document.getElementsByClassName('needs-validation');
+                                    // Loop over them and prevent submission
+                                    var validation = Array.prototype.filter.call(forms, function (form) {
+                                        form.addEventListener('submit', function (event) {
+                                            if (form.checkValidity() === false) {
+                                                event.preventDefault();
+                                                event.stopPropagation();
+                                            }
+                                            form.classList.add('was-validated');
+
+
+                                            if(form.checkValidity() === true){
+                                                //enter your code here
+                                                event.preventDefault();
+                                                 var form_data = {
+                                                     name : name_id.value,
+                                                     username : username_id.value,
+                                                     password : password_id.value
+                                                 }
+
+                                                 console.log(form_data); //printing form data in Console
+                                                 document.forms[0].reset();    //reseting the form
+                                                 document.getElementById('myForm').classList.remove("was-validated");//reseting the form validation
+
+                                            }
+
+                                        }, false);
+                                    });
+                                }, false);
+                            })();
+                </script>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 </html>
 @endsection
