@@ -85,13 +85,11 @@
             <hr>
 
         </div>
-
         <main>
             <div class="d-flex">
                 @yield('content')
             </div>
         </main>
-
     </div>
 </body>
 
