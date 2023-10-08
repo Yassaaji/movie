@@ -64,7 +64,7 @@
         <!-- Adjusted the top margin to mt-0 to remove the space above -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('img/caraousel-nowplaying/kontenn.jpg') }}" class="d-block w-100" alt=""
+                <img src="{{ asset('img/caraousel-nowplaying/hd.jpg') }}" class="d-block w-100" alt=""
                     style="object-fit: cover:cover; height: 100vh;">
                 <div class="carousel-caption text-center" style="top: 45%;">
                     <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Now Playing</h1>
