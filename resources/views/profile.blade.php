@@ -11,7 +11,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Profile</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rateyo@2.3.2/dist/jquery.rateyo.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/rateyo@2.3.2/dist/jquery.rateyo.min.js"></script>
         <section class="m-profile setting-wrapper" style="background-color:rgb(30, 28, 28);">
             <br><br><br><br><br><br><br>
             <style>
@@ -114,8 +115,8 @@
                     cursor: pointer;
                 }
 
+                </style>
                 </head>
-            </style>
             <div class="container">
                 <h4 class="main-title mb-8  user " style="color: #fff"></h4>
                 <div class="row">
@@ -229,21 +230,25 @@
 
                                     <td class="text-center">{{ $pesanan->totalharga }}</td>
                                     <td class="text-center">
-
                                         <span class="badge badge-secondary">{{ $pesanan->konfirmasi }}</span>
                                     </td>
                                     <td>
                                         {{-- <button style="background: none; border: none; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#ratingModal{{ $pesanan->id }}">
                                 <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                             </button> --}}
-
+                                        @if($pesanan->konfirmasi === "sukses")
                                         <button type="button" class="btn " data-bs-toggle="modal"
-                                            data-bs-target="#ratingModal">
-                                            <i class="fas fa-eye" style="font-size: 24px; color: rgb(51, 51, 56);"></i>
+                                            data-bs-target="#ratingModal{{ $pesanan->id }}">
+                                            <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                                         </button>
-
+                                        @else
+                                        <button type="button" class="btn border-0 " data-bs-toggle="modal"
+                                            data-bs-target="#ratingModal" disabled>
+                                            <i class="fas fa-star" style="font-size: 24px; color: rgb(205, 203, 189);"></i>
+                                        </button>
+                                        @endif
                                         <!-- Bootstrap Modal -->
-                                        <div class="modal fade" id="ratingModal" tabindex="-1"
+                                        <div class="modal fade" id="ratingModal{{ $pesanan->id }}" tabindex="-1"
                                             aria-labelledby="ratingModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
@@ -256,61 +261,58 @@
                                                     <center>
                                                         <div class="modal-body">
                                                             <div class="container">
-                                                                <!-- Your rating inputs and other content -->
-                                                                <div class="image-container">
+                                                                <form action="{{ route('rate',$pesanan->film->id) }}" method="post">
+                                                                    @csrf
+                                                                    <!-- Your rating inputs and other content -->
+                                                                    <div class="image-container">
                                                                     <img class="image"
-                                                                        src="{{ asset('img/foto-rating/spidermann.jpg') }}"
+                                                                        src="{{ asset('storage/thumbnile' . $pesanan->film->id) }}"
                                                                         alt="Film" height="100px" width="100px">
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <div class="card-body">
-                                                                        <h2 class="card-title text-start"
+                                                                        <h2 class="card-title text-center"
                                                                             style="color: rgb(0, 0, 0);">
                                                                             {{ $pesanan->film->judul }}</h2>
                                                                         <div class="data">
                                                                             <p style="color: rgb(0, 0, 0);"><strong>Durasi
                                                                                     :</strong>{{ $pesanan->film->durasi }}
-                                                                            </p>
+                                                                                </p>
                                                                             <p style="color: rgb(0, 0, 0);">
                                                                                 <strong>Direktur :</strong>
-                                                                                {{ $pesanan->film->direktur }}
+                                                                                {{ $pesanan->film->director }}
                                                                             </p>
                                                                             <p style="color: rgb(0, 0, 0);"><strong>Casts
-                                                                                    :</strong>{{ $pesanan->film->casts }}
+                                                                                :</strong>{{ $pesanan->film->cast }}
                                                                             </p>
                                                                         </div>
 
-                                                                        <div class="rating">
+                                                                        <input type="hidden" name="rate" id="rate" value="">
+                                                                        <label class="rating">
                                                                             <i class="fas fa-star"
-                                                                                onclick="setRating(1)"></i>
+                                                                            onclick="setRating(1)"></i>
                                                                             <i class="fas fa-star"
                                                                                 onclick="setRating(2)"></i>
-                                                                            <i class="fas fa-star"
+                                                                                <i class="fas fa-star"
                                                                                 onclick="setRating(3)"></i>
-                                                                            <i class="fas fa-star"
+                                                                                <i class="fas fa-star"
                                                                                 onclick="setRating(4)"></i>
                                                                             <i class="fas fa-star"
-                                                                                onclick="setRating(5)"></i>
-                                                                        </div>
+                                                                            onclick="setRating(5)"></i>
+                                                                        </label>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </center>
-                                                    <nav aria-label="Page navigation example">
-                                                        <ul class="pagination">
-                                                            {{-- <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() - 1]) }}">Previous</a>
-                                                <a class="page-link" href="{{ route('/profile', ['page' => $data->currentPage() + 1]) }}">Next</a> --}}
 
-                                                            {{ $data->links() }}
-                                                        </ul>
-                                                    </nav>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-dark">Kirim</button>
-                                                    </div>
+                                                            <button type="submit" class="btn btn-dark">Kirim</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -321,16 +323,21 @@
                                         </script>
                                         <script>
                                             function setRating(rating) {
+                                                // document.get
+                                                document.getElementById('rate').value = rating;
                                                 // Mengatur warna bintang sesuai dengan rating yang diberikan
                                                 for (let i = 1; i <= 5; i++) {
                                                     const star = document.querySelector('.rating i:nth-child(' + i + ')');
                                                     if (i <= rating) {
+                                                        // document.getElementById('rate').value = i;
                                                         star.style.color = 'gold';
                                                     } else {
                                                         star.style.color = 'gray';
+                                                        // document.getElementById('rate').value = i;
                                                     }
                                                 }
                                             }
+
                                         </script>
                                     </td>
                             </tr>

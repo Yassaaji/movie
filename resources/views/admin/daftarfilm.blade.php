@@ -319,7 +319,7 @@
                                             <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile) }}"
                                                     alt="{{ $film->judul }}" height="100px" width="100px"></td>
                                             <td>{{ $film->jadwal_tayang }}</td>
-                                            <td>{{ $film->jadwal_tayang }}</td>
+                                            <td>{{ $film->jadwal_berakhir }}</td>
 
                                             <div class="button w-25">
                                                 <td>
@@ -333,9 +333,11 @@
                                                             <button class="btn btn-danger" onclick="confirmDelete(event)"><i
                                                                     class="fas fa-trash-alt"></i> </button>
                                                             <br><br>
+                                                            @if($film->status === "finish")
                                                             <button type="button" class="btn mb-1 btn-dark btn-lg px-4 fs-4 font-medium" data-bs-toggle="modal" data-bs-target="#mymodal{{ $film->id }}">
                                                                 <i class="fas fa-clock"></i>
                                                             </button>
+                                                            @endif
                                                         </form>
                                                     </div>
                                                 </td>

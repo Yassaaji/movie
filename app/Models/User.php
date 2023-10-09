@@ -71,4 +71,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Kursi::class);
     }
+
+    public function rate():HasMany
+    {
+        return $this->hasMany(Rate::class);
+    }
+
 }

@@ -17,6 +17,7 @@
 }
 
 
+
         .content {
             display: flex;
             grid-template-columns: auto 1fr;
@@ -238,7 +239,7 @@
         }
 
     </style>
-<div class="p-4">
+<div class="p-5 pb-5">
     <br><br><br>
 
     <h1><strong>{{ $film->judul }}</strong></h1>
@@ -268,6 +269,23 @@
     @endif
     </div>
 </div>
+
+<div class="container p-5 mt-5" style="width: 100%; height:30vh;">
+    <div class="row h-100">
+        <div class="col">
+            <h2 style="font-size: 100px;" class="text-center fs-1">{{ number_format($akmRating,1) }}</h2>
+            <center>@for ($i = 0 ; $i < 5 ; $i ++)
+                @if($i < $bintang)
+                <i class="fa fa-star" style="font-size:50px; color: yellow;"></i>
+                @else
+                <i class="fa fa-star" style="font-size:50px"></i>
+                @endif
+            @endfor</center>
+        </div>
+    </div>
+</div>
+
+
 <div class="d-flex flex-column align-items-center">
     <div class="container-fluid">
         <div class="row p-5 w-100">

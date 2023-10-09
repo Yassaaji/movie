@@ -88,14 +88,18 @@ class PesananController extends Controller
             return redirect()->back()->with('error',"Kursi sudah dipesan");
         }
 
+        $penayangan = Penayangan::where('film_id',$film_id)->orderBy('id','desc')->first();
         foreach ($kursi_pesanan as $data) {
 
-            $status = status_kursi::where('film_id',$film_id)->get();
+            $status = status_kursi::where('film_id',$film_id)->where('penayangan_id',$penayangan->id)->get();
             foreach ($status as $st) {
                 if($data === $st->nomor_kursi){
                     return redirect()->back()->with('error',"Kursi sudah dipesan");
                 }
             }
+
+
+            // $penayangan = Penayangan::orderBy('film_id','desc')->first();
 
             $kursi = Kursi::where('ruangan_id',$film->ruangan_id)->where('nomor_kursi',$data)->first();
 
@@ -105,6 +109,9 @@ class PesananController extends Controller
             $status_kursi->nomor_kursi = $data;
             $status_kursi->status_kursi = "dipesan";
             $status_kursi->ticket_id = $ticket->id;
+            $status_kursi->penayangan_id = $penayangan->id;
+
+
 
             try {
 
@@ -160,7 +167,7 @@ class PesananController extends Controller
         }
 
 
-        return redirect()->back()->with('success','berhasil memesan ticket');
+        return redirect()->route('detailfilm',$film_id )->with('success','berhasil memesan ticket');
     }
 
     /**
@@ -186,7 +193,8 @@ class PesananController extends Controller
     {
         // dd($pesanan);
         $pesanan->load('user','film','ticket');
-        $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
+        $penayangan = Penayangan::where('film_id',$pesanan->film->id)->orderBy('id','desc')->first();
+        $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->where('penayangan_id',$penayangan->id)->get();
         $penonton = status_kursi::where('ticket_id',$pesanan->ticket->id)->get()->count();
 
         // dd($status_kursi);
@@ -204,11 +212,15 @@ class PesananController extends Controller
                 $pendapatan->save();
 
 
-                $penayangan = Penayangan::where('film_id',$pesanan->film->id)->first();
                 // dd($penayangan);
-                $penayangan->penonton = $penonton;
+                $penayangan->penonton = $penayangan->penonton + $penonton;
                 $penayangan->pendapatan = $penayangan->pendapatan + $pesanan->totalharga;
                 $penayangan->save();
+
+                $film = Film::where('id',$pesanan->film->id)->first();
+                $film->total_penonton = $penayangan->penonton;
+                $film->save();
+
 
             }else{
                 $pendapatan = new Pendapatan;
@@ -219,11 +231,14 @@ class PesananController extends Controller
 
                 $penayangan = Penayangan::where('film_id',$pesanan->film->id)->first();
                 // dd($penayangan);
-                $penayangan->penonton = $penonton;
+                $penayangan->penonton = $penayangan->penonton + $penonton;
                 $penayangan->pendapatan = $penayangan->pendapatan + $pesanan->totalharga;
                 $penayangan->save();
-            }
 
+                $film = Film::where('id',$pesanan->film->id)->first();
+                $film->total_penonton = $penayangan->penonton;
+                $film->save();
+            }
 
 
         }else if($request->status === "ditolak"){
@@ -240,8 +255,9 @@ class PesananController extends Controller
         }else{
             return redirect()->back()->with('error','Gagal Konfirmasi Pesanan');
         }
+
         $pesanan->save();
-        return redirect()->back()->with('succes','Gagal Konfirmasi Pesanan');
+        return redirect()->back()->with('success','Sukses Konfirmasi Pesanan');
     }
 
     /**

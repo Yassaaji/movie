@@ -17,9 +17,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\RateController;
+use App\Mail\TesMail;
 use App\Models\Genre;
-
-
+use Illuminate\Support\Facades\Mail;
 
 // Route::get('/create-comingsoon', [ComingSoonController::class, 'create'])->name('create-comingsoon');
 // Route::get('/create-film', [FilmController::class, 'create'])->name('create-film');
@@ -67,6 +68,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('komentar/{film_id}',[KomentarController::class,'store'])->name('tambahKomentar');
     Route::put('editKomentar/{komentar}',[KomentarController::class,'update'])->name('updateKomentar');
     Route::delete('hapusKomentar/{komentar}',[KomentarController::class,'destroy'])->name('hapusKomentar');
+    Route::post('rating/{film_id}',[RateController::class,'store'])->name('rate');
 
 });
 
@@ -203,3 +205,7 @@ Route::group(['middleware'=>'admin'],function(){
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::resource('/tes',TesController::class);
+
+// route::get('/tesemail',function(){
+//     Mail::to('yassa.aji026@gmail.com')->send(new TesMail);
+// });

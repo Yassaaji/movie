@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->enum('status',['nowplaying','commingsoon','finish'])->default('commingsoon');
             $table->string('thumbnile');
+            $table->integer('total_penonton');
             $table->timestamps();
         });
     }

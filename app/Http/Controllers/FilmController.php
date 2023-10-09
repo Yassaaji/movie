@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use Laravel\Ui\Presets\React;
 
 use function Symfony\Component\String\b;
 
@@ -80,6 +80,7 @@ class FilmController extends Controller
         $ruangan = Ruangan::where('nama_ruangan',$request->ruangan)->first();
         $film->ruangan_id = $ruangan->id;
         $film->harga = $request->harga;
+        $film->total_penonton = 0;
         $film->save();
 
 
@@ -101,9 +102,14 @@ class FilmController extends Controller
     // dd($film);
     public function show(Film $film)
     {
-        $film->load('ruangan','genre');
+        $film->load('ruangan','genre','rate');
+
+        $akmRating = $film->rate()->avg('rate');
+        $bintang = floor($akmRating);
+        // dd($akmRating);  
+
         $komentar = Komentar::where('film_id',$film->id)->get();
-        return view('detailfilm',compact('film','komentar'));
+        return view('detailfilm',compact('film','komentar','akmRating','bintang'));
     }
 
     /**
@@ -112,14 +118,14 @@ class FilmController extends Controller
     public function daftarFilm()
     {
         $today = Carbon::now();
-
+        $today->addDay(0);
+        // dd($today);
         if (Film::whereDate('jadwal_berakhir', '<=', $today)->exists()) {
             Film::whereDate('jadwal_berakhir', '<=', $today)->update(['status' => 'finish']);
-        }
-
-        if(Film::whereDate('jadwal_tayang','<=',$today)->exists()){
+        }else if(Film::whereDate('jadwal_tayang','<=',$today)){
             Film::whereDate('jadwal_tayang', '<=', $today)->update(['status' => 'nowplaying']);
         }
+
 
         // Mengambil daftar film dengan relasi genre
         $films = Film::with('genre')->paginate(2);
@@ -203,21 +209,40 @@ class FilmController extends Controller
             'jadwal_tayang.after_or_equal' => 'Pengaturan jadwal film tidak boleh hari kemarin'
         ]);
 
+
+
+        $penayanganLama = Penayangan::where('film_id',$film_id)->orderBy('id','desc')->first();
+
+        $penayangan = new Penayangan;
+        $penayangan->film_id = $film_id;
+        $penayangan->penonton = $penayangan->penonton + $penayanganLama->penonton;
+        $penayangan->pendapatan = $penayanganLama->pendapatan + $penayangan->pendapatan;
+        $penayangan->save();
+
         $jadwal_tayang   = $request->input('jadwal_tayang');
         $jadwal_berkahir =  Carbon::parse($jadwal_tayang);
         $jadwal_berkahir->addDay();
-
+        // dd($jadwal_berkahir);
         $film = Film::where('id',$film_id)->first();
         $film->jadwal_tayang = $jadwal_tayang;
         $film->jadwal_berakhir = $jadwal_berkahir;
+        $film->status = 'commingsoon';
         $film->save();
 
+        // $kursi = status_kursi::where('film_id',$film_id)->where('penayangan_id',$penayanganLama->id)->get();
 
-        $kursi = status_kursi::where('film_id',$film_id)->get();
+
+        // $kursi->save();
         // dd($kursi);
 
 
         return redirect()->route('daftarfilm')->with('success','Sukses mengatur jadwal penayangan baru');
+
+    }
+
+    public function rating(Request $request,$film_id){
+
+
 
     }
 

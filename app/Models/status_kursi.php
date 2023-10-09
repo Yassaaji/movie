@@ -24,4 +24,9 @@ class status_kursi extends Model
         return $this->belongsTo(Film::class);
     }
 
+    public function penayangan():BelongsTo
+    {
+        return $this->belongsTo(Penayangan::class);
+    }
+
 }

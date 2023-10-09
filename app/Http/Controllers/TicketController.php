@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateticketRequest;
 use App\Models\Ewallet;
 use App\Models\Film;
 use App\Models\Kursi;
+use App\Models\Penayangan;
 use App\Models\status_kursi;
 
 class TicketController extends Controller
@@ -50,12 +51,15 @@ class TicketController extends Controller
     {
 
 
+        
         $film->load('ruangan');
         $kursi = Kursi::with('status_kursi')->where('ruangan_id',$film->ruangan->id)->get();
         $bank = Bank::all();
         $ewallets = Ewallet::all();
 
-        $status_kursi = status_kursi::where('film_id',$film->id)->get();
+        $penayangan = Penayangan::where('film_id',$film->id)->orderBy('id','desc')->first();
+
+        $status_kursi = status_kursi::where('film_id',$film->id)->where('penayangan_id',$penayangan->id)->get();
         // dd($status_kursi);
 
         return view('order-ticket',compact('kursi','film','bank','ewallets','status_kursi'));

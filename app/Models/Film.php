@@ -49,4 +49,9 @@ class Film extends Model
         return $this->hasMany(Penayangan::class);
     }
 
+    public function rate():HasMany
+    {
+        return $this->hasMany(Rate::class);
+    }
+
 }
