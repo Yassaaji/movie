@@ -213,7 +213,7 @@
                                         <td>{{ $film->status }}</td>
                                         <td><img src="{{ asset('storage/thumbnile/' . $film->thumbnile ) }}" alt="{{ $film->judul }}" height="100px" width="100px"></td>
                                         <td>{{ $film->jadwal_tayang }}</td>
-                                        <td>{{ $film->jadwal_tayang}}</td>
+                                        <td>{{ $film->jadwal_berakhir}}</td>
 
                                         <div class="button w-25">
                                             <td>

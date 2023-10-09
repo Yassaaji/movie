@@ -8,11 +8,14 @@ body {
 
 .kecil {
     height: 330px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .besar {
-    width: px;
+    width: 100%;
     height: 700px;
+    object-fit: cover;
 }
 
 .card-welcome {

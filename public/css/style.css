@@ -99,11 +99,7 @@ body{
     font-size: 14px; /* Ukuran font sesuai keinginan Anda */
     font-family: 'Poppins',sans-serif;
   }
-.kecil{
-    padding-right: 200px;
-    font-display: 10px;
-    padding-left: 150px;
-}
+
 .edit-icon {
     position: absolute;
     top: 0;

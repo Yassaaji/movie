@@ -8,6 +8,7 @@ use App\Mail\ticketCancel;
 use App\Mail\ticketSuccess;
 use App\Models\Film;
 use App\Models\Kursi;
+use App\Models\Penayangan;
 use App\Models\Pendapatan;
 use App\Models\Pesanan;
 use App\Models\status_kursi;
@@ -186,6 +187,8 @@ class PesananController extends Controller
         // dd($pesanan);
         $pesanan->load('user','film','ticket');
         $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->get();
+        $penonton = status_kursi::where('ticket_id',$pesanan->ticket->id)->get()->count();
+
         // dd($status_kursi);
         if($request->status === "sukses"){
             $pesanan->konfirmasi = "sukses";
@@ -199,13 +202,29 @@ class PesananController extends Controller
                 $pendapatan->tahun = $now->format('Y');
                 $pendapatan->pendapatan = $pendapatan->pendapatan + $pesanan->totalharga;
                 $pendapatan->save();
+
+
+                $penayangan = Penayangan::where('film_id',$pesanan->film->id)->first();
+                // dd($penayangan);
+                $penayangan->penonton = $penonton;
+                $penayangan->pendapatan = $penayangan->pendapatan + $pesanan->totalharga;
+                $penayangan->save();
+
             }else{
                 $pendapatan = new Pendapatan;
                 $pendapatan->bulan = $now->format('M');
                 $pendapatan->tahun = $now->format('Y');
                 $pendapatan->pendapatan = $pendapatan->pendapatan + $pesanan->totalharga;
                 $pendapatan->save();
+
+                $penayangan = Penayangan::where('film_id',$pesanan->film->id)->first();
+                // dd($penayangan);
+                $penayangan->penonton = $penonton;
+                $penayangan->pendapatan = $penayangan->pendapatan + $pesanan->totalharga;
+                $penayangan->save();
             }
+
+
 
         }else if($request->status === "ditolak"){
             $pesanan->konfirmasi = "ditolak";

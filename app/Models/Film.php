@@ -44,4 +44,9 @@ class Film extends Model
         return $this->hasMany(Komentar::class);
     }
 
+    public function penayangan():HasMany
+    {
+        return $this->hasMany(Penayangan::class);
+    }
+
 }

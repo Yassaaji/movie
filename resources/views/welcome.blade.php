@@ -75,7 +75,7 @@
             <div class="col-md-4">
                 <div class="col-md-12">
                     <div class="card">
-                        <img src="{{ asset('img/home/spiderman.png') }}" alt="" class="card-img-top besar" >
+                        <img @if( isset($trending[0]) && !empty($trending[0]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[0]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top besar">
                     </div>
                 </div>
             </div>
@@ -83,34 +83,34 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img src="{{ asset('img/home/Antman.jpg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[1]) && !empty($trending[1]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[1]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img src="{{ asset('img/home/fastx.jpg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[2]) && !empty($trending[2]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[2]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card"data-aos="fade-in" data-aos-delay="10">
-                                <img  src="{{ asset('img/home/Extraction2.jpeg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[3]) && !empty($trending[3]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[3]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 40px;">
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img src="{{ asset('img/home/Theflash.jpg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[4]) && !empty($trending[4]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[4]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img src="{{ asset('img/home/Dogter.jpeg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[5]) && !empty($trending[5]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[5]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img src="{{ asset('img/home/batman.jpeg') }}" alt="" class="card-img-top kecil">
+                            <img @if( isset($trending[6]) && !empty($trending[6]->film->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[6]->film->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\Film;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,8 +16,17 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-            $schedule->command('pendapatan_bulanan')->monthly();
-        
+
+
+            $schedule->call(function(){
+                $currentdate = Carbon::now();
+                // dd($currentdate);
+                Film::where('jadwal_berakhir',$currentdate)->update(['status'=>'finish']);
+                Film::where('jadwal_tayang',$currentdate)->update(['status'=>'nowplaying']);
+
+            })->daily();
+            // $schedule->command('pendapatan_bulanan')->monthly();
+
     }
 
     /**

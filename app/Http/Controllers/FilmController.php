@@ -109,14 +109,26 @@ class FilmController extends Controller
      */
     public function daftarFilm()
     {
-        $films = Film::with('genre')->get();
-        $films = Film::paginate(2);
-        return view('admin.daftarfilm',compact('films'));
+        $today = Carbon::now();
+
+        if (Film::whereDate('jadwal_berakhir', '<=', $today)->exists()) {
+            Film::whereDate('jadwal_berakhir', '<=', $today)->update(['status' => 'finish']);
+        }
+
+        if(Film::whereDate('jadwal_tayang','<=',$today)->exists()){
+            Film::whereDate('jadwal_tayang', '<=', $today)->update(['status' => 'nowplaying']);
+        }
+
+        // Mengambil daftar film dengan relasi genre
+        $films = Film::with('genre')->paginate(2);
+
+        return view('admin.daftarfilm', compact('films'));
     }
+
 
     public function edit(int $id){
         $film = Film::with('ruangan','genre')->where('id',$id)->get()[0];
-        $genre=Genre::all();
+        $genre= Genre::all();
         return view('admin.edit-film',compact('film','genre'));
     }
 
