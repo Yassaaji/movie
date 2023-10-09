@@ -338,6 +338,10 @@
                                                                 <i class="fas fa-clock"></i>
                                                             </button>
                                                             @endif
+                                                            <a href="{{ route('detailfilm', $film->id) }}" class="btn mb-1 btn-dark btn-lg px-4 fs-4 font-medium">
+                                                                <i class="bi bi-eye-fill"></i><!-- Ganti dengan kelas Font Awesome yang sesuai untuk ikon mata -->
+                                                            </a>
+                                                            
                                                         </form>
                                                     </div>
                                                 </td>
@@ -369,6 +373,9 @@
                                                         <button type="submit" class="btn btn-dark">
                                                             Save changes
                                                         </button>
+                                                       
+
+
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->

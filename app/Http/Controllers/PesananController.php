@@ -64,8 +64,8 @@ class PesananController extends Controller
         $film = Film::where('id',$film_id)->first();
         $kursi_pesanan = $request->tickets;
         try {
-            //code...
             $total_harga = $film->harga * count($kursi_pesanan);
+            //code...
         } catch (\Throwable $th) {
             //throw $th;
             return back()->with('error','Harus memilih minimal 1 kursi');

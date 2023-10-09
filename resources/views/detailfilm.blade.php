@@ -243,6 +243,9 @@
     <br><br><br>
 
     <h1><strong>{{ $film->judul }}</strong></h1>
+    <button  class="btn btn-dark" style="position: absolute; top: 120px; right: 100px " >
+        <a href="/nowplaying" style="text-decoration: none; color:#ffff;">Kembali</a>
+        </button>
     <div class="container jumbotron p-3">
     <div class="content">
         <div class="image">
@@ -267,6 +270,8 @@
         @if ($film->status === 'nowplaying')
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
     @endif
+    <br>
+
     </div>
 </div>
 
@@ -303,7 +308,7 @@
                 @enderror
                 <form action="{{ route('tambahKomentar',$film->id) }}" method="post">
                     @csrf
-                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" autofocus></textarea>
+                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" ></textarea>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
                         Kirim

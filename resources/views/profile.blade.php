@@ -117,16 +117,22 @@
 
                 </style>
                 </head>
-            <div class="container">
+                <button type="submit" class="btn btn-light" style="margin-left: 100px;" >
+                    <a href="{{ url('nowplaying') }}" style="text-decoration: none; color:#000000;">balekk</a>
+                </button>
+
+            <div class="container" style="margin-bottom: 200px:">
                 <h4 class="main-title mb-8  user " style="color: #fff"></h4>
                 <div class="row">
                     <a href="{{ route('profile.edit', Auth::user()->id) }}">
-                        <div class="col-lg-4 mb-3 d-flex justify-content-center align-items-center" style="background-color: #fff">
+                        <div class="col-lg-4 mb-3 d-flex justify-content-center align-items-center" style="background-color: #b7afaf">
                             <div class="img-container">
                                 <img style="
-                                width: 200px;
-                                height: 200px;
+                                width: 245px;
+                                height: 245px;
                                 border-radius: 100%;
+                                margin-bottom: 28px;
+                                margin-right: 5px;
                             "
                                     class="object-fit-cover"
                                     @if (Auth::user()->fotoprofil === 'default.jpg') src="{{ asset('storage/' . Auth::user()->fotoprofil) }}"
@@ -181,7 +187,7 @@
                 </div>
 
     <body>
-        <div class="container mb-5">
+        <div class="container mb-5 ">
             <div class="card">
                 <div class="card-header">
                     <center>

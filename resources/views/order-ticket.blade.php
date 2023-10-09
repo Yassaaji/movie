@@ -247,6 +247,9 @@ Swal.fire({
 </label>
     <button type="submit" class=" btn btn-dark input-submit mb-5"  style="">Submit</button>
 </div>
+<button  class="btn btn-dark  mb-5" >
+<a href="{{ route('detailfilm',$film->id) }}" style="text-decoration: none; color:#ffff;">Kembali</a>
+</button>
 {{-- <button type="submit" class="input-submit" style="width: 90%;">Submit</button> --}}
 
     <center>
