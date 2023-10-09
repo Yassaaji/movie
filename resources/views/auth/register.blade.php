@@ -58,6 +58,18 @@
                                             </span>
                                         @enderror
                                 </div>
+                                <div class="form-floating mb-3">
+                                        <input type="number" class="form-control @error('telepon') is-invalid @enderror"
+                                            name="telepon" value="{{ old('telepon') }}"  autocomplete="telepon"
+                                            autofocus id="floatingInput" placeholder="number">
+                                        <label for="floatingInput">Telepon </label>
+
+                                        @error('telepon')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
 
                                 <div class="form-floating mb-3">
                                     <input type="password"

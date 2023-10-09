@@ -50,12 +50,13 @@ class RegisterController extends Controller
     }
 
     protected function insertRegister(Request $request) {
-        // dump();
+        // dd($request);
 
 
         $request->validate([
             "name" => 'required|string|min:3|max:250',
             'email' => 'email|required|max:250|unique:users',
+            'telepon' => 'required|numeric|regex:/^08\d{9,11}$/',
             'password'=> 'required|string|min:8|confirmed',
             'password_confirmation' => 'required| same:password'
         ],[
@@ -64,6 +65,8 @@ class RegisterController extends Controller
             'email.required' => 'data tidak boleh kosong',
             'email.email' => 'Email tidak boleh kosong',
             'email.unique' => 'Email sudah Diguanakan',
+            'telepon.required' => 'Telepon harus diisi',
+            'telepon.regex' => 'angka depan harus diawali dengan 08',
             'password.required' => 'Password tidak boleh kosong',
             'password.min' => 'password minimal 8 karakter.',
             'password.confirmed' => 'Password tidak sama',
@@ -71,13 +74,20 @@ class RegisterController extends Controller
         ]
     );
 
+    $user = new User;
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->notelp = $request->telepon;
+    $user->password = $request->password;
 
-    User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password)
+    $user->save();
+    // User::create([
+    //     'name' => $request->name,
+    //     'email' => $request->email,
+    //     'noTelp' => $request->telepon,
+    //     'password' => Hash::make($request->password),
 
-    ]);
+    // ]);
 
 
         $credentials = $request->only('email,password');
