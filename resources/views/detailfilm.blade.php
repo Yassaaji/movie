@@ -308,7 +308,11 @@
                 @enderror
                 <form action="{{ route('tambahKomentar',$film->id) }}" method="post">
                     @csrf
+<<<<<<< Updated upstream
                     <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" ></textarea>
+=======
+                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda"></textarea>
+>>>>>>> Stashed changes
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
                         Kirim

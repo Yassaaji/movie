@@ -22,7 +22,8 @@ class StorekonfirmasiTicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'alasan' => 'required', // Tambahkan aturan required untuk alasan
         ];
     }
+
 }

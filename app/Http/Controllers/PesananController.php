@@ -28,7 +28,7 @@ class PesananController extends Controller
     public function index()
     {
 
-        $orders = Pesanan::with('Bank','ticket','film','ewallet')->where('konfirmasi','menunggu')->paginate(5);
+        $orders = Pesanan::with('Bank','ticket','film','ewallet')->where('konfirmasi','menunggu')->paginate(2);
         // $kursi = Kursi::whereNotNull('ticket_id',)->get();
 
         $status_kursi = status_kursi::all();
@@ -64,8 +64,8 @@ class PesananController extends Controller
         $film = Film::where('id',$film_id)->first();
         $kursi_pesanan = $request->tickets;
         try {
-            $total_harga = $film->harga * count($kursi_pesanan);
             //code...
+            $total_harga = $film->harga * count($kursi_pesanan);
         } catch (\Throwable $th) {
             //throw $th;
             return back()->with('error','Harus memilih minimal 1 kursi');

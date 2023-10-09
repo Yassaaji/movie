@@ -187,10 +187,10 @@ Swal.fire({
     <table class="table table-dark table-striped overflow-y-scroll" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.836);">
         <thead>
     <tr>
-    <th scope="col" style="color: black;"><i class="fas fa-film"></i> Studio</th>
-    <th scope="col" style="color: black;"><i class="far fa-clock"></i> Jam</th>
-    <th scope="col" style="color: black;"><i class="fas fa-ticket-alt"></i> Harga Tiket</th>
-    <th scope="col" style="color: black;"><i class="fas fa-chair"></i> Kursi</th>
+    <th scope="col" style="color: white;"><i class="fas fa-film"></i> Studio</th>
+    <th scope="col" style="color: white;"><i class="far fa-clock"></i> Jam</th>
+    <th scope="col" style="color: white;"><i class="fas fa-ticket-alt"></i> Harga Tiket</th>
+    <th scope="col" style="color: white;"><i class="fas fa-chair"></i> Kursi</th>
 </tr>
 
         </thead>
