@@ -394,12 +394,12 @@
         event.preventDefault()
         Swal.fire({
             title: 'Konfirmasi',
-            text: 'Apakah Anda yakin ingin menghapus komentar ini?',
-            icon: 'warning',
+            text: 'Apakah Anda yakin ingin mengkonfirmasi tiket ini?',
+            icon: 'success',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus',
+            confirmButtonText: 'Konfirmasi',
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {

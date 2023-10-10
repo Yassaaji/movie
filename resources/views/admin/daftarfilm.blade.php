@@ -293,7 +293,7 @@
                     <h1 style="color: #fff">Karyawan</h1>
                     <p style="color: #fff">Daftar Film</p>
                 </div>
-                <div class="card " style="margin-left: 10px; width: 128%;">
+                <div class="card " style="margin-left: 10px; width: 120%; ">
                     <div class="card-body">
                         <a href="{{ route('film.create') }}" class="btn btn-dark"><i class="fas fa-plus"></i> </a>
 
@@ -334,14 +334,14 @@
                                                                     class="fas fa-trash-alt"></i> </button>
                                                             <br><br>
                                                             @if($film->status === "finish")
-                                                            <button type="button" class="btn mb-1 btn-dark btn-lg px-4 fs-4 font-medium" data-bs-toggle="modal" data-bs-target="#mymodal{{ $film->id }}">
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal{{ $film->id }}">
                                                                 <i class="fas fa-clock"></i>
                                                             </button>
                                                             @endif
-                                                            <a href="{{ route('detailfilm', $film->id) }}" class="btn mb-1 btn-dark btn-lg px-4 fs-4 font-medium">
-                                                                <i class="bi bi-eye-fill"></i><!-- Ganti dengan kelas Font Awesome yang sesuai untuk ikon mata -->
+                                                            <a href="{{ route('detailfilm', $film->id) }}" class="btn btn-light">
+                                                                <i class="bi bi-eye-fill" style="color: #000000"></i><!-- Ganti dengan kelas Font Awesome yang sesuai untuk ikon mata -->
                                                             </a>
-                                                            
+
                                                         </form>
                                                     </div>
                                                 </td>
@@ -373,7 +373,7 @@
                                                         <button type="submit" class="btn btn-dark">
                                                             Save changes
                                                         </button>
-                                                       
+
 
 
                                                     </div>

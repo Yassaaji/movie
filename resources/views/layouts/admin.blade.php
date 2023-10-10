@@ -86,15 +86,17 @@
                     <li class="nav-item">
                         <a href="{{ route('trending_film') }}"
                             class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('trending_film') ? 'active' : '' }}">
-                            <i class="bi bi-ui-radios"></i> Trending Film
+                            <i class="fas fa-trophy"></i> Trending Film <!-- Mengganti ikon dengan ikon trofi -->
                         </a>
                     </li>
+
                 </ul>
             </div>
             <hr>
             <a class="text-center text-decoration-none btn btn-light" href="{{ url('/') }}">
-              Pergi ke Beranda
+                <i class="fas fa-home"></i> Beranda
             </a>
+
 
         </div>
         <main>
