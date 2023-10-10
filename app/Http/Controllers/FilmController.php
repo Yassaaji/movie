@@ -106,7 +106,7 @@ class FilmController extends Controller
 
         $akmRating = $film->rate()->avg('rate');
         $bintang = floor($akmRating);
-        // dd($akmRating);  
+        // dd($akmRating);
 
         $komentar = Komentar::where('film_id',$film->id)->get();
         return view('detailfilm',compact('film','komentar','akmRating','bintang'));
@@ -149,18 +149,37 @@ class FilmController extends Controller
     {
         // dd($request);
         $request->validate([
-            "judul"=>'string',
-            'director'=>'string',
-            'cast'=> 'string',
-            'minimal_usia'=> 'integer',
+            "judul"=>'string|max:100',
+            'director'=>'string|max:100',
+            'cast'=> 'string|max:100',
+            'minimal_usia'=> 'integer|gt:0',
             'genre_id' => 'string',
-            'durasi'=> 'string',
-            'jadwal_tayang' => "",
-            'trailer' => 'url',
-            'sinopsis' => 'string',
+            'durasi'=> 'max:10',
+            'jadwal_tayang' => "date",
+            'trailer' => 'url|max:500',
+            'sinopsis' => 'string|max:1000',
             'status' => 'required',
-            'thumbnile' => 'image'
-        ]);
+            'thumbnile' => 'image|max:50000'
+        ],[
+            'judul.string' => 'judul harus menggunakan string',
+            'judul.max' => 'Judul maksimal 100 karakter',
+            'direcor.string'=> 'director harus menggunakan string',
+            'direcor.max'=> 'director maksimal menggunakan 100 karakter',
+            'cast.string' => 'cast harus menggunakan string',
+            'cast.max'=>'cast maksimal 100 karakter',
+            'minimal_usia.integer' => 'minimal usia harus berupa angka',
+            'minimal_usia.gt'=> 'minimal usia tidak boleh melebihi 100 karakter',
+            'durasi.max' => 'Durasi maksimal 10 karakter, kamu dapat menggunakan 90 untuk mewakili 90 menit',
+            'jadwa_tayang.date' => 'jadwal_tayang harus berupa tanggal',
+            'trailer.url' => 'trailer harus berupa url',
+            'trailer.max' => 'maksimal trailer 500 karakter',
+            'sinopsis.string' => 'sinopsis harus berupa string',
+            'sinopsis.max' => 'maksimal sinopsis adalah 1000 karakter',
+            'status.required' => 'status tidak boleh kosong',
+            'thumbnile.image' => 'thumbnile hanya bisa gambar',
+            'thumbnile.max' => 'thumbnile maksimal 50MB'
+        ]
+    );
 
         $filmLama = Film::where('id', $request->id)->first();
         if (!empty($request->file('thumbnail'))) {
@@ -243,6 +262,12 @@ class FilmController extends Controller
     public function rating(Request $request,$film_id){
 
 
+
+    }
+
+
+    public function atur_jadwal($request,Film $film)
+    {
 
     }
 
