@@ -30,12 +30,12 @@
                     <div class="login-forms">
                         <div class="login-form px-5">
                             <div class="form-login px-5">
-                                <h1 class="text-center">LOGIN</h1>
+                                <h1 class="text-center" style="font-family: 'Poppins', sans-serif; font-weight: bold;">LOGIN</h1>
                                 <form method="post" action="{{ route('authenticate') }}">
                                     @csrf
                                     <div class="form-floating mb-3 mt-4 " >
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="floatingInput"   placeholder="Email" name="email"   autocomplete="email" autofocus>
-                                        <label class="text-dark" for="floatingInput">{{ __('Email Address') }}</label>
+                                        <label class="text-dark" for="floatingInput">{{ __('Email') }}</label>
                                         @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                                             <button type="submit" class="btn btn-primary text-white mb-2 shadow">
                                                 {{ __('Login') }}
                                             </button>
-                                            <p class="text-center">Don't have an account? <a class="text-decoration-none"href="{{ route('register') }}">Sign Up!</a></p>
+                                            <p class="text-center">Belum Punya Akun? <a class="text-decoration-none"href="{{ route('register') }}">Register!</a></p>
                                         </div>
                                     </div>
                                 </form>

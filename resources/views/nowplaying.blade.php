@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Now Playing</title>
+    <title>Sedang Tayang</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/nowplaying.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
@@ -87,7 +87,7 @@
                 <img src="{{ asset('img/caraousel-nowplaying/hd.jpg') }}" class="d-block w-100" alt=""
                     style="object-fit: cover:cover; height: 100vh;">
                 <div class="carousel-caption text-center" style="top: 45%;">
-                    <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Now Playing</h1>
+                    <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Sedang Tayang</h1>
                     <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Jangan lewatkan
                         film yang akan tayang hari ini.</p>
                 </div>

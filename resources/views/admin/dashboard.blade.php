@@ -14,7 +14,7 @@
 
         body {
             overflow: hidden;
-            background-color: #343a40;
+            background-color: #333333;
         }
 
         .content-wrapper {
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     @if ($newOrder === null)
-                   
+
 
                     <div class="col-xl-2 col-sm-6 mb-3">
                         <div class="card text-white bg-secondary o-hidden h-100">
@@ -204,10 +204,10 @@
 
                         </div>
                     </div>
-                    
-                    
+
+
                     @else
-                    
+
                     <div class="col-xl-2 col-sm-6 mb-3 mx-auto">
                             <div onclick="{{route('konfirmasi_ticket')}}" class="card text-dark bg-secondary-subtle o-hidden h-100">
                                 <div class="card-body text-center">

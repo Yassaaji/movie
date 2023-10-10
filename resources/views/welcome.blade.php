@@ -38,8 +38,8 @@
             <div class="carousel-item active">
                 <img src="{{ asset('img/caraousel-nowplaying/kontenn.jpg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
-                <h1>Selamat Datang</h1>
-                    <p>Selamat Menikmati tontonan flim terseru di MovieFlix</p>
+                    <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Selamat Datang</h1>
+                    <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Selamat Menikmati tontonan flim terseru di MovieFlix</p>
 
                     <div class="buttons mt-3">
                         <div class="d-flex justify-content-center">

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Segera Hadir</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/comingsoon.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
@@ -86,8 +86,8 @@ input:checked+label {
                     <img src="{{ asset('img/caraousel-comingsoon/hwhw.jpg') }}" class="d-block w-100"
                         alt="" style="width: 200%; height: auto; max-height: 600px;">
                         <div class="carousel-caption text-center" style="top: 45%;">
-                            <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Coming Soon</h1>
-                            <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Siapkan uang anda hehe!.</p>
+                            <h1 style="font-family: 'Poppins', sans-serif; font-weight: bold;">Segera Hadir</h1>
+                            <p style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 18px;">Kami punya kejutan besar untuk Anda! Film-film terbaru sedang dalam perjalanan!</p>
                         </div>
                 </div>
             </div>

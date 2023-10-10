@@ -29,7 +29,7 @@
                 <div class="register-forms">
                     <div class="register-form px-5">
                         <div class="form-register px-5">
-                            <h1 class="text-center text-white mb-4">Register</h1>
+                            <h1 class="text-center text-white mb-4" style="font-family: 'Poppins', sans-serif; font-weight: bold;">Register</h1>
                             <form method="POST" action="{{ route('insertRegister') }}">
                                 @csrf
                                 <div class="form-floating mb-3">
@@ -37,7 +37,7 @@
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}"  autocomplete="name" autofocus
                                         id="floatingInput" placeholder="name">
-                                    <label for="floatingInput">name</label>
+                                    <label for="floatingInput">Nama</label>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
                                     <input type="password" class="form-control " id="password-confirm"
                                         placeholder="confirm password" name="password_confirmation"
                                         autocomplete="new-password">
-                                    <label for="password-confirm">Confirm Password</label>
+                                    <label for="password-confirm">Konfirmasi Password</label>
 
                                     @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
                                 <div class="row mb-0 ">
                                     <div class="d-flex flex-column">
                                         <button type="submit" class="btn btn-primary text-white mb-2 shadow">{{ __('Register') }}</button>
-                                        <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{ url('login') }}">Sign In</a></h6>
+                                        <h6 class="text-center text-white mt-2"> Sudah Punya Akun? <a class="text-decoration-none" href="{{ url('login') }}">Login</a></h6>
                                         {{-- <h6 class="text-center text-white mt-2"> Already Have Account? <a class="text-decoration-none" href="{{route('login')}}">Sign In</a></h6> --}}
                                     </div>
                                 </div>
