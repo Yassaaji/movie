@@ -37,6 +37,13 @@ class AdminController extends Controller
         // return view('admin.dashboard');
     }
 
+    public function trending(){
+
+        $films = Film::orderBy('total_penonton','desc')->take(3)->get();
+
+        return view('admin.trending',compact('films'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

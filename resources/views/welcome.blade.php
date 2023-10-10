@@ -72,6 +72,9 @@
     </div>
     <div class="container py-3 px-3" >
         <div class="row">
+            {{-- <a href="">
+
+            </a> --}}
             <div class="col-md-4">
                 <div class="col-md-12">
                     <div class="card">
@@ -79,13 +82,16 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card" data-aos="fade-in" data-aos-delay="10">
-                            <img @if( isset($trending[1]) && !empty($trending[1]->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[1]->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
+                    {{-- <a href="{{ route('detailfilm',$trending[1]->id) }}"> --}}
+                        <div class="col-md-4">
+                            <div class="card" data-aos="fade-in" data-aos-delay="10">
+                                <img @if( isset($trending[1]) && !empty($trending[1]->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[1]->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">
+                            </div>
                         </div>
-                    </div>
+                    {{-- </a> --}}
                     <div class="col-md-4">
                         <div class="card" data-aos="fade-in" data-aos-delay="10">
                             <img @if( isset($trending[2]) && !empty($trending[2]->thumbnile) )  src="{{ asset('storage/thumbnile/' . $trending[2]->thumbnile) }}" @else  src="{{ asset('img/home/fastx.jpg') }}"   @endif   class="card-img-top kecil">

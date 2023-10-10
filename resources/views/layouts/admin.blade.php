@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     {{-- <link rel="stylesheet" href="{{create-detailcomingsoon.css}}"> --}}
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{ URL::asset('css/admin/create-film.css') }}">
     {{-- @include('layouts.cdn') --}}
 
@@ -77,12 +80,21 @@
                     <li class="nav-item">
                         <a href="/konfirmasi_ticket"
                             class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('konfirmasi_ticket') ? 'active' : '' }}">
-                            <i class="bi bi-ui-radios"></i> Proses Konfirmasi Tiket Online
+                            <i class="bi bi-ui-radios"></i>  Konfirmasi Tiket
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('trending_film') }}"
+                            class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('trending_film') ? 'active' : '' }}">
+                            <i class="bi bi-ui-radios"></i> Trending Film
                         </a>
                     </li>
                 </ul>
             </div>
             <hr>
+            <a class="text-center text-decoration-none btn btn-light" href="{{ url('/') }}">
+              Pergi ke Beranda
+            </a>
 
         </div>
         <main>
@@ -91,6 +103,9 @@
             </div>
         </main>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -191,7 +191,7 @@ class PesananController extends Controller
      */
     public function update(UpdatePesananRequest $request, Pesanan $pesanan)
     {
-        // dd($pesanan);
+        // dd($request);
         $pesanan->load('user','film','ticket');
         $penayangan = Penayangan::where('film_id',$pesanan->film->id)->orderBy('id','desc')->first();
         $status_kursi = status_kursi::where('ticket_id',$pesanan->ticket->id)->where('penayangan_id',$penayangan->id)->get();

@@ -150,7 +150,11 @@
                 <i class="fas fa-user" style="padding-right: 5px"></i>  {{ Auth::user()->name }}
             </li>
              <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url('profile') }}"><i class="fas fa-sliders-h fa-fw"></i> Profile</a></li>
+             @if(Auth::user()->role === "admin")
+             <li><a class="dropdown-item" href="{{ url('/admin') }}"><i class="fas fa-sliders-h fa-fw"></i> Dashboard</a></li>
+             @else
+             <li><a class="dropdown-item" href="{{ url('profile') }}"><i class="fas fa-sliders-h fa-fw"></i> Profile</a></li>
+             @endif
             <li><hr class="dropdown-divider"></li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf

@@ -260,7 +260,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="ratingModalLabel"Beri rating dulu
-                                                            yuk!!!</h5>
+                                                            yuk!!! </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
@@ -294,18 +294,26 @@
                                                                         </div>
 
                                                                         <input type="hidden" name="rate" id="rate" value="">
+                                                                        @foreach ( $user->rate as $rate )
+                                                                        @if ( ($rate->film_id === $pesanan->film->id) )
                                                                         <label class="rating">
-                                                                            <i class="fas fa-star"
-                                                                            onclick="setRating(1)"></i>
-                                                                            <i class="fas fa-star"
-                                                                                onclick="setRating(2)"></i>
+                                                                            @for ( $i = 0; $i < 5 ; $i++)
+                                                                                @if ( $i <  floor($rate->rate))
+                                                                                <i style="color: yellow" class="fas fa-star"
+                                                                                onclick="setRating('{{ $i+1 }}')"></i> 
+
+                                                                                @else
                                                                                 <i class="fas fa-star"
-                                                                                onclick="setRating(3)"></i>
-                                                                                <i class="fas fa-star"
-                                                                                onclick="setRating(4)"></i>
-                                                                            <i class="fas fa-star"
-                                                                            onclick="setRating(5)"></i>
+                                                                                onclick="setRating('{{ $i+1 }}')"></i> 
+                                                                                @endif
+                                                                            @endfor
                                                                         </label>
+                                                                            
+                                                                        @else
+                                                                            
+                                                                        @endif
+                                                                        @endforeach
+
 
                                                                     </div>
                                                                 </div>

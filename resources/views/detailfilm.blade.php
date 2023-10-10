@@ -267,9 +267,9 @@
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
         <p style="width:90%;font-weight:400">{{ $film->sinopsis }}</p>
-        @if ($film->status === 'nowplaying')
+        @if ($film->status === 'nowplaying' && !(Auth::user()->role === "admin"))
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
-    @endif
+        @endif
     <br>
 
     </div>
@@ -308,11 +308,7 @@
                 @enderror
                 <form action="{{ route('tambahKomentar',$film->id) }}" method="post">
                     @csrf
-<<<<<<< Updated upstream
                     <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" ></textarea>
-=======
-                    <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda"></textarea>
->>>>>>> Stashed changes
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
                         Kirim
@@ -537,6 +533,10 @@
 
 
 <script>
+
+
+   
+
     function confirmDelete(event) {
         event.preventDefault();
 

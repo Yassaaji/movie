@@ -334,7 +334,7 @@
                           </div>
                         </div>
 
-                        <button onclick="handleStatus('sukses')" type="submit" class="btn btn-dark"><i
+                        <button onclick="confirm(event)" class="btn btn-dark"><i
                             class="fas fa-check"></i></button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                           data-bs-target="#konfirmasiModal.{{ $pesanan->id }}"><i class="fas fa-times"></i></button>
@@ -370,25 +370,49 @@
     </div>
   </body>
   <script>
-    var buttonSubmit = document.getElementById('buttonSubmit');
-    var isSubmitting = false;
+    // var buttonSubmit = document.getElementById('buttonSubmit');
+    // var isSubmitting = false;
 
-    buttonSubmit.addEventListener('click', function(event) {
-      if (isSubmitting) {
-        event.preventDefault(); // Mencegah tindakan default tombol jika sedang dalam proses submit
-        return;
-      }
+    // buttonSubmit.addEventListener('click', function(event) {
+    //   if (isSubmitting) {
+    //     event.preventDefault(); // Mencegah tindakan default tombol jika sedang dalam proses submit
+    //     return;
+    //   }
 
-      isSubmitting = true;
-      buttonSubmit.disabled = true;
+    //   isSubmitting = true;
+    //   buttonSubmit.disabled = true;
 
-      // Simulasi proses submit (Anda dapat menggantinya dengan logika pengiriman data ke server)
-      setTimeout(function() {
-        // Setelah selesai submit atau proses, mengaktifkan kembali tombol
-        isSubmitting = false;
-        buttonSubmit.disabled = false;
-      }, 2000); // Ganti 2000 dengan waktu jeda yang diinginkan (dalam milidetik)
-    });
+    //   // Simulasi proses submit (Anda dapat menggantinya dengan logika pengiriman data ke server)
+    //   setTimeout(function() {
+    //     // Setelah selesai submit atau proses, mengaktifkan kembali tombol
+    //     isSubmitting = false;
+    //     buttonSubmit.disabled = false;
+    //   }, 2000); // Ganti 2000 dengan waktu jeda yang diinginkan (dalam milidetik)
+    // });
+
+    function confirm(event){
+        event.preventDefault()
+        Swal.fire({
+            title: 'Konfirmasi',
+            text: 'Apakah Anda yakin ingin menghapus komentar ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                   document.getElementById('status').value = 'sukses'
+
+                event.target.closest('form').submit();
+            }
+        });
+    }
+
+    $('.confirm').click(function(){
+
+    })
 
     function confirmDelete(event) {
       event.preventDefault(); // Prevent form submission

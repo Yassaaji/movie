@@ -23,7 +23,7 @@ class UpdateprofileRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'noTelp' => 'numeric|regex:/^08\d{9,11}$/',
+            'noTelp' => 'numeric|regex:/^08\d{9,12}$/',
         ];
     }
     public function messages()
