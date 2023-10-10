@@ -123,7 +123,7 @@
                 <div class="buttons d-flex flex-row-reverse mt-3">
                     <a class="selanjutnya" href="{{ url('/nowplaying')}}">
                         <button class="transparent-button">
-                          Selanjutnya <i class="fas fa-chevron-right"></i>
+                          Selengkapnya <i class="fas fa-chevron-right"></i>
                         </button>
                     </a>
                 </div>
@@ -158,7 +158,7 @@
             <div class="buttons d-flex flex-row-reverse mt-3">
                 <a class="selanjutnya" href="{{ url('/comingsoon')}}">
                     <button class="transparent-button">
-                      Selanjutnya <i class="fas fa-chevron-right"></i>
+                      Selengkapnya <i class="fas fa-chevron-right"></i>
                     </button>
                 </a>
             </div>
@@ -217,7 +217,7 @@
   </div>
 </div>
 <div class="container">
-    <h2 class="jdl">Tanya Jawab Umum</h2>
+    <h2 class="jdl">Tanya Jawab</h2>
     <br>
     <center>
         <!-- Pertanyaan 1 -->
@@ -227,7 +227,7 @@
             </button>
             <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
                 <li>
-                    <center>
+                    <center style="color: #fff">
                         <p>MovieFlix adalah platform tempat pengguna dapat membeli film dan tiket hiburan lainnya melalui website.</p>
                     </center>
                 </li>
@@ -241,7 +241,7 @@
             </button>
             <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
                 <li>
-                    <center>
+                    <center style="color: #fff">
                         <p>Tidak Perlu antri tiket, Sistem pembayaran praktis, dan banyak kelebihan lainnya.</p>
                     </center>
                 </li>
@@ -255,7 +255,7 @@
             </button>
             <ul class="dropdown-menu bg-secondary" style="min-width: 1100px;">
                 <li>
-                    <center>
+                    <center style="color: #fff">
                         <p>1. Pelanggan perlu Register lalu Login</p>
                         <p>2. Pilih Film yang ingin anda nonton</p>
                         <p>3. Pilih tiket dan harga sesuai kebutuhan anda di halaman sinopsis Film.</p>

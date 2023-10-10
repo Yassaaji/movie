@@ -247,7 +247,7 @@
         <h1 style="color: #fff">Karyawan</h1>
         <p style="color: #fff">Konfirmasi Tiket</p>
       </div>
-      <div class="card" style="margin-left: 10px; width: 90%;">
+      <div class="card" style="margin-left: 10px; width: 97%;">
         <div class="card-header"></div>
         <div class="card-body">
 

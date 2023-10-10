@@ -72,9 +72,6 @@
 }
 
 /* Efek bayangan untuk membuat teks bercahaya */
-.carousel-caption h1, .carousel-caption p {
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Sesuaikan dengan preferensi Anda */
-}
 .container .genre-button {
     background-color: transparent;
     border: 2px solid #000000; /* Ganti dengan warna outline yang Anda inginkan */

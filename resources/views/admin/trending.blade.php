@@ -1,8 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+<title>Trending Film</title>
 
 <style>
+    .body {
+        background-color: #333333;
+
+    }
     .container{
         width: 100%;
         height: 100vh;
