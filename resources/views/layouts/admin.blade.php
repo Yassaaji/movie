@@ -31,6 +31,71 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
+<style>
+    .btn-light {
+                    background-color: #b1b1c2;
+                    /* Warna latar belakang tombol */
+                    color: #121111;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-light:hover {
+                    background-color: #fff8f8;
+                    /* Warna latar belakang saat dihover */
+                    color: #576069;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(62, 62, 62, 0.5);
+                    /* Bayangan saat dihover */
+                }
+                .navbar {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s; /* Animasi saat dimuat */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffcc00;
+}
+
+.bi {
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+</style>
+
 <body>
     <div id="app" class="d-flex" style="position: absolute; top:0;left:0;bottom:0;">
         <div class="d-flex flex-column flex-shrink-0 p-3"

@@ -114,11 +114,32 @@
                 .rating i {
                     cursor: pointer;
                 }
+                .btn-light {
+                    background-color: #b2b2b5;
+                    /* Warna latar belakang tombol */
+                    color: #ffffff;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-light:hover {
+                    background-color: #ffffff;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(230, 227, 227, 0.5);
+                    /* Bayangan saat dihover */
+                }
 
                 </style>
                 </head>
                 <button type="submit" class="btn btn-light" style="margin-left: 100px;" >
-                    <a href="{{ url('nowplaying') }}" style="text-decoration: none; color:#000000;">balekk</a>
+                    <a href="{{ url('nowplaying') }}" style="text-decoration: none; color:#000000;">kembali</a>
                 </button>
 
             <div class="container" style="margin-bottom: 200px:">
@@ -300,17 +321,17 @@
                                                                             @for ( $i = 0; $i < 5 ; $i++)
                                                                                 @if ( $i <  floor($rate->rate))
                                                                                 <i style="color: yellow" class="fas fa-star"
-                                                                                onclick="setRating('{{ $i+1 }}')"></i> 
+                                                                                onclick="setRating('{{ $i+1 }}')"></i>
 
                                                                                 @else
                                                                                 <i class="fas fa-star"
-                                                                                onclick="setRating('{{ $i+1 }}')"></i> 
+                                                                                onclick="setRating('{{ $i+1 }}')"></i>
                                                                                 @endif
                                                                             @endfor
                                                                         </label>
-                                                                            
+
                                                                         @else
-                                                                            
+
                                                                         @endif
                                                                         @endforeach
 

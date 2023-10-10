@@ -320,11 +320,18 @@
                               <div class="modal-body">
                                 <span style="float: left">Berikan Alasanya: </span>
                                 <textarea class="form-control" name="alasan" id="alasan" cols="10" style="border: #333333 2px solid" autofocus required>
-                                        @if ($errors->has('alasan'))
-                                    <span class="text-danger">{{ $errors->first('alasan') }}</span>
-                                @endif
 
-                                                        </textarea>
+                                </textarea>
+                                @if ($errors->has('alasan'))
+                                    <script>
+                                      Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text:  "{{ $errors->first('alasan') }}",
+
+})
+                                    </script>
+                                @endif
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>

@@ -22,7 +22,14 @@ class UpdatePesananRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'alasan' => 'required'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'alasan.required' => 'alasan tidak boleh kosong'
         ];
     }
 }

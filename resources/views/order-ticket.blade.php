@@ -91,6 +91,27 @@ h2 {
     h3 {
         margin-bottom: 40px; /* Menambahkan jarak bawah 40px */
     }
+    .btn-dark {
+                    background-color: #919193;
+                    /* Warna latar belakang tombol */
+                    color: #121111;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-dark:hover {
+                    background-color: #605f5f;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(62, 62, 62, 0.5);
+                    /* Bayangan saat dihover */
+                }
 
   </style>
 

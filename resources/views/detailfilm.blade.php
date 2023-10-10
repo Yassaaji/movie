@@ -237,7 +237,27 @@
             padding: 50px;
             display: flex;
         }
+        .btn-dark {
+                    background-color: #414144;
+                    /* Warna latar belakang tombol */
+                    color: #101010;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(134, 134, 134, 0.3);
+                    /* Bayangan awal */
+                }
 
+                .btn-dark:hover {
+                    background-color: #6f6c6c;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(134, 134, 134, 0.3);
+                    /* Bayangan saat dihover */
+                }
     </style>
 <div class="p-5 pb-5">
     <br><br><br>
@@ -267,7 +287,7 @@
         <iframe style="width: 90%; height:350px;" src="{{ $film->trailer }}" frameborder="0" allowfullscreen></iframe>
         <p style="width:90%;font-weight:400">{{ $film->sinopsis }}</p>
         @if ($film->status === 'nowplaying' && !(Auth::user()->role === "admin"))
-        <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
+        <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2" style="text-decoration: none; color:#ffff;">Beli Tiket</a>
         @endif
     <br>
     </div>
@@ -427,7 +447,7 @@
                                         <div class="card-body">
                                             <div class="d-flex justify-content-header gap-2">
                                                 <div class="">
-                                                    @if (($reply->user->fotoprofil === "default.jpg"))
+                                                    @if (($reply->user->fotoprofil === "default.jpg") )
                                                     <img src="{{ asset('storage/' . $reply->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
                                                     @else
                                                     <img src="{{ asset('storage/profile/' . $reply->user->fotoprofil) }}" width="45" height="45" class="rounded-circle object-fit-cover" alt="">
@@ -447,14 +467,16 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                @if ($reply->user_id === Auth::user()->id)
+                                                @if ($reply->user_id === Auth::user()->id || Auth::user()->role === "admin" )
                                                 <div class="">
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$reply->id}}" style="">
+                                                        @if($reply->user_id === Auth::user()->id)
                                                         <li>
                                                             <button type="button" class="border-0 bg-transparent w-full" data-bs-toggle="modal" data-bs-target="#dark-header-modal{{ $reply->id }}">
                                                                 Edit
                                                             </button>
                                                         </li>
+                                                        @endif
                                                         <li>
                                                             <form action="{{ route('hapusKomentar',$reply->id) }}" method="post" >
                                                                 @csrf
@@ -494,14 +516,16 @@
                                     Lihat komentar
                                 </button>
                             </div>
-                            @if ($data->user_id === Auth::user()->id)
+                            @if ($data->user_id === Auth::user()->id || Auth::user()->role === "admin")
                             <div class="">
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$data->id}}" style="">
+                                    @if($data->user_id === Auth::user()->id)
                                     <li>
                                         <button type="button" class="border-0 bg-transparent w-full" data-bs-toggle="modal" data-bs-target="#dark-header-modal{{ $data->id }}">
                                             Edit
                                         </button>
                                     </li>
+                                    @endif
                                     <li>
                                         <form action="{{ route('hapusKomentar',$data->id) }}" method="post" >
                                             @csrf
