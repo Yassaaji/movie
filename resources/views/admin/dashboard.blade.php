@@ -137,7 +137,7 @@
     </style>
     <div class="text">
         <div class="navbar-link-header pt-3 px-5">
-            <h3 style="color: #fff">Karyawan</h3>
+            <h3 class="text-white admin-name">{{ Auth::user()->name }}</h3>
             <p style="color: #fff">Dashboard</p>
         </div>
 
