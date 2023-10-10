@@ -11,16 +11,20 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
+        body{
+        background-color: #333;
+    }
         .icons-container {
             display: flex;
             align-items: center;
+            margin-left: 70px;
             /* Untuk mengatur vertikal tengah */
         }
 
         .icons {
             width: 30px;
             height: 30px;
-            margin-right: 10px;
+            margin-right: 15px;
             /* Jarak antara gambar dan teks */
         }
 
@@ -66,6 +70,27 @@
         .form-container {
             padding: 20px;
         }
+        .btn-dark {
+                    background-color: #919193;
+                    /* Warna latar belakang tombol */
+                    color: #121111;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    /* Bayangan awal */
+                }
+
+                .btn-dark:hover {
+                    background-color: #605f5f;
+                    /* Warna latar belakang saat dihover */
+                    color: #000000;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: 4px 4px 10px rgba(62, 62, 62, 0.5);
+                    /* Bayangan saat dihover */
+                }
 
     </style>
 </head>
@@ -74,11 +99,11 @@
     <br>
 
     <div class="text">
-        <h1>Informasi Pribadi</h1>
+        <h1 style="color: #ffffff">Ubah Password</h1>
         <br><br>
-        <a class="icons-container text-decoration-none  " href="{{ route('profile.index') }}">
-            <img class="icons" src="{{ asset('img/Vector.png') }}" alt="vector">
-            <h3 class="text-dark">Profile</h3>
+        <a class="icons-container text-decoration-none " href="{{ route('profile.index') }}">
+            <img class="icons"  src="{{ asset('img/Vector.png') }}" alt="vector"  style="filter: brightness(0) invert(1);">
+            {{-- <h3 class="text-white">Profile</h3> --}}
         </a>
         <br><br><br>
         <div class="container">
@@ -91,9 +116,9 @@
                                 @method('PATCH')
 
                         </div>
-                        <div class="col-md-10 form-container">
+                        <div class="col-md-12 form-container">
                             <br><br>
-                            <div class="row mb-5">
+                            <div class="row mb-2">
                                 <div class="col-md-4">
                                     <label for="old_password">Password Lama</label>
                                     <input type="text"

@@ -122,8 +122,12 @@ class ProfileController extends Controller
             'old_password.required' => 'Password lama harus diisi',
             'password.required' => 'password baru harus diisi',
             'password.min' => 'password minimal 8 karakter',
-            'password_confirmation.same' => 'confirmasi password tidak sama',
+            'password.confirmed' => 'Password tidak sama',
         ]);
+
+        if($request->old_password && $request->password){
+            return redirect()->back()->with('error','password lama dan password baru tidak boleh sama');
+        }
 
         $user = User::where('id',Auth::user()->id)->first();
 

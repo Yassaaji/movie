@@ -269,13 +269,13 @@
 <div class="text">
 <h1 style="color: #ffffff">Informasi Pribadi</h1>
 <br><br>
-<div class="icons-container mt-7 style="color: #ffffff">
+<div class="icons-container mt-7 " style="color: #ffffff">
 <a class="nav-link d-flex btt" href="{{ url('/profile') }}">
-    <img class="icons"  src="{{ asset('img/Vector.png') }}" alt="vector">
+    <img class="icons"  src="{{ asset('img/Vector.png') }}" alt="vector"  style="filter: brightness(0) invert(1);">
     <h5>Profile</h5>
 </a>
-<a class="nav-link d-flex btt" href="{{ url('/ubahpassword') }}">
-    <img class="icons1" src="{{ asset('img/icon.png') }}" alt="icon">
+<a class="nav-link d-flex btt" href="{{ url('/halamanEditPassword') }}">
+    <img class="icons1" src="{{ asset('img/icon.png') }}" alt="icon"  style="filter: brightness(0) invert(1);">
     <h5>Ubah Password</h5>
 </a>
 </div>
