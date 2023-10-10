@@ -240,7 +240,7 @@
         .btn-dark {
                     background-color: #414144;
                     /* Warna latar belakang tombol */
-                    color: #101010;
+                    color: #ffffff;
                     /* Warna teks tombol */
                     transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
                     /* Efek transisi untuk bayangan, transformasi, dan warna teks */
@@ -251,13 +251,24 @@
                 .btn-dark:hover {
                     background-color: #6f6c6c;
                     /* Warna latar belakang saat dihover */
-                    color: #343a40;
+                    color: #ffffff;
                     /* Warna teks saat dihover */
                     transform: scale(1.1);
                     /* Perubahan ukuran saat dihover */
                     box-shadow: 4px 4px 10px rgba(134, 134, 134, 0.3);
                     /* Bayangan saat dihover */
                 }
+                .container {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        /* Atur overflow untuk komentar */
+        .komentar-wrapper {
+            max-height: 400px;
+            overflow-x: auto;
+        }
+
     </style>
 <div class="p-5 pb-5">
     <br><br><br>
@@ -328,7 +339,7 @@
                     @csrf
                     <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" ></textarea>
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="justify-content-center btn  btn-rounded btn-dark d-flex align-items-center">
+                    <button type="submit" class="justify-content-center btn  btn-rounded btn-dark d-flex align-items-center" style="">
                         Kirim
                     </button>
                 </div>

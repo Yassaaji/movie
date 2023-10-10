@@ -94,6 +94,44 @@
     margin-right: 5px;
     font-size: 1.2rem;
 }
+.title-name-admin {
+            background-color: #333; /* Warna latar belakang */
+            padding: 10px; /* Ruang padding */
+            border-radius: 5px; /* Sudut yang membulatkan elemen */
+            text-align: center; /* Pusatkan teks */
+        }
+
+        /* Style untuk teks judul */
+        .admin-names {
+            font-size: 17px; /* Ukuran teks */
+            font-weight: bold; /* Tebalkan teks */
+            text-transform: uppercase; /* Ubah teks menjadi huruf besar */
+            margin: 0; /* Hapus margin bawaan */
+            color: #fff; /* Warna teks putih */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+        }
+        .bg-dark {
+                    background-color: #b2b2b5;
+                    /* Warna latar belakang tombol */
+                    color: #ffffff;
+                    /* Warna teks tombol */
+                    transition: box-shadow 0.3s, transform 0.3s, color 0.3s;
+                    /* Efek transisi untuk bayangan, transformasi, dan warna teks */
+                    box-shadow:  linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(8,27,41,1) 100%);
+                     /* Efek bayangan saat hover */
+
+                }
+
+                .bg-dark:hover {
+                    background-color: #ffffff;
+                    /* Warna latar belakang saat dihover */
+                    color: #343a40;
+                    /* Warna teks saat dihover */
+                    transform: scale(1.1);
+                    /* Perubahan ukuran saat dihover */
+                    box-shadow: rgb(255, 255, 255) 0px 3px 8px;
+                    /* Bayangan saat dihover */
+                }
 </style>
 
 <body>
@@ -112,8 +150,8 @@
                     <img class="rounded-circle me-3" style="width: auto; height: 40px;"
                         src="{{ asset('img/user.png') }}" alt="">
                     <div class="title-name-admin mt-2">
-                        <p class="text-white admin-names">Admin</p>
-                        <p class="text-white admin-name">{{ Auth::user()->name }}</p>
+                        <h4 class="text-white admin-names">Admin</h4>
+                        {{-- <p class="text-white admin-name">{{ Auth::user()->name }}</p> --}}
                     </div>
                 </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
