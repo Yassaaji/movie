@@ -65,7 +65,7 @@
 <div class="back py-4">
     <div class="container py-3">
         <div class="judul" >
-            <h1>TRENDING NOW</h1>
+            <h1>Film Populer</h1>
             <p>Film yang sering di nikmati saat ini!</p>
         </div>
 
