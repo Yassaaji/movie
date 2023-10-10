@@ -10,7 +10,9 @@ use App\Models\Pesanan;
 use App\Models\Rate;
 use App\Models\status_kursi;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -107,5 +109,39 @@ class ProfileController extends Controller
     public function destroy(profile $profile)
     {
         //
+    }
+
+    public function editForm()
+    {
+        return view('editpassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'same:password'
+        ],[
+            'old_password.required' => 'Password lama harus diisi',
+            'password.required' => 'password baru harus diisi',
+            'password.min' => 'password minimal 8 karakter',
+            'password_confirmation.same' => 'confirmasi password tidak sama',
+        ]);
+
+        $user = User::where('id',Auth::user()->id)->first();
+
+        if (Hash::check($request->old_password, $user->password)) {
+            // Jika password lama cocok, maka update password baru
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+
+            return redirect()->route('profile.index')->with('success', 'Password berhasil diubah.');
+        } else {
+            // Jika password lama tidak cocok, berikan pesan kesalahan
+            return redirect()->route('formeditpassword')->withErrors(['old_password' => 'Password lama salah.']);
+        }
     }
 }

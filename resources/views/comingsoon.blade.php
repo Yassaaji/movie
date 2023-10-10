@@ -77,6 +77,36 @@ input:checked+label {
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Sesuaikan dengan preferensi Anda */
 }
 
+.container .genre-button {
+    background-color: transparent;
+    border: 2px solid #5f1e97; /* Ganti dengan warna outline yang Anda inginkan */
+    color: #000000; /* Ganti dengan warna teks yang Anda inginkan */
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.container .genre-button:hover {
+    animation: pulse 0.5s infinite alternate; /* Animasi 'pulse' saat hover */
+    background-color: #5a48e6; /* Ganti dengan warna latar belakang saat hover yang Anda inginkan */
+    color: #ffffff; /* Ganti dengan warna teks saat hover yang Anda inginkan */
+    border-color: transparent; /* Ganti dengan warna outline saat hover yang Anda inginkan */
+    transform: scale(1.05); /* Efek scaling saat hover */
+    box-shadow: 0 0 10px rgb(137, 78, 255); /* Efek bayangan saat hover */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
 </style>
 
     @section('content-app')
@@ -96,21 +126,18 @@ input:checked+label {
         <div class="container">
             <div class="row justify-content-end">
                 <div class="container">
-                    <label for="filterGenre">
-                            @foreach ($genre as $gn)
-                                <span>
-                                    <a class="text-decoration-none text-white" href="{{ route('gn', ['gn' => $gn->id]) }}">{{ $gn->genre }}</a>
-                                </span>
-                            @endforeach
+                    <h1  style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">Pilih Genre</h1>
+                    @foreach ($genre as $gn)
+                        <button class="genre-button" onclick="window.location.href='{{ route('gn', ['gn' => $gn->id]) }}'">
+                            {{ $gn->genre }}
+                        </button>
+                    @endforeach
+                </div>
 
 
-        <center>
-
-        </div>
          <div class="container">
             <br><br>
 
-                        </label>
                     @forelse ( $comingsoon as $film )
 
                     <div class="col-md-6 mb-3">

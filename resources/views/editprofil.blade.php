@@ -251,7 +251,7 @@ button {
     <img class="icons"  src="{{ asset('img/Vector.png') }}" alt="vector">
     <h5>Profile</h5>
 </a>
-<a class="nav-link d-flex btt" href="{{ url('/ubahpassword') }}">
+<a class="nav-link d-flex btt" href="{{ url('/halamanEditPassword') }}">
     <img class="icons1" src="{{ asset('img/icon.png') }}" alt="icon">
     <h5>Ubah Password</h5>
 </a>
