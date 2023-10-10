@@ -256,7 +256,7 @@ Swal.fire({
 
   <div class="payment-method d-flex flex-column justify-content-between">
     <label for="payment">Metode Pembayaran:
-   <select id="payment" name="payment" required>
+   <select class="form-select" id="payment" name="payment" required>
             <option selected disabled>Pilih</option> <!-- Opsi default -->
             <option value="atm">Kartu Atm 🏧</option> <!-- Add an ATM icon -->
             <option value="ewallet">Ewallet 💳</option> <!-- Add an E-wallet icon -->

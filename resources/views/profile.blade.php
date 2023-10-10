@@ -264,7 +264,7 @@
                                 <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                             </button> --}}
                                         @if($pesanan->konfirmasi === "sukses")
-                                        <button type="button" class="btn " data-bs-toggle="modal"
+                                        <button type="button" class="btn-success" data-bs-toggle="modal"
                                             data-bs-target="#ratingModal{{ $pesanan->id }}">
                                             <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                                         </button>

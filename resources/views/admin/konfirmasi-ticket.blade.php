@@ -319,18 +319,19 @@
                               </div>
                               <div class="modal-body">
                                 <span style="float: left">Berikan Alasanya: </span>
-                                <textarea class="form-control" name="alasan" id="alasan" cols="10" style="border: #333333 2px solid" autofocus required>
+                                <textarea class="form-control" name="alasan" id="alasan" cols="10" style="border: #333333 2px solid" autofocus
+                                  required>
 
                                 </textarea>
                                 @if ($errors->has('alasan'))
-                                    <script>
-                                      Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text:  "{{ $errors->first('alasan') }}",
+                                  <script>
+                                    Swal.fire({
+                                      icon: 'error',
+                                      title: 'Oops...',
+                                      text: "{{ $errors->first('alasan') }}",
 
-})
-                                    </script>
+                                    })
+                                  </script>
                                 @endif
                               </div>
                               <div class="modal-footer">
@@ -341,8 +342,7 @@
                           </div>
                         </div>
 
-                        <button onclick="confirm(event)" class="btn btn-dark"><i
-                            class="fas fa-check"></i></button>
+                        <button onclick="confirm(event)" class="btn btn-dark"><i class="fas fa-check"></i></button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                           data-bs-target="#konfirmasiModal.{{ $pesanan->id }}"><i class="fas fa-times"></i></button>
 
@@ -397,27 +397,27 @@
     //   }, 2000); // Ganti 2000 dengan waktu jeda yang diinginkan (dalam milidetik)
     // });
 
-    function confirm(event){
-        event.preventDefault()
-        Swal.fire({
-            title: 'Konfirmasi',
-            text: 'Apakah Anda yakin ingin mengkonfirmasi tiket ini?',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Konfirmasi',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                   document.getElementById('status').value = 'sukses'
+    function confirm(event) {
+      event.preventDefault()
+      Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Apakah Anda yakin ingin mengkonfirmasi tiket ini?',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Konfirmasi',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById('status').value = 'sukses'
 
-                event.target.closest('form').submit();
-            }
-        });
+          event.target.closest('form').submit();
+        }
+      });
     }
 
-    $('.confirm').click(function(){
+    $('.confirm').click(function() {
 
     })
 
@@ -458,13 +458,12 @@
 
     // alasan wajib diisi
     document.getElementById('buttonSubmit').addEventListener('click', function(event) {
-        const alasanTextarea = document.getElementById('alasan');
-        if (!alasanTextarea.value.trim()) {
-            event.preventDefault(); // Mencegah pengiriman formulir jika text area alasan kosong
-            alert('Harap isi alasan sebelum mengkonfirmasi pesanan.'); // Tampilkan pesan kesalahan
-        }
+      const alasanTextarea = document.getElementById('alasan');
+      if (!alasanTextarea.value.trim()) {
+        event.preventDefault(); // Mencegah pengiriman formulir jika text area alasan kosong
+        alert('Harap isi alasan sebelum mengkonfirmasi pesanan.'); // Tampilkan pesan kesalahan
+      }
     });
-
   </script>
 
   </html>

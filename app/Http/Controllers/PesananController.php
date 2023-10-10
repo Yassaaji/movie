@@ -201,7 +201,7 @@ class PesananController extends Controller
         if($request->status === "sukses"){
             $pesanan->konfirmasi = "sukses";
             Mail::to($pesanan->user->email)->send(new ticketSuccess($pesanan,$status_kursi));
-
+            $pesanan->alasan = "";
             $now = Carbon::now();
             $pendapatanCheck = Pendapatan::where('bulan', $now->format('M'))->where('tahun',$now->format('Y'))->first();
             if($pendapatanCheck){

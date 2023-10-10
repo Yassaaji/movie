@@ -66,7 +66,7 @@ class RegisterController extends Controller
             'email.email' => 'Email tidak boleh kosong',
             'email.unique' => 'Email sudah Diguanakan',
             'telepon.required' => 'Telepon harus diisi',
-            'telepon.regex' => 'angka depan harus diawali dengan 08',
+            'telepon.regex' => 'angka depan harus diawali dengan 08 dan panjang harus diantara 11 dan 13 ',
             'password.required' => 'Password tidak boleh kosong',
             'password.min' => 'password minimal 8 karakter.',
             'password.confirmed' => 'Password tidak sama',
