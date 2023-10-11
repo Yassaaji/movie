@@ -59,6 +59,8 @@ class PesananController extends Controller
             return back()->with('error','sertakan bukti pembayaran');
         }
 
+
+
         // dd($request);
         // $ticket = Ticket::with('film')->where('id',$ticket_id)->first();
         $film = Film::where('id',$film_id)->first();
@@ -80,18 +82,25 @@ class PesananController extends Controller
 
         $idUser = Auth::user()->id;
 
+        $eror = [];
 
+try {
 
-        $penayangan = Penayangan::where('film_id',$film_id)->orderBy('id','desc')->first();
-        foreach ($kursi_pesanan as $data) {
+    $penayangan = Penayangan::where('film_id',$film_id)->orderBy('id','desc')->first();
+    foreach ($kursi_pesanan as $data) {
 
-            $status = status_kursi::where('film_id',$film_id)->where('penayangan_id',$penayangan->id)->get();
-            foreach ($status as $st) {
-                if($data === $st->nomor_kursi){
-                    return redirect()->back()->with('error',"Kursi sudah dipesan");
-                }
-
+        $status = status_kursi::where('film_id',$film_id)->where('penayangan_id',$penayangan->id)->get();
+        foreach ($status as $st) {
+            if($data === $st->nomor_kursi){
+               return redirect()->back()->with('error',"Kursi sudah dipesan");
             }
+        }
+    }
+    
+} catch (\Throwable $th) {
+    //throw $th;
+     return redirect()->back()->with('error',"Kursi sudah dipesan");
+}
 
         try {
             //code...
@@ -111,7 +120,15 @@ class PesananController extends Controller
 
             $status_kursi = new status_kursi;
             $status_kursi->film_id = $film_id;
-            $status_kursi->kursi_id = $kursi->id;
+
+            try {
+                //code...
+                $status_kursi->kursi_id = $kursi->id;
+            } catch (\Throwable $th) {
+                //throw $th;
+                return redirect()->back()->withError('Terdapat kesalahan pada pemilihan kursi');
+            }
+
             $status_kursi->nomor_kursi = $data;
             $status_kursi->status_kursi = "dipesan";
             $status_kursi->ticket_id = $ticket->id;
@@ -134,7 +151,7 @@ class PesananController extends Controller
                 //throw $th;
                 return redirect()->back()->with('error','kursi gagal disave');
             }
-        }
+
 
 
 
