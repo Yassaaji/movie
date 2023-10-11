@@ -83,7 +83,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::resource('film', FilmController::class);
     Route::put('/atur_jadwal/{film_id}', [FilmController::class,'aturJadwal'])->name('aturJadwal');
     Route::get('/trending_film',[AdminController::class,'trending'])->name('trending_film');
-
+    Route::get('/filmselesai',[FilmController::class,'filmselesai'])->name('filmSelesai');
     Route::get('/konfirmasi_ticket',[PesananController::class,'index'])->name('konfirmasi_ticket');
     Route::post('/update_konfirmasi/{pesanan}',[PesananController::class,'update'])->name('update_konfirmasi');
 

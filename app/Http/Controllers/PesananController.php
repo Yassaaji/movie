@@ -251,11 +251,11 @@ try {
                 $rate->rate = 0;
                 $rate->save();
             }else{
+                $rating = Rate::where('film_id',$pesanan->film->id)->where('user_id',$pesanan->user->id)->first();
                 $rating->film_id = $pesanan->film->id;
                 $rating->user_id = $pesanan->user->id;
                 $rating->rate = 0;
                 $rating->save();
-
             }
 
 

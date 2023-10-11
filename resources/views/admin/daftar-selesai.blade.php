@@ -291,11 +291,11 @@
     <div class="container">
         <div class="navbar-link-header pt-3 px-5">
             <h1 class="text-white admin-name">{{ Auth::user()->name }}</h1>
-            <p style="color: #fff">Daftar Film</p>
+            <p style="color: #fff">Daftar Film Selesai</p>
         </div>
         <div class="card " style="margin-left: 10px; width: 120%; ">
             <div class="card-body">
-                <a href="{{ route('film.create') }}" class="btn btn-dark"><i class="fas fa-plus"></i> </a>
+                {{-- <a href="{{ route('film.create') }}" class="btn btn-dark"><i class="fas fa-plus"></i> </a> --}}
 
                 <div class="table-responsive mt-4">
                     <table class="table table-dark table-bordered">
@@ -312,7 +312,6 @@
                         </thead>
                         <tbody>
                             @forelse ($films as $i=> $film)
-                            @if($film->status !== 'finish')
                             <tr>
                                 <td>{{ $i + 1 }} </td>
                                 <td>{{ $film->judul }}</td>
@@ -324,17 +323,12 @@
 
 
                                     <td>
-                                        <div class="btn-group d-flex align-items-center" role="group">
-                                            <form class="d-flex " action="{{ route('film.destroy', $film->id) }}" method="post"
-                                                style="width: 125px;">
-                                                @csrf
-                                                <a href="{{ route('edit-film', $film->id) }}" class="btn btn-dark btn-sm me-2"><i
-                                                        class="fas fa-pencil-alt" style="margin-top: 8px"></i></a>
-                                                @method('DELETE')
-                                                <button class="btn btn-danger btn-sm me-2" onclick="confirmDelete(event)"><i
-                                                        class="fas fa-trash-alt"></i> </button>
-
-
+                                        <div class="btn-group d-flex align-items-center flex-column gap-2" role="group">
+                                                <button style="width: 30px" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#mymodal{{ $film->id }}">
+                                                    <i class="fas fa-clock" style="color: #000000;"></i>
+                                                </button>
+                                                {{-- @endif --}}
                                                 <a href="{{ route('detailfilm', $film->id) }}" class="btn btn-light btn-sm" style="width: 30px">
                                                     <i class="bi bi-eye-fill" style="color: #000000;margin-left: -2px"></i>
                                                     <!-- Ganti dengan kelas Font Awesome yang sesuai untuk ikon mata -->
@@ -342,8 +336,6 @@
                                             </form>
                                         </div>
                                     </td>
-
-                                    @endif
                             </tr>
 
                             <div id="mymodal{{ $film->id }}" class="modal fade" tabindex="-1"
@@ -354,16 +346,16 @@
                                         <div class="modal-content">
                                             <div class="modal-header modal-colored-header bg-dark">
                                                 <h4 class="modal-title text-white" id="dark-header-modalLabel">
-                                                    Atur Jadwal
+                                                    Penayangan ulang
                                                 </h4>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body d-flex align-item-center justify-content-center">
                                                 @csrf
                                                 @method('PUT')
                                                 <label class="form-group" for="jadwal_tayang">
-                                                    <span class="text-secondary fs-3 text-center">Jadwal Tayang</span>
+                                                    <span class="text-secondary fs-2 text-center">Jadwal Tayang</span>
                                                     <br>
                                                     <input class="form-control" type="date" name="jadwal_tayang"
                                                         id="jadwal_tayang">

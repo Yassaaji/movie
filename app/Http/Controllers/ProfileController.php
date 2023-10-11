@@ -127,7 +127,7 @@ class ProfileController extends Controller
             'password.confirmed' => 'Password tidak sama',
         ]);
 
-        if($request->old_password && $request->password){
+        if($request->old_password === $request->password){
             return redirect()->back()->with('error','password lama dan password baru tidak boleh sama');
         }
 

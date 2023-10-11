@@ -157,7 +157,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-                <a class="bg-dark btn" href="{{ route('logout') }}"
+                <a class="bg-dark btn btn-sm " href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                         class="bi bi-box-arrow-right text-white fs-4"></i></a>
             </div>
@@ -190,6 +190,12 @@
                         <a href="{{ route('trending_film') }}"
                             class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('trending_film') ? 'active' : '' }}">
                             <i class="fas fa-trophy"></i> Trending Film <!-- Mengganti ikon dengan ikon trofi -->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('filmSelesai') }}"
+                            class="nav-link text-white text-decoration-none rounded me-2 {{ request()->is('filmSelesai') ? 'active' : '' }}">
+                            <i class="fas fa-trophy"></i> Film Selesai <!-- Mengganti ikon dengan ikon trofi -->
                         </a>
                     </li>
 

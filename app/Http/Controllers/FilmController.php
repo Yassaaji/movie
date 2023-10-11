@@ -12,6 +12,7 @@ use App\Models\Ruangan;
 use App\Models\status_kursi;
 use App\Models\Ticket;
 use Carbon\Carbon;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
@@ -128,8 +129,8 @@ class FilmController extends Controller
 
 
         // Mengambil daftar film dengan relasi genre
-        $films = Film::with('genre')->paginate(2);
-
+        $films = Film::with('genre')->get();
+// dd($films);
         return view('admin.daftarfilm', compact('films'));
     }
 
@@ -214,9 +215,24 @@ class FilmController extends Controller
      */
     public function destroy(Film $film)
     {
-        Storage::delete('thumbnile/' . $film->thumbnile);
-        $film->delete();
+
+
+        try {
+
+            $film->delete();
+            Storage::delete('thumbnile/' . $film->thumbnile);
+
+        } catch (QueryException $e) {
+
+            $film->status = "finish";
+            $film->save();
+            // if($e->errorInfo[1] == 1451) {
+            //     return redirect()->route('daftarfilm')->with('error', 'Film sudah pernah dipesan');
+            // }
+        }
+
         return redirect()->route('daftarfilm')->with('success', 'Data berhasil dihapus');
+
     }
 
     public function aturJadwal(Request $request, $film_id ){
@@ -256,13 +272,13 @@ class FilmController extends Controller
 
 
         return redirect()->route('daftarfilm')->with('success','Sukses mengatur jadwal penayangan baru');
-
     }
 
-    public function rating(Request $request,$film_id){
+    public function filmselesai(){
 
+        $films = Film::where('status','finish')->get();
 
-
+        return view('admin.daftar-selesai',compact('films'));
     }
 
 

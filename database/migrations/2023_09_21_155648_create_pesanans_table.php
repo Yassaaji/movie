@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('ticket_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('bank_id')->nullable()->constrained();
             $table->foreignId('ewallet_id')->nullable()->constrained();
-            $table->foreignId('film_id')->constrained();
+            $table->foreignId('film_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constarined();
             $table->integer('totalharga');
             $table->string('bukti_pembayaran')->nullable();

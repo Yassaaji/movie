@@ -269,7 +269,7 @@
                                             <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                                         </button>
                                         @else
-                                       
+
                                         @endif
                                         <!-- Bootstrap Modal -->
                                         <div class="modal fade" id="ratingModal{{ $pesanan->id }}" tabindex="-1"
@@ -290,8 +290,8 @@
                                                                     <!-- Your rating inputs and other content -->
                                                                     <div class="image-container">
                                                                     <img class="image"
-                                                                        src="{{ asset('storage/thumbnile' . $pesanan->film->thumbnile) }}"
-                                                                        alt="Film" height="100px" width="100px">
+                                                                        src="{{ asset('storage/thumbnile/' . $pesanan->film->thumbnile) }}"
+                                                                        alt="Film" height="100px" width="100px"/>
                                                                 </div>
                                                                 <div class="col-md-8">
                                                                     <div class="card-body">
