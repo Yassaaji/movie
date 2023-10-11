@@ -269,10 +269,7 @@
                                             <i class="fas fa-star" style="font-size: 24px; color: gold;"></i>
                                         </button>
                                         @else
-                                        <button type="button" class="btn border-0 " data-bs-toggle="modal"
-                                            data-bs-target="#ratingModal" disabled>
-                                            <i class="fas fa-star" style="font-size: 24px; color: rgb(205, 203, 189);"></i>
-                                        </button>
+                                       
                                         @endif
                                         <!-- Bootstrap Modal -->
                                         <div class="modal fade" id="ratingModal{{ $pesanan->id }}" tabindex="-1"
@@ -280,8 +277,8 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="ratingModalLabel"Beri rating dulu
-                                                            yuk!!! </h5>
+                                                        <h5 class="modal-title" id="ratingModalLabel{{ $pesanan->id }}"Beri rating dulu
+                                                            yuk!!!</h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
@@ -315,25 +312,24 @@
                                                                         </div>
 
                                                                         <input type="hidden" name="rate" id="rate" value="">
-                                                                        @foreach ( $user->rate as $rate )
-                                                                        @if ( ($rate->film_id === $pesanan->film->id) )
                                                                         <label class="rating">
-                                                                            @for ( $i = 0; $i < 5 ; $i++)
-                                                                                    @if ( $i <  floor($rate->rate))
-                                                                                    <i style="color: yellow" class="fas fa-star"
-                                                                                    onclick="setRating('{{ $i+1 }}')"></i>
-
+                                                                            @if ($user->rate->isEmpty()) <!-- Memeriksa apakah user belum memberikan rating -->
+                                                                                @for ($i = 0; $i < 5; $i++)
+                                                                                    <i style="" class="fas fa-star" onclick="setRating('{{ $i+1 }}')"></i>
+                                                                                @endfor
+                                                                            @else
+                                                                                @php
+                                                                                    $previousRating = $user->rate->where('film_id', $pesanan->film->id)->first(); // Mendapatkan rating sebelumnya
+                                                                                @endphp
+                                                                                @for ($i = 0; $i < 5; $i++)
+                                                                                    @if ($i < floor($previousRating->rate))
+                                                                                        <i style="color: yellow" class="fas fa-star" onclick="setRating('{{ $i+1 }}')"></i>
                                                                                     @else
-                                                                                <i class="fas fa-star"
-                                                                                onclick="setRating('{{ $i+1 }}')"></i>
-                                                                                @endif
-                                                                            @endfor
+                                                                                        <i class="fas fa-star" onclick="setRating('{{ $i+1 }}')"></i>
+                                                                                    @endif
+                                                                                @endfor
+                                                                            @endif
                                                                         </label>
-
-                                                                        @else
-
-                                                                        @endif
-                                                                        @endforeach
 
 
                                                                     </div>

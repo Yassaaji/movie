@@ -29,6 +29,8 @@ class ProfileController extends Controller
         $kursiPesanan = Kursi::with('status_kursi')->has('status_kursi')->get();
         $user = User::with('rate')->where('id',Auth::user()->id)->first();
         // dd($user);
+
+
         return view('profile', compact('data','historypesanan','kursiPesanan','user'));
     }
 

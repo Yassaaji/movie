@@ -11,6 +11,7 @@ use App\Models\Kursi;
 use App\Models\Penayangan;
 use App\Models\Pendapatan;
 use App\Models\Pesanan;
+use App\Models\Rate;
 use App\Models\status_kursi;
 use App\Models\Ticket;
 use Carbon\Carbon;
@@ -240,6 +241,24 @@ try {
             Mail::to($pesanan->user->email)->send(new ticketSuccess($pesanan,$status_kursi));
             $pesanan->alasan = "";
             $now = Carbon::now();
+
+            $rating = Rate::where('film_id',$pesanan->film->id)->where('user_id',$pesanan->user->id)->first();
+
+            if($rating === null){
+                $rate = new Rate;
+                $rate->film_id = $pesanan->film->id;
+                $rate->user_id = $pesanan->user->id;
+                $rate->rate = 0;
+                $rate->save();
+            }else{
+                $rating->film_id = $pesanan->film->id;
+                $rating->user_id = $pesanan->user->id;
+                $rating->rate = 0;
+                $rating->save();
+
+            }
+
+
             $pendapatanCheck = Pendapatan::where('bulan', $now->format('M'))->where('tahun',$now->format('Y'))->first();
             if($pendapatanCheck){
                 $pendapatan = Pendapatan::where('bulan', $now->format('M'))->where('tahun',$now->format('Y'))->first();

@@ -46,7 +46,7 @@ class RateController extends Controller
             $rate->rate = $request->rate;
             $rate->save();
             // Rating baru dibuat
-            return redirect()->back()->with('success',"Rating telah diperbarui!") ;
+            return redirect()->back()->with('success',"sukses merating!") ;
         } else {
             // Rating sudah ada, lakukan pembaruan
             $rate = new Rate();
