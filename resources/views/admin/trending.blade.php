@@ -21,7 +21,7 @@
    }
 </style>
 
-<div class="container p-5" >
+<div class="container p-5">
     <div class="row mb-5">
         <h1 class="fs-1 text-white" style="font-family: 'Poppins', sans-serif; font-weight: bold;">Film Populer</h1>
     </div>

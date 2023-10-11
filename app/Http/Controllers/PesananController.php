@@ -80,13 +80,7 @@ class PesananController extends Controller
 
         $idUser = Auth::user()->id;
 
-        try {
-            //code...
-            $ticket->save();
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->back()->with('error',"Kursi sudah dipesan");
-        }
+
 
         $penayangan = Penayangan::where('film_id',$film_id)->orderBy('id','desc')->first();
         foreach ($kursi_pesanan as $data) {
@@ -97,6 +91,8 @@ class PesananController extends Controller
                     return redirect()->back()->with('error',"Kursi sudah dipesan");
                 }
             }
+
+
 
 
             // $penayangan = Penayangan::orderBy('film_id','desc')->first();
@@ -117,7 +113,7 @@ class PesananController extends Controller
 
                 $status_kursi->save();
             } catch (\Throwable $th) {
-                return redirect()->back()->with('error','kursi gagal disave');
+                return redirect()->back()->with('error','kursi sudah dipesan');
             }
 
             $kursi->ticket_id = null;
@@ -126,8 +122,16 @@ class PesananController extends Controller
                 $kursi->save();
             } catch (\Throwable $th) {
                 //throw $th;
-                return redirect()->back()->with('error','kursi gagal disave');
+                return redirect()->back()->with('error','kursi sudah dipesan');
             }
+        }
+
+        try {
+            //code...
+            $ticket->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error',"Kursi sudah dipesan");
         }
 
 
@@ -243,6 +247,11 @@ class PesananController extends Controller
 
         }else if($request->status === "ditolak"){
             $pesanan->konfirmasi = "ditolak";
+
+            if($request->input('alasan') === null){
+                return redirect()->back()->withError('Alasan tidak boleh kosong');
+            }
+
             $pesanan->alasan = $request->alasan;
             Mail::to($pesanan->user->email)->send(new ticketCancel($pesanan));
 

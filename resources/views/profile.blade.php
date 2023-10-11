@@ -293,7 +293,7 @@
                                                                     <!-- Your rating inputs and other content -->
                                                                     <div class="image-container">
                                                                     <img class="image"
-                                                                        src="{{ asset('storage/thumbnile' . $pesanan->film->id) }}"
+                                                                        src="{{ asset('storage/thumbnile' . $pesanan->film->thumbnile) }}"
                                                                         alt="Film" height="100px" width="100px">
                                                                 </div>
                                                                 <div class="col-md-8">
@@ -319,11 +319,11 @@
                                                                         @if ( ($rate->film_id === $pesanan->film->id) )
                                                                         <label class="rating">
                                                                             @for ( $i = 0; $i < 5 ; $i++)
-                                                                                @if ( $i <  floor($rate->rate))
-                                                                                <i style="color: yellow" class="fas fa-star"
-                                                                                onclick="setRating('{{ $i+1 }}')"></i>
+                                                                                    @if ( $i <  floor($rate->rate))
+                                                                                    <i style="color: yellow" class="fas fa-star"
+                                                                                    onclick="setRating('{{ $i+1 }}')"></i>
 
-                                                                                @else
+                                                                                    @else
                                                                                 <i class="fas fa-star"
                                                                                 onclick="setRating('{{ $i+1 }}')"></i>
                                                                                 @endif

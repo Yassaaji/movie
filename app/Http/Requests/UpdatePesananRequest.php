@@ -22,14 +22,14 @@ class UpdatePesananRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'alasan' => 'required|max:500|string'
+            'alasan' => 'nullable|max:500|string'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'alasan.required' => 'alasan tidak boleh kosong',
+            // 'alasan.required' => 'alasan tidak boleh kosong',
             'alasan.max:500' =>  'alasa tidak boleh lebih dari 500 karakter',
             'alasan.string' => 'alasan harus berupa string',
         ];
