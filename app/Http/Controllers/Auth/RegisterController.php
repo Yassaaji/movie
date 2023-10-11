@@ -74,12 +74,6 @@ class RegisterController extends Controller
         ]
     );
 
-    $telp = User::where('noTelp',$request->telepon)->first();
-
-    if($telp){
-        return redirect()->back()->with('error','Nomor telepon sudah digunakan');
-    }
-
 
     $user = new User;
     $user->name = $request->name;

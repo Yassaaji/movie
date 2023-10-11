@@ -185,7 +185,7 @@
         </div>
     </nav>
 
-    <main class="overflow-hidden">
+    <main style="min-width: 100vw" class="overflow-hidden">
         @yield('content-app')
     </main>
     @include('layouts.footer')

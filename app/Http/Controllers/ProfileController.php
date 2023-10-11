@@ -76,11 +76,6 @@ class ProfileController extends Controller
     public function update(UpdateprofileRequest $request, User $user , $id)
     {
 
-        $telp = User::where('noTelp',$request->noTelp)->first();
-
-        if($telp){
-            return redirect()->back()->with('error','Nomor telepon sudah digunakan');
-        }
 
 
         // dd($request);
