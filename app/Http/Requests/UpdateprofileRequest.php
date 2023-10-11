@@ -23,7 +23,7 @@ class UpdateprofileRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'noTelp' => 'numeric|regex:/^08\d{9,12}$/',
+            'noTelp' => 'numeric|unique:users|regex:/^08\d{9,12}$/',
         ];
     }
     public function messages()
@@ -32,7 +32,8 @@ class UpdateprofileRequest extends FormRequest
             'name.required'=>'Nama tidak boleh kosong',
             'name.string'=>'Nama harus berupa string',
             'noTelp.regex' => 'nomor telp harus berawalan 08 dan panjang nomor antara 11-13',
-            'noTelp.numeric' => 'nomor telp harus diisi dengan nomor'
+            'noTelp.numeric' => 'nomor telp harus diisi dengan nomor',
+            'noTelp.unique' => 'nomor telp sudah digunakan oleh orang lain'
         ];
     }
 }
