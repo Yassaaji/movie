@@ -261,7 +261,6 @@
             <p style="margin-bottom: 25px;"><strong>Jam Tayang :</strong> {{ date('H:i', strtotime($film->jam_tayang)) }}</p>
             <p style="margin-bottom: 25px;"><strong>Harga ticket :</strong>  Rp.{{ number_format($film->harga) }}</p>
         </div>
-
     </div>
     <div class="sinopsis">
         <h1><strong>TRAILER DAN SINOPSIS</strong></h1>
@@ -271,7 +270,6 @@
         <a href="{{ route('order', $film->id) }}" class="btn btn-dark col-md-11 mt-2">Beli Tiket</a>
         @endif
     <br>
-
     </div>
 </div>
 
@@ -309,8 +307,8 @@
                 <form action="{{ route('tambahKomentar',$film->id) }}" method="post">
                     @csrf
                     <textarea name="komentar" class="form-control" id="" rows="4" placeholder="Masukkan komentar anda" ></textarea>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="justify-content-center btn mt-3 btn-rounded btn-dark d-flex align-items-center">
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="justify-content-center btn  btn-rounded btn-dark d-flex align-items-center">
                         Kirim
                     </button>
                 </div>
@@ -319,7 +317,7 @@
             <div class="container">
 
             </div>
-            <label for="" class="fs-5 fw-semibold text-dark mb-0">List Komentar</label>
+            <label for="" class="fs-5 fw-semibold text-dark mb-0 mt2">List Komentar</label>
             <div class="col">
                 @forelse ( $komentar as $data )
 
@@ -535,7 +533,7 @@
 <script>
 
 
-   
+
 
     function confirmDelete(event) {
         event.preventDefault();
