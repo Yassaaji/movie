@@ -90,7 +90,17 @@ class PesananController extends Controller
                 if($data === $st->nomor_kursi){
                     return redirect()->back()->with('error',"Kursi sudah dipesan");
                 }
+
             }
+
+        try {
+            //code...
+            $ticket->save();
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error',"Kursi sudah dipesan");
+        }
+
 
 
 
@@ -113,7 +123,7 @@ class PesananController extends Controller
 
                 $status_kursi->save();
             } catch (\Throwable $th) {
-                return redirect()->back()->with('error','kursi sudah dipesan');
+                return redirect()->back()->with('error','status gagal dibuat');
             }
 
             $kursi->ticket_id = null;
@@ -122,17 +132,10 @@ class PesananController extends Controller
                 $kursi->save();
             } catch (\Throwable $th) {
                 //throw $th;
-                return redirect()->back()->with('error','kursi sudah dipesan');
+                return redirect()->back()->with('error','kursi gagal disave');
             }
         }
 
-        try {
-            //code...
-            $ticket->save();
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->back()->with('error',"Kursi sudah dipesan");
-        }
 
 
 
