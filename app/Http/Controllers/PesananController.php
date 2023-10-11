@@ -55,6 +55,8 @@ class PesananController extends Controller
     public function store(StorePesananRequest $request, int $film_id)
     {
 
+        // dd($request);
+
         if(!($request->payment === "cash") && ($request->bukti_pembayaran === null) ){
             return back()->with('error','sertakan bukti pembayaran');
         }
@@ -63,7 +65,7 @@ class PesananController extends Controller
 
         // dd($request);
         // $ticket = Ticket::with('film')->where('id',$ticket_id)->first();
-        $film = Film::where('id',$film_id)->first();
+        $film = Film::with('ruangan')->where('id',$film_id)->first();
         $kursi_pesanan = $request->tickets;
         try {
             //code...
@@ -91,12 +93,23 @@ try {
 
         $status = status_kursi::where('film_id',$film_id)->where('penayangan_id',$penayangan->id)->get();
         foreach ($status as $st) {
+
+            $tesKursi = Kursi::where('ruangan_id',$film->ruangan->id)->where('nomor_kursi',$data)->first();
+
+            if($tesKursi === null){
+                return redirect()->back()->with('error','Kursi tidak ditemukan');
+            }
+
+            if($data === "on"){
+                return redirect()->back()->with('error',"Terdapat kesalahan pada pemesanan kursi");
+            }
             if($data === $st->nomor_kursi){
                return redirect()->back()->with('error',"Kursi sudah dipesan");
             }
+
         }
     }
-    
+
 } catch (\Throwable $th) {
     //throw $th;
      return redirect()->back()->with('error',"Kursi sudah dipesan");
